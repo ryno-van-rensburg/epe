@@ -21,7 +21,7 @@
     - [Task 2] : [Implement an efficient accusation algorithm]
     - [Task 3] : [Implement an algorithm to adjust difficulty of AI player according to the user selection]
     - [Task 4] : [Implement a suggestion feature for users learning to play]
-- [Duncan] [Scott] [student number] : [Server]
+- [Duncan] [Scott] [21442496] : [Server]
     - [Task 1] : [Description]
     - [Task 2] : [Description]
     - [Task 3] : [Description]
