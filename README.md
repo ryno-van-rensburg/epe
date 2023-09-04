@@ -1,6 +1,4 @@
 # Cluedo Project
-
-
 Brief overview of the project
 
 ## Group Members and Responsibilities
