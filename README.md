@@ -21,7 +21,7 @@
     - [Task 3] : [Validate suggestion made by client.]
     - [Task 4] : [Validate final accusation made by client.]
     - [Task 5] : [Log errors made during the game session.]
-- [Duncan] [Scott] [21442496] : [Server]
+ -[Duncan] [Scott] [21442496] : [Server]
 - [Task 1] : [Construct and add players to the lobby from username
                 provided by Networking.]
     - [Task 2] : [Log movement of each player.]
@@ -29,7 +29,7 @@
     - [Task 4] : [Log the game state during each player’s turn.]
     - [Task 5] : [Validate the reveal of a card to another player after a
                 suggestion is made.]
-    [Game Server] [Shared]
+-[Game Server] : [Shared]
     - [Task 1] : [Integration of features]
 - Paras Kandpal [student number] : [AI]
     - [Task 1] : [Description]
