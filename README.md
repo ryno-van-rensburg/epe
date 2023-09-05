@@ -33,9 +33,10 @@ Brief overview of the project
     - Task 2 : Description
     - Task 3 : Description
     - Task 4 : Description
-- Ryno van Rensburg student number : Networking
-    - Task 1 : Description
-    - Task 2 : Description
-    - Task 3 : Description
-    - Task 4 : Description
+- Ryno van Rensburg 21531570 : Networking
+    - Task 1 : Encapsulate networking protocol into high level interface
+    - Task 2 : Handle server side networking
+    - Task 3 : Handle client side networking
+    - Task 4 : Enforce timeout and disconnection rules
+    - Task 5 : Manage client side connections
    
