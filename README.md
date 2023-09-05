@@ -26,14 +26,14 @@ Brief overview of the project
     - Task 3 : Validate movement of client.
     - Task 4 : Log the game state during each player’s turn.
     - Task 5 : Validate the reveal of a card to another player after a suggestion is made.
-- Paras Kandpal student number : AI
-    - Task 1 : Description
-    - Task 2 : Description
-    - Task 3 : Description
-    - Task 4 : Description
+- Paras Kandpal 21680681 : AI
+    - Task 1: Game Analysis with the AI bot
+    - Task 2: Construct various tests for the functionality of the game 
+    - Task 3: Construct a decision-making algorithm for the AI
+    - Task 4: Integration of AI with the GUI
+    - Task 5: Testing and debugging of the algorithms
 - Ryno van Rensburg student number : Networking
     - Task 1 : Description
     - Task 2 : Description
     - Task 3 : Description
     - Task 4 : Description
-   
