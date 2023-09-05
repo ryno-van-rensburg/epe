@@ -4,7 +4,7 @@ Brief overview of the project
 ## Group Members and Responsibilities
 
 - Simon Lowan 17021228 : GUI
-    - Task 1 : Wireframe UI design
+    - Task 1 : Wireframe UI design - startup and loading page
     - Task 2 : Main Menu Screen Functionality 
     - Task 3 : GUI and Client integration: Accusations
     - Task 4 : Client and GUI integration: Notification Screens
