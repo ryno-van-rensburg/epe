@@ -15,17 +15,19 @@ Brief overview of the project
     - Task 4 : Client and GUI integration: Movement and Board Updates
     - Task 5 : GUI and Client integration: Suggestions
 - Justin Wood 20563192 : Server
-    - Task 1 : Log choice of cards to be placed in the envelope.
-    - Task 2 : Card dealing to each player.
-    - Task 3 : Validate suggestion made by client.
-    - Task 4 : Validate final accusation made by client.
-    - Task 5 : Log errors made during the game session.
+    - [Task 1] : [Validation of room card according to the room the client is in]
+    - [Task 2] : [Validate cards chosen for accusation(room, character, weapon)]
+    - [Task 3] : [Validate that if a player character is part of a suggestion, they are moved into the room in question]
+    - [Task 4] : [Comparison with players for duplicate card from suggestion made and reveal of duplicate card]
+    - [Task 5] : [Validation of end of players turn]
 - Duncan Scott 21442496 : Server
-    - Task 1 : Construct and add players to the lobby from username provided by Networking.
-    - Task 2 : Log movement of each player.
-    - Task 3 : Validate movement of client.
-    - Task 4 : Log the game state during each player’s turn.
-    - Task 5 : Validate the reveal of a card to another player after a suggestion is made.
+    - [Task 1] : [Game setup and adding players to a lobby]
+    - [Task 2] : [Setting cards to be placed in the envelope and dealing remaining cards]
+    - [Task 3] : [Roll dice and validate movement of client.]
+    - [Task 4] : [Validate destination after selected movement]
+    - [Task 5] : [Logging of game state and errors as requested by the network.]
+- Shared : Server
+    - [Task 1] : [Validation of final accusation and comparison to game envelope]
 - Paras Kandpal student number : AI
     - Task 1 : Description
     - Task 2 : Description
