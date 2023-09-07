@@ -1,11 +1,13 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
+#include <map>
 
 enum MESSAGE_TYPE {
     REQUEST_CON,
-    CLIENT_ACK,
+    ACK,
     MAKE_MOVE,
     SHOW_CARD,
+    MAKE_SUGGESTION,
     MAKE_ACC,
     REQ_GAME_STATE,
     GAME_STATE,
@@ -17,7 +19,6 @@ enum MESSAGE_TYPE {
     PLAYER_KICKED,
     CARD_SHOWN,
     GAME_TERMINATION,
-    SERVER_ACK,
     DEAL_CARDS,
     REQUEST_CARD,
     SHOW_CARD,
@@ -29,11 +30,13 @@ enum MESSAGE_TYPE {
 class Message
 {
 private:
-    int type;
+    MESSAGE_TYPE type;
     QJsonDocument messageContents;
 public:
-    Message(MESSAGE_TYPE type, QByteArray arr, int numBytes);
+    Message(MESSAGE_TYPE type, QByteArray arr );
+    Message(QString messageType, QJsonDocument contents);
     ~Message();
+    MESSAGE_TYPE getType();
     QByteArray getBytes();
 };
 
