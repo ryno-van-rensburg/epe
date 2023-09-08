@@ -3,10 +3,15 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <iostream>
+#include <QVector>
 #include "message.h"
 
 class Player;
 
+// TODO add comments
+// TODO add signals to connect to clientbroker signals
+// TODO unit tests
 
 class Client : public QObject
 {
@@ -18,12 +23,15 @@ private:
     QHostAddress* addr;
     quint16 port;
     void reconnect();
+    QVector<Message*> ackMessages; // messages expecting an ack
     bool connected = False;
+    void handleAck(Message msg);
+    void handleError(Message msg);
 public:
     Client();
     ~Client();
     ack();
-    void sendMessage(Message);
+    quint64 getAckCount();
     quint16 getPort();
     quint32 getAddr();
     void setPort(quint16 port);
@@ -31,11 +39,13 @@ public:
     void connect(quint32 ipAddr, quint16 port);
 public slots:
     //void QIODevice::readyRead()
+    void sendMessage(Message &msg);
     void handleMessage();
     void connMade();
     void connectionError();
-signals:
-    void
+signals: // used to notify clientmessagebroker of new data,
+
+    void gameStateReceived(Message &msg);
 };
 
 #endif // CLIENT_H

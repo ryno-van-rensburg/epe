@@ -81,6 +81,22 @@ build CMakeFiles/networking.dir/message.cpp.o: CXX_COMPILER__networking_Debug /h
   OBJECT_DIR = CMakeFiles/networking.dir
   OBJECT_FILE_DIR = CMakeFiles/networking.dir
 
+build CMakeFiles/networking.dir/clientmessagebroker.cpp.o: CXX_COMPILER__networking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.cpp || cmake_object_order_depends_target_networking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB
+  DEP_FILE = CMakeFiles/networking.dir/clientmessagebroker.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork
+  OBJECT_DIR = CMakeFiles/networking.dir
+  OBJECT_FILE_DIR = CMakeFiles/networking.dir
+
+build CMakeFiles/networking.dir/clientconnection.cpp.o: CXX_COMPILER__networking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.cpp || cmake_object_order_depends_target_networking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB
+  DEP_FILE = CMakeFiles/networking.dir/clientconnection.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork
+  OBJECT_DIR = CMakeFiles/networking.dir
+  OBJECT_FILE_DIR = CMakeFiles/networking.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target networking
@@ -89,7 +105,7 @@ build CMakeFiles/networking.dir/message.cpp.o: CXX_COMPILER__networking_Debug /h
 #############################################
 # Link the executable networking
 
-build networking: CXX_EXECUTABLE_LINKER__networking_Debug CMakeFiles/networking.dir/networking_autogen/mocs_compilation.cpp.o CMakeFiles/networking.dir/main.cpp.o CMakeFiles/networking.dir/client.cpp.o CMakeFiles/networking.dir/message.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || networking_autogen networking_autogen_timestamp_deps
+build networking: CXX_EXECUTABLE_LINKER__networking_Debug CMakeFiles/networking.dir/networking_autogen/mocs_compilation.cpp.o CMakeFiles/networking.dir/main.cpp.o CMakeFiles/networking.dir/client.cpp.o CMakeFiles/networking.dir/message.cpp.o CMakeFiles/networking.dir/clientmessagebroker.cpp.o CMakeFiles/networking.dir/clientconnection.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || networking_autogen networking_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -Wl,-rpath,/app/lib:  /app/lib/libQt6Network.so.6.3.1  /app/lib/libQt6Core.so.6.3.1  -pthread
   OBJECT_DIR = CMakeFiles/networking.dir

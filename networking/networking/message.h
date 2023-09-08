@@ -1,6 +1,6 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
-#include <map>
+const int NUM_MESSAGE_TYPES = 23;
 
 enum MESSAGE_TYPE {
     REQUEST_CON,
@@ -26,15 +26,25 @@ enum MESSAGE_TYPE {
     ERROR
 };
 
+enum MESSAGE_STATUS {
+    MESSAGE_UNACKED,
+    MESSAGE_ERRORED,
+    MESSAGE_ACKED,
+};
 
 class Message
 {
 private:
     MESSAGE_TYPE type;
+    MESSAGE_STATUS status;
     QJsonDocument messageContents;
+
 public:
     Message(MESSAGE_TYPE type, QByteArray arr );
+    MESSAGE_STATUS getStatus();
+    void setStatus(MESSAGE_STATUS status);
     Message(QString messageType, QJsonDocument contents);
+    Message(QString messageType, QJsonObject contents);
     ~Message();
     MESSAGE_TYPE getType();
     QByteArray getBytes();

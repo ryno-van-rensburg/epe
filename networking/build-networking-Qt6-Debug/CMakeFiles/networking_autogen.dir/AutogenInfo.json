@@ -203,6 +203,24 @@
 			null
 		],
 		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.h",
+			"MU",
+			"EWIEGA46WW/moc_clientconnection.cpp",
+			null
+		],
+		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.h",
+			"MU",
+			"EWIEGA46WW/moc_clientmessagebroker.cpp",
+			null
+		],
+		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/error.h",
+			"MU",
+			"EWIEGA46WW/moc_error.cpp",
+			null
+		],
+		[
 			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h",
 			"MU",
 			"EWIEGA46WW/moc_message.cpp",
@@ -269,6 +287,16 @@
 	[
 		[
 			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/client.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.cpp",
 			"MU",
 			null
 		],

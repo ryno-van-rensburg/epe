@@ -17,6 +17,9 @@ add_executable(networking
   main.cpp
     client.h client.cpp
 message.h message.cpp
+clientmessagebroker.h clientmessagebroker.cpp
+clientconnection.h clientconnection.cpp
+error.h
 )
 target_link_libraries(networking Qt${QT_VERSION_MAJOR}::Core Qt6::Network)
 
