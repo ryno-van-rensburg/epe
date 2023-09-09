@@ -84,12 +84,12 @@ void Player::MakeAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCar
 
 void Player::SetMyTurn()
 {
-
+    myTurn = true;
 }
 
 void Player::EndMyTurn()
 {
-
+    myturn = false;
 }
 
 int Player::RollDice()
