@@ -14,12 +14,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Network)
 
 add_executable(networking
-  main.cpp
+    main.cpp
     client.h client.cpp
-message.h message.cpp
-clientmessagebroker.h clientmessagebroker.cpp
-clientconnection.h clientconnection.cpp
-error.h
+    message.h message.cpp
+    clientmessagebroker.h clientmessagebroker.cpp
+    clientconnection.h clientconnection.cpp
+    serversession.h serversession.cpp
+    error.cpp error.h
 )
 target_link_libraries(networking Qt${QT_VERSION_MAJOR}::Core Qt6::Network)
 

@@ -8,12 +8,16 @@ ClientMessageBroker::ClientMessageBroker(QObject *parent)
     this->client = new Client();
 }
 
+ClientMessageBroker::~ClientMessageBroker(){
+    delete this->client;
+}
+
 void ClientMessageBroker::requestConnection(quint32 address, quint16 port, QString username) {
-    this->client->connect(addr, port);
+    this->client->connect(address, port);
     QJsonObject obj
     {
         {"Type", "REQUEST_CONNECTION"},
-        {"ID", this->client->getAckCount()},
+        {"ID", (int)this->client->getAckCount()},
         {"Username", username}
     };
     Message msg("REQUEST_CONNECTION", obj);
@@ -26,7 +30,7 @@ void ClientMessageBroker::makeMove(int position){
     QJsonObject obj
     {
         {"Type" , "MAKE_MOVE"},
-        {"ID", this->client->getAckCount()},
+        {"ID", (int)this->client->getAckCount()},
         {"Position", position}
     };
     Message msg("MAKE_MOVE", obj);
@@ -39,7 +43,7 @@ void ClientMessageBroker::showCard(QString card){
     QJsonObject obj
     {
         {"Type", "SHOW_CARD"},
-        {"ID", this->client->getAckCount()},
+        {"ID", (int) this->client->getAckCount()},
         {"Card", card},
     };
     Message msg("SHOW_CARD", obj);
@@ -48,11 +52,16 @@ void ClientMessageBroker::showCard(QString card){
 
 void ClientMessageBroker::makeAccusation(QString person, QString weapon, QString room)
 {
+    QJsonObject accObj {
+        {"Person", person},
+        {"Weapon", weapon},
+        {"Room", room},
+    };
     QJsonObject obj
     {
         {"Type", "MAKE_ACCUSATION"},
-        {"ID", this->client->getAckCount()},
-        {"Accusation", {{"Person" , person}, {"Weapon", weapon}, {"Room", room}}}
+        {"ID", (int)this->client->getAckCount()},
+        {"Accusation", accObj}
     };
 
     Message msg("MAKE_ACCUSATION", obj);
@@ -61,11 +70,17 @@ void ClientMessageBroker::makeAccusation(QString person, QString weapon, QString
 
 void ClientMessageBroker::makeSuggestion(QString person, QString weapon, QString room)
 {
+     QJsonObject suggestionObj {
+        {"Person", person},
+        {"Weapon", weapon},
+        {"Room", room},
+    };
+
     QJsonObject obj
     {
         {"Type", "MAKE_SUGGESTION"},
-        {"ID", this->client->getAckCount()},
-        {"Suggestion", {{"Person" , person}, {"Weapon", weapon}, {"Room", room}}}
+        {"ID", (int)this->client->getAckCount()},
+        {"Suggestion", suggestionObj}
     };
 
     Message msg("MAKE_ACCUSATION", obj);
@@ -77,17 +92,17 @@ void ClientMessageBroker::requestStateSlot()
     QJsonObject obj
     {
         {"Type", "REQUEST_GAME_STATE"},
-        {"ID", this->client->getAckCount()},
+        {"ID", (int) this->client->getAckCount()},
     };
 }
 
 
 void ClientMessageBroker::unpackGameState(Message &msg) {
-    QJsonObject obj = QJsonObject(msg.getBytes());
-    int numPlayers = obj['Number_Of_Players'];
-    QJsonArray players = obj['Players'];
-    int dice = obj['Current_Dice_Roll'];
-    int currentTurn = obj['Current_Turn'];
-    QJsonArray faceupCards = obj["Face_Up_Cards"];
+    QJsonObject obj = msg.getObj();
+    int numPlayers = obj["Number_Of_Players"].toInt();
+    QJsonArray players = obj["Players"].toArray();
+    int dice = obj["Current_Dice_Roll"].toInt();
+    int currentTurn = obj["Current_Turn"].toInt();
+    QJsonArray faceupCards = obj["Face_Up_Cards"].toArray();
     emit this->gameStateSignal(numPlayers,players,dice,currentTurn,faceupCards);
 }

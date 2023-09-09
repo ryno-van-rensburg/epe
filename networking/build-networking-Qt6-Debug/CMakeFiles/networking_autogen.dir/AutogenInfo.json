@@ -225,6 +225,12 @@
 			"MU",
 			"EWIEGA46WW/moc_message.cpp",
 			null
+		],
+		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.h",
+			"MU",
+			"EWIEGA46WW/moc_serversession.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -301,12 +307,22 @@
 			null
 		],
 		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/error.cpp",
+			"MU",
+			null
+		],
+		[
 			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/main.cpp",
 			"MU",
 			null
 		],
 		[
 			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/message.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.cpp",
 			"MU",
 			null
 		]

@@ -1,6 +1,4 @@
 #include "client.h"
-#include "error.h"
-
 #define DEBUG 1
 Client::Client()
 {
@@ -8,21 +6,15 @@ Client::Client()
     QObject::connect(this->serverConnection, SIGNAL(connected()), this, SLOT(connMade()));
     QObject::connect(this->serverConnection, SIGNAL(errorOccurred(SocketError)), this, SLOT(connectionError(SocketError)));
     QObject::connect(this->serverConnection, SIGNAL(readyRead()), this, SLOT(handleMessage()));
-    this->serverConnection = nullptr;
-    this->addr = nullptr;
 }
 
 Client::~Client()
 {
     // deallocate memory
     delete this->serverConnection;
-    delete this->addr;
-    //delete messages referenced by ackMessages
-    if (this->ackMessages) {
-    }
 }
 
-quint64 getAckCount(){
+quint64 Client::getAckCount(){
     return this->ackCounter;
 }
 
@@ -49,7 +41,7 @@ void Client::sendMessage(Message &msg)
         }
     } else {
         if (type != MESSAGE_TYPE::REQ_GAME_STATE && type != MESSAGE_TYPE::ACK && type != MESSAGE_TYPE::ERROR) {
-            this->ackMessages.append(msg);
+            this->ackMessages.append(&msg);
         }
     }
     return;
@@ -57,20 +49,35 @@ void Client::sendMessage(Message &msg)
 
 void Client::connect(quint32 ipAddr, quint16 port)
 {
-    this->addr = new QHostAddress(ipAddr);
+    this->addr = QHostAddress(ipAddr);
     if (this->serverConnection == nullptr){
         this->serverConnection = new QTcpSocket();
     }
     this->serverConnection->connectToHost(addr, port);
 }
-bool Client::reconnect(){
-    this->connect(this->addr, this->port);
+void Client::reconnect(){
+    this->serverConnection->connectToHost(this->addr, this->port);
+    return;
 }
 
 int extractAckId(Message &msg) {
-    QJsonObject obj = QJsonObject(msg.getBytes());
-    id = obj['ACK_ID'];
-    return id;
+    QJsonObject obj = QJsonObject(msg.getObj());
+    QJsonValue id = obj["ACK_ID"];
+    if (!id.isUndefined()){
+        return id.toInt();
+    } else {
+        return -1;
+    }
+}
+
+quint32 extractId(Message &msg){
+    QJsonObject obj = QJsonObject(msg.getObj());
+    QJsonValue id = obj["ID"];
+    if (!id.isUndefined()){
+        return (quint32) id.toInt();
+    } else {
+        return 0;
+    }
 }
 
 void Client::handleError(Message &msg)
@@ -79,13 +86,12 @@ void Client::handleError(Message &msg)
 
     for (int i = 0; i < this->ackMessages.size(); i++){
         // find the msg we want
-        Message* m = &(this->ackMessages.at(i));
-        int itr_id = extractAckId(m);
+        Message* m = this->ackMessages.at(i);
+        int itr_id = extractAckId(*m);
         if (itr_id == id){
             // check error type
-            QJsonObject obj(msg.getBytes());
-            switch(strtoError(obj["Error"])) {
-
+            QJsonObject obj(msg.getObj());
+            switch(strtoError(obj["Error"].toString())) {
             case(ERROR_TYPE::CONNECTION_DENIED):
                 // TODO signal gui that the connection has been denied
                 std::cout << "Connection with server denied" << std::endl;
@@ -133,8 +139,8 @@ void Client::handleAck(Message &msg)
     // Extract the ack id in order to find the message that has been acknowledged.
     int id = extractAckId(msg);
     for (int i = 0; i < this->ackMessages.size(); i++){
-        Message* m = &(this->ackMessages.at(i));
-        int itr_id = extractAckId(m);
+        Message* m = this->ackMessages.at(i);
+        int itr_id = extractAckId(*m);
         if (itr_id == id){
             // remove message from list
             this->ackMessages.remove(i);
@@ -156,26 +162,26 @@ void Client::handleMessage(){
     if (!contents.isNull() && contents.isObject()){
         // get the message type and construct a new message.
         QJsonObject obj = contents.object();
-        QJsonValue v = obj['Type'];
+        QJsonValue v = obj["Type"];
         if (v.isString()) {
-        Message* msg = new Message(v, contents);
+        Message* msg = new Message(v.toString(), contents);
 
         switch (msg->getType())
         {
         case (MESSAGE_TYPE::GAME_STATE) : {
             // Extract game state from data and send it on to gui
-                       emit this->gameStateReceived(msg);
+            emit this->gameStateReceived(*msg);
         }
         case (MESSAGE_TYPE::ACK):
         {
             // get message id and remove from ack list
-            this->handleAck(msg);
+            this->handleAck(*msg);
             break;
         }
         case (MESSAGE_TYPE::ERROR):
         {
             //
-            this->handleError(msg);
+            this->handleError(*msg);
             break;
         }
         };
@@ -188,25 +194,25 @@ void Client::handleMessage(){
     return;
 }
 
-void Client::ack(int id){
+void Client::ack(quint64 id){
     this->ackCounter++;
         QJsonObject obj
     {
         {"Type", "ACKNOWLEDGE"},
-        {"ID_ACK", id},
+        {"ID_ACK", (int)id},
     };
 
     Message msg("ACKNOWLEDGE", obj);
-    this->client->sendMessage(msg);
+    this->sendMessage(msg);
     return;
 }
 
 void Client::connMade() {
     // TODO notify gui of connection
-    this->connected = True;
+    this->connected = true;
 }
 
 void Client::connectionError() {
     // TODO handle error, probably have to emit some signal
-    this->connected = False;
+    this->connected = false;
 }

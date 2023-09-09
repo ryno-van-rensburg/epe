@@ -5,15 +5,14 @@ Message::Message(MESSAGE_TYPE type, QByteArray &arr)
     // convert QByteArray to a string, strip whitespace
     QJsonParseError* errPtr = nullptr;
     QJsonDocument messageJson = QJsonDocument::fromJson(arr, errPtr) ;
-    if (messageJson == nullptr){
-        // Error
-        // TODO, send error to server.
-    } else {
+    // TODO, send error to server.
+    if (!messageJson.isNull()){
         this->messageContents = messageJson;
         this->type = type;
+        this->source = nullptr;
     }
-
 }
+
 
 MESSAGE_TYPE strToMessageType(QString messageType) {
     if (messageType == "REQUEST_CONNECTION") {
@@ -80,14 +79,23 @@ MESSAGE_TYPE strToMessageType(QString messageType) {
 Message::Message(QString messageType, QJsonDocument contents)
 {
     this->type = strToMessageType(messageType);
+    this->source = nullptr;
     this->status = MESSAGE_STATUS::MESSAGE_UNACKED;
-    this->contents = contents;
+    this->messageContents = contents;
 }
 
 Message::Message(QString messageType, QJsonObject contents){
     this->type = strToMessageType(messageType);
+    this->source = nullptr;
     this->status = MESSAGE_STATUS::MESSAGE_UNACKED;
-    this->contents = QJsonDocument(contents);
+    this->messageContents = QJsonDocument(contents);
+}
+
+Message::Message(Message &t){
+    this->type = t.type;
+    this->status = t.status;
+    this->messageContents = t.messageContents;
+    this->source = t.source;
 }
 
 MESSAGE_STATUS Message::getStatus() {
@@ -98,6 +106,15 @@ void Message::setStatus(MESSAGE_STATUS status){
     return;
  }
 
+
+QJsonObject Message::getObj()
+{
+    return this->messageContents.object();
+}
+MESSAGE_TYPE Message::getType()
+{
+    return this->type;
+}
 QByteArray Message::getBytes() {
     return this->messageContents.toJson();
 }

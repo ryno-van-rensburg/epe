@@ -6,6 +6,7 @@
 #include <iostream>
 #include <QVector>
 #include "message.h"
+#include "error.h"
 
 class Player;
 
@@ -20,17 +21,17 @@ private:
     quint64 ackCounter;
     const Player* playerObj;
     QTcpSocket* serverConnection;
-    QHostAddress* addr;
+    QHostAddress addr;
     quint16 port;
     void reconnect();
     QVector<Message*> ackMessages; // messages expecting an ack
-    bool connected = False;
-    void handleAck(Message msg);
-    void handleError(Message msg);
+    bool connected = false;
+    void handleAck(Message &msg);
+    void handleError(Message &msg);
 public:
     Client();
     ~Client();
-    ack();
+    void ack(quint64 id);
     quint64 getAckCount();
     quint16 getPort();
     quint32 getAddr();

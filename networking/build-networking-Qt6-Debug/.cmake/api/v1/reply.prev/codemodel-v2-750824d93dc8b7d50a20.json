@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-03cfc213f1afdf275bc6.json",
+					"jsonFile" : "directory-.-Debug-196f91104811c4c97345.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "networking::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-networking-Debug-c91795049d5aeb0e444e.json",
+					"jsonFile" : "target-networking-Debug-2b1921905ead043cc037.json",
 					"name" : "networking",
 					"projectIndex" : 0
 				},

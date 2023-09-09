@@ -18,8 +18,9 @@ private:
     ServerSession* session;
     Player* playerObj;
     QTimer* minTimer;
-    QTimer* timeOut;
-    QHostAddress* addr;//ip address of client, used to reestablish connections.
+    QTimer* timerOut;
+    QString username;
+    QHostAddress addr;//ip address of client, used to reestablish connections.
     quint16 port;// TCP port of client, used to reestablish connections.
     QMap<MESSAGE_TYPE, int> violationCounts;
     bool isFirstTurn; // The first turn has a longer timeout period, hence this boolean.
@@ -27,18 +28,20 @@ private:
     void checkViolationCounters();
 public:
     explicit ClientConnection(QObject *parent = nullptr);
-    explicit ClientConnection(QObject *parent = nullptr, QTcpSocket &connection, Player &playerObj, ServerSession &sesion);
-
+    explicit ClientConnection(QTcpSocket &connection, Player &playerObj, ServerSession &session);
+    QString getUsername(); // temporary declarations.
+    void setUsername(QString username);
     void setSession(ServerSession& session);
     void setPlayer(Player &playerObj);
     void setConnection(QTcpSocket &connection);
 
 public slots:
-    void sendMessage(Message);
+    void sendMessage(Message &msg);
     void messageReceived();
 signals:
     void violationsExceeded(MESSAGE_TYPE type, QString errorMessage);
     void timeOut(QString userName);
+    void messageSent(Message &msg);
 };
 
 #endif // CLIENTCONNECTION_H

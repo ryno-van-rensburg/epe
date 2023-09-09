@@ -4,6 +4,11 @@
 #include <QObject>
 #include <client.h>
 #include <message.h>
+#include "error.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+
 class ClientMessageBroker : public QObject
 {
     Q_OBJECT
@@ -21,7 +26,7 @@ signals:
     void yourTurnSignal();
     void gameEndedSignal();
     void gameStateSignal(int numPlayers, QJsonArray players, int dice, int currentTurn, QJsonArray faceupCards);
-    void errorSignal(ERROR_ENUM err, QString username);
+    void errorSignal(ERROR_TYPE err, QString username);
     void cardRequestedSignal();
 public slots:
     void requestConnection(quint32 address, quint16 port, QString username);
