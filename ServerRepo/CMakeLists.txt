@@ -14,6 +14,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(ServerRepo
   main.cpp
+  gameboard.h gameboard.cpp
+  room.h room.cpp
+  gameserver.h gameserver.cpp
 
 )
 target_link_libraries(ServerRepo Qt${QT_VERSION_MAJOR}::Core)

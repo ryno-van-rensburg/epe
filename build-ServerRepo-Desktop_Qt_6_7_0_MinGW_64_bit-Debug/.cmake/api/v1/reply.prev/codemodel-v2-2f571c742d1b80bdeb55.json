@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-018f5a4ac3c5fe89a832.json",
+					"jsonFile" : "directory-.-Debug-c0b99400e7242e79b165.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ServerRepo::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ServerRepo-Debug-8fc406cbb061ac6fb63e.json",
+					"jsonFile" : "target-ServerRepo-Debug-ff30e5f10a9bdf46e641.json",
 					"name" : "ServerRepo",
 					"projectIndex" : 0
 				},

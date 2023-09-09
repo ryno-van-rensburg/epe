@@ -137,7 +137,27 @@
 	"CMAKE_SOURCE_DIR" : "C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo",
 	"DEP_FILE" : "C:/Users/Justin/Desktop/EPE_Rep/group-6/build-ServerRepo-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/ServerRepo_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "ServerRepo_autogen/timestamp",
-	"HEADERS" : [],
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/gameboard.h",
+			"MU",
+			"EWIEGA46WW/moc_gameboard.cpp",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/gameserver.h",
+			"MU",
+			"EWIEGA46WW/moc_gameserver.cpp",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/room.h",
+			"MU",
+			"EWIEGA46WW/moc_room.cpp",
+			null
+		]
+	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "C:/Users/Justin/Desktop/EPE_Rep/group-6/build-ServerRepo-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/ServerRepo_autogen/include",
 	"MOC_COMPILATION_FILE" : "C:/Users/Justin/Desktop/EPE_Rep/group-6/build-ServerRepo-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/ServerRepo_autogen/mocs_compilation.cpp",
@@ -203,7 +223,22 @@
 	"SOURCES" : 
 	[
 		[
+			"C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/gameboard.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/gameserver.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/main.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/room.cpp",
 			"MU",
 			null
 		]

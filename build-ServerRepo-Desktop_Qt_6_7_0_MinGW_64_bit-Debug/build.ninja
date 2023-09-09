@@ -65,6 +65,30 @@ build CMakeFiles/ServerRepo.dir/main.cpp.obj: CXX_COMPILER__ServerRepo_Debug C$:
   OBJECT_DIR = CMakeFiles\ServerRepo.dir
   OBJECT_FILE_DIR = CMakeFiles\ServerRepo.dir
 
+build CMakeFiles/ServerRepo.dir/gameboard.cpp.obj: CXX_COMPILER__ServerRepo_Debug C$:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/gameboard.cpp || cmake_object_order_depends_target_ServerRepo
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\ServerRepo.dir\gameboard.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/EPE_Rep/group-6/build-ServerRepo-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/ServerRepo_autogen/include -isystem C:/Qt/6.7.0/mingw_64/include/QtCore -isystem C:/Qt/6.7.0/mingw_64/include -isystem C:/Qt/6.7.0/mingw_64/mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\ServerRepo.dir
+  OBJECT_FILE_DIR = CMakeFiles\ServerRepo.dir
+
+build CMakeFiles/ServerRepo.dir/room.cpp.obj: CXX_COMPILER__ServerRepo_Debug C$:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/room.cpp || cmake_object_order_depends_target_ServerRepo
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\ServerRepo.dir\room.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/EPE_Rep/group-6/build-ServerRepo-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/ServerRepo_autogen/include -isystem C:/Qt/6.7.0/mingw_64/include/QtCore -isystem C:/Qt/6.7.0/mingw_64/include -isystem C:/Qt/6.7.0/mingw_64/mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\ServerRepo.dir
+  OBJECT_FILE_DIR = CMakeFiles\ServerRepo.dir
+
+build CMakeFiles/ServerRepo.dir/gameserver.cpp.obj: CXX_COMPILER__ServerRepo_Debug C$:/Users/Justin/Desktop/EPE_Rep/group-6/ServerRepo/gameserver.cpp || cmake_object_order_depends_target_ServerRepo
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\ServerRepo.dir\gameserver.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/EPE_Rep/group-6/build-ServerRepo-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/ServerRepo_autogen/include -isystem C:/Qt/6.7.0/mingw_64/include/QtCore -isystem C:/Qt/6.7.0/mingw_64/include -isystem C:/Qt/6.7.0/mingw_64/mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\ServerRepo.dir
+  OBJECT_FILE_DIR = CMakeFiles\ServerRepo.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ServerRepo
@@ -73,7 +97,7 @@ build CMakeFiles/ServerRepo.dir/main.cpp.obj: CXX_COMPILER__ServerRepo_Debug C$:
 #############################################
 # Link the executable ServerRepo.exe
 
-build ServerRepo.exe: CXX_EXECUTABLE_LINKER__ServerRepo_Debug CMakeFiles/ServerRepo.dir/ServerRepo_autogen/mocs_compilation.cpp.obj CMakeFiles/ServerRepo.dir/main.cpp.obj | C$:/Qt/6.7.0/mingw_64/lib/libQt6Core.a || ServerRepo_autogen ServerRepo_autogen_timestamp_deps
+build ServerRepo.exe: CXX_EXECUTABLE_LINKER__ServerRepo_Debug CMakeFiles/ServerRepo.dir/ServerRepo_autogen/mocs_compilation.cpp.obj CMakeFiles/ServerRepo.dir/main.cpp.obj CMakeFiles/ServerRepo.dir/gameboard.cpp.obj CMakeFiles/ServerRepo.dir/room.cpp.obj CMakeFiles/ServerRepo.dir/gameserver.cpp.obj | C$:/Qt/6.7.0/mingw_64/lib/libQt6Core.a || ServerRepo_autogen ServerRepo_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = C:/Qt/6.7.0/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ServerRepo.dir
