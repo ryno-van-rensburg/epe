@@ -10,16 +10,16 @@ class Accusation : public QObject
 {
     Q_OBJECT
 private:
-    CharacterCard character;
-    RoomCard room;
-    WeaponCard weapon;
+    CharacterCard* character;
+    RoomCard* room;
+    WeaponCard* weapon;
 public:
-    Accusation();
-    Accusation(CharacterCard inCharac, RoomCard inRoom, WeaponCard inWeapon);
+    explicit Accusation(QObject *parent = nullptr);
+    Accusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon,QObject* parent = nullptr);
     ~Accusation();
-    CharacterCard GetCharacter();
-    RoomCard GetRoom();
-    WeaponCard GetWeapon();
+    CharacterCard* GetCharacter();
+    RoomCard* GetRoom();
+    WeaponCard* GetWeapon();
 };
 
 #endif // ACCUSATION_H

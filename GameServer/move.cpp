@@ -1,6 +1,7 @@
 #include "move.h"
 
-Move::Move()
+Move::Move(QObject *parent)
+    : QObject{parent}
 {
 
 }
@@ -12,5 +13,10 @@ Move::~Move()
 
 void Move::SetDestination(int goTo)
 {
-    destination = goTo;
+    this->destination = goTo;
+}
+
+int Move::GetDestination()
+{
+    return destination;
 }

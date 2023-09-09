@@ -10,13 +10,14 @@ class Envelope : public QObject
 {
     Q_OBJECT
 private:
-    CharacterCard character;
-    RoomCard room;
-    WeaponCard weapon;
+    CharacterCard* character;
+    RoomCard* room;
+    WeaponCard* weapon;
 public:
-    Envelope();
+    explicit Envelope(QObject *parent = nullptr);
+    Envelope(CharacterCard* charac, RoomCard* ro, WeaponCard* weap);
     ~Envelope();
-    bool CompareAccusation(CharacterCard inCharac, RoomCard inRoom, WeaponCard inWeapon);
+    bool CompareAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
 };
 
 #endif // ENVELOPE_H

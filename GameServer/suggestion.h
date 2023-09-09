@@ -10,16 +10,16 @@ class Suggestion : public QObject
 {
     Q_OBJECT
 private:
-    CharacterCard suggestedCharacter;
-    RoomCard suggestedRoom;
-    WeaponCard suggestedWeapon;
+    CharacterCard* suggestedCharacter;
+    RoomCard* suggestedRoom;
+    WeaponCard* suggestedWeapon;
 public:
-    Suggestion();
-    Suggestion(CharacterCard inCharac, RoomCard inRoom, WeaponCard inWeapon);
+    explicit Suggestion(QObject *parent = nullptr);
+    Suggestion(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
     ~Suggestion();
-    CharacterCard GetCharacter();
-    RoomCard GetRoom();
-    WeaponCard GetWeapon();
+    CharacterCard* GetCharacter();
+    RoomCard* GetRoom();
+    WeaponCard* GetWeapon();
 };
 
 #endif // SUGGESTION_H

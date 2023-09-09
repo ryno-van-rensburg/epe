@@ -3,14 +3,16 @@
 
 #include <QObject>
 
-class WeaponCard
+class WeaponCard : public QObject
 {
+    Q_OBJECT
 private:
     QString cardName;
 public:
-    WeaponCard();
+    explicit WeaponCard(QObject *parent = nullptr);
+    WeaponCard(QString name);
     ~WeaponCard();
     QString GetCardName();
 };
 
-#endif // CHARACTERCARD_H
+#endif // WEAPONCARD_H

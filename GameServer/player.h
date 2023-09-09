@@ -1,13 +1,14 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <QString>
+#include <QObject>
+#include <QVector>
 #include "CharacterCard.h"
 #include "RoomCard.h"
 #include "WeaponCard.h"
-#include "gameboard.h"
-#include "room.h"
 
-#include <QObject>
+
+
 
 class Player : public QObject
 {
@@ -15,26 +16,29 @@ class Player : public QObject
 private:
     QString username;
     int position;
-    bool myTurn = false;
-    QVector<CharacterCard> heldCharacterCards;
-    QVector<RoomCard> heldRoomCards;
-    QVector<WeaponCard> heldWeaponCards;
-    GameBoard* viewOfGameBoard;
+    QVector<CharacterCard*> heldCharacterCards;
+    QVector<RoomCard*> heldRoomCards;
+    QVector<WeaponCard*> heldWeaponCards;
+    bool AI;
+    //GameBoard viewOfGameBoard;
 public:
     explicit Player(QObject *parent = nullptr);
-    Player();
+    Player(QString username,QVector<CharacterCard*> heldCharacterCards, QVector<RoomCard*> heldRoomCards, QVector<WeaponCard*> heldWeaponCards, int position, bool AI);
     ~Player();
     QString GetUsername();
     int GetPosition();
-    QVector<CharacterCard> GetCharacCards();
-    QVector<RoomCard> GetRoomCards();
-    QVector<WeaponCard> GetWeaponCards();
+    QVector<CharacterCard*> GetCharacCards();
+    QVector<RoomCard*> GetRoomCards();
+    QVector<WeaponCard*> GetWeaponCards();
+    void SetCharacCards(QVector<CharacterCard*> charac);
+    void SetRoomCards(QVector<RoomCard*> room);
+    void SetWeaponCards(QVector<WeaponCard*> weap);
     void MakeMove(int destination);
-    void MakeSuggestion(CharacterCard inCharac, RoomCard inRoom, WeaponCard inWeapon);
-    void MakeAccusation(CharacterCard inCharac, RoomCard inRoom, WeaponCard inWeapon);
-    int RollDice();
+    void MakeSuggestion(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
+    void MakeAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
     void SetMyTurn();
     void EndMyTurn();
+    int RollDice();
 
 signals:
 

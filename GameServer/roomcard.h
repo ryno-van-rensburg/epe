@@ -3,12 +3,14 @@
 
 #include <QObject>
 
-class RoomCard
+class RoomCard : public QObject
 {
+    Q_OBJECT
 private:
     QString cardName;
 public:
-    RoomCard();
+    explicit RoomCard(QObject *parent = nullptr);
+    RoomCard(QString name);
     ~RoomCard();
     QString GetCardName();
 };

@@ -1,8 +1,14 @@
 #include "roomcard.h"
 
-RoomCard::RoomCard()
+RoomCard::RoomCard(QObject *parent)
+    : QObject{parent}
 {
 
+}
+
+RoomCard::RoomCard(QString name)
+{
+    this->cardName = name;
 }
 
 RoomCard::~RoomCard()

@@ -3,12 +3,14 @@
 
 #include <QObject>
 
-class CharacterCard
+class CharacterCard : public QObject
 {
+    Q_OBJECT
 private:
     QString cardName;
 public:
-    CharacterCard();
+    explicit CharacterCard(QString& name,QObject *parent = nullptr);
+    CharacterCard(QString name);
     ~CharacterCard();
     QString GetCardName();
 };

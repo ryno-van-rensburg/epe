@@ -9,9 +9,10 @@ class Move : public QObject
 private:
     int destination;
 public:
-    Move();
+    explicit Move(QObject *parent = nullptr);
     ~Move();
     void SetDestination(int goTo);
+    int GetDestination();
 };
 
 #endif // MOVE_H
