@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/Test/">
+    <file alias="Main.qml">C:/Users/dunca/EPE/group-6/Test/Main.qml</file>
+  </qresource>
+</RCC>
+
