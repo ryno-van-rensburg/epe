@@ -12,6 +12,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Network)
+find_package(Qt6 REQUIRED COMPONENTS Test)
+
+enable_testing(true)
 
 add_executable(networking
     main.cpp
@@ -20,9 +23,23 @@ add_executable(networking
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
+    error.cpp error.h)
+
+add_executable(testclient
+    client.h client.cpp
+    message.h message.cpp
+    clientmessagebroker.h clientmessagebroker.cpp
+    clientconnection.h clientconnection.cpp
+    serversession.h serversession.cpp
     error.cpp error.h
+    testclient.cpp testclient.h
+    testServerSession.cpp
 )
-target_link_libraries(networking Qt${QT_VERSION_MAJOR}::Core Qt6::Network)
+
+add_test(NAME testclient COMMAND testclient)
+
+target_link_libraries(testclient Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
+target_link_libraries(networking Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
 
 install(TARGETS networking
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

@@ -3,9 +3,13 @@
 Client::Client()
 {
     this->ackCounter = 0;
-    QObject::connect(this->serverConnection, SIGNAL(connected()), this, SLOT(connMade()));
-    QObject::connect(this->serverConnection, SIGNAL(errorOccurred(SocketError)), this, SLOT(connectionError(SocketError)));
-    QObject::connect(this->serverConnection, SIGNAL(readyRead()), this, SLOT(handleMessage()));
+    this->serverConnection = new QTcpSocket(this);
+    bool conn1 = (bool) QObject::connect(this->serverConnection, SIGNAL(connected()), this, SLOT(connMade()));
+    bool conn2 = (bool) QObject::connect(this->serverConnection, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(connectionError()));
+    bool conn3 = (bool) QObject::connect(this->serverConnection, SIGNAL(readyRead()), this, SLOT(handleMessage()));
+    if (conn1 && conn2 && conn3){
+        std::cout << "Slots connected" << std::endl;
+    }
 }
 
 Client::~Client()
@@ -22,27 +26,15 @@ void Client::sendMessage(Message &msg)
 {
     // extract json from message
     MESSAGE_TYPE type = msg.getType();
-    QByteArray content = msg.getBytes();
-    if (this->serverConnection = nullptr){
-        // TODO, tried sending message to nonexistent connection;
+    QByteArray content = msg.getBytes();    // check if QTcpSocket is working.
+      // send message.
+    this->serverConnection->write(content);
+    if (serverConnection->waitForBytesWritten()){
         return;
     }
-    // check if QTcpSocket is working.
-    if (!this->serverConnection->isOpen()) {
-        // reattempt connection
-        this->reconnect();
-    }
-    // send message.
-    qint64 bytesWritten = this->serverConnection->write(content);
     // TODO handle error here
-    if (bytesWritten < 0){
-        if (DEBUG) {
-            std::cout << "void Client::sendMessage could not send message" << std::endl;
-        }
-    } else {
-        if (type != MESSAGE_TYPE::REQ_GAME_STATE && type != MESSAGE_TYPE::ACK && type != MESSAGE_TYPE::ERROR) {
-            this->ackMessages.append(&msg);
-        }
+    if (type != MESSAGE_TYPE::REQ_GAME_STATE && type != MESSAGE_TYPE::ACK && type != MESSAGE_TYPE::ERROR) {
+        this->ackMessages.append(&msg);
     }
     return;
 }
@@ -54,6 +46,8 @@ void Client::connect(quint32 ipAddr, quint16 port)
         this->serverConnection = new QTcpSocket();
     }
     this->serverConnection->connectToHost(addr, port);
+    serverConnection->waitForConnected(20000);
+    return;
 }
 void Client::reconnect(){
     this->serverConnection->connectToHost(this->addr, this->port);
@@ -210,9 +204,12 @@ void Client::ack(quint64 id){
 void Client::connMade() {
     // TODO notify gui of connection
     this->connected = true;
+    std::cout << "Connected" << std::endl;
+    emit connectedToServer();
 }
 
 void Client::connectionError() {
     // TODO handle error, probably have to emit some signal
     this->connected = false;
+    std::cout << "Error occurred" << std::endl;
 }

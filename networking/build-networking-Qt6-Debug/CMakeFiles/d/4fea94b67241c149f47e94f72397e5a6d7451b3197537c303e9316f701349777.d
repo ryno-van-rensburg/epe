@@ -150,6 +150,14 @@ networking_autogen/timestamp: \
   /app/lib/cmake/Qt6Network/Qt6NetworkTargets-release.cmake \
   /app/lib/cmake/Qt6Network/Qt6NetworkTargets.cmake \
   /app/lib/cmake/Qt6Network/Qt6NetworkVersionlessTargets.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestAdditionalTargetInfo.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestConfig.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestConfigVersion.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestConfigVersionImpl.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestDependencies.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestTargets-release.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestTargets.cmake \
+  /app/lib/cmake/Qt6Test/Qt6TestVersionlessTargets.cmake \
   /app/share/qtcreator/package-manager/auto-setup.cmake \
   CMakeFiles/3.25.2/CMakeCXXCompiler.cmake \
   CMakeFiles/3.25.2/CMakeSystem.cmake \

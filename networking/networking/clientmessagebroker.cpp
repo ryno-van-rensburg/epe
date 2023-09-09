@@ -20,9 +20,10 @@ void ClientMessageBroker::requestConnection(quint32 address, quint16 port, QStri
         {"ID", (int)this->client->getAckCount()},
         {"Username", username}
     };
-    Message msg("REQUEST_CONNECTION", obj);
-    this->client->sendMessage(msg);
+    Message* msg = new Message("REQUEST_CONNECTION", obj);
+    this->client->sendMessage(*msg);
     // Now I have to wait for the signal to be emitted
+
     return;
 }
 
@@ -33,8 +34,8 @@ void ClientMessageBroker::makeMove(int position){
         {"ID", (int)this->client->getAckCount()},
         {"Position", position}
     };
-    Message msg("MAKE_MOVE", obj);
-    this->client->sendMessage(msg);
+    Message* msg = new Message ("MAKE_MOVE", obj);
+    this->client->sendMessage(*msg);
     return;
 }
 
@@ -46,8 +47,8 @@ void ClientMessageBroker::showCard(QString card){
         {"ID", (int) this->client->getAckCount()},
         {"Card", card},
     };
-    Message msg("SHOW_CARD", obj);
-    this->client->sendMessage(msg);
+    Message* msg = new Message("SHOW_CARD", obj);
+    this->client->sendMessage(*msg);
 }
 
 void ClientMessageBroker::makeAccusation(QString person, QString weapon, QString room)
@@ -64,8 +65,8 @@ void ClientMessageBroker::makeAccusation(QString person, QString weapon, QString
         {"Accusation", accObj}
     };
 
-    Message msg("MAKE_ACCUSATION", obj);
-    this->client->sendMessage(msg);
+    Message* msg = new Message("MAKE_ACCUSATION", obj);
+    this->client->sendMessage(*msg);
 }
 
 void ClientMessageBroker::makeSuggestion(QString person, QString weapon, QString room)
@@ -83,8 +84,8 @@ void ClientMessageBroker::makeSuggestion(QString person, QString weapon, QString
         {"Suggestion", suggestionObj}
     };
 
-    Message msg("MAKE_ACCUSATION", obj);
-    this->client->sendMessage(msg);
+    Message* msg = new Message("MAKE_ACCUSATION", obj);
+    this->client->sendMessage(*msg);
 }
 
 void ClientMessageBroker::requestStateSlot()
@@ -94,6 +95,8 @@ void ClientMessageBroker::requestStateSlot()
         {"Type", "REQUEST_GAME_STATE"},
         {"ID", (int) this->client->getAckCount()},
     };
+    Message* msg = new Message("REQUEST_GAME_STATE", obj);
+    this->client->sendMessage(*msg);
 }
 
 

@@ -45,7 +45,7 @@ public slots:
     void connMade();
     void connectionError();
 signals: // used to notify clientmessagebroker of new data,
-
+    void connectedToServer();
     void gameStateReceived(Message &msg);
 };
 
