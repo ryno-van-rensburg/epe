@@ -1,0 +1,169 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-22de7d7229aebf439930.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Test",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-de380c23562a5616ee56.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-1baf7064844cac6a8bdd.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Debug-058ec86f24994d02810f.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Debug-0f9e850fc998639c4540.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest-Debug-8c7c63b6713edeec430b.json",
+					"name" : "appTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_autogen-Debug-1473ad71adb5b8b193e6.json",
+					"name" : "appTest_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_autogen_timestamp_deps-Debug-9f3cca6a1c5ccbc5f630.json",
+					"name" : "appTest_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_qmlimportscan-Debug-8130e271b28662e75a78.json",
+					"name" : "appTest_qmlimportscan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_qmllint-Debug-536feacd4d7bc83a918e.json",
+					"name" : "appTest_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_qmllint_json-Debug-a03a1d67dd8ec4e66aa9.json",
+					"name" : "appTest_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_qmllint_module-Debug-d6976bf8081d8e2f25a8.json",
+					"name" : "appTest_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_qmltyperegistration-Debug-88a2f0a39845bbe5bd56.json",
+					"name" : "appTest_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appTest_tooling::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appTest_tooling-Debug-2030545b07386f68f878.json",
+					"name" : "appTest_tooling",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/dunca/EPE/group-6/build-Test-Desktop_Qt_6_5_2_MinGW_64_bit-Debug",
+		"source" : "C:/Users/dunca/EPE/group-6/Test"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
