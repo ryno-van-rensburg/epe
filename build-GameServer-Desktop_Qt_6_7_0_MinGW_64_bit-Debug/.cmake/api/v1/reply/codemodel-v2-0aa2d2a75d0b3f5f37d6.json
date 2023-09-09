@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-442679ad0c7d9baa9eba.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "GameServer",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GameServer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameServer-Debug-343af18fd0f6338e5729.json",
+					"name" : "GameServer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "GameServer_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameServer_autogen-Debug-b65ef074b2eff718be66.json",
+					"name" : "GameServer_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "GameServer_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameServer_autogen_timestamp_deps-Debug-4c626efb5c57ffe57c12.json",
+					"name" : "GameServer_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug",
+		"source" : "C:/Users/Justin/Desktop/EPECode/group-6/GameServer"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
