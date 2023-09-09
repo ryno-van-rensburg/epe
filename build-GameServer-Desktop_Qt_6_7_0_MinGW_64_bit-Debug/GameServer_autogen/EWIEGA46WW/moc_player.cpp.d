@@ -2,6 +2,7 @@ C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_
   C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/GameServer_autogen/moc_predefs.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/QObject \
   C:/Qt/6.7.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.7.0/mingw_64/include/QtCore/QVector \
   C:/Qt/6.7.0/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/q20memory.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/q20type_traits.h \
@@ -94,6 +95,7 @@ C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_
   C:/Qt/6.7.0/mingw_64/include/QtCore/qtypeinfo.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/qtypes.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/qutf8stringview.h \
+  C:/Qt/6.7.0/mingw_64/include/QtCore/qvector.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.7.0/mingw_64/include/QtCore/qyieldcpu.h \
@@ -297,9 +299,4 @@ C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/Justin/Desktop/EPECode/group-6/GameServer/CharacterCard.h \
   C:/Users/Justin/Desktop/EPECode/group-6/GameServer/RoomCard.h \
-  C:/Users/Justin/Desktop/EPECode/group-6/GameServer/WeaponCard.h \
-  C:/Users/Justin/Desktop/EPECode/group-6/GameServer/charactercard.h \
-  C:/Users/Justin/Desktop/EPECode/group-6/GameServer/gameboard.h \
-  C:/Users/Justin/Desktop/EPECode/group-6/GameServer/room.h \
-  C:/Users/Justin/Desktop/EPECode/group-6/GameServer/roomcard.h \
-  C:/Users/Justin/Desktop/EPECode/group-6/GameServer/weaponcard.h
+  C:/Users/Justin/Desktop/EPECode/group-6/GameServer/WeaponCard.h

@@ -89,7 +89,7 @@ void Player::SetMyTurn()
 
 void Player::EndMyTurn()
 {
-    myturn = false;
+    myTurn = false;
 }
 
 int Player::RollDice()

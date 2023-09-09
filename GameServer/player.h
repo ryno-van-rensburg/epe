@@ -16,6 +16,7 @@ class Player : public QObject
 private:
     QString username;
     int position;
+    bool myTurn;
     QVector<CharacterCard*> heldCharacterCards;
     QVector<RoomCard*> heldRoomCards;
     QVector<WeaponCard*> heldWeaponCards;
