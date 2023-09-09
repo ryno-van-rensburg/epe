@@ -1,5 +1,0 @@
-module GameServer
-typeinfo appGameServer.qmltypes
-prefer :/GameServer/
-Main 1.0 Main.qml
-

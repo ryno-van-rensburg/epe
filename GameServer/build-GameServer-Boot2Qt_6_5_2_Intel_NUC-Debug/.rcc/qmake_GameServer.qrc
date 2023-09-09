@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/GameServer">
-    <file alias="qmldir">C:/Users/Justin/Desktop/EPE_Code/group-6/GameServer/build-GameServer-Boot2Qt_6_5_2_Intel_NUC-Debug/GameServer/qmldir</file>
-  </qresource>
-</RCC>
-

@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/GameServer/">
-    <file alias="Main.qml">C:/Users/Justin/Desktop/EPE_Code/group-6/GameServer/GameServer/Main.qml</file>
-  </qresource>
-</RCC>
-
