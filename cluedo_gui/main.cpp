@@ -5,6 +5,8 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QTimer>
+#include <QtQuickTest/QtQuickTest>
+
 #include "client.h"
 
 int main(int argc, char *argv[])
@@ -29,5 +31,7 @@ int main(int argc, char *argv[])
         client.setPlayerTurn(nextTurn);
     });
     timer.start();
+    //QUICK_TEST_MAIN("tst_gui.qml")
+
     return app.exec();
 }
