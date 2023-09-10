@@ -13,7 +13,6 @@ Loader {
        visible: true
    }
 
-//wtf
 TestCase {
     name: "DemoTests"
 
