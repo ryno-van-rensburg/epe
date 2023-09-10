@@ -2,6 +2,7 @@
 #include "gameserver.h"
 #include "move.h"
 #include "signalsender.h"
+#include <iostream>
 
 // add necessary includes here
 
@@ -23,6 +24,7 @@ private slots:
     void testAddPlayer();
     void testStartGame();
     void testDealCards();
+    void testAvailableMoves();
 };
 
 UnitTest::UnitTest()
@@ -180,6 +182,28 @@ void UnitTest::testDealCards()
     QCOMPARE(g->getCharacFaceUp().size()+g->getRoomFaceUp().size()+g->getWeaponFaceUp().size(),18-((18/4)*4));
 
     delete p1,p2,p3,p4;
+}
+
+void UnitTest::testAvailableMoves()
+{
+    GameServer* g = new GameServer();
+    QVector<int> moves = g->getAvailableMoves(10,3);
+    QVector<int> moves2 = g->getAvailableMoves(31,4);
+
+    for (int temp : moves)
+    {
+        std::cout<<temp<<" ";
+    }
+    std::cout<<std::endl;
+
+    for (int temp : moves2)
+    {
+        std::cout<<temp<<" ";
+    }
+    std::cout<<std::endl;
+
+    QCOMPARE(moves.size(),9);
+    QCOMPARE(moves2.size(),26);
 }
 
 QTEST_APPLESS_MAIN(UnitTest)

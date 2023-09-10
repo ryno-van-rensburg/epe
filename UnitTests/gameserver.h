@@ -2,6 +2,8 @@
 #define GAMESERVER_H
 
 #include <QObject>
+#include <vector>
+#include <unordered_set>
 #include "player.h"
 #include "gameboard.h"
 #include "envelope.h"
@@ -20,6 +22,7 @@ private:
     QVector<CharacterCard*> characFaceUp;
     QVector<RoomCard*> roomFaceUp;
     QVector<WeaponCard*> weaponFaceUp;
+    std::vector<std::vector<int>> data;
 
 public:
     explicit GameServer(QObject *parent = nullptr);
@@ -35,6 +38,8 @@ public:
     QVector<CharacterCard*> getCharacFaceUp();
     QVector<RoomCard*> getRoomFaceUp();
     QVector<WeaponCard*> getWeaponFaceUp();
+    QVector<int> getAvailableMoves(int position, int diceRoll);
+    void findPossiblePositions(int currentPosition, int diceRoll, std::vector<int>& possiblePositions, std::unordered_set<int>& visitedRooms, bool canEnterRoom);
 
 
 signals:
