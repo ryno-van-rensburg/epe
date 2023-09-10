@@ -1,4 +1,5 @@
 import QtQuick
+
 Rectangle
 {
     id: root
@@ -6,9 +7,6 @@ Rectangle
     color: "Transparent"
 
     signal switchToStartScreen()
-
-
-
 
     Image {
         id: background
@@ -33,11 +31,16 @@ Rectangle
             source: "imports/space.ttf" // for some reason other font loads automatically but not this one
         }
 
-        Text{width: c_player.width; color: "#2dc0d3"; font.pointSize: 39; text:"Player  1"; font.family: customFontLoader.name}
+        Text{
+            width: c_player.width;
+            color: client.playerTurn === 1 ? "white" : "cyan";
+            font.pointSize: 39;
+            text:"Player  1";
+            font.family: customFontLoader.name}
 
         Text {
             width: c_player.width
-            color: "#2dc0d3"
+            color: client.playerTurn === 2 ? "white" : "cyan";
             text: "Player 2"
             font.family: "Space Age"
             font.pointSize: 39
@@ -45,7 +48,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: "#2dc0d3"
+            color: client.playerTurn === 3 ? "white" : "cyan";
             text: "Player 3"
             font.family: "Space Age"
             font.pointSize: 39
@@ -53,7 +56,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: "#2dc0d3"
+            color: client.playerTurn === 4 ? "white" : "cyan";
             text: "Player 4"
             font.family: "Space Age"
             font.pointSize: 39
@@ -61,7 +64,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: "#2dc0d3"
+            color: client.playerTurn === 5 ? "white" : "cyan";
             text: "Player 5"
             font.family: "Space Age"
             font.pointSize: 39
@@ -69,7 +72,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: "#2dc0d3"
+            color: client.playerTurn === 6 ? "white" : "cyan";
             text: "Player 6"
             font.family: "Space Age"
             font.pointSize: 39

@@ -6,10 +6,11 @@ project(cluedo_gui LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick Test)
 
 qt_add_executable(cluedo_gui
     main.cpp
+    client.h client.cpp
 )
 
 set_target_properties(cluedo_gui PROPERTIES
@@ -22,6 +23,7 @@ target_link_libraries(cluedo_gui PRIVATE
     Qt6::Gui
     Qt6::Qml
     Qt6::Quick
+    Qt6::Test
 )
 
 # Resources:
