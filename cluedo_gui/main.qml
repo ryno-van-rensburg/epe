@@ -21,6 +21,9 @@ Window {
             onSwitchToGameScreen: function(){
                 screenLoader.sourceComponent = gameScreenComponent;
             }
+            onSwitchToStartScreen: function(){
+                screenLoader.sourceComponent = startScreenComponent;
+            }
     }
 
       // Components for StartScreen and GameScreen

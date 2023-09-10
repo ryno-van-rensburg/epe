@@ -5,11 +5,13 @@ Rectangle
     width: 1920; height: 1080
     color: "Transparent"
 
+    signal switchToStartScreen()
+
 
 
 
     Image {
-        id: image
+        id: background
         x: 0
         y: 0
         width: 1920
@@ -75,7 +77,7 @@ Rectangle
     }
     property bool panelState: false // open: true
     onPanelStateChanged: {
-              slidingPanel.x = panelState ? (parent.width - slidingPanel.width) : parent.width;
+        slidingPanel.x = panelState ? (parent.width - slidingPanel.width) : parent.width;
     }
 
     Image {
@@ -91,11 +93,11 @@ Rectangle
             id: mouseArea
             anchors.fill: parent
             onClicked: {
-                            panelState = !panelState; // Toggle the panel state
-                        }
+                panelState = !panelState; // Toggle the panel state
+            }
         }
     }
-   Rectangle{
+    Rectangle{
         id: slidingPanel
         y: 0
         width: 258
@@ -118,6 +120,160 @@ Rectangle
             height: 1080
             source: "images/panel.png"
             fillMode: Image.Stretch
+
+            MouseArea {
+                id: btnSuggest
+                x: 91
+                y: 194
+                width: 144
+                height: 121
+                onClicked: {
+                    console.log("Clicked on btnSuggest" )
+                    panelState = !panelState;
+                    suggestionPrompt.visible = true
+
+                }
+
+                HoverHandler {
+                    id: mouse_sugg
+                    acceptedDevices: PointerDevice.Mouse
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
+
+            MouseArea {
+                id: btnAccuse
+                x: 91
+                y: 328
+                width: 144
+                height: 121
+                onClicked: {
+                    console.log("Clicked on btnAccuse" )
+                }
+
+                HoverHandler {
+                    id: mouse_acc
+                    acceptedDevices: PointerDevice.Mouse
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
+
+            MouseArea {
+                id: btnMove
+                x: 91
+                y: 455
+                width: 144
+                height: 121
+                onClicked: {
+                    console.log("Clicked on btnMove" )
+                }
+
+                HoverHandler {
+                    id: mouse_mov
+                    acceptedDevices: PointerDevice.Mouse
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
+
+            MouseArea {
+                id: btnNotebook
+                x: 99
+                y: 582
+                width: 144
+                height: 121
+                onClicked: {
+                    console.log("Clicked on btnNotebook" )
+                }
+
+                HoverHandler {
+                    id: mouse_note
+                    acceptedDevices: PointerDevice.Mouse
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
+
+            MouseArea {
+                id: btnEndTurn
+                x: 99
+                y: 728
+                width: 144
+                height: 121
+                onClicked: {
+                    console.log("Clicked on btnEndTurn" )
+                }
+
+                HoverHandler {
+                    id: mouse_endturn
+                    acceptedDevices: PointerDevice.Mouse
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
+            MouseArea {
+                id: btnExit
+                x: 99
+                y: 932
+                width: 144
+                height: 121
+                onClicked: {
+                    console.log("Clicked on btnExit" )
+                    switchToStartScreen()
+                }
+
+                HoverHandler {
+                    id: mouse_exit
+                    acceptedDevices: PointerDevice.Mouse
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
         }
-   }
+    }
+
+    Image {
+      id: suggestionPrompt
+      x: 0
+      y: 0
+      width: 1920
+      height: 1080
+      visible: false
+      source: "images/Suggestion_Prompt.jpeg"
+      fillMode: Image.PreserveAspectFit
+
+      MouseArea {
+        id:btnCancelSuggetion
+        x: 359
+        y: 700
+        width: 153
+        height: 151
+        onClicked: {
+              console.log("Clicked on btnCancelSuggestion" )
+              suggestionPrompt.visible = false
+
+        }
+
+        HoverHandler {
+              id: mouse_cancel_sugg
+              acceptedDevices: PointerDevice.Mouse
+              cursorShape: Qt.PointingHandCursor
+        }
+      }
+
+      MouseArea {
+        id: btnConfirmSuggestion
+        x: 1449
+        y: 692
+        width: 153
+        height: 151
+        onClicked: {
+              console.log("Clicked on btnConfirmSuggestion" )
+              suggestionPrompt.visible = false
+
+        }
+
+        HoverHandler {
+              id: mouse_confirm_sugg
+              acceptedDevices: PointerDevice.Mouse
+              cursorShape: Qt.PointingHandCursor
+        }
+      }
+    }
 }

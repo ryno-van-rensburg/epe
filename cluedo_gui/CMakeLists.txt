@@ -44,6 +44,7 @@ set(qml_resource_files
     "images/Title.png"
     "images/panel.png"
     "images/icon-out.png"
+    "images/Suggestion_Prompt.jpeg"
     )
 
 qt_add_resources(cluedo_gui "qml"
