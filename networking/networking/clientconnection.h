@@ -38,6 +38,7 @@ public:
 public slots:
     void sendMessage(Message &msg);
     void messageReceived();
+
 signals:
     void violationsExceeded(MESSAGE_TYPE type, QString errorMessage);
     void timeOut(QString userName);

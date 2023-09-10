@@ -1,5 +1,14 @@
 #include "message.h"
-
+/**
+ * @brief Constructs a Message object from a QByteArray.
+ *
+ * This constructor initializes a `Message` object by converting a QByteArray
+ * into a QJsonDocument. It processes the JSON data and sets the message type,
+ * contents, and source accordingly.
+ *
+ * @param type The message type.
+ * @param arr The QByteArray containing the JSON data.
+ */
 Message::Message(MESSAGE_TYPE type, QByteArray &arr)
 {
     // convert QByteArray to a string, strip whitespace
@@ -14,6 +23,15 @@ Message::Message(MESSAGE_TYPE type, QByteArray &arr)
 }
 
 
+/**
+ * @brief Converts a string to a MESSAGE_TYPE enumeration.
+ *
+ * This function converts a string representation of a message type to the
+ * corresponding MESSAGE_TYPE enumeration value.
+ *
+ * @param messageType The string representation of the message type.
+ * @return The corresponding MESSAGE_TYPE enumeration value.
+ */
 MESSAGE_TYPE strToMessageType(QString messageType) {
     if (messageType == "REQUEST_CONNECTION") {
         return  MESSAGE_TYPE::REQUEST_CON;
@@ -75,7 +93,15 @@ MESSAGE_TYPE strToMessageType(QString messageType) {
         return  MESSAGE_TYPE::ERROR;
     }
 }
-
+/**
+ * @brief Constructs a Message object from a message type and QJsonDocument.
+ *
+ * This constructor initializes a `Message` object using the provided message
+ * type and QJsonDocument contents.
+ *
+ * @param messageType The message type.
+ * @param contents The QJsonDocument containing message contents.
+ */
 Message::Message(QString messageType, QJsonDocument contents)
 {
     this->type = strToMessageType(messageType);
@@ -83,24 +109,56 @@ Message::Message(QString messageType, QJsonDocument contents)
     this->status = MESSAGE_STATUS::MESSAGE_UNACKED;
     this->messageContents = contents;
 }
-
+/**
+ * @brief Constructs a Message object from a message type and QJsonObject.
+ *
+ * This constructor initializes a `Message` object using the provided message
+ * type and QJsonObject contents.
+ *
+ * @param messageType The message type.
+ * @param contents The QJsonObject containing message contents.
+ */
 Message::Message(QString messageType, QJsonObject contents){
     this->type = strToMessageType(messageType);
     this->source = nullptr;
     this->status = MESSAGE_STATUS::MESSAGE_UNACKED;
     this->messageContents = QJsonDocument(contents);
 }
-
+/**
+ * @brief Copy constructor for Message objects.
+ *
+ * This constructor creates a copy of a `Message` object by copying its type,
+ * status, contents, and source.
+ *
+ * @param t The `Message` object to copy.
+ */
 Message::Message(Message &t){
     this->type = t.type;
     this->status = t.status;
     this->messageContents = t.messageContents;
     this->source = t.source;
 }
-
+/**
+ * @brief Gets the status of the message.
+ *
+ * This function returns the status of the message, which can be MESSAGE_STATUS::MESSAGE_ACKED
+ * or MESSAGE_STATUS::MESSAGE_UNACKED.
+ *
+ * @return The status of the message.
+ * @warning Message status will be removed
+ */
 MESSAGE_STATUS Message::getStatus() {
     return this->status;
 }
+/**
+ * @brief Sets the status of the message.
+ *
+ * This function sets the status of the message to the provided value.
+ *
+ * @param status The new status for the message.
+ * @warning Message status will be removed
+ */
+
 void Message::setStatus(MESSAGE_STATUS status){
     this->status = status;
     return;
@@ -111,10 +169,27 @@ QJsonObject Message::getObj()
 {
     return this->messageContents.object();
 }
+
+/**
+ * @brief Gets the message type.
+ *
+ * This function returns the type of the message, which is an enumeration value
+ * representing the message type.
+ *
+ * @return The type of the message.
+ */
 MESSAGE_TYPE Message::getType()
 {
     return this->type;
 }
+/**
+ * @brief Gets the message contents as a QByteArray.
+ *
+ * This function returns the message contents as a QByteArray, which can be used
+ * for transmission or serialization.
+ *
+ * @return The message contents as a QByteArray.
+ */
 QByteArray Message::getBytes() {
     return this->messageContents.toJson();
 }

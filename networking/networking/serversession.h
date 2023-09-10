@@ -32,6 +32,9 @@ public slots:
     void unicastMessage(Message &msg, QString username);
     void handleMessage(Message &msg);
     void kickPlayer(QString username);
+    // This is going to need refactoring.
+    // This entire class is going to need refactoring
+    void handleDataFromPendingConnections();
 signals:
     void joiningRequest(Message &msg);
     void gameStateRequested();

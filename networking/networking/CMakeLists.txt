@@ -33,12 +33,22 @@ add_executable(testclient
     serversession.h serversession.cpp
     error.cpp error.h
     testclient.cpp testclient.h
-    testServerSession.cpp
+)
+add_executable(testserver
+    client.h client.cpp
+    message.h message.cpp
+    clientmessagebroker.h clientmessagebroker.cpp
+    clientconnection.h clientconnection.cpp
+    serversession.h serversession.cpp
+    error.cpp error.h
+    testServerSession.cpp testServerSession.h
 )
 
 add_test(NAME testclient COMMAND testclient)
+add_test(NAME testserver COMMAND testserver)
 
 target_link_libraries(testclient Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
+target_link_libraries(testserver Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
 target_link_libraries(networking Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
 
 install(TARGETS networking

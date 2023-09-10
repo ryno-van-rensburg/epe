@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-e26e86c49f6d7614785d.json",
+					"jsonFile" : "directory-.-Debug-6b5d26b8c73d15f726e3.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -21,7 +21,10 @@
 						2,
 						3,
 						4,
-						5
+						5,
+						6,
+						7,
+						8
 					]
 				}
 			],
@@ -41,7 +44,10 @@
 						2,
 						3,
 						4,
-						5
+						5,
+						6,
+						7,
+						8
 					]
 				}
 			],
@@ -50,7 +56,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "networking::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-networking-Debug-a149ad4abea6ece6cf47.json",
+					"jsonFile" : "target-networking-Debug-5c8f898c63fa8cfad421.json",
 					"name" : "networking",
 					"projectIndex" : 0
 				},
@@ -71,7 +77,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "testclient::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-testclient-Debug-637fd8fe3f7c220bc5ea.json",
+					"jsonFile" : "target-testclient-Debug-3f7b9ae360f8f1a6373a.json",
 					"name" : "testclient",
 					"projectIndex" : 0
 				},
@@ -87,6 +93,27 @@
 					"id" : "testclient_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-testclient_autogen_timestamp_deps-Debug-90273ef0362dcc4f054c.json",
 					"name" : "testclient_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testserver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testserver-Debug-de921822656304762a5f.json",
+					"name" : "testserver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testserver_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testserver_autogen-Debug-620234be63164c51f12c.json",
+					"name" : "testserver_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testserver_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testserver_autogen_timestamp_deps-Debug-b23ddb10f88566628bb7.json",
+					"name" : "testserver_autogen_timestamp_deps",
 					"projectIndex" : 0
 				}
 			]

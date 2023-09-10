@@ -1,6 +1,15 @@
 #include "clientconnection.h"
 #include <iostream>
 // This class should not delete any of the memory references passed to it!
+/**
+ * @brief Constructs a ClientConnection object.
+ *
+ * This constructor initializes a `ClientConnection` object with default values
+ * for its member variables. The object does not own the memory references passed to it.
+ *
+ * @param parent The parent QObject (if any) for this object.
+ */
+
 ClientConnection::ClientConnection(QObject *parent)
     : QObject{parent}
 {
@@ -18,6 +27,17 @@ ClientConnection::ClientConnection(QObject *parent)
 }
 
 
+/**
+ * @brief Constructs a ClientConnection object with connection details.
+ *
+ * This constructor initializes a `ClientConnection` object with a QTcpSocket connection,
+ * a Player object, and a ServerSession object. It sets the connection details and other
+ * member variables accordingly.
+ *
+ * @param connection The QTcpSocket connection associated with the client.
+ * @param playerObj The Player object associated with the client.
+ * @param session The ServerSession object associated with the client.
+ */
 ClientConnection::ClientConnection(QTcpSocket &connection, Player &playerObj, ServerSession &session)
 {
     this->connection = &connection;
@@ -36,19 +56,47 @@ ClientConnection::ClientConnection(QTcpSocket &connection, Player &playerObj, Se
 }
 
 
-
+/**
+ * @brief Sets the Player object associated with the client.
+ *
+ * This function sets the Player object associated with the client connection.
+ *
+ * @param playerObj The Player object associated with the client.
+ */
 void ClientConnection::setPlayer(Player &playerObj){
     this->playerObj = &playerObj;
 }
 
+/**
+ * @brief Sets the QTcpSocket connection associated with the client.
+ *
+ * This function sets the QTcpSocket connection associated with the client.
+ *
+ * @param connection The QTcpSocket connection associated with the client.
+ */
 void ClientConnection::setConnection(QTcpSocket &connection){
     this->connection = &connection;
 }
 
+/**
+ * @brief Sets the ServerSession object associated with the client.
+ *
+ * This function sets the ServerSession object associated with the client.
+ *
+ * @param session The ServerSession object associated with the client.
+ */
 void ClientConnection::setSession(ServerSession& session){
     this->session = &session;
 }
 
+/**
+ * @brief Sends a message to the client.
+ *
+ * This function sends a message to the client through the associated QTcpSocket
+ * connection. It also emits a signal if the message type requires acknowledgment.
+ *
+ * @param msg The message to send.
+ */
 void ClientConnection::sendMessage(Message &msg)
 {
     MESSAGE_TYPE type = msg.getType();
@@ -72,7 +120,12 @@ void ClientConnection::sendMessage(Message &msg)
     }
     return;
 }
-
+/**
+ * @brief Handles a received message from the client.
+ *
+ * This function is called when a message is received from the client. It processes
+ * the received data and constructs a `Message` object for further handling.
+ */
 void ClientConnection::messageReceived()
 {
     QByteArray incomingData = this->connection->readAll();
@@ -100,11 +153,23 @@ void ClientConnection::messageReceived()
 }
 
 
+/**
+ * @brief Gets the username associated with the client.
+ *
+ * @return The username associated with the client.
+ */
 QString ClientConnection::getUsername(){
     return this->username;
 }
 
 
+/**
+ * @brief Sets the username associated with the client.
+ *
+ * This function sets the username associated with the client.
+ *
+ * @param username The username to set.
+ */
 void ClientConnection::setUsername(QString username){
     this->username = username;
     return;

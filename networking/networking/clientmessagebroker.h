@@ -17,7 +17,10 @@ private:
 public:
     explicit ClientMessageBroker(QObject *parent = nullptr);
     ~ClientMessageBroker();
+
 signals:
+
+    void connectionStarted(QString username);
     void gameStartedSignal();
     void playerAcceptedSignal();
     void connectionRejectedSignal(QString reason);
@@ -35,8 +38,10 @@ public slots:
     void makeAccusation(QString person, QString weapon, QString room);
     void makeSuggestion(QString person, QString weapon, QString room);
     void requestStateSlot();
+    void sendConnectionRequest(QString username);
+
 private slots:
-    void unpackGameState(Message &msg);
+    void unpackGameState(Message *msg);
 };
 
 #endif // CLIENTMESSAGEBROKER_H

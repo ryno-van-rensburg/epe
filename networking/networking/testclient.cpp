@@ -79,9 +79,10 @@ private slots:
            {"ID", 10},
         };
         Message msgSend("GAME_STATE", obj);
-        QSignalSpy spy(client, SIGNAL(gameStateReceived(Message&)));
+        QSignalSpy spy(client, SIGNAL(gameStateReceived(Message*)));
         serverSocket->write(msgSend.getBytes());
         serverSocket->waitForBytesWritten();
+        QTest::qWait(100);
         QCOMPARE(spy.count(), 1);
         return;
     }
