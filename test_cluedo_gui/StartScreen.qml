@@ -56,7 +56,6 @@ Rectangle {
 
         Image {
             id: btnStart
-            objectName: btnStart
             x: 1215
             y: 546
             width: 449
@@ -71,6 +70,7 @@ Rectangle {
             }
             MouseArea {
             id: startArea
+            objectName: btnStart
             x: 1215
             y: 546
             anchors.fill: parent

@@ -12,6 +12,7 @@ Window {
     title: qsTr("CLUEDO")
     Loader {
       id: screenLoader
+      objectName: screenLoader
       anchors.fill: parent
       sourceComponent: startScreenComponent // Load the StartScreen initially
       }

@@ -9,10 +9,11 @@ class Client : public QObject
     Q_PROPERTY(int playerTurn READ playerTurn WRITE setPlayerTurn NOTIFY playerTurnChanged)
 public slots:
     void onTurnEnded();
+    void onSuggestionMade(QString room,QString person, QString item);
 public:
     explicit Client(QObject *parent = nullptr);
-    int playerTurn() const;
-    void setPlayerTurn(int turn);
+   Q_INVOKABLE int playerTurn() const;
+   Q_INVOKABLE void setPlayerTurn(int turn);
 signals:
     void playerTurnChanged();
 private:

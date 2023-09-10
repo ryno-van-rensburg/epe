@@ -2,14 +2,17 @@
 #ifndef SETUP_H
 #define SETUP_H
 
-#include <QObject>
+#include <QtQuickTest>
 #include <QQmlEngine>
+#include <QQmlContext>
+#include <QtGui/QGuiApplication>
+
 
 class Setup : public QObject
 {
     Q_OBJECT
 public:
-    Setup() = default;
+    Setup() {};
 
 public slots:
     void applicationAvailable();

@@ -76,5 +76,29 @@ TestCase {
 //        verify(pass,"Failed:Name prompt correctly displays once clicked")
 
     }
+    function test_playerTurnStart()
+    {
+        //console.log(Qt.application.context);
+        //var client = Qt.application.context.client;
+        var start = client.playerTurn;
+        client.setPlayerTurn(2);
+        var end = client.playerTurn;
+        verify(start !== end, "Failed: Ending and Starting Turn")
+    }
+    function test_SuggestionReceived()
+    {
+        var gameScreen = Qt.createComponent("GameScreen.qml").createObject();
+
+            gameScreen.onSuggestButtonClicked = function() {
+                console.log("Custom behavior: Suggestion button clicked");
+                // Add your test assertions here
+            };
+
+            // Simulate a button click
+            gameScreen.btnSuggest.clicked();
+
+            // Clean up
+            gameScreen.destroy();
+    }
 }
 }

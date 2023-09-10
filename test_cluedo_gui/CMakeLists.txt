@@ -21,7 +21,9 @@ file(GLOB_RECURSE QML_FILES *.qml)
 add_custom_target(qmlfiles SOURCES ${QML_FILES})
 
 add_executable(DemoTests main.cpp
-               setup.cpp setup.h)
+               setup.cpp setup.h
+                client.h client.cpp
+           )
 add_test(NAME DemoTests COMMAND DemoTests)
 
 target_link_libraries(DemoTests

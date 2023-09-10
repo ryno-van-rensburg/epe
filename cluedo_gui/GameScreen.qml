@@ -251,7 +251,6 @@ Rectangle
         onClicked: {
               console.log("Clicked on btnCancelSuggestion" )
               suggestionPrompt.visible = false
-
         }
 
         HoverHandler {
@@ -260,7 +259,7 @@ Rectangle
               cursorShape: Qt.PointingHandCursor
         }
       }
-
+      signal onSuggestButtonClicked()
       MouseArea {
         id: btnConfirmSuggestion
         x: 1449
@@ -268,9 +267,10 @@ Rectangle
         width: 153
         height: 151
         onClicked: {
+              onSuggestButtonClicked()
               console.log("Clicked on btnConfirmSuggestion" )
               suggestionPrompt.visible = false
-
+              client.onSuggestionMade("ROOM","PERSON","ITEM")
         }
 
         HoverHandler {

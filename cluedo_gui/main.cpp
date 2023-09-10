@@ -8,7 +8,7 @@
 #include <QtQuickTest/QtQuickTest>
 #include <QDebug>
 
-#include "testRunner.h"
+#include "testrunner.h"
 #include "client.h"
 
 int main(int argc, char *argv[])

@@ -1,4 +1,5 @@
 #include "client.h"
+#include <QDebug>
 
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
@@ -24,3 +25,8 @@ void Client::onTurnEnded(){
     this->setPlayerTurn(nextTurn);
 }
 
+
+void Client::onSuggestionMade(QString room,QString person, QString item)
+{
+    qDebug() << person << room << item;
+}
