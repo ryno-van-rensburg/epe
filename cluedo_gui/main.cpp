@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     Client client;
-    engine.rootContext()->setContextProperty("client",&client);
+    engine.rootContext()->setContextProperty("client",&client); // expose client to QML
 
     client.setPlayerTurn(2);
     engine.addImportPath(":/imports");
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         return -1;
 
     QTimer timer; // = new QTimer();
-    timer.setInterval(1000); // 5000 milliseconds = 5 seconds
+    timer.setInterval(9000); // milliseconds
     QObject::connect(&timer, &QTimer::timeout, [&client]() {
         int currentTurn = client.playerTurn();
         int nextTurn = currentTurn > 6 ? 1:(currentTurn + 1);

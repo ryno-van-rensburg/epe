@@ -203,6 +203,7 @@ Rectangle
                 height: 121
                 onClicked: {
                     console.log("Clicked on btnEndTurn" )
+                    client.onTurnEnded();
                 }
 
                 HoverHandler {
