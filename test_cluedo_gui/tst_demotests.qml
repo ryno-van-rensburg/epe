@@ -8,14 +8,14 @@ StartScreen{
 }
 
 Loader {
-       id: ssLoader
-       source: "StartScreen.qml"
+       id: mLoader
+       source: "main.qml"
        visible: true
    }
 
 TestCase {
     name: "DemoTests"
-
+    //when: windowShown
     function initTestCase() {
     }
 
@@ -28,14 +28,53 @@ TestCase {
     }
     function test_clickAI()
     {
-        compare(ssLoader.status,Loader.Ready); // wait for qml generation
-        var btn = findChild(ssLoader,"btnAI");
+        compare(mLoader.status,Loader.Ready); // wait for qml generation
+        var btn = findChild(mLoader,"btnAI");
         var pass = btn.visible === true;
         mouseClick(btn);
         wait(500);
         pass = btn.visible === false;
 
-        verify(pass,"AI button did not disable once pressed")
+        verify(pass,"AI button disable once pressed: failed")
+    }
+    function test_clickStart()
+    {
+        mLoader.active = false;
+        mLoader.source = "main.qml";
+        mLoader.active = true; //reload loader
+        wait(1000);
+        compare(mLoader.status,Loader.Ready); // wait for qml generation
+        var btn = findChild(mLoader,"btnAI");
+        var prompt = findChild(mLoader,"namePrompt");
+        var pass = btn.visible === true;
+        mouseClick(btn)
+        wait(500);
+        pass= (btn.visible === false);
+        verify(pass);
+//        compare(mLoader.status,Loader.Ready); // wait for qml generation
+        //var btn = findChild(mLoader,"btnStart");
+        //var btn = mLoader.findChild(function(item) {
+        //            return item.objectName === "btnStart";
+        //        });
+        //console.log(btn);
+        //while(mLoader.status !== Loader.Ready)
+        //{
+//            wait(10);
+//        }
+//        var loaderItems = mLoader.item;
+//        for (var i = 0; i < loaderItems.children.length;i++)
+//        {
+//            var child = loaderItems.children[i];
+//            console.log("Child:",child);
+//        }
+          //var btn = ss.btnStart;
+//        var pass = btn.visible === true;
+//        mouseClick(btn);
+//        wait(500);
+//        pass = btn.visible === false;
+
+//        verify(pass,"Failed:Name prompt correctly displays once clicked")
+
     }
 }
 }

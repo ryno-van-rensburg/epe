@@ -56,6 +56,7 @@ Rectangle {
 
         Image {
             id: btnStart
+            objectName: btnStart
             x: 1215
             y: 546
             width: 449
@@ -90,6 +91,7 @@ Rectangle {
 
     Rectangle{
         id: namePrompt
+        objectName: namePrompt
         x: 0
         y: 0
         width: root.width; height: root.height
@@ -138,6 +140,7 @@ Rectangle {
 
         Text {
             id: confirm
+            objectName: btnConfirm
             x: 1208
             y: 746
             width: 118
