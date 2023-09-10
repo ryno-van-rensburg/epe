@@ -1,4 +1,5 @@
 #include "gameserver.h"
+#include <time.h>
 
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
@@ -42,6 +43,11 @@ void GameServer::EndPlayerTurn(Player inPlayer){
     }
 }
 
+void GameServer::DealCards()
+{
+
+}
+
 
 //signals
 //these arent implicitly made into functions, they are rather "emitted" in the desired part of the logical code.
@@ -79,6 +85,14 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
 {
     // Your implementation here, e.g., add a new player to the game
     // For example, store the player in a data structure or perform necessary initialization.
+    srand(time(0));
+    players.append(newPlayer);
+    startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
+    if (players.size() == numPlayers)
+    {
+        gameStart = true;
+        DealCards();
+    }
 }
 
 

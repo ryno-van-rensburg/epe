@@ -15,6 +15,9 @@ private:
     QString gameID;
     QVector<Player*> players;
     Envelope* winEnvelope;
+    QVector<int> startDice;
+    int numPlayers;
+    bool gameStart = false;
 
 public:
     explicit GameServer(QObject *parent = nullptr);
@@ -25,6 +28,7 @@ public:
     Envelope* GetEnvelopeCards();
     void SetPlayerTurn(Player myTurn);
     void EndPlayerTurn(Player endMyTurn);
+    void DealCards();
 
 
 signals:
