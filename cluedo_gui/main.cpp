@@ -23,20 +23,21 @@ int main(int argc, char *argv[])
     Client client;
     engine.rootContext()->setContextProperty("client",&client); // expose client to QML
 
-    if (app.arguments().contains("--runtests")) {
+    if (app.arguments().contains("--runtests")) { // for running tests
         qDebug() <<"TESTING";
         engine.addImportPath(QStringLiteral("qrc:/tests"));
         TestRunner testObject;
         //QTest::qExec(&testObject, app.arguments());
         return 0;
     }
-    client.setPlayerTurn(2);
+    client.setPlayerTurn(1); // demo purposes
+
     engine.addImportPath(":/imports");
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    QTimer timer; // = new QTimer();
+    QTimer timer; // This displays the player Turn interactions
     timer.setInterval(9000); // milliseconds
     QObject::connect(&timer, &QTimer::timeout, [&client]() {
         int currentTurn = client.playerTurn();

@@ -26,7 +26,7 @@ TestCase {
         compare(1 + 1, 2, "sanity check");
         verify(true);
     }
-    function test_clickAI()
+    function test_clickAI() // this test simulates a button click and ensures the correct flow of qml loading
     {
         compare(mLoader.status,Loader.Ready); // wait for qml generation
         var btn = findChild(mLoader,"btnAI");
@@ -37,7 +37,7 @@ TestCase {
 
         verify(pass,"AI button disable once pressed: failed")
     }
-    function test_clickStart()
+    function test_clickStart() //this test ensures the prompt is displayed correctly
     {
         mLoader.active = false;
         mLoader.source = "main.qml";
@@ -76,7 +76,7 @@ TestCase {
 //        verify(pass,"Failed:Name prompt correctly displays once clicked")
 
     }
-    function test_playerTurnStart()
+    function test_playerTurnStart() // this test consilidates running exposed instances of the class to and from qml ui
     {
         //console.log(Qt.application.context);
         //var client = Qt.application.context.client;
@@ -85,13 +85,12 @@ TestCase {
         var end = client.playerTurn;
         verify(start !== end, "Failed: Ending and Starting Turn")
     }
-    function test_SuggestionReceived()
+    function test_SuggestionReceived() // this test only displays a log message for now
     {
         var gameScreen = Qt.createComponent("GameScreen.qml").createObject();
 
             gameScreen.onSuggestButtonClicked = function() {
                 console.log("Custom behavior: Suggestion button clicked");
-                // Add your test assertions here
             };
 
             // Simulate a button click
