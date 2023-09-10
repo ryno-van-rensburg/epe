@@ -1,0 +1,86 @@
+# ninja log v5
+10	610	7160618842414207	build.ninja	5285b0d92b322237
+9	2401	7160614756940969	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+9	2401	7160614756940969	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+9	2401	7160614756940969	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+9	2401	7160614756940969	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+4815	29581	7160566848241866	CMakeFiles/UnitTest.dir/weaponcard.cpp.obj	436983226ef5ae11
+4786	30132	7160566848551040	CMakeFiles/UnitTest.dir/envelope.cpp.obj	6306f9b7dc8d6dca
+4798	30313	7160566848590933	CMakeFiles/UnitTest.dir/roomcard.cpp.obj	39bf48ce76b6529d
+4935	30439	7160566848750509	CMakeFiles/UnitTest.dir/move.cpp.obj	9fc4b7b7f6b58b39
+4805	30441	7160566848780428	CMakeFiles/UnitTest.dir/charactercard.cpp.obj	48f11dc2ca6b2bdc
+4957	30442	7160566849272405	CMakeFiles/UnitTest.dir/accusation.cpp.obj	19c1f29312b5e43d
+4792	30443	7160566849282363	CMakeFiles/UnitTest.dir/room.cpp.obj	cb7b51a45ec979a7
+2985	7581	7160596294378126	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+4844	30448	7160566849342223	CMakeFiles/UnitTest.dir/gameboard.cpp.obj	3d48b6bf509e887d
+2403	6108	7160614798767394	CMakeFiles/UnitTest.dir/UnitTest_autogen/mocs_compilation.cpp.obj	a62212921c9e7ed7
+30132	45544	7160567008247071	CMakeFiles/UnitTest.dir/suggestion.cpp.obj	b99cb6e134955146
+30314	45561	7160567008416461	CMakeFiles/UnitTest.dir/player.cpp.obj	43aa211c682eaca1
+2433	4701	7160614784728064	CMakeFiles/UnitTest.dir/gameserver.cpp.obj	75f70495fcb67849
+7583	10151	7160596320070186	UnitTest.exe	af7491ff060d71a8
+9	2480	7160623971739060	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+9	2480	7160623971739060	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+9	2480	7160623971739060	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+9	2480	7160623971739060	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+2494	4416	7160623996205554	CMakeFiles/UnitTest.dir/signalsender.cpp.obj	3a21abb9775d38da
+2481	6544	7160624017464960	CMakeFiles/UnitTest.dir/UnitTest_autogen/mocs_compilation.cpp.obj	a62212921c9e7ed7
+9	2813	7160624273445125	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+9	2813	7160624273445125	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+9	2813	7160624273445125	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+9	2813	7160624273445125	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+13	2905	7160624601831616	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+13	2905	7160624601831616	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+13	2905	7160624601831616	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+13	2905	7160624601831616	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+2955	7689	7160624649633378	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+7690	11664	7160624689343592	UnitTest.exe	17fab8a58d9e866f
+60	5599	7160637935328539	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+60	5599	7160637935328539	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+60	5599	7160637935328539	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+60	5599	7160637935328539	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+5686	15675	7160638047201103	CMakeFiles/UnitTest.dir/gameserver.cpp.obj	75f70495fcb67849
+5662	16308	7160638053603971	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+5626	17183	7160638057712970	CMakeFiles/UnitTest.dir/UnitTest_autogen/mocs_compilation.cpp.obj	a62212921c9e7ed7
+17184	25046	7160638141002030	UnitTest.exe	17fab8a58d9e866f
+13	4489	7160638376312414	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+13	4489	7160638376312414	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+13	4489	7160638376312414	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+13	4489	7160638376312414	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+4562	13458	7160638465935715	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+13462	18654	7160638517891582	UnitTest.exe	17fab8a58d9e866f
+34	4344	7160639614901460	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+34	4344	7160639614901460	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+34	4344	7160639614901460	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+34	4344	7160639614901460	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+4441	12719	7160639698493923	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+12723	16935	7160639740704515	UnitTest.exe	17fab8a58d9e866f
+23	4719	7160641390219741	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+23	4719	7160641390219741	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+23	4719	7160641390219741	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+23	4719	7160641390219741	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+4815	13489	7160641477886797	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+13491	17634	7160641519295453	UnitTest.exe	17fab8a58d9e866f
+11	3985	7160642235432309	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+11	3985	7160642235432309	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+11	3985	7160642235432309	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+11	3985	7160642235432309	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+4082	11809	7160642313610797	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+11811	16946	7160642364982411	UnitTest.exe	17fab8a58d9e866f
+19	4948	7160647244481217	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+19	4948	7160647244481217	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+19	4948	7160647244481217	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+19	4948	7160647244481217	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+22	4433	7160647850400874	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+22	4433	7160647850400874	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+22	4433	7160647850400874	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+22	4433	7160647850400874	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+14	4677	7160648190416546	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+14	4677	7160648190416546	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+14	4677	7160648190416546	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+14	4677	7160648190416546	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+16	4129	7160648908084831	UnitTest_autogen/timestamp	1cff9c8c24c88b81
+16	4129	7160648908084831	UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+16	4129	7160648908084831	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/timestamp	1cff9c8c24c88b81
+16	4129	7160648908084831	D:/OneDrive/University/Third year/S2/EPE/Project/build-UnitTests-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/UnitTest_autogen/mocs_compilation.cpp	1cff9c8c24c88b81
+4196	13419	7160649000908379	CMakeFiles/UnitTest.dir/tst_unittest.cpp.obj	cfcf81b61949f9b4
+13420	19336	7160649060074622	UnitTest.exe	17fab8a58d9e866f

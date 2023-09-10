@@ -25,6 +25,7 @@ add_executable(GameServer
   weaponcard.h weaponcard.cpp
   envelope.h envelope.cpp
   room.h room.cpp
+
 )
 target_link_libraries(GameServer Qt${QT_VERSION_MAJOR}::Core)
 

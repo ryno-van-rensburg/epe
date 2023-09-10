@@ -17,7 +17,6 @@ private:
     Envelope* winEnvelope;
     QVector<int> startDice;
     int numPlayers;
-    bool gameStart = false;
 
 public:
     explicit GameServer(QObject *parent = nullptr);
@@ -29,6 +28,7 @@ public:
     void SetPlayerTurn(Player myTurn);
     void EndPlayerTurn(Player endMyTurn);
     void DealCards();
+    void setNumPlayers(int num);
 
 
 signals:
@@ -42,7 +42,7 @@ signals:
     void NotifyPlayerMoveSignal(Player* playerToMove, int destination);
     void SendErrorSignal(QString ErrorEnum);
     void StartGameSignal();
-    void DealCardsSignal(Player* playerToReceiveCards, QVector<CharacterCard> cCards, QVector<WeaponCard> wCards, QVector<RoomCard> rCards);
+    void DealCardsSignal(Player* playerToReceiveCards, QVector<CharacterCard*> cCards, QVector<WeaponCard*> wCards, QVector<RoomCard*> rCards);
     void MovesAvailableSignal(QVector<int> optionsToMove);
 
 public slots:

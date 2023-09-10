@@ -239,6 +239,16 @@ void GameServer::DealCards()
     characFaceUp = charac;
     roomFaceUp = room;
     weaponFaceUp = weapon;
+
+    for (Player* temp: players)
+    {
+        emit DealCardsSignal(temp,temp->GetCharacCards(),temp->GetWeaponCards(),temp->GetRoomCards());
+    }
+}
+
+void GameServer::setNumPlayers(int num)
+{
+    this->numPlayers = num;
 }
 
 
@@ -283,7 +293,7 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
     startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
     if (players.size() == numPlayers)
     {
-        gameStart = true;
+        emit StartGameSignal();
         DealCards();
     }
 }
