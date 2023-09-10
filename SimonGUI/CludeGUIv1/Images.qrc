@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>launch page.jpg</file>
+        <file>../darkbluebackgroundstartup.jpg</file>
+        <file>helpicon.png</file>
+        <file>loadingspinner.gif</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
