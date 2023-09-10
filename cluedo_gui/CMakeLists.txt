@@ -12,7 +12,8 @@ enable_testing(true)
 qt_add_executable(cluedo_gui
     main.cpp
     client.h client.cpp
-
+    testRunner.cpp
+    testRunner.h
 )
 
 set_target_properties(cluedo_gui PROPERTIES
