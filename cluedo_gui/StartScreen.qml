@@ -6,7 +6,7 @@ Rectangle {
     id: root
     width: 1920; height: 1080
     color: "Transparent"
-
+    signal switchToGameScreen()
 
     Image {
         id: bg
@@ -155,6 +155,7 @@ Rectangle {
                     console.log("Clicked on Confirm")
                     loading.visible =true
                     namePrompt.visible = false
+                    closeTimer.running = true
 
                 }
             }
@@ -183,11 +184,12 @@ Rectangle {
         }
         Timer {
                id: closeTimer
-               interval: 10000 // 10 seconds in milliseconds
+               interval: 100 //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
                running: false
                onTriggered: {
                  // Close the window when the timer triggers
-                   Qt.quit();
+                 //   Qt.quit();
+                 switchToGameScreen()
                }
            }
 

@@ -8,7 +8,28 @@ Window {
     width: 1920
     height: 1080
     title: qsTr("CLUEDO")
-    
-    StartScreen{
+    Loader {
+      id: screenLoader
+      anchors.fill: parent
+      sourceComponent: startScreenComponent // Load the StartScreen initially
+      }
+
+    Connections { //for switching between screens
+            target: screenLoader.item
+
+            // Connect the custom signal from StartScreen to switch to GameScreen
+            onSwitchToGameScreen: function(){
+                screenLoader.sourceComponent = gameScreenComponent;
+            }
     }
+
+      // Components for StartScreen and GameScreen
+      Component {
+      id: startScreenComponent
+      StartScreen {}
+      }
+      Component {
+      id: gameScreenComponent
+      GameScreen {}
+      }
 }

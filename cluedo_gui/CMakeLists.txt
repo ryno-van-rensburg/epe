@@ -42,6 +42,8 @@ set(qml_resource_files
     "images/Start-active.png"
     "images/Start-inactive.png"
     "images/Title.png"
+    "images/panel.png"
+    "images/icon-out.png"
     )
 
 qt_add_resources(cluedo_gui "qml"
