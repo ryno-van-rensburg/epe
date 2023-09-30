@@ -28,6 +28,7 @@ public:
     ~Player();
     QString GetUsername();
     int GetPosition();
+    bool GetMyTurn();
     QVector<CharacterCard*> GetCharacCards();
     QVector<RoomCard*> GetRoomCards();
     QVector<WeaponCard*> GetWeaponCards();

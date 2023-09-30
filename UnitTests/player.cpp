@@ -36,6 +36,11 @@ int Player::GetPosition()
     return position;
 }
 
+bool Player::GetMyTurn()
+{
+    return myTurn;
+}
+
 QVector<CharacterCard*> Player::GetCharacCards()
 {
     return heldCharacterCards;

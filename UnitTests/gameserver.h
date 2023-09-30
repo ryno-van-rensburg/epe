@@ -19,6 +19,7 @@ private:
     Envelope* winEnvelope;
     QVector<int> startDice;
     int numPlayers;
+    int currentDice;
     QVector<CharacterCard*> characFaceUp;
     QVector<RoomCard*> roomFaceUp;
     QVector<WeaponCard*> weaponFaceUp;
@@ -44,7 +45,7 @@ public:
 
 signals:
     void UpdateStateSignal(Player* currPlayer, int boardPos);
-    void GameStateReply(QVector<Player*> playersInGame, int, int, int, QVector<CharacterCard> faceUpCharacters, QVector<WeaponCard> faceUpWeapons, QVector<RoomCard> faceUpRooms);
+    void GameStateReply(QVector<Player*> playersInGame, int, int, int, QVector<CharacterCard*> faceUpCharacters, QVector<WeaponCard*> faceUpWeapons, QVector<RoomCard*> faceUpRooms);
     void SuggestionStateSignal(CharacterCard* suggestedCharac, WeaponCard* suggestedWeapon, RoomCard* suggestedRoom);
     void PlayerResultSignal(Player* playerMakingAccusation, Accusation* finalAccusation, bool result);
     void ShowCardSignal(Player* playerToShowCard, QString nameOfCardToShow);
@@ -62,6 +63,7 @@ public slots:
     void AccusationReceivedSlot(QString, QString, QString);
     void CardShownSlot(Player* playerShown, QString cardName);
     void AddPlayerSlot(Player* newPlayer);
+    void StateRequestSlot();
 
 };
 

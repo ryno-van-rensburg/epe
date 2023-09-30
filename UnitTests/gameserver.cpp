@@ -416,6 +416,7 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
     int dice1 = playerToMove->RollDice();
     int dice2 = playerToMove->RollDice();
     int diceFinal = dice1+dice2;
+    currentDice = diceFinal;
     int position = playerToMove->GetPosition();
     bool valid = false;
     QVector<int> posPosition = getAvailableMoves(position,diceFinal);
@@ -429,6 +430,8 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
     if (valid == true)
     {
         playerToMove->SetPosition(destination);
+        emit NotifyPlayerMoveSignal(playerToMove,destination);
+        emit UpdateStateSignal(playerToMove,destination);
     }
     else
     {
@@ -469,6 +472,20 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
         emit StartGameSignal();
         DealCards();
     }
+}
+
+void GameServer::StateRequestSlot()
+{
+    int currentTurn = 0;
+    for (Player* temp:players)
+    {
+        if (temp->GetMyTurn() == true)
+        {
+            break;
+        }
+        currentTurn++;
+    }
+    emit GameStateReply(players,players.size(),currentDice,currentTurn,characFaceUp,weaponFaceUp,roomFaceUp);
 }
 
 
