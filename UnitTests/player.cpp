@@ -67,6 +67,11 @@ void Player::SetWeaponCards(QVector<WeaponCard*> weap)
     this->heldWeaponCards = weap;
 }
 
+void Player::SetPosition(int pos)
+{
+    this->position = pos;
+}
+
 void Player::MakeMove(int destination)
 {
     position = destination;

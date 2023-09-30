@@ -34,6 +34,7 @@ public:
     void SetCharacCards(QVector<CharacterCard*> charac);
     void SetRoomCards(QVector<RoomCard*> room);
     void SetWeaponCards(QVector<WeaponCard*> weap);
+    void SetPosition(int pos);
     void MakeMove(int destination);
     void MakeSuggestion(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
     void MakeAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);

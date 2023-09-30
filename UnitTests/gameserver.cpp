@@ -201,6 +201,8 @@ QVector<int> GameServer::getAvailableMoves(int pos, int dice)
         }
     }
 
+    emit MovesAvailableSignal(unique);
+
     return unique;
 }
 
@@ -411,6 +413,27 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
 {
     // Your implementation here, e.g., move the player to the specified destination
     // playerToMove->MoveTo(destination);
+    int dice1 = playerToMove->RollDice();
+    int dice2 = playerToMove->RollDice();
+    int diceFinal = dice1+dice2;
+    int position = playerToMove->GetPosition();
+    bool valid = false;
+    QVector<int> posPosition = getAvailableMoves(position,diceFinal);
+    for (int temp : posPosition)
+    {
+        if (destination == temp)
+        {
+            valid = true;
+        }
+    }
+    if (valid == true)
+    {
+        playerToMove->SetPosition(destination);
+    }
+    else
+    {
+        emit SendErrorSignal("INVALID_MOVE");
+    }
 }
 
 void GameServer::SuggestionReceivedSlot(QString character, QString room, QString weapon)
