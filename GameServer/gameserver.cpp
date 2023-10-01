@@ -7,6 +7,15 @@
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
+    QString filePath = QCoreApplication::applicationDirPath() + "/game_log.txt";
+
+    // Check if the log file exists
+    QFile existingLogFile(filePath);
+    if (existingLogFile.exists()) {
+        // Delete the existing log file
+        existingLogFile.remove();
+    }
+
     log = new QFile("game_log.txt");
     if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
@@ -42,20 +51,22 @@ Envelope* GameServer::GetEnvelopeCards(){
     return winEnvelope;
 }
 
-void GameServer::SetPlayerTurn(Player inPlayer){
+void GameServer::SetPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
-        if (inPlayer.GetUsername() == players[i] -> GetUsername()){
+        if (inPlayer->GetUsername() == players[i] -> GetUsername()){
             players[i] -> SetMyTurn();
             int pos = players[i]->GetPosition();
-            int dice = players[i]->RollDice();
-            getAvailableMoves(pos,dice);
+            int dice1 = players[i]->RollDice();
+            int dice2 = players[i]->RollDice();
+            currentDice = dice1+dice2;
+            getAvailableMoves(pos,currentDice);
         }
     }
 }
 
-void GameServer::EndPlayerTurn(Player inPlayer){
+void GameServer::EndPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
-        if (inPlayer.GetUsername() == players[i] -> GetUsername()){
+        if (inPlayer->GetUsername() == players[i] -> GetUsername()){
             players[i] -> EndMyTurn();
         }
     }
@@ -122,6 +133,11 @@ void GameServer::logEvent(const QString &message)
         stream << message << "\n";
         log->flush();
     }
+}
+
+int GameServer::GetCurrentDice()
+{
+    return currentDice;
 }
 
 QVector<int> GameServer::getAvailableMoves(int pos, int dice)
@@ -419,9 +435,53 @@ void GameServer::DealCards()
     roomFaceUp = room;
     weaponFaceUp = weapon;
 
+    int count = 1;
+
     for (Player* temp: players)
     {
         emit DealCardsSignal(temp,temp->GetCharacCards(),temp->GetWeaponCards(),temp->GetRoomCards());
+        QString d = QString::number(count);
+        QString c = "";
+        QString r = "";
+        QString w = "";
+        if (temp->GetCharacCards().size()>0)
+        {
+            c = temp->GetCharacCards().at(0)->GetCardName();
+        }
+        if (temp->GetRoomCards().size()>0)
+        {
+            r = temp->GetRoomCards().at(0)->GetCardName();
+        }
+        if (temp->GetWeaponCards().size()>0)
+        {
+            w = temp->GetWeaponCards().at(0)->GetCardName();
+        }
+        if (temp->GetCharacCards().size()>0)
+        {
+            for (int i=1;i<temp->GetCharacCards().size();i++)
+            {
+                c += ", "+temp->GetCharacCards().at(i)->GetCardName();
+            }
+        }
+        if (temp->GetRoomCards().size()>0)
+        {
+            for (int i=1;i<temp->GetRoomCards().size();i++)
+            {
+                r += ", "+temp->GetRoomCards().at(i)->GetCardName();
+            }
+        }
+        if (temp->GetWeaponCards().size()>0)
+        {
+            for (int i=1;i<temp->GetWeaponCards().size();i++)
+            {
+                w += ", "+temp->GetWeaponCards().at(i)->GetCardName();
+            }
+        }
+        logEvent("Player "+d+" has been dealt the following cards:");
+        logEvent("Character cards: "+c);
+        logEvent("Room cards: "+r);
+        logEvent("Weapon cards: "+w);
+        count++;
     }
 }
 
@@ -435,13 +495,11 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
 {
     // Your implementation here, e.g., move the player to the specified destination
     // playerToMove->MoveTo(destination);
-    int dice1 = playerToMove->RollDice();
-    int dice2 = playerToMove->RollDice();
-    int diceFinal = dice1+dice2;
-    currentDice = diceFinal;
+    QString d = QString::number(destination);
+    QString c = QString::number(playerToMove->GetPosition());
     int position = playerToMove->GetPosition();
     bool valid = false;
-    QVector<int> posPosition = getAvailableMoves(position,diceFinal);
+    QVector<int> posPosition = getAvailableMoves(position,currentDice);
     for (int temp : posPosition)
     {
         if (destination == temp)
@@ -454,10 +512,12 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
         playerToMove->SetPosition(destination);
         emit NotifyPlayerMoveSignal(playerToMove,destination);
         emit UpdateStateSignal(playerToMove,destination);
+        logEvent(playerToMove->GetUsername()+" moved from "+c+" to "+d);
     }
     else
     {
         emit SendErrorSignal("INVALID_MOVE");
+        logEvent("Invalid move from "+c+" to "+d);
     }
 }
 
@@ -562,6 +622,7 @@ void GameServer::StateRequestSlot()
         currentTurn++;
     }
     emit GameStateReply(players,players.size(),currentDice,currentTurn,characFaceUp,weaponFaceUp,roomFaceUp);
+    logEvent("Game state request received");
 }
 
 

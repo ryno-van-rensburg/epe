@@ -1,0 +1,3 @@
+Player 1 added
+Player 1 start dice is: 3
+Invalid move from 2 to 10

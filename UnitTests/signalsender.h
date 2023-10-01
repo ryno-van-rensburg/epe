@@ -12,7 +12,8 @@ public:
 
 signals:
     void AddPlayerSignal(Player* newPlayer);
-
+    void moveRequestSignal(Player* playerToMove,int destination);
+    void StateRequestSignal();
 };
 
 #endif // SIGNALSENDER_H

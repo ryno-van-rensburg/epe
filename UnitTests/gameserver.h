@@ -36,8 +36,8 @@ public:
     QString GetGameID();
     QVector<Player*> GetPlayers();
     Envelope* GetEnvelopeCards();
-    void SetPlayerTurn(Player myTurn);
-    void EndPlayerTurn(Player endMyTurn);
+    void SetPlayerTurn(Player* myTurn);
+    void EndPlayerTurn(Player* endMyTurn);
     void DealCards();
     void setNumPlayers(int num);
     QVector<int> getStartDice();
@@ -47,6 +47,7 @@ public:
     QVector<int> getAvailableMoves(int position, int diceRoll);
     void findPossiblePositions(int currentPosition, int diceRoll, std::vector<int>& possiblePositions, std::unordered_set<int>& visitedRooms, bool canEnterRoom);
     void logEvent(const QString& message);
+    int GetCurrentDice();
 
 
 signals:

@@ -7,14 +7,6 @@
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-    QString filePath = QCoreApplication::applicationDirPath() + "/game_log.txt";
-
-    // Check if the log file exists
-    QFile existingLogFile(filePath);
-    if (existingLogFile.exists()) {
-        // Delete the existing log file
-        existingLogFile.remove();
-    }
 
     log = new QFile("game_log.txt");
     if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
@@ -51,9 +43,9 @@ Envelope* GameServer::GetEnvelopeCards(){
     return winEnvelope;
 }
 
-void GameServer::SetPlayerTurn(Player inPlayer){
+void GameServer::SetPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
-        if (inPlayer.GetUsername() == players[i] -> GetUsername()){
+        if (inPlayer->GetUsername() == players[i] -> GetUsername()){
             players[i] -> SetMyTurn();
             int pos = players[i]->GetPosition();
             int dice1 = players[i]->RollDice();
@@ -64,9 +56,9 @@ void GameServer::SetPlayerTurn(Player inPlayer){
     }
 }
 
-void GameServer::EndPlayerTurn(Player inPlayer){
+void GameServer::EndPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
-        if (inPlayer.GetUsername() == players[i] -> GetUsername()){
+        if (inPlayer->GetUsername() == players[i] -> GetUsername()){
             players[i] -> EndMyTurn();
         }
     }
@@ -133,6 +125,11 @@ void GameServer::logEvent(const QString &message)
         stream << message << "\n";
         log->flush();
     }
+}
+
+int GameServer::GetCurrentDice()
+{
+    return currentDice;
 }
 
 QVector<int> GameServer::getAvailableMoves(int pos, int dice)

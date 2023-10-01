@@ -25,6 +25,8 @@ private slots:
     void testStartGame();
     void testDealCards();
     void testAvailableMoves();
+    void testMoveValidation();
+    void testRequest();
 };
 
 UnitTest::UnitTest()
@@ -204,6 +206,48 @@ void UnitTest::testAvailableMoves()
 
     QCOMPARE(moves.size(),9);
     QCOMPARE(moves2.size(),26);
+}
+
+void UnitTest::testMoveValidation()
+{
+    signalsender* sender = new signalsender();
+    QVector<CharacterCard*> x;
+    QVector<RoomCard*> y;
+    QVector<WeaponCard*> z;
+    Player* p1 = new Player("Player1",x,y,z,2,0);
+    GameServer* g = new GameServer();
+    QObject::connect(sender,&signalsender::moveRequestSignal,g,&GameServer::MoveRequestedSlot);
+    g->AddPlayerSlot(p1);
+    g->SetPlayerTurn(p1);
+    emit sender->moveRequestSignal(p1,10);
+
+
+    QSignalSpy spy2(g,SIGNAL(NotifyPlayerMoveSignal(Player*,int)));
+    QSignalSpy spy1(g,SIGNAL(UpdateStateSignal(Player*,int)));
+    QSignalSpy spy3(g,SIGNAL(SendErrorSignal(QString)));
+
+    std::cout<<"Dice roll: "<<g->GetCurrentDice()<<std::endl;
+
+    QVERIFY(spy1.count()==0);
+    QVERIFY(spy2.count()==0);
+    QVERIFY(spy3.count()>0);
+
+}
+
+void UnitTest::testRequest()
+{
+    signalsender* sender = new signalsender();
+    QVector<CharacterCard*> x;
+    QVector<RoomCard*> y;
+    QVector<WeaponCard*> z;
+    Player* p1 = new Player("Player1",x,y,z,2,0);
+    GameServer* g = new GameServer();
+    QObject::connect(sender,&signalsender::StateRequestSignal,g,&GameServer::StateRequestSlot);
+    emit sender->StateRequestSignal();
+
+    QSignalSpy spy(g,SIGNAL(GameStateReply(QList,int,int,int,QList,QList,QList)));
+
+    QVERIFY(spy.count()>0);
 }
 
 QTEST_APPLESS_MAIN(UnitTest)
