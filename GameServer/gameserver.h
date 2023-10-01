@@ -2,6 +2,11 @@
 #define GAMESERVER_H
 
 #include <QObject>
+#include <QFile>
+#include <QTextStream>
+#include <QCoreApplication>
+#include <vector>
+#include <unordered_set>
 #include "player.h"
 #include "gameboard.h"
 #include "envelope.h"
@@ -17,10 +22,16 @@ private:
     Envelope* winEnvelope;
     QVector<int> startDice;
     int numPlayers;
+    int currentDice;
+    QVector<CharacterCard*> characFaceUp;
+    QVector<RoomCard*> roomFaceUp;
+    QVector<WeaponCard*> weaponFaceUp;
+    std::vector<std::vector<int>> data;
+    QFile* log;
+
 
 public:
     explicit GameServer(QObject *parent = nullptr);
-    GameServer();
     ~GameServer();
     QString GetGameID();
     QVector<Player*> GetPlayers();
@@ -29,11 +40,18 @@ public:
     void EndPlayerTurn(Player endMyTurn);
     void DealCards();
     void setNumPlayers(int num);
+    QVector<int> getStartDice();
+    QVector<CharacterCard*> getCharacFaceUp();
+    QVector<RoomCard*> getRoomFaceUp();
+    QVector<WeaponCard*> getWeaponFaceUp();
+    QVector<int> getAvailableMoves(int position, int diceRoll);
+    void findPossiblePositions(int currentPosition, int diceRoll, std::vector<int>& possiblePositions, std::unordered_set<int>& visitedRooms, bool canEnterRoom);
+    void logEvent(const QString& message);
 
 
 signals:
     void UpdateStateSignal(Player* currPlayer, int boardPos);
-    void GameStateReply(QVector<Player*> playersInGame, int, int, int, QVector<CharacterCard> faceUpCharacters, QVector<WeaponCard> faceUpWeapons, QVector<RoomCard> faceUpRooms);
+    void GameStateReply(QVector<Player*> playersInGame, int, int, int, QVector<CharacterCard*> faceUpCharacters, QVector<WeaponCard*> faceUpWeapons, QVector<RoomCard*> faceUpRooms);
     void SuggestionStateSignal(CharacterCard* suggestedCharac, WeaponCard* suggestedWeapon, RoomCard* suggestedRoom);
     void PlayerResultSignal(Player* playerMakingAccusation, Accusation* finalAccusation, bool result);
     void ShowCardSignal(Player* playerToShowCard, QString nameOfCardToShow);
@@ -51,6 +69,7 @@ public slots:
     void AccusationReceivedSlot(QString, QString, QString);
     void CardShownSlot(Player* playerShown, QString cardName);
     void AddPlayerSlot(Player* newPlayer);
+    void StateRequestSlot();
 
 };
 

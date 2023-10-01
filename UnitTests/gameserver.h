@@ -2,6 +2,9 @@
 #define GAMESERVER_H
 
 #include <QObject>
+#include <QFile>
+#include <QTextStream>
+#include <QCoreApplication>
 #include <vector>
 #include <unordered_set>
 #include "player.h"
@@ -24,6 +27,8 @@ private:
     QVector<RoomCard*> roomFaceUp;
     QVector<WeaponCard*> weaponFaceUp;
     std::vector<std::vector<int>> data;
+    QFile* log;
+
 
 public:
     explicit GameServer(QObject *parent = nullptr);
@@ -41,6 +46,7 @@ public:
     QVector<WeaponCard*> getWeaponFaceUp();
     QVector<int> getAvailableMoves(int position, int diceRoll);
     void findPossiblePositions(int currentPosition, int diceRoll, std::vector<int>& possiblePositions, std::unordered_set<int>& visitedRooms, bool canEnterRoom);
+    void logEvent(const QString& message);
 
 
 signals:

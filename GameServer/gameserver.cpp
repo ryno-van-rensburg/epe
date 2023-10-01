@@ -1,14 +1,21 @@
 #include "gameserver.h"
 #include <time.h>
+#include <vector>
+#include <unordered_set>
+#include <set>
 
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-
-}
-
-GameServer::GameServer(){
-
+    log = new QFile("game_log.txt");
+    if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
+    {
+        printf("Log opened succesfully");
+    }
+    else
+    {
+        printf("Failed to open log");
+    }
 }
 
 GameServer::~GameServer(){
@@ -17,6 +24,10 @@ GameServer::~GameServer(){
     }
     players.clear();
     delete winEnvelope;
+    if (log && log->isOpen())
+    {
+        log->close();
+    }
 }
 
 QString GameServer::GetGameID(){
@@ -35,6 +46,9 @@ void GameServer::SetPlayerTurn(Player inPlayer){
     for (int i = 0; i < players.size(); i++){
         if (inPlayer.GetUsername() == players[i] -> GetUsername()){
             players[i] -> SetMyTurn();
+            int pos = players[i]->GetPosition();
+            int dice = players[i]->RollDice();
+            getAvailableMoves(pos,dice);
         }
     }
 }
@@ -46,6 +60,175 @@ void GameServer::EndPlayerTurn(Player inPlayer){
         }
     }
 }
+
+void GameServer::setNumPlayers(int num)
+{
+    this->numPlayers = num;
+}
+
+QVector<int> GameServer::getStartDice()
+{
+    return startDice;
+}
+
+QVector<CharacterCard *> GameServer::getCharacFaceUp()
+{
+    return characFaceUp;
+}
+
+QVector<RoomCard *> GameServer::getRoomFaceUp()
+{
+    return roomFaceUp;
+}
+
+QVector<WeaponCard *> GameServer::getWeaponFaceUp()
+{
+    return weaponFaceUp;
+}
+
+void GameServer::findPossiblePositions(int currentPosition, int diceRoll, std::vector<int> &possiblePositions, std::unordered_set<int> &visitedRooms, bool canEnterRoom)
+{
+    if (currentPosition < 0 || currentPosition >= data.size() || visitedRooms.count(currentPosition) || diceRoll < 0) {
+        return;
+    }
+
+    // Mark the room as visited
+    visitedRooms.insert(currentPosition);
+    possiblePositions.push_back(currentPosition);
+
+    // If the current position is a room and the player has already entered a room, stop further exploration in this turn
+    if (currentPosition >= 1 && currentPosition <= 9 && !canEnterRoom) {
+        return;
+    }
+
+    // Recursively explore possible moves
+    for (int i = 0; i < 4; ++i) {
+        int nextPosition = data[currentPosition][i];
+        if (nextPosition != -1) {
+            bool nextCanEnterRoom = canEnterRoom || (currentPosition >= 1 && currentPosition <= 9);
+            findPossiblePositions(nextPosition, diceRoll - 1, possiblePositions, visitedRooms, nextCanEnterRoom);
+        }
+    }
+
+    // Unmark the room when backtracking
+    visitedRooms.erase(currentPosition);
+}
+
+void GameServer::logEvent(const QString &message)
+{
+    if (log && log->isOpen())
+    {
+        QTextStream stream(log);
+        stream << message << "\n";
+        log->flush();
+    }
+}
+
+QVector<int> GameServer::getAvailableMoves(int pos, int dice)
+{
+    data = {
+        {36, 37, 20, 68},
+        {40, 50, -1, -1},
+        {-1, -1, 82, -1},
+        {-1, -1, 78, -1},
+        {5, -1, 74, -1},
+        {-1, 51, -1, 4},
+        {-1, -1, -1, 41},
+        {-1, 8, -1, 10},
+        {7, -1, -1, 19},
+        {-1, -1, -1, 13},
+        {-1, 11, 7, 15},
+        {10, -1, -1, 16},
+        {-1, 13, -1, 22},
+        {12, 14, 9, 23},
+        {13, -1, -1, 24},
+        {-1, 16, 10, 25},
+        {15, 17, 11, 26},
+        {16, 18, -1, 27},
+        {17, 19, -1, 28},
+        {18, 20, 8, -1},
+        {19, 21, -1, -1},
+        {20, 22, -1, -1},
+        {21, 23, 12, 29},
+        {22, 24, 13, 30},
+        {23, -1, 14, 31},
+        {-1, 26, 15, 33},
+        {25, 27, 16, 34},
+        {26, 28, 17, 35},
+        {27, -1, 18, 36},
+        {-1, 30, 22, 37},
+        {29, 31, 23, 38},
+        {30, 32, 24, 39},
+        {31, -1, -1, 40},
+        {-1, 34, 25, 43},
+        {33, 35, 26, 44},
+        {34, 36, 27, 45},
+        {35, 0, 28, 46},
+        {0, 38, 29, 47},
+        {37, 39, 30, 48},
+        {38, 40, 31, 49},
+        {39, 1, 32, 50},
+        {-1, 42, 6, 51},
+        {41, -1, -1, 52},
+        {-1, 44, 33, -1},
+        {43, 45, 34, -1},
+        {44, 46, 35, 55},
+        {45, -1, 36, 56},
+        {-1, 48, 37, 57},
+        {47, 49, 38, 58},
+        {48, 50, 39, 59},
+        {49, 1, 32, 50},
+        {5, 52, 41, 61},
+        {51, 53, 42, 62},
+        {52, 54, -1, 63},
+        {53, 55, -1, 64},
+        {54, 56, 45, 65},
+        {55, -1, 36, 66},
+        {-1, 58, 47, 70},
+        {57, 59, 48, 71},
+        {58, 60, 49, 72},
+        {59, -1, 50, -1},
+        {-1, 62, 51, 73},
+        {61, 63, 52, 74},
+        {62, 64, 53, -1},
+        {63, 65, 54, -1},
+        {64, 66, 55, 75},
+        {65, 67, 56, 76},
+        {66, 68, -1, 77},
+        {67, 69, -1, 78},
+        {68, 70, -1, 79},
+        {69, 71, 57, 80},
+        {70, 72, 58, 81},
+        {71, 73, 59, 82}
+    };
+
+    bool canEnterRoom = false;
+    std::vector<int> possiblePositions;
+    std::unordered_set<int> visitedRooms;
+
+    int currentPosition = pos; // Replace with the player's current position
+    int diceRoll = dice;         // Replace with the dice roll value
+
+
+    findPossiblePositions(currentPosition, diceRoll, possiblePositions, visitedRooms, false);
+
+    QVector<int> unique;
+    std::set<int> uniqueSet;
+
+    for (int num : possiblePositions) {
+        // Check if the number is not already in the set
+        if (uniqueSet.find(num) == uniqueSet.end()) {
+            uniqueSet.insert(num);   // Add it to the set
+            unique.push_back(num); // Add it to the new vector
+        }
+    }
+
+    emit MovesAvailableSignal(unique);
+
+    return unique;
+}
+
+
 
 
 /*! Function to deal cards to players when the game starts
@@ -230,10 +413,6 @@ void GameServer::DealCards()
         currentPlayer->SetWeaponCards(wVect);
     }
 
-    //Create vectors for face up cards
-    QVector<CharacterCard*> characFaceUp;
-    QVector<RoomCard*> roomFaceUp;
-    QVector<WeaponCard*> weaponFaceUp;
 
     //Add the remaining cards to the face up vectors
     characFaceUp = charac;
@@ -246,11 +425,6 @@ void GameServer::DealCards()
     }
 }
 
-void GameServer::setNumPlayers(int num)
-{
-    this->numPlayers = num;
-}
-
 
 //signals
 //these arent implicitly made into functions, they are rather "emitted" in the desired part of the logical code.
@@ -261,6 +435,30 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
 {
     // Your implementation here, e.g., move the player to the specified destination
     // playerToMove->MoveTo(destination);
+    int dice1 = playerToMove->RollDice();
+    int dice2 = playerToMove->RollDice();
+    int diceFinal = dice1+dice2;
+    currentDice = diceFinal;
+    int position = playerToMove->GetPosition();
+    bool valid = false;
+    QVector<int> posPosition = getAvailableMoves(position,diceFinal);
+    for (int temp : posPosition)
+    {
+        if (destination == temp)
+        {
+            valid = true;
+        }
+    }
+    if (valid == true)
+    {
+        playerToMove->SetPosition(destination);
+        emit NotifyPlayerMoveSignal(playerToMove,destination);
+        emit UpdateStateSignal(playerToMove,destination);
+    }
+    else
+    {
+        emit SendErrorSignal("INVALID_MOVE");
+    }
 }
 
 void GameServer::SuggestionReceivedSlot(QString character, QString room, QString weapon)
@@ -290,12 +488,80 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
     // For example, store the player in a data structure or perform necessary initialization.
     srand(time(0));
     players.append(newPlayer);
+    if (players.size() == 1)
+    {
+        logEvent("Player 1 added");
+    }
+    else if (players.size() == 2)
+    {
+        logEvent("Player 2 added");
+    }
+    else if (players.size() == 3)
+    {
+        logEvent("Player 3 added");
+    }
+    else if (players.size() == 4)
+    {
+        logEvent("Player 4 added");
+    }
+    else if (players.size() == 5)
+    {
+        logEvent("Player 5 added");
+    }
+    else if (players.size() == 6)
+    {
+        logEvent("Player 6 added");
+    }
     startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
+    if (players.size() == 1)
+    {
+        QString d = QString::number(startDice[0]);
+        logEvent("Player 1 start dice is: "+d);
+    }
+    else if (players.size() == 2)
+    {
+        QString d = QString::number(startDice[1]);
+        logEvent("Player 2 start dice is: "+d);
+    }
+    else if (players.size() == 3)
+    {
+        QString d = QString::number(startDice[2]);
+        logEvent("Player 3 start dice is: "+d);
+    }
+    else if (players.size() == 4)
+    {
+        QString d = QString::number(startDice[3]);
+        logEvent("Player 4 start dice is: "+d);
+    }
+    else if (players.size() == 5)
+    {
+        QString d = QString::number(startDice[4]);
+        logEvent("Player 5 start dice is: "+d);
+    }
+    else if (players.size() == 6)
+    {
+        QString d = QString::number(startDice[5]);
+        logEvent("Player 6 start dice is: "+d);
+    }
     if (players.size() == numPlayers)
     {
         emit StartGameSignal();
         DealCards();
     }
+}
+
+void GameServer::StateRequestSlot()
+{
+    int currentTurn = 0;
+    for (Player* temp:players)
+    {
+        if (temp->GetMyTurn() == true)
+        {
+            break;
+        }
+        currentTurn++;
+    }
+    emit GameStateReply(players,players.size(),currentDice,currentTurn,characFaceUp,weaponFaceUp,roomFaceUp);
 }
 
 
