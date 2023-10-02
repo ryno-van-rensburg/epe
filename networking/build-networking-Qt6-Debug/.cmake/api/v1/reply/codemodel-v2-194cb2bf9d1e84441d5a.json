@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-6b5d26b8c73d15f726e3.json",
+					"jsonFile" : "directory-.-Debug-dfd1049fd949ed942319.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -56,7 +56,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "networking::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-networking-Debug-5c8f898c63fa8cfad421.json",
+					"jsonFile" : "target-networking-Debug-b2af391b90e9766174bd.json",
 					"name" : "networking",
 					"projectIndex" : 0
 				},
@@ -77,7 +77,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "testclient::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-testclient-Debug-3f7b9ae360f8f1a6373a.json",
+					"jsonFile" : "target-testclient-Debug-d3d5dcbbc5554250af7e.json",
 					"name" : "testclient",
 					"projectIndex" : 0
 				},
@@ -98,7 +98,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "testserver::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-testserver-Debug-de921822656304762a5f.json",
+					"jsonFile" : "target-testserver-Debug-1bf3256cae2e773b2b69.json",
 					"name" : "testserver",
 					"projectIndex" : 0
 				},

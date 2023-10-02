@@ -19,25 +19,52 @@ private:
     int maxConnections;
     QVector<ClientConnection*> connections;
     QVector<QTcpSocket*> pendingConnections;
-    QVector<Message*> ackList; // performs a similar function to the acklist in the client class
+    QVector<Message> ackList; // performs a similar function to the acklist in the client class
     quint64 ackCounter;
     QTcpServer* serverConnection;
+    void handleAck(Message &msg);
+    bool isConnectionPending(QHostAddress address);
+
 public:
     explicit ServerSession(QObject *parent = nullptr);
     ~ServerSession();
     void startListening(int port = -1);
+    Player* getPlayer(QString playerName);
+    Player* getPlayer(QHostAddress address);
+
+    QVector<QString> getPlayerNames() {
+        QVector<QString> names;
+        for (auto i= 0; i < connections.size(); i++){
+            names.append(connections.at(i).getUsername());
+        }
+        return names;
+    }
+    QVector<Player*> getPlayers(){
+        QVector<Player*> players;
+        for (auto i= 0; i < connections.size(); i++){
+            players.append(connections.at(i).getPlayer());
+        }
+        return players;
+    }
+
+    quint64 getAckCount(){
+        return this->ackCounter;
+    }
 public slots:
     void handleNewConnection();
     void broadCastMessage(Message &msg);
     void unicastMessage(Message &msg, QString username);
     void handleMessage(Message &msg);
     void kickPlayer(QString username);
-    // This is going to need refactoring.
-    // This entire class is going to need refactoring
     void handleDataFromPendingConnections();
+    void rejectConnection(Message &msg, QString handle);
 signals:
     void joiningRequest(Message &msg);
     void gameStateRequested();
+    void suggestionMade(Message &msg);
+    void accusationMade(Message &msg);
+    void cardShown(Message &msg);
+    void moveMade(Message &msg);
 };
 
 #endif // SERVERSESSION_H

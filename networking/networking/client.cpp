@@ -166,8 +166,8 @@ void Client::handleError(Message &msg)
 
     for (int i = 0; i < this->ackMessages.size(); i++){
         // find the msg we want
-        Message* m = this->ackMessages.at(i);
-        int itr_id = extractAckId(*m);
+        Message m = this->ackMessages.at(i);
+        int itr_id = extractAckId(m);
         if (itr_id == id){
             // check error type
             QJsonObject obj(msg.getObj());
@@ -199,6 +199,8 @@ void Client::handleError(Message &msg)
 
             case (ERROR_TYPE::INVALID_MESSAGE_FORMAT):
                 std::cout << "Malformed message, resend" << std::endl;
+                // resend the message
+                this->sendMessage(*m);
                 break;
             case (ERROR_TYPE::INVALID_ROOM_NAME):
                 std::cout << "Invalid room name" << std::endl;
@@ -237,10 +239,12 @@ void Client::handleAck(Message &msg)
     // Extract the ack id in order to find the message that has been acknowledged.
     int id = extractAckId(msg);
     for (int i = 0; i < this->ackMessages.size(); i++){
-        Message* m = this->ackMessages.at(i);
-        int itr_id = extractAckId(*m);
+        Message m = this->ackMessages.at(i);
+        int itr_id = extractAckId(m);
+
         if (itr_id == id){
             // remove message from list
+            this->ackCounter++;
             this->ackMessages.remove(i);
             return;
         }
@@ -277,34 +281,40 @@ void Client::handleMessage(){
         QJsonObject obj = contents.object();
         QJsonValue v = obj["Type"];
         if (v.isString()) {
-        Message* msg = new Message(v.toString(), contents);
+        Message msg(v.toString(), contents);
 
-        switch (msg->getType())
+        switch (msg.getType())
         {
         case (MESSAGE_TYPE::GAME_STATE) : {
             // Extract game state from data and send it on to gui
             emit this->gameStateReceived(msg);
-            msg = nullptr;
             break;
         }
         case (MESSAGE_TYPE::PLAYER_ACCEPTED):{
-
             emit this->connectedToGame();
             break;
         }
         case (MESSAGE_TYPE::ACK):
         {
             // get message id and remove from ack list
-            this->handleAck(*msg);
+            this->handleAck(msg);
             break;
         }
         case (MESSAGE_TYPE::ERROR):
         {
-            //
-            this->handleError(*msg);
+            this->handleError(msg);
             break;
         }
         };
+        if (shouldMessageBeAcked(msg.getType())){
+           QJsonValue v = msg.getObj()["ID"];
+           qint64 id = v.toInt(-1);
+           if ( id != -1 ){
+               this->ack(id);
+           } else {
+               return;
+           }
+        }
         } else {
         // TODO handle error
         return;
@@ -324,9 +334,8 @@ void Client::handleMessage(){
  *
  * @param id The acknowledgment ID to include in the acknowledgment message.
  */
-void Client::ack(quint64 id){
-    this->ackCounter++;
-        QJsonObject obj
+void Client::ack(qint64 id){
+    QJsonObject obj
     {
         {"Type", "ACKNOWLEDGE"},
         {"ID_ACK", (int)id},

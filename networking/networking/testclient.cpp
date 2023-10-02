@@ -86,10 +86,6 @@ private slots:
         QCOMPARE(spy.count(), 1);
         return;
     }
-    void testAck(){
-        return;
-    }
 };
-
 QTEST_MAIN(testClient)
 #include "testclient.moc"

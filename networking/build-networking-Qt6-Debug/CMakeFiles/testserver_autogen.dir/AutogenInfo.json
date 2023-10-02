@@ -286,6 +286,12 @@
 			null
 		],
 		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.h",
+			"MU",
+			"EWIEGA46WW/moc_servermessagebroker.cpp",
+			null
+		],
+		[
 			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.h",
 			"MU",
 			"EWIEGA46WW/moc_serversession.cpp",
@@ -390,6 +396,11 @@
 		],
 		[
 			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/message.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.cpp",
 			"MU",
 			null
 		],

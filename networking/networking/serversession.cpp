@@ -1,5 +1,34 @@
 #include "serversession.h"
 
+
+
+/**
+ * @brief Extracts an ID from a JSON message.
+ *
+ * This function extracts an ID from a JSON message represented by the provided
+ * `msg` parameter. It assumes that the message contains a JSON object with an
+ * "ID" field. If the field exists and contains a valid integer value, that
+ * value is returned as the extracted ID. If the field is undefined or does not
+ * contain a valid integer, 0 is returned to indicate an absence of the ID or
+ * an error condition.
+ *
+ * @param msg The JSON message from which to extract the ID.
+ * @return The extracted ID from the message, or 0 if not found or not a valid
+ *         integer.
+ */
+quint32 extractIdServer(Message &msg){
+    QJsonObject obj = QJsonObject(msg.getObj());
+    QJsonValue id = obj["ID"];
+    if (!id.isUndefined()){
+        return (quint32) id.toInt();
+    } else {
+        return 0;
+    }
+}
+
+
+
+
 /**
  * @brief Constructs a ServerSession object.
  *
@@ -38,6 +67,17 @@ ServerSession::~ServerSession() {
        }
    }
 }
+
+bool ServerSession::isConnectionPending(QHostAddress address){
+    for (auto i =0; i < this->pendingConnections.size(); i++){
+        QTcpSocket* sock = pendingConnections.at(i);
+        if (sock->peerAddress() == address) {
+            return true;
+        }
+    }
+    return false;
+}
+
 /**
  * @brief Starts listening for incoming connections on the specified port.
  *
@@ -56,6 +96,33 @@ void ServerSession::startListening(int port){
     }
     QObject::connect(this->serverConnection, SIGNAL(newConnection()), this, SLOT(handleNewConnection()));
     return;
+}
+
+Player* ServerSession::getPlayer(QHostAddress address){
+    for (int i =0; i < this->connections.size(); i++) {
+        ClientConnection* conn = this->connections.at(i);
+        if (conn)
+        {
+            if (conn->getAddr() == address){
+                return conn->getPlayer();
+            }
+        }
+    }
+    return nullptr;
+}
+
+
+Player* ServerSession::getPlayer(QString playerName){
+    for (int i =0; i < this->connections.size(); i++) {
+        ClientConnection* conn = this->connections.at(i);
+        if (conn)
+        {
+            if (conn->getUsername() == playerName){
+                return conn->getPlayer();
+            }
+        }
+    }
+    return nullptr;
 }
 
 /**
@@ -96,18 +163,22 @@ void ServerSession::handleNewConnection(){
  * @brief Handles a message received from a client.
  *
  * This function processes messages received from clients and performs actions
- * based on the message type. It can handle requests for joining the game or
- * requesting the game state.
- *
+ * based on the message type. *
  * @param msg The message received from a client.
  */
 void ServerSession::handleMessage(Message &msg)
 {
    //if (msg.getType() == MESSAGE_TYPE::REQUEST_CON ) {
     MESSAGE_TYPE t = msg.getType();
-    switch (msg.getType()) {
+    ERROR_TYPE error;
+    bool playerInGame = true;
+    QHostAddress address = msg.getSource()->peerAddress();
+    if (isConnectionPending(address) && getPlayer(address) == nullptr){
+        playerInGame = false;
+    }
 
-        // player not in game yet.
+    switch (msg.getType()) {
+    // player not in game yet.
     case (REQUEST_CON):
     {
         for  (int i = 0; i < this->pendingConnections.size(); i++)
@@ -116,7 +187,6 @@ void ServerSession::handleMessage(Message &msg)
         {
             if (1) {
             // TODO, delegate connection acception to game server
-            //emit joiningRequest(*msg);
                 QJsonObject obj  {
                     {"Type" ,"PLAYER_ACCEPTED"}};
                 QJsonDocument doc;
@@ -131,12 +201,68 @@ void ServerSession::handleMessage(Message &msg)
         break;
     }
     case (REQ_GAME_STATE):
+        if (!playerInGame) {
+            // send error message
+        }
         emit gameStateRequested();
     break;
     // REQ_GAME_STATE is an async message, so no ack is required for this.
+    case (ACK):
+        this->handleAck(msg);
+        break;
+    case (MAKE_MOVE):
+        // extract move information
+        if (!playerInGame) {
+            // send error message
+            return;
+        } else {
+            emit moveMade(msg);
+        }
+        break;
+    case(SHOW_CARD):
+        // extract card information
+
+        if (!playerInGame) {
+            // send error message
+            return;
+        } else {
+            emit cardShown(msg);
+        }
+        break;
+    case (MAKE_ACC):
+        if (!playerInGame) {
+            // send error message
+            return;
+        } else {
+            emit accusationMade(msg);
+        }
+        break;
+
+    case (MAKE_SUGGESTION):
+        if (!playerInGame) {
+            return;
+        } else {
+            emit suggestionMade(msg);
+        }
+        break;
     };
-   return;
+    return;
 }
+
+void ServerSession::handleAck(Message &msg) {
+    int id = extractIdServer(msg);
+    for (int i = 0; i < this->ackList.size(); i++) {
+        Message m = this->ackList.at(i);
+        int itr_id = extractIdServer(m);
+        if (itr_id == id) {
+            this->ackCounter++;
+            this->ackList.remove(i);
+            return;
+        }
+    }
+    return;
+}
+
 /**
  * @brief Handles data received from pending connections.
  *
@@ -148,9 +274,9 @@ void ServerSession::handleDataFromPendingConnections()
 {
     QTcpSocket* sock = (QTcpSocket*) QObject::sender();
     QByteArray data = sock->readAll();
-    Message* msg = new Message(MESSAGE_TYPE::REQUEST_CON, data);
+    Message msg(MESSAGE_TYPE::REQUEST_CON, data);
     msg->setSource(*sock);
-    this->handleMessage(*msg);
+    this->handleMessage(msg);
     return;
  }
 
@@ -168,6 +294,9 @@ void ServerSession::unicastMessage(Message &msg, QString username){
         ClientConnection* client = connections[i];
         if(client->getUsername() == username){
             client->sendMessage(msg);
+            if (shouldMessageBeAcked(msg.type)) {
+                this->ackList.append(msg);
+            }
             return;
         }
     }

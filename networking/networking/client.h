@@ -7,8 +7,8 @@
 #include <QVector>
 #include "message.h"
 #include "error.h"
+#include "player.h"
 
-class Player;
 
 // TODO add comments
 // TODO add signals to connect to clientbroker signals
@@ -24,7 +24,7 @@ private:
     QHostAddress addr;
     quint16 port;
     void reconnect();
-    QVector<Message*> ackMessages; // messages expecting an ack
+    QVector<Message> ackMessages; // messages expecting an ack
     bool connected = false;
     void handleAck(Message &msg);
     void handleError(Message &msg);
@@ -47,7 +47,7 @@ public slots:
 signals: // used to notify clientmessagebroker of new data,
     void connectedToServer();
     void connectedToGame();
-    void gameStateReceived(Message *msg);
+    void gameStateReceived(Message &msg);
 };
 
 #endif // CLIENT_H

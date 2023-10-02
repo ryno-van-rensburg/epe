@@ -6,8 +6,8 @@
 #include <QTimer>
 #include <QMap>
 #include <message.h>
+#include "player.h"
 
-class Player;
 class ServerSession;
 
 class ClientConnection : public QObject
@@ -33,6 +33,8 @@ public:
     void setUsername(QString username);
     void setSession(ServerSession& session);
     void setPlayer(Player &playerObj);
+    Player* getPlayer();
+    QHostAddress getAddr();
     void setConnection(QTcpSocket &connection);
 
 public slots:

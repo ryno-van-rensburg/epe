@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "testclient"
+			"path" : "testserver"
 		}
 	],
 	"backtrace" : 1,
@@ -33,13 +33,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 28,
+				"line" : 38,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 49,
+				"line" : 53,
 				"parent" : 0
 			},
 			{
@@ -139,7 +139,7 @@
 				},
 				{
 					"backtrace" : 0,
-					"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/include"
+					"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/include"
 				},
 				{
 					"backtrace" : 2,
@@ -186,21 +186,22 @@
 				8,
 				10,
 				11,
-				13
+				13,
+				15
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"id" : "testclient_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"id" : "testserver_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "testclient_autogen::@6890427a1f51a3e7e1df"
+			"id" : "testserver_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "testclient::@6890427a1f51a3e7e1df",
+	"id" : "testserver::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -240,8 +241,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "testclient",
-	"nameOnDisk" : "testclient",
+	"name" : "testserver",
+	"nameOnDisk" : "testserver",
 	"paths" : 
 	{
 		"build" : ".",
@@ -260,7 +261,8 @@
 				8,
 				10,
 				11,
-				13
+				13,
+				15
 			]
 		},
 		{
@@ -273,21 +275,22 @@
 				7,
 				9,
 				12,
-				14
+				14,
+				16
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				15
+				17
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				16
+				18
 			]
 		}
 	],
@@ -297,7 +300,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/mocs_compilation.cpp",
+			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -369,24 +372,35 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "testclient.cpp",
+			"path" : "servermessagebroker.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "testclient.h",
+			"path" : "servermessagebroker.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "testServerSession.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "testServerSession.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/timestamp",
+			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/timestamp.rule",
+			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/timestamp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],

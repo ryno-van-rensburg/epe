@@ -23,6 +23,8 @@ add_executable(networking
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
+    servermessagebroker.cpp servermessagebroker.h
+    player.cpp player.h
     error.cpp error.h)
 
 add_executable(testclient
@@ -41,6 +43,7 @@ add_executable(testserver
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
     error.cpp error.h
+    servermessagebroker.cpp servermessagebroker.h
     testServerSession.cpp testServerSession.h
 )
 

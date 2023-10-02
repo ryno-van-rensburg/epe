@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "testclient"
+			"path" : "networking"
 		}
 	],
 	"backtrace" : 1,
@@ -11,6 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"install",
 			"target_link_libraries",
 			"set_property",
 			"find_package",
@@ -33,56 +34,62 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 28,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 50,
+				"line" : 56,
 				"parent" : 0
 			},
 			{
-				"command" : 3,
+				"command" : 2,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
 				"file" : 0,
 				"line" : 12,
 				"parent" : 0
 			},
 			{
 				"file" : 4,
-				"parent" : 3
-			},
-			{
-				"command" : 5,
-				"file" : 4,
-				"line" : 175,
 				"parent" : 4
 			},
 			{
-				"file" : 3,
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
 				"parent" : 5
 			},
 			{
-				"command" : 4,
 				"file" : 3,
-				"line" : 48,
 				"parent" : 6
 			},
 			{
-				"command" : 3,
-				"file" : 2,
-				"line" : 47,
+				"command" : 5,
+				"file" : 3,
+				"line" : 48,
 				"parent" : 7
 			},
 			{
-				"file" : 1,
+				"command" : 4,
+				"file" : 2,
+				"line" : 47,
 				"parent" : 8
 			},
 			{
-				"command" : 2,
+				"file" : 1,
+				"parent" : 9
+			},
+			{
+				"command" : 3,
 				"file" : 1,
 				"line" : 240,
-				"parent" : 9
+				"parent" : 10
 			}
 		]
 	},
@@ -95,11 +102,11 @@
 					"fragment" : "-DQT_QML_DEBUG -g"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"fragment" : "-fPIC"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"fragment" : "-pthread"
 				},
 				{
@@ -109,23 +116,23 @@
 			"defines" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"define" : "QT_CORE_LIB"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"define" : "QT_NETWORK_LIB"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"define" : "QT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\""
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"define" : "QT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\""
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"define" : "QT_TESTLIB_LIB"
 				}
 			],
@@ -139,30 +146,30 @@
 				},
 				{
 					"backtrace" : 0,
-					"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/include"
+					"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "/app/include/QtCore"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "/app/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "/app/mkspecs/linux-g++"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "/app/include/QtNetwork"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "/app/include/QtTest"
 				}
@@ -172,35 +179,50 @@
 			{
 				"backtraces" : 
 				[
-					2,
-					2
+					3,
+					3
 				],
 				"standard" : "17"
 			},
 			"sourceIndexes" : 
 			[
 				0,
-				2,
-				4,
-				6,
-				8,
-				10,
+				1,
+				3,
+				5,
+				7,
+				9,
 				11,
-				13
+				12,
+				14
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"id" : "testclient_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"id" : "networking_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "testclient_autogen::@6890427a1f51a3e7e1df"
+			"id" : "networking_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "testclient::@6890427a1f51a3e7e1df",
+	"id" : "networking::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
 	"link" : 
 	{
 		"commandFragments" : 
@@ -214,34 +236,34 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/app/lib",
+				"fragment" : "-Wl,-rpath,/app/lib:",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "/app/lib/libQt6Network.so.6.3.1",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "/app/lib/libQt6Test.so.6.3.1",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "/app/lib/libQt6Core.so.6.3.1",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 10,
+				"backtrace" : 11,
 				"fragment" : "-pthread",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "testclient",
-	"nameOnDisk" : "testclient",
+	"name" : "networking",
+	"nameOnDisk" : "networking",
 	"paths" : 
 	{
 		"build" : ".",
@@ -254,40 +276,41 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2,
-				4,
-				6,
-				8,
-				10,
+				1,
+				3,
+				5,
+				7,
+				9,
 				11,
-				13
+				12,
+				14
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1,
-				3,
-				5,
-				7,
-				9,
-				12,
-				14
+				2,
+				4,
+				6,
+				8,
+				10,
+				13,
+				15
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				15
+				16
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				16
+				17
 			]
 		}
 	],
@@ -297,7 +320,13 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/mocs_compilation.cpp",
+			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -358,6 +387,17 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "servermessagebroker.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "servermessagebroker.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "error.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -367,26 +407,15 @@
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "testclient.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "testclient.h",
-			"sourceGroupIndex" : 1
-		},
-		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/timestamp",
+			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/timestamp.rule",
+			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/timestamp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],

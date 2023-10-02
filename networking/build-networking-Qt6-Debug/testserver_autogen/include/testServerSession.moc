@@ -22,18 +22,19 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_testServerSession_t {
     const uint offsetsAndSize[6];
-    char stringdata0[33];
+    char stringdata0[39];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_testServerSession_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_testServerSession_t qt_meta_stringdata_testServerSession = {
     {
 QT_MOC_LITERAL(0, 17), // "testServerSession"
-QT_MOC_LITERAL(18, 13), // "testlistening"
-QT_MOC_LITERAL(32, 0) // ""
+QT_MOC_LITERAL(18, 19), // "testserverandbroker"
+QT_MOC_LITERAL(38, 0) // ""
 
     },
-    "testServerSession\0testlistening\0"
+    "testServerSession\0testserverandbroker\0"
+    ""
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +66,7 @@ void testServerSession::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         auto *_t = static_cast<testServerSession *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->testlistening(); break;
+        case 0: _t->testserverandbroker(); break;
         default: ;
         }
     }
