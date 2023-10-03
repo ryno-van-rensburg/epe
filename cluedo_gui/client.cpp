@@ -25,7 +25,7 @@ void Client::onNameEntered(QString name){
     //SIMON FUNCTION
     if(true){
 
-        emit validUsername();
+    emit validUsername();
     }
 }
 
