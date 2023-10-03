@@ -4,10 +4,12 @@
 #include <unordered_set>
 #include <set>
 
+
+// Constructor for GameServer class. Initializes log file for game events.
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-
+    // Initialize log file for game events
     log = new QFile("game_log.txt");
     if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
@@ -19,30 +21,37 @@ GameServer::GameServer(QObject *parent)
     }
 }
 
+// Destructor for GameServer class. Frees memory allocated for players and log file.
 GameServer::~GameServer(){
+    // Free memory allocated for players
     for (Player* player : players) {
         delete player;
     }
     players.clear();
     delete winEnvelope;
+    // Close log file if it is open
     if (log && log->isOpen())
     {
         log->close();
     }
 }
 
+//Get GameID
 QString GameServer::GetGameID(){
     return gameID;
 }
 
+//Get players vector
 QVector<Player*> GameServer::GetPlayers(){
     return players;
 }
 
+//Get win envelope
 Envelope* GameServer::GetEnvelopeCards(){
     return winEnvelope;
 }
 
+// Set the turn for a specific player and calculate available moves based on dice roll.
 void GameServer::SetPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
         if (inPlayer->GetUsername() == players[i] -> GetUsername()){
@@ -56,6 +65,7 @@ void GameServer::SetPlayerTurn(Player* inPlayer){
     }
 }
 
+// End the turn for a specific player.
 void GameServer::EndPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
         if (inPlayer->GetUsername() == players[i] -> GetUsername()){
@@ -64,31 +74,37 @@ void GameServer::EndPlayerTurn(Player* inPlayer){
     }
 }
 
+// Set the number of players in the game.
 void GameServer::setNumPlayers(int num)
 {
     this->numPlayers = num;
 }
 
+// Get the initial dice values rolled by each player at the start of the game.
 QVector<int> GameServer::getStartDice()
 {
     return startDice;
 }
 
+// Get face-up character cards.
 QVector<CharacterCard *> GameServer::getCharacFaceUp()
 {
     return characFaceUp;
 }
 
+// Get face-up room cards.
 QVector<RoomCard *> GameServer::getRoomFaceUp()
 {
     return roomFaceUp;
 }
 
+// Get face-up weapon cards.
 QVector<WeaponCard *> GameServer::getWeaponFaceUp()
 {
     return weaponFaceUp;
 }
 
+// Recursive function to find possible positions based on current position and dice roll.
 void GameServer::findPossiblePositions(int currentPosition, int diceRoll, std::vector<int> &possiblePositions, std::unordered_set<int> &visitedRooms, bool canEnterRoom)
 {
     if (currentPosition < 0 || currentPosition >= data.size() || visitedRooms.count(currentPosition) || diceRoll < 0) {
@@ -117,8 +133,10 @@ void GameServer::findPossiblePositions(int currentPosition, int diceRoll, std::v
     visitedRooms.erase(currentPosition);
 }
 
+// Log an event message to the log file.
 void GameServer::logEvent(const QString &message)
 {
+    //Check log file is open
     if (log && log->isOpen())
     {
         QTextStream stream(log);
@@ -127,13 +145,18 @@ void GameServer::logEvent(const QString &message)
     }
 }
 
+// Get the current dice value.
 int GameServer::GetCurrentDice()
 {
     return currentDice;
 }
 
+// Get available moves for a player based on their position and dice roll.
 QVector<int> GameServer::getAvailableMoves(int pos, int dice)
 {
+    //Vector of all possible moves from a specific position, the index of the vector is the
+    //current position, while the 4 values are the possible moves left, right, up and down
+    //from that position
     data = {
         {36, 37, 20, 68},
         {40, 50, -1, -1},
@@ -429,6 +452,7 @@ void GameServer::DealCards()
 
     int count = 1;
 
+    //Logs the cards that have been dealt to each player and the remaining cards
     for (Player* temp: players)
     {
         emit DealCardsSignal(temp,temp->GetCharacCards(),temp->GetWeaponCards(),temp->GetRoomCards());
@@ -483,6 +507,7 @@ void GameServer::DealCards()
 
 
 //slots
+// Slot function to handle player movement request.
 void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
 {
     // Your implementation here, e.g., move the player to the specified destination
@@ -492,6 +517,7 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
     int position = playerToMove->GetPosition();
     bool valid = false;
     QVector<int> posPosition = getAvailableMoves(position,currentDice);
+    //Compares move to all possible moves based on current position and dice roll
     for (int temp : posPosition)
     {
         if (destination == temp)
@@ -540,6 +566,7 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
     // For example, store the player in a data structure or perform necessary initialization.
     srand(time(0));
     players.append(newPlayer);
+    //Log the player being added
     if (players.size() == 1)
     {
         logEvent("Player 1 added");
@@ -564,6 +591,7 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
     {
         logEvent("Player 6 added");
     }
+    //Log the start dice roll for each player
     startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
     if (players.size() == 1)
     {
@@ -598,10 +626,12 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
     if (players.size() == numPlayers)
     {
         emit StartGameSignal();
+        logEvent("Game started");
         DealCards();
     }
 }
 
+//Slot to return the game state upon a request
 void GameServer::StateRequestSlot()
 {
     int currentTurn = 0;

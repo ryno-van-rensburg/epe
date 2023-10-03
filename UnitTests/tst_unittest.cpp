@@ -124,8 +124,12 @@ void UnitTest::testDiceRoll()
     QVector<RoomCard*> room;
     QVector<WeaponCard*> weap;
     Player* p = new Player("Player1",charac,room,weap,15,0);
-    int value = p->RollDice();
-    QVERIFY2(value>=1 && value<=6,"Value not in correct range");
+    int value = 0;
+    for (int i=0;i<6;i++)
+    {
+        value = p->RollDice();
+        QVERIFY2(value>=1 && value<=6,"Value not in correct range");
+    }
     delete p;
 }
 
@@ -216,15 +220,16 @@ void UnitTest::testMoveValidation()
     QVector<WeaponCard*> z;
     Player* p1 = new Player("Player1",x,y,z,2,0);
     GameServer* g = new GameServer();
+    QSignalSpy spy2(g,SIGNAL(NotifyPlayerMoveSignal(Player*,int)));
+    QSignalSpy spy1(g,SIGNAL(UpdateStateSignal(Player*,int)));
+    QSignalSpy spy3(g,SIGNAL(SendErrorSignal(QString)));
     QObject::connect(sender,&signalsender::moveRequestSignal,g,&GameServer::MoveRequestedSlot);
     g->AddPlayerSlot(p1);
     g->SetPlayerTurn(p1);
     emit sender->moveRequestSignal(p1,10);
 
 
-    QSignalSpy spy2(g,SIGNAL(NotifyPlayerMoveSignal(Player*,int)));
-    QSignalSpy spy1(g,SIGNAL(UpdateStateSignal(Player*,int)));
-    QSignalSpy spy3(g,SIGNAL(SendErrorSignal(QString)));
+
 
     std::cout<<"Dice roll: "<<g->GetCurrentDice()<<std::endl;
 
@@ -242,10 +247,11 @@ void UnitTest::testRequest()
     QVector<WeaponCard*> z;
     Player* p1 = new Player("Player1",x,y,z,2,0);
     GameServer* g = new GameServer();
+    QSignalSpy spy(g,SIGNAL(GameStateReply(QVector<Player*>, int, int, int, QVector<CharacterCard*>, QVector<WeaponCard*>, QVector<RoomCard*>)));
     QObject::connect(sender,&signalsender::StateRequestSignal,g,&GameServer::StateRequestSlot);
     emit sender->StateRequestSignal();
 
-    QSignalSpy spy(g,SIGNAL(GameStateReply(QList,int,int,int,QList,QList,QList)));
+
 
     QVERIFY(spy.count()>0);
 }
