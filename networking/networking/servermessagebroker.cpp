@@ -179,24 +179,25 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
     QString room;
     bool valid = true;
      QJsonObject d = msg.getObj();
+     QJsonObject suggestionObj = d["Suggestion"].toObject();
     if (d.isEmpty()){
         valid = false;
     }
-    QJsonValue weaponJson = d["Weapon"];
+    QJsonValue weaponJson = suggestionObj["Weapon"];
     if (!weaponJson.isString()){
         valid = false;
     } else {
         weapon = weaponJson.toString();
     }
 
-    QJsonValue personJson = d["Person"];
+    QJsonValue personJson = suggestionObj["Person"];
     if (!weaponJson.isString()){
         valid = false;
     } else {
         person = personJson.toString();
     }
 
-    QJsonValue roomJson = d["Room"];
+    QJsonValue roomJson = suggestionObj["Room"];
     if (!roomJson.isString()){
         valid = false;
     } else {

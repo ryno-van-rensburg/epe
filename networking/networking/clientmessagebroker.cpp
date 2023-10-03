@@ -364,7 +364,6 @@ void ClientMessageBroker::unpackSuggestionStateUpdate(Message &msg){
         QString weapon = obj["Weapon"].toString();
         QString person = obj["Person"].toString();
         QString room = obj["Room"].toString();
-        QVector<QString> suggestion = {person, weapon, room};
-        emit this->suggestionStateUpdate(username, suggestion);
+        emit this->suggestionStateUpdate(username, person, weapon, room);
         return;
 }

@@ -22,7 +22,7 @@ signals:
     void gameStartedSignal(int numPlayers, QJsonArray players, int dice1,int currentTurn, QVector<QString> faceUpCards);
     void playerAcceptedSignal(QString username, QString person, int dice1, int dice2);
     void connectionRejectedSignal(QString reason);
-    void suggestionStateUpdate(QString username, QVector<QString> cards);
+    void suggestionStateUpdate(QString username, QString person, QString weapon, QString room);
     void accusationResultSignal(QVector<QString> cards, bool win);
     void yourTurnSignal(int dice1, int dice2);
     void cardsDealt(QVector<QString> cards);

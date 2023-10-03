@@ -21,6 +21,7 @@ private:
     ServerMessageBroker* serverBroker;
     int accepted = 0;
     int moved = 0;
+    int suggestionMade = 0;
     int memdice1, memdice2;
 public slots:
     void acceptJoin(QString handle) {
@@ -41,6 +42,14 @@ public slots:
         serverBroker->invalidMove(player.getUsername());
         return;
     }
+
+    void goodSuggestion(NetworkPlayer &player, QString room, QString weapon, QString person){
+        QVector<QString> suggestion = {room, weapon, person};
+        serverBroker->suggestionUpdateSlot(player.getUsername(), suggestion );
+        suggestionMade = 1;
+        return;
+    }
+
     void retryMove() {
         playMove();
         return;
@@ -86,7 +95,6 @@ private slots:
         QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
         QObject::connect(this->serverBroker,SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)), this, SLOT(acceptMove(QString,int)));
         QObject::connect(this->clientBroker, SIGNAL(yourTurnSignal(int,int)), this, SLOT(playMove(int,int)));
-
         QSignalSpy diceRollSpy(this->clientBroker, SIGNAL(yourTurnSignal(int,int)));
         QSignalSpy moveReceived(this->serverBroker, SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)));
         serverBroker->listen(6444);
@@ -116,13 +124,9 @@ private slots:
         QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
         QObject::connect(this->serverBroker,SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)), this, SLOT(rejectMove(NetworkPlayer&,quint32)));
         QObject::connect(this->clientBroker, SIGNAL(yourTurnSignal(int,int)), this, SLOT(playMove(int,int)));
-
         QSignalSpy diceRollSpy(this->clientBroker, SIGNAL(yourTurnSignal(int,int)));
-
         QSignalSpy moveReceived(this->serverBroker, SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)));
-
         QSignalSpy invalidMoveSpy(this->clientBroker, SIGNAL(invalidMove()));
-
         QSignalSpy kickedSpy(this->clientBroker, SIGNAL(playerKicked(QString,QString)));
         QObject::connect(this->clientBroker, SIGNAL(invalidMove()), this, SLOT(retryMove()));
         serverBroker->listen(6444);
@@ -170,7 +174,10 @@ private slots:
         clientBroker = new ClientMessageBroker();
         serverBroker = new ServerMessageBroker();
         QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
-        QSignalSpy termSpy(this->clientBroker, SIGNAL(gameEndedSignal()));
+
+        QObject::connect(this->serverBroker, SIGNAL(suggestionReceivedSignal(NetworkPlayer&,QString,QString,QString)), this, SLOT(goodSuggestion(NetworkPlayer&,QString,QString,QString)));
+        QSignalSpy suggestionMadeSpy(this->serverBroker, SIGNAL(suggestionReceivedSignal(NetworkPlayer&,QString,QString,QString)));
+        QSignalSpy stateUpdateSpy(this->clientBroker, SIGNAL(suggestionStateUpdate(QString, QString, QString, QString)));
         serverBroker->listen(6444);
         quint32 address = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
         clientBroker->requestConnection(address,6444, "weirdAl");
@@ -178,20 +185,17 @@ private slots:
         NetworkPlayer player;
         player.setPerson("Green");
         player.setUsername("weirdAl");
-        serverBroker->terminateGameSlot();
+        clientBroker->makeSuggestion("Green", "Dagger", "Courtyard");
         QTest::qWait(1000);
-        QVERIFY(termSpy.isValid());
-        QCOMPARE(termSpy.count(), 1);
+        QVERIFY(suggestionMadeSpy.isValid());
+        QCOMPARE(suggestionMadeSpy.count(), 1);
+        QVERIFY(stateUpdateSpy.isValid());
+        QCOMPARE(stateUpdateSpy.count(), 2);
         delete clientBroker;
         delete serverBroker;
         return;
         return;
     }
-    void testAccusationStateUpdate(){
-        return;
-    }
-
-
 };
 
 QTEST_MAIN(testAcking)
