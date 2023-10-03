@@ -2,9 +2,12 @@
 #include <QDebug>
 
 Client::Client(QObject *parent)
-    : QObject{parent}, currentPlayerTurn(1)
+    : QObject{parent}, currentPlayerTurn(0)
 {
-
+    errorMessage.setIcon(QMessageBox::Critical);
+    errorMessage.setWindowTitle("Error");
+    errorMessage.setText("Invalid Player ID. Please enter 'KingZander'.");
+    errorMessage.setStandardButtons(QMessageBox::Ok);
 }
 void Client::testReceiveMessage(QString& message){
     qDebug() << "Received message from broker: " << message;
@@ -15,12 +18,6 @@ void Client::testReceiveMessage(QString& message){
 int Client::playerTurn() const
 {
     return currentPlayerTurn;
-}
-
-void Client::onNameEntered(QString name){
-    qDebug() << "Name entered: " << name;
-    //SIMON FUNCTION
-    emit validUsername();
 }
 
 void Client::setPlayerTurn(int turn)
@@ -40,4 +37,12 @@ void Client::onTurnEnded(){
 void Client::onSuggestionMade(QString room,QString person, QString item)
 {
     qDebug() << person << room << item;
+}
+
+void Client::checkPlayerID(const QString& playerID)
+{
+    if (playerID != "KingZander")
+    {
+        errorMessage.exec();
+    }
 }
