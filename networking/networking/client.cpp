@@ -132,6 +132,12 @@ int extractAckId(Message &msg) {
     }
 }
 
+int extractId(Message &msg) {
+    QJsonObject obj = msg.getObj();
+    int id = obj["ID"].toInt(-1);
+    return id;
+}
+
 
 /**
  * @brief Extracts an ID from a JSON message.
@@ -200,7 +206,7 @@ void Client::handleError(Message &msg)
             case (ERROR_TYPE::INVALID_MESSAGE_FORMAT):
                 std::cout << "Malformed message, resend" << std::endl;
                 // resend the message
-                this->sendMessage(*m);
+                this->sendMessage(m);
                 break;
             case (ERROR_TYPE::INVALID_ROOM_NAME):
                 std::cout << "Invalid room name" << std::endl;
@@ -290,10 +296,6 @@ void Client::handleMessage(){
             emit this->gameStateReceived(msg);
             break;
         }
-        case (MESSAGE_TYPE::PLAYER_ACCEPTED):{
-            emit this->connectedToGame();
-            break;
-        }
         case (MESSAGE_TYPE::ACK):
         {
             // get message id and remove from ack list
@@ -305,17 +307,54 @@ void Client::handleMessage(){
             this->handleError(msg);
             break;
         }
-        };
-        if (shouldMessageBeAcked(msg.getType())){
-           QJsonValue v = msg.getObj()["ID"];
-           qint64 id = v.toInt(-1);
-           if ( id != -1 ){
-               this->ack(id);
-           } else {
-               return;
-           }
+
+        case(SUGGESTION_STATE_UPDATE):
+        {
+            emit this->suggestionStateUpdate(msg);
+            break;
         }
-        } else {
+
+        case(GAME_STATE_REPLY):
+        {
+            emit this->gameStateReceived(msg);
+            break;
+        }
+
+        case(GAME_STATE_UPDATE):
+        {
+            emit this->moveUpdate(msg);
+            break;
+        }
+
+        case(CONNECTION_DENIED):
+        {
+            emit this->connectionDenied(msg);
+            break;
+        }
+
+        case(PLAYER_ACCEPTED):{
+            emit this->connectionAccepted(Message &msg);
+            break;
+        }
+        case(CARD_SHOWN): {
+            emit this->cardShown(msg);
+            break;
+        }
+        case (GAME_TERMINATION):{
+            emit gameTerminated(msg);
+            break;
+        }
+        case (DEAL_CARDS) : {
+            emit cardsDealt(msg);
+            break;
+        }
+        case (PLAYER_KICKED):{
+            emit this->playerKicked(Message &msg);
+            break;
+        }
+
+        };
+    } else {
         // TODO handle error
         return;
         }
@@ -339,6 +378,19 @@ void Client::ack(qint64 id){
     {
         {"Type", "ACKNOWLEDGE"},
         {"ID_ACK", (int)id},
+    };
+
+    Message msg("ACKNOWLEDGE", obj);
+    this->sendMessage(msg);
+    return;
+}
+
+void Client::ack(Message &msg){
+    int ackId = extractId(msg);
+    QJsonObject obj
+    {
+        {"Type", "ACKNOWLEDGE"},
+        {"ID_ACK", ackId},
     };
 
     Message msg("ACKNOWLEDGE", obj);

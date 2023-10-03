@@ -41,6 +41,7 @@ void ServerMessageBroker::extractMoveData(Message &msg){
         emit moveReceivedSignal(*player, position );
     } else {
         // send error message and update error counter
+
     }
 }
 
@@ -79,11 +80,58 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
     player = this->session->getPlayer(address);
     if (player == nullptr){
         valid = false;
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "NOT_GAME_PARTICIPANT";
+        obj["Message"] = "Not game participant";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+
+    }
+
+    if (!isRoomValid(room)){
+        // room is invalid
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_ROOM";
+        obj["Message"] = "Invalid room name";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+        // increment error tally
+    }
+    if (!isPersonValid(person)){
+        // person is invalid
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_PERSON";
+        obj["Message"] = "Invalid person name";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+    }
+    if (!weaponValid(weapon)){
+        // weapon invalid
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_PERSON";
+        obj["Message"] = "Invalid weapon name";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
     }
     if (valid) {
         emit accusationReceivedSignal(*player, person, weapon, room);
     } else {
         // send error message and increase error tally
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_MESSAGE_FORMAT";
+        obj["Message"] = "Message malformed";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
     }
 
 }
@@ -122,11 +170,59 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
     player = this->session->getPlayer(address);
     if (player == nullptr){
         valid = false;
+        // player is not in game, send error
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "NOT_GAME_PARTICIPANT";
+        obj["Message"] = "Not game participant";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+
     }
+     if (!isRoomValid(room)){
+        // room is invalid
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_ROOM";
+        obj["Message"] = "Invalid room name";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+        // increment error tally
+    }
+    if (!isPersonValid(person)){
+        // person is invalid
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_PERSON";
+        obj["Message"] = "Invalid person name";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+    }
+    if (!weaponValid(weapon)){
+        // weapon invalid
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_PERSON";
+        obj["Message"] = "Invalid weapon name";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+    }
+
     if (valid) {
         emit suggestionReceivedSignal(*player, person, weapon,room );
     } else {
         // send error message and increase error tally
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_MESSAGE_FORMAT";
+        obj["Message"] = "Message malformed";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
     }
 }
 
@@ -148,11 +244,26 @@ void ServerMessageBroker::extractCardShownData(Message &msg){
     player = this->session->getPlayer(address);
     if (player == nullptr){
         valid = false;
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "NOT_GAME_PARTICIPANT";
+        obj["Message"] = "Not game participant";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
+        return;
     }
     if (valid) {
         emit cardShownSignal(player, card);
     } else {
         // send error message and increase error tally
+        QJsonObject obj;
+        obj["Type"] = "ERROR";
+        obj["ID_ACK"] = d["ID"].toInt();
+        obj["Error"] = "INVALID_MESSAGE_FORMAT";
+        obj["Message"] = "Message malformed";
+        Message errMsg(ERROR, obj);
+        session->unicastMessage(errMsg,player->GetUsername());
     }
 }
 
@@ -164,6 +275,7 @@ void ServerMessageBroker::updateStateSlot(QString username, int position){
         {"Position", position},
     };
     Message msg(GAME_STATE_UPDATE, obj);
+    this->session->ackMessage(username);
     this->session->broadCastMessage(msg);
     return;
 }
@@ -198,6 +310,7 @@ void ServerMessageBroker::gameStateReplySlot(QString requesting, int diceRoll, Q
     root["Players"] = playerArr;
     root["Face_Up_Cards"] = cards;
     Message msg(GAME_STATE_REPLY, root);
+    session->ackMessage(requesting);
     session->unicastMessage(msg, requesting);
     return;
 }
@@ -239,6 +352,7 @@ void ServerMessageBroker::gameStateSlot( int diceRoll, QVector<QString> faceup, 
 
 void ServerMessageBroker::playerResultSlot(QString playerName, QString person, QString weapon, QString room, bool win){
     QJsonObject obj;
+    obj["Type"] = "PLAYER_RESULT";
     obj["Username"] = playerName;
     obj["Person"] = person;
     obj["Weapon"] = weapon;
@@ -248,16 +362,28 @@ void ServerMessageBroker::playerResultSlot(QString playerName, QString person, Q
     } else {
         obj["Win"] = 0;
     }
+    session->ackMessage(playerName);
+    Message msg(PLAYER_RESULT, obj);
+    session->broadCastMessage(msg);
+    return;
 }
 
+void ServerMessageBroker::invalidMove(QString username)
+{
+    QJsonObject errObj;
+    errObj["Type"] = "ERROR";
 
-void ServerMessageBroker::sendErrorSlot(QString username, ERROR_TYPE error){
 
-    return;
+}
+
+void ServerMessageBroker::outOfTurn(QString username){
+
 }
 
 void ServerMessageBroker::suggestionUpdateSlot(QString username, QVector<QString> suggestion)
 {
+    // Ack user first
+
     QJsonObject obj;
     obj["Type"] = "SUGGESTION_STATE_UPDATE";
     obj["Username"] = username;
@@ -265,7 +391,9 @@ void ServerMessageBroker::suggestionUpdateSlot(QString username, QVector<QString
     obj["Weapon"] = suggestion.at(1);
     obj["Room"] = suggestion.at(2);
     Message msg(SUGGESTION_STATE_UPDATE, obj);
+    session->ackMessage(username);
     session->broadCastMessage(msg);
+    return;
 }
 
 void ServerMessageBroker::shownCardSlot(QString asking, QString showing, bool hasCard){
@@ -279,7 +407,8 @@ void ServerMessageBroker::shownCardSlot(QString asking, QString showing, bool ha
         root["Has_Card"] = 0;
     }
     Message msg(CARD_SHOWN, root);
-    session->unicastMessage(msg, asking);
+    session->ackMessage(showing);
+    session->broadCastMessage(msg);
     return;
 }
 
@@ -324,7 +453,7 @@ void ServerMessageBroker::dealCardsSlot(qint16 numPlayers, QVector<QVector<QStri
     return;
 }
 
-void ServerMessageBroker::requestCardSlot(Player& askingPlayer, QString Perseon, QString weapon, QString room){
+void ServerMessageBroker::requestCardSlot(Player& askingPlayer, QString person, QString weapon, QString room){
     QJsonObject root;
     root["Type"] = "REQUEST_CARD";
     root["ID"] = (int) session->getAckCount();
@@ -356,8 +485,10 @@ void ServerMessageBroker::showCardSlot(Player &player, QString card){
     return;
 }
 
-void ServerMessageBroker::acceptPlayer(QString username, QString Person, int dice1, int dice2)
+void ServerMessageBroker::acceptPlayer(const Player* playerObj, QString username, QString person, int dice1, int dice2)
 {
+    // add player in list
+
     QJsonObject obj  {
         {"Type" , "PLAYER_ACCEPTED" },
         {"Username", username},
@@ -365,8 +496,8 @@ void ServerMessageBroker::acceptPlayer(QString username, QString Person, int dic
         {"Dice1", dice1},
         {"Dice2", dice2},
     };
-
     Message msg(PLAYER_ACCEPTED, obj);
+    session->ackMessage(username);
     session->unicastMessage(msg, username);
     return;
 }

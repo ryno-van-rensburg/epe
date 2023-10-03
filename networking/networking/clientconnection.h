@@ -22,24 +22,27 @@ private:
     QString username;
     QHostAddress addr;//ip address of client, used to reestablish connections.
     quint16 port;// TCP port of client, used to reestablish connections.
-    QMap<MESSAGE_TYPE, int> violationCounts;
+    QMap<QString, int> violationCounts;
     bool isFirstTurn; // The first turn has a longer timeout period, hence this boolean.
     bool isPlaying; //Players who manage to connect.
     void checkViolationCounters();
+    int  ackValue;
 public:
     explicit ClientConnection(QObject *parent = nullptr);
     explicit ClientConnection(QTcpSocket &connection, Player &playerObj, ServerSession &session);
     QString getUsername(); // temporary declarations.
+    void joinPlayer(const Player* playerObj);
     void setUsername(QString username);
     void setSession(ServerSession& session);
     void setPlayer(Player &playerObj);
+    void incrementErrorTally(QString errorType);
     Player* getPlayer();
     QHostAddress getAddr();
     void setConnection(QTcpSocket &connection);
 
 public slots:
     void sendMessage(Message &msg);
-    void messageReceived();
+    void messageReceived(Message &msg);
 
 signals:
     void violationsExceeded(MESSAGE_TYPE type, QString errorMessage);

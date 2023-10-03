@@ -51,11 +51,13 @@ public:
         return this->ackCounter;
     }
 public slots:
+    void ackMessage(QString username);
+    void addPlayer(Player* obj);
     void handleNewConnection();
     void broadCastMessage(Message &msg);
     void unicastMessage(Message &msg, QString username);
     void handleMessage(Message &msg);
-    void kickPlayer(QString username);
+    void kickPlayer(QString username, QString reason);
     void handleDataFromPendingConnections();
     void rejectConnection(Message &msg, QString handle);
 signals:

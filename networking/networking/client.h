@@ -32,9 +32,13 @@ public:
     Client();
     ~Client();
     void ack(quint64 id);
+    void ack(Message &msg);
     quint64 getAckCount();
     quint16 getPort();
     quint32 getAddr();
+    void getUsername(){
+        this->playerObj->GetUsername();
+    }
     void setPort(quint16 port);
     void setAddr(quint32 ipAddr);
     void connect(quint32 ipAddr, quint16 port);
@@ -48,6 +52,18 @@ signals: // used to notify clientmessagebroker of new data,
     void connectedToServer();
     void connectedToGame();
     void gameStateReceived(Message &msg);
+    void suggestionStateUpdate(Message &msg);
+    void connectionDenied(Message &msg);
+    void connectionAccepted(Message &msg);
+    void moveUpdate(Message &msg);
+    void gameTerminated(Message &msg);
+    void cardRequested(Message &msg);
+    void cardShown(Message &msg);
+    void cardsDealt(Message &msg);
+    void playerResult(Message &msg);
+    void playerTurn(Message &msg);
+    void playerKicked(Message &msg);
+
 };
 
 #endif // CLIENT_H

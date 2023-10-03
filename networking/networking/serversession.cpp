@@ -135,26 +135,9 @@ Player* ServerSession::getPlayer(QString playerName){
  */
 void ServerSession::handleNewConnection(){
      QTcpSocket* sock = this->serverConnection->nextPendingConnection();
-     // check if this client is already part of the session
-     for (int i = 0; i < connections.size(); i++)
-     {
-         // TODO previous connections
+     // check if this client is already part in the new thing
 
-     }
-     // check if this client is already in pending connections.
-     for (int i =0; i < pendingConnections.size(); i++){
-         if (pendingConnections.at(i)->peerAddress() == sock->peerAddress()) {
-            return;
-         }
-     }
-    // check some prelim things before adding the connection to the pending connections list
-    // this list is used to store connections that are not part of the game yet, i.e. has not been accepted
-    // by the game server yet.
-     if (this->connections.size() >= maxConnections) {
-       // TODO, send a connection refused message back
-        std::cout << "CONNECTION REJECTED LOBBY TOO FULL" << std::endl;
-        return;
-     }
+
      QObject::connect(sock, SIGNAL(readyRead()), this, SLOT(handleDataFromPendingConnections()));
      pendingConnections.push_back(sock);
     return;
@@ -187,6 +170,8 @@ void ServerSession::handleMessage(Message &msg)
         {
             if (1) {
             // TODO, delegate connection acception to game server
+                // an accepted player should have player accepted slot called with the correct player object
+                // this player object should then be used to construct a new client connection
                 QJsonObject obj  {
                     {"Type" ,"PLAYER_ACCEPTED"}};
                 QJsonDocument doc;
@@ -293,8 +278,14 @@ void ServerSession::unicastMessage(Message &msg, QString username){
     for (auto i = 0; i < this->connections.size(); i++) {
         ClientConnection* client = connections[i];
         if(client->getUsername() == username){
+            if (msg.getType() == "ERROR") {
+                QString errorMessage = msg.getObj()["Error"].toString();
+               if (errorMessage != "NOT_GAME_PARTICIPANT" && errorMessage != "CONNECTION_DENIED" ){
+                    client->incrementErrorTally(errorMessage);
+               }
+            }
             client->sendMessage(msg);
-            if (shouldMessageBeAcked(msg.type)) {
+            if (shouldMessageBeAcked(msg.getType())) {
                 this->ackList.append(msg);
             }
             return;
@@ -309,6 +300,9 @@ void ServerSession::unicastMessage(Message &msg, QString username){
  * @param msg The message to broadcast.
  */
 void ServerSession::broadCastMessage(Message &msg){
+    if (shouldMessageBeAcked(msg.getType())){
+        this->ackList.append(msg);
+    }
     for (auto i = 0; i < this->connections.size(); i++){
         connections.at(i)->sendMessage(msg);
     }
@@ -322,11 +316,19 @@ void ServerSession::broadCastMessage(Message &msg){
  *
  * @param username The username of the player to kick.
  */
-void ServerSession::kickPlayer(QString username)
+void ServerSession::kickPlayer(QString username, QString reason)
 {
     for (auto i =0; i < this->connections.size(); i++){
         if (connections.at(i)->getUsername() == username) {
-            // TODO handle disconnections properly;
+            // broadcast player_kicked message
+            QJsonObject obj;
+            obj["Type"] = "PLAYER_KICKED";
+            obj["Kicked_Player"] = username;
+            obj["Reason"] = reason;
+            Message kickMessage(PLAYER_KICKED, reason);
+            this->broadCastMessage(kickMessage);
+            // remove connection from list
+            this->connections.remove(i);
             std::cout <<"Player: " << username.toStdString() << "kicked" << std::endl;
         }
     }

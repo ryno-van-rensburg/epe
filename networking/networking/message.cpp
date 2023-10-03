@@ -22,7 +22,53 @@ Message::Message(MESSAGE_TYPE type, QByteArray &arr)
     }
 }
 
+bool isWeaponValid(QString weapon){
+    QVector<QString> weapons = {
+        "Candlestick", "Dagger", "Lead Pipe", "Pistol", "Rope", "Wrench"
+    };
 
+
+    for (auto i =0; i < weapons.size(); i++){
+        if (weapons.at(i) == weapon) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool isPersonValid(QString person){
+    QVector<QString> people = {
+        "Green", "Mustard", "Peacock", "Plum", "Scarlet", "White"
+    };
+    for (auto i = 0; i < people.size(); i++){
+        if (people.at(i) == person){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool isRoomValid(QString room){
+    QVector<QString> rooms = {
+        "Courtyard",
+        "Garage",
+        "Game Room",
+        "Bedroom",
+        "Bathroom",
+        "Study",
+        "Kitchen",
+        "Dining Room",
+        "Living Room"
+    } ;
+    for (auto i =0 ; i < rooms.size(); i++){
+        if (rooms.at(i) == person){
+            return true;
+        }
+    }
+    return false;
+}
 /**
  * @brief Converts a string to a MESSAGE_TYPE enumeration.
  *

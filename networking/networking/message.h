@@ -4,6 +4,7 @@ const int NUM_MESSAGE_TYPES = 23;
 #include <QTcpSocket>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QVector>
 
 enum MESSAGE_TYPE {
     REQUEST_CON,
@@ -45,6 +46,9 @@ enum ERROR_TYPE {
     INVALID_ROOM_NAME,
     INVALID_WEAPON_NAME
 };
+bool isWeaponValid(QString weapon);
+bool isPersonValid(QString person);
+bool isRoomValid(QString room);
 
 bool shouldMessageBeAcked(MESSAGE_TYPE type) {
     switch (type) {

@@ -17,15 +17,38 @@ ClientConnection::ClientConnection(QObject *parent)
     this->session = nullptr;
     this->minTimer = new QTimer(this);
     this->timerOut = new QTimer(this);
-    for (int i = 0; i < NUM_MESSAGE_TYPES; i++){
+    for (int i = 0; i < ; i++){
         this->violationCounts.insert((MESSAGE_TYPE)i, 0);
     }
+    this->violationCounts.insert("INVALID_ROOM", 0);
+    this->violationCounts.insert("INVALID_WEAPON", 0);
+    this->violationCounts.insert("INVALID_PERSON", 0);
+    this->violationCounts.insert("OUT_OF_TURN", 0);
+    this->violationCounts.insert("INVALID_MESSAGE_FORMAT", 0);
+    this->violationCounts.insert("INVALID_MOVE", 0);
+
     this->playerObj = nullptr;
     this->port = 0;
     this->isFirstTurn = false;
     this->isPlaying = false; // First need to check if the player is allowed into the lobby
 }
 
+void ClientConnection::incrementErrorTally(QString errorType){
+    this->violationCounts[errorType]++;
+    this->checkViolationCounters();
+}
+
+void ClientConnection::checkViolationCounters(){
+    QMap<QString, int>::iterator it;
+    for (it = this->violationCounts.begin(); it != violationCounts.end(); ++it){
+        if (it.value() > 6) {
+            QString errorType = it.key();
+            // kick player
+            this->session->kickPlayer(this->username, errorType);
+            return;
+        }
+    }
+}
 
 /**
  * @brief Constructs a ClientConnection object with connection details.
@@ -138,15 +161,11 @@ void ClientConnection::messageReceived()
             QJsonObject obj = contents.object();
             QJsonValue v = obj["Type"];
             if (v.isString()){
-                Message* msg = new Message(v.toString(), contents);
-                switch (msg->getType())
-                {
-                    case (MESSAGE_TYPE::REQ_GAME_STATE):
-                        break;
-                    case (MESSAGE_TYPE::ACK):{
-                        break;
-                    }
-                };
+                Message msg(v.toString(), contents);
+                msg.setSource(this->connection);
+                this->ackValue = obj["ID"].toInt();
+                emit messageReceived(msg);
+                return;
             }
         }
     }
@@ -173,4 +192,9 @@ QString ClientConnection::getUsername(){
 void ClientConnection::setUsername(QString username){
     this->username = username;
     return;
+}
+
+
+void ClientConnection::joinPlayer(const Player* playerObj){
+
 }

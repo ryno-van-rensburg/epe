@@ -31,12 +31,12 @@ public slots:
     void requestCardSlot(Player& askingPlayer, QString person, QString weapon, QString room);
     void playerResultSlot(QString playerName, QString person, QString weapon, QString room, bool win);
     void terminateGameSlot();
-    void sendErrorSlot(QString username, ERROR_TYPE error);
     void acceptPlayer(QString username, QString person, int dice1, int dice2);
     void gameStateSlot(int diceRoll, QVector<QString> faceup, int currentTurn);
     void connectionDenied(QString handle, QString reason);
     void suggestionUpdateSlot(QString username, QVector<QString> suggestion);
-
+    void invalidMove(QString username);
+    void outOfTurn(QString username);
 signals:
     void suggestionReceivedSignal(Player &player, QString person, QString weapon, QString, );
     void accusationReceivedSignal(Player &player, QString person, QString weapon, QString, );
