@@ -30,27 +30,32 @@ target_link_libraries(cluedo_gui PRIVATE
 )
 
 # Resources:
-set(qml_resource_files
-    "main.qml"
-    "StartScreen.qml"
-    "GameScreen.qml"
-    "imports/Constants.qml"
-    "imports/space.ttf"
-    "imports/pixel.ttf"
-    "imports/qmldir"
-    "images/AI-active.png"
-    "images/AI-inactive.png"
-    "images/Game-Background.jpg"
-    "images/GameBoard.png"
-    "images/loading.gif"
-    "images/Menu-Background.jpg"
-    "images/Start-active.png"
-    "images/Start-inactive.png"
-    "images/Title.png"
-    "images/panel.png"
-    "images/icon-out.png"
-    "images/Suggestion_Prompt.jpeg"
-    )
+file(GLOB_RECURSE qml_resource_files "*.qml")
+file(GLOB_RECURSE image_files "images/*")
+file(GLOB_RECURSE other_imports "imports/*")
+list(APPEND qml_resource_files ${image_files})
+list(APPEND qml_resource_files ${other_imports})
+#set(qml_resource_files
+#    "main.qml"
+#    "StartScreen.qml"
+#    "GameScreen.qml"
+#    "imports/Constants.qml"
+#    "imports/space.ttf"
+#    "imports/pixel.ttf"
+#    "imports/qmldir"
+#    "images/AI-active.png"
+#    "images/AI-inactive.png"
+#    "images/Game-Background.jpg"
+#    "images/GameBoard.png"
+#    "images/loading.gif"
+#    "images/Menu-Background.jpg"
+#    "images/Start-active.png"
+#    "images/Start-inactive.png"
+#    "images/Title.png"
+#    "images/panel.png"
+#    "images/icon-out.png"
+#    "images/Suggestion_Prompt.jpeg"
+#    )
 
 qt_add_resources(cluedo_gui "qml"
     PREFIX

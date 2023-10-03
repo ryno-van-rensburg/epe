@@ -89,7 +89,7 @@ Rectangle
         y: 8
         width: 128
         height: 120
-        source: "images/icon-out.png"
+        source: mouse_panel.hovered? "images/icon_out_active.png":"images/icon-out.png"
         fillMode: Image.PreserveAspectFit
 
         MouseArea {
@@ -99,6 +99,11 @@ Rectangle
                 panelState = !panelState; // Toggle the panel state
             }
         }
+        HoverHandler {
+                    id: mouse_panel
+                    acceptedDevices: PointerDevice.Mouse
+                    cursorShape: Qt.PointingHandCursor
+                }
     }
     Rectangle{
         id: slidingPanel
@@ -128,8 +133,8 @@ Rectangle
                 id: btnSuggest
                 x: 91
                 y: 194
-                width: 144
-                height: 121
+                width: 166
+                height: 155
                 onClicked: {
                     console.log("Clicked on btnSuggest" )
                     panelState = !panelState;
@@ -141,6 +146,16 @@ Rectangle
                     id: mouse_sugg
                     acceptedDevices: PointerDevice.Mouse
                     cursorShape: Qt.PointingHandCursor
+                }
+
+                Image {
+                    id: img_sugg
+                    x: 0
+                    y: 0
+                    width: 134
+                    height: 121
+                    source: mouse_sugg.hovered ? "images/panel_suggest_active.png":"images/panel_suggest_inactive.png"
+                    fillMode: Image.PreserveAspectFit
                 }
             }
 
@@ -159,6 +174,16 @@ Rectangle
                     acceptedDevices: PointerDevice.Mouse
                     cursorShape: Qt.PointingHandCursor
                 }
+
+                Image {
+                    id: image4
+                    x: 0
+                    y: 0
+                    width: 144
+                    height: 121
+                    source:mouse_acc.hovered? "images/panel_accuse_active.png":"images/panel_accuse_inactive.png"
+                    fillMode: Image.PreserveAspectFit
+                }
             }
 
             MouseArea {
@@ -176,6 +201,16 @@ Rectangle
                     acceptedDevices: PointerDevice.Mouse
                     cursorShape: Qt.PointingHandCursor
                 }
+
+                Image {
+                    id: image3
+                    x: 0
+                    y: 0
+                    width: 156
+                    height: 131
+                    source:mouse_mov.hovered? "images/panel_move_active.png":"images/panel_move_inactive.png"
+                    fillMode: Image.PreserveAspectFit
+                }
             }
 
             MouseArea {
@@ -192,6 +227,16 @@ Rectangle
                     id: mouse_note
                     acceptedDevices: PointerDevice.Mouse
                     cursorShape: Qt.PointingHandCursor
+                }
+
+                Image {
+                    id: image2
+                    x: 0
+                    y: 0
+                    width: 136
+                    height: 159
+                    source: mouse_note.hovered? "images/panel_notebook_active.png":"images/panel_notebook_inactive.png"
+                    fillMode: Image.PreserveAspectFit
                 }
             }
 
@@ -211,6 +256,16 @@ Rectangle
                     acceptedDevices: PointerDevice.Mouse
                     cursorShape: Qt.PointingHandCursor
                 }
+
+                Image {
+                    id: image1
+                    x: 0
+                    y: 0
+                    width: 144
+                    height: 127
+                    source: mouse_endturn.hovered? "images/panel_endturn_active.png":"images/panel_endturn_inactive.png"
+                    fillMode: Image.PreserveAspectFit
+                }
             }
             MouseArea {
                 id: btnExit
@@ -228,56 +283,77 @@ Rectangle
                     acceptedDevices: PointerDevice.Mouse
                     cursorShape: Qt.PointingHandCursor
                 }
+
+                Image {
+                    id: img_exit
+                    x: 0
+                    y: 0
+                    width: 144
+                    height: 121
+                    source: mouse_exit.hovered? "images/panel_quit_active.png":"images/panel_quit_inactive.png"
+                    fillMode: Image.PreserveAspectFit
+                }
+            }
+
+            Image {
+                id: image
+                x: 107
+                y: 19
+                width: 113
+                height: 95
+                source: mouse_panel.hovered? "images/panel_close_active.png":"images/panel_close_inactive.png"
+                fillMode: Image.PreserveAspectFit
             }
         }
     }
 
     Image {
-      id: suggestionPrompt
-      x: 0
-      y: 0
-      width: 1920
-      height: 1080
-      visible: false
-      source: "images/Suggestion_Prompt.jpeg"
-      fillMode: Image.PreserveAspectFit
+        id: suggestionPrompt
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
+        visible: false
+        source: "images/Suggestion_Prompt.jpeg"
+        fillMode: Image.PreserveAspectFit
 
-      MouseArea {
-        id:btnCancelSuggetion
-        x: 359
-        y: 700
-        width: 153
-        height: 151
-        onClicked: {
-              console.log("Clicked on btnCancelSuggestion" )
-              suggestionPrompt.visible = false
-        }
+        MouseArea {
+            id:btnCancelSuggetion
+            x: 359
+            y: 700
+            width: 153
+            height: 151
+            onClicked: {
+                console.log("Clicked on btnCancelSuggestion" )
+                suggestionPrompt.visible = false
+            }
 
-        HoverHandler {
-              id: mouse_cancel_sugg
-              acceptedDevices: PointerDevice.Mouse
-              cursorShape: Qt.PointingHandCursor
+            HoverHandler {
+                id: mouse_cancel_sugg
+                acceptedDevices: PointerDevice.Mouse
+                cursorShape: Qt.PointingHandCursor
+            }
         }
-      }
-      signal onSuggestButtonClicked()
-      MouseArea {
-        id: btnConfirmSuggestion
-        x: 1449
-        y: 692
-        width: 153
-        height: 151
-        onClicked: {
-              onSuggestButtonClicked()
-              console.log("Clicked on btnConfirmSuggestion" )
-              suggestionPrompt.visible = false
-              client.onSuggestionMade("ROOM","PERSON","ITEM")
-        }
+        signal onSuggestButtonClicked()
+        MouseArea {
+            id: btnConfirmSuggestion
+            x: 1449
+            y: 692
+            width: 153
+            height: 151
+            // something: mouse_.hovered? "prop":"prop" 
+            onClicked: {
+                onSuggestButtonClicked()
+                console.log("Clicked on btnConfirmSuggestion" )
+                suggestionPrompt.visible = false
+                client.onSuggestionMade("ROOM","PERSON","ITEM")
+            }
 
-        HoverHandler {
-              id: mouse_confirm_sugg
-              acceptedDevices: PointerDevice.Mouse
-              cursorShape: Qt.PointingHandCursor
+            HoverHandler {
+                id: mouse_confirm_sugg
+                acceptedDevices: PointerDevice.Mouse
+                cursorShape: Qt.PointingHandCursor
+            }
         }
-      }
     }
 }

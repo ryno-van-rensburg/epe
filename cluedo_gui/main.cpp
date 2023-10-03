@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-
+    //Q_INIT_RESOURCE(cluedo_gui);  // Load the resources
     //qDebug() <<" NOT TESTING";
 
     QQmlApplicationEngine engine;
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     client.setPlayerTurn(1); // demo purposes
 
     engine.addImportPath(":/imports");
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    engine.load(QUrl(QLatin1String("main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 

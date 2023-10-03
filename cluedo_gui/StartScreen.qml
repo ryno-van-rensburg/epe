@@ -184,7 +184,7 @@ Rectangle {
         }
         Timer {
                id: closeTimer
-               interval: 100 //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
+               interval: 3000 //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
                running: false
                onTriggered: {
                  // Close the window when the timer triggers
