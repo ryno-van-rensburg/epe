@@ -141,6 +141,7 @@ void UnitTest::testAddPlayer()
     QVector<CharacterCard*> x;
     QVector<RoomCard*> y;
     QVector<WeaponCard*> z;
+    g->setNumPlayers(4);
     Player* p1 = new Player("Player1",x,y,z,26,0);
     emit sender->AddPlayerSignal(p1);
     QCOMPARE(g->GetPlayers().size(),1);
@@ -196,12 +197,14 @@ void UnitTest::testAvailableMoves()
     QVector<int> moves = g->getAvailableMoves(10,3);
     QVector<int> moves2 = g->getAvailableMoves(31,4);
 
+    std::cout<<"Moves 1: "<<"\n";
     for (int temp : moves)
     {
         std::cout<<temp<<" ";
     }
     std::cout<<std::endl;
 
+    std::cout<<"Moves 2: "<<"\n";
     for (int temp : moves2)
     {
         std::cout<<temp<<" ";
@@ -224,6 +227,7 @@ void UnitTest::testMoveValidation()
     QSignalSpy spy1(g,SIGNAL(UpdateStateSignal(Player*,int)));
     QSignalSpy spy3(g,SIGNAL(SendErrorSignal(QString)));
     QObject::connect(sender,&signalsender::moveRequestSignal,g,&GameServer::MoveRequestedSlot);
+    g->setNumPlayers(4);
     g->AddPlayerSlot(p1);
     g->SetPlayerTurn(p1);
     emit sender->moveRequestSignal(p1,10);
@@ -246,7 +250,15 @@ void UnitTest::testRequest()
     QVector<RoomCard*> y;
     QVector<WeaponCard*> z;
     Player* p1 = new Player("Player1",x,y,z,2,0);
+    Player* p2 = new Player("Player2",x,y,z,12,1);
+    Player* p3 = new Player("Player3",x,y,z,1,0);
+    Player* p4 = new Player("Player4",x,y,z,15,1);
     GameServer* g = new GameServer();
+    g->setNumPlayers(4);
+    g->AddPlayerSlot(p1);
+    g->AddPlayerSlot(p2);
+    g->AddPlayerSlot(p3);
+    g->AddPlayerSlot(p4);
     QSignalSpy spy(g,SIGNAL(GameStateReply(QVector<Player*>, int, int, int, QVector<CharacterCard*>, QVector<WeaponCard*>, QVector<RoomCard*>)));
     QObject::connect(sender,&signalsender::StateRequestSignal,g,&GameServer::StateRequestSlot);
     emit sender->StateRequestSignal();

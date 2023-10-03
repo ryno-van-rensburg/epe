@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_set>
 #include <set>
+#include <iostream>
 
 
 // Constructor for GameServer class. Initializes log file for game events.
@@ -13,7 +14,7 @@ GameServer::GameServer(QObject *parent)
     log = new QFile("game_log.txt");
     if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
-        printf("Log opened succesfully");
+        printf("Log opened succesfully\n");
     }
     else
     {
@@ -517,6 +518,7 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
     int position = playerToMove->GetPosition();
     bool valid = false;
     QVector<int> posPosition = getAvailableMoves(position,currentDice);
+    logEvent(playerToMove->GetUsername()+" is attempting to move from "+c+" to "+d);
     //Compares move to all possible moves based on current position and dice roll
     for (int temp : posPosition)
     {
@@ -531,11 +533,13 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
         emit NotifyPlayerMoveSignal(playerToMove,destination);
         emit UpdateStateSignal(playerToMove,destination);
         logEvent(playerToMove->GetUsername()+" moved from "+c+" to "+d);
+        qDebug("Valid move");
     }
     else
     {
         emit SendErrorSignal("INVALID_MOVE");
         logEvent("Invalid move from "+c+" to "+d);
+        qDebug("Invalid move");
     }
 }
 
@@ -564,70 +568,75 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
 {
     // Your implementation here, e.g., add a new player to the game
     // For example, store the player in a data structure or perform necessary initialization.
-    srand(time(0));
-    players.append(newPlayer);
-    //Log the player being added
-    if (players.size() == 1)
+
+    srand(time(0)+players.size());
+    if (players.size()<numPlayers)
     {
-        logEvent("Player 1 added");
-    }
-    else if (players.size() == 2)
-    {
-        logEvent("Player 2 added");
-    }
-    else if (players.size() == 3)
-    {
-        logEvent("Player 3 added");
-    }
-    else if (players.size() == 4)
-    {
-        logEvent("Player 4 added");
-    }
-    else if (players.size() == 5)
-    {
-        logEvent("Player 5 added");
-    }
-    else if (players.size() == 6)
-    {
-        logEvent("Player 6 added");
-    }
-    //Log the start dice roll for each player
-    startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
-    if (players.size() == 1)
-    {
-        QString d = QString::number(startDice[0]);
-        logEvent("Player 1 start dice is: "+d);
-    }
-    else if (players.size() == 2)
-    {
-        QString d = QString::number(startDice[1]);
-        logEvent("Player 2 start dice is: "+d);
-    }
-    else if (players.size() == 3)
-    {
-        QString d = QString::number(startDice[2]);
-        logEvent("Player 3 start dice is: "+d);
-    }
-    else if (players.size() == 4)
-    {
-        QString d = QString::number(startDice[3]);
-        logEvent("Player 4 start dice is: "+d);
-    }
-    else if (players.size() == 5)
-    {
-        QString d = QString::number(startDice[4]);
-        logEvent("Player 5 start dice is: "+d);
-    }
-    else if (players.size() == 6)
-    {
-        QString d = QString::number(startDice[5]);
-        logEvent("Player 6 start dice is: "+d);
-    }
-    if (players.size() == numPlayers)
-    {
-        emit StartGameSignal();
-        logEvent("Game started");
-        DealCards();
+        players.append(newPlayer);
+        //Log the player being added
+        if (players.size() == 1)
+        {
+            logEvent("Player 1 added");
+        }
+        else if (players.size() == 2)
+        {
+            logEvent("Player 2 added");
+        }
+        else if (players.size() == 3)
+        {
+            logEvent("Player 3 added");
+        }
+        else if (players.size() == 4)
+        {
+            logEvent("Player 4 added");
+        }
+        else if (players.size() == 5)
+        {
+            logEvent("Player 5 added");
+        }
+        else if (players.size() == 6)
+        {
+            logEvent("Player 6 added");
+        }
+        //Log the start dice roll for each player
+        startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
+        if (players.size() == 1)
+        {
+            QString d = QString::number(startDice[0]);
+            logEvent("Player 1 start dice is: "+d);
+        }
+        else if (players.size() == 2)
+        {
+            QString d = QString::number(startDice[1]);
+            logEvent("Player 2 start dice is: "+d);
+        }
+        else if (players.size() == 3)
+        {
+            QString d = QString::number(startDice[2]);
+            logEvent("Player 3 start dice is: "+d);
+        }
+        else if (players.size() == 4)
+        {
+            QString d = QString::number(startDice[3]);
+            logEvent("Player 4 start dice is: "+d);
+        }
+        else if (players.size() == 5)
+        {
+            QString d = QString::number(startDice[4]);
+            logEvent("Player 5 start dice is: "+d);
+        }
+        else if (players.size() == 6)
+        {
+            QString d = QString::number(startDice[5]);
+            logEvent("Player 6 start dice is: "+d);
+        }
+        if (players.size() == numPlayers)
+        {
+            emit StartGameSignal();
+            logEvent("Game started");
+            qDebug("Game started");
+            DealCards();
+        }
     }
 }
 
@@ -645,6 +654,41 @@ void GameServer::StateRequestSlot()
     }
     emit GameStateReply(players,players.size(),currentDice,currentTurn,characFaceUp,weaponFaceUp,roomFaceUp);
     logEvent("Game state request received");
+    qDebug("Players: ");
+    logEvent("Players: ");
+    for (int i=0;i<players.size();i++)
+    {
+        logEvent(players[i]->GetUsername());
+        qDebug()<<players[i]->GetUsername();
+    }
+    qDebug("Number of Players: ");
+    logEvent("Number of Players: ");
+    qDebug()<<players.size();
+    int size = players.size();
+    logEvent(QString::number(size));
+    qDebug("Current dice roll: ");
+    logEvent("Current dice roll: ");
+    qDebug()<<currentDice;
+    int dicePrint = currentDice;
+    logEvent(QString::number(dicePrint));
+    qDebug("Current turn: ");
+    logEvent("Current turn: ");
+    qDebug()<<currentTurn;
+    logEvent(QString::number(currentTurn));
+    qDebug("Face up cards: ");
+    logEvent("Face up cards: ");
+    for (int i=0;i<characFaceUp.size();i++){
+        logEvent(characFaceUp[i]->GetCardName());
+        qDebug()<<characFaceUp[i]->GetCardName();
+    }
+    for (int i=0;i<roomFaceUp.size();i++){
+        logEvent(roomFaceUp[i]->GetCardName());
+        qDebug()<<roomFaceUp[i]->GetCardName();
+    }
+    for (int i=0;i<weaponFaceUp.size();i++){
+        logEvent(weaponFaceUp[i]->GetCardName());
+        qDebug()<<weaponFaceUp[i]->GetCardName();
+    }
 }
 
 
