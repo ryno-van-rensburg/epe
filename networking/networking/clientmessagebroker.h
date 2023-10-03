@@ -35,7 +35,7 @@ signals:
     void errorSignal(ERROR_TYPE err, QString username);
     void moveUpdate(QString username, int position);
     void cardRequestedSignal(QString asked, QVector<QString> suggestion );
-
+    void invalidMove();
 public slots:
     void requestConnection(quint32 address, quint16 port, QString username);
     void makeMove(int position);

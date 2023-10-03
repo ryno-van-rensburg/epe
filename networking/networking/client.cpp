@@ -160,7 +160,7 @@ void Client::handleError(Message &msg)
     for (int i = 0; i < this->ackMessages.size(); i++){
         // find the msg we want
         Message m = this->ackMessages.at(i);
-        int itr_id = extractAckId(m);
+        int itr_id = extractId(m);
         if (itr_id == id){
             // check error type
             QJsonObject obj(msg.getObj());
@@ -173,6 +173,7 @@ void Client::handleError(Message &msg)
             case(ERROR_TYPE::INVALID_MOVE):
                 // TODO request a new move from the GUI with the dice roll in the old message
                 std::cout << "Invalid move" << std::endl;
+                emit this->moveError();
                 break;
 
             case(ERROR_TYPE::NOT_GAME_PARTICIPANT):
@@ -182,6 +183,7 @@ void Client::handleError(Message &msg)
 
             case(ERROR_TYPE::OUT_OF_TURN):
                 // TODO handle this correctly
+                emit this->moveError();
                 std::cout << "Out of turn" << std::endl;
                 break;
 
@@ -202,6 +204,7 @@ void Client::handleError(Message &msg)
                 std::cout << "Invalid weapon name" << std::endl;
                 break;
             };
+            ackMessages.remove(i);
             return;
         }
     }

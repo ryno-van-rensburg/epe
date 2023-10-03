@@ -162,7 +162,7 @@ MESSAGE_TYPE strToMessageType(QString messageType) {
     if (messageType == "REQUEST_CONNECTION") {
         return  MESSAGE_TYPE::REQUEST_CON;
 
-    }else if (messageType == "ACK"){
+    }else if (messageType == "ACK" || messageType == "ACKNOWLEDGE"){
         return  MESSAGE_TYPE::ACK;
 
     }else if (messageType == "MAKE_MOVE") {

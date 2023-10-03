@@ -18,6 +18,7 @@ private:
 public:
     explicit NetworkPlayer(QObject *parent = nullptr);
     explicit NetworkPlayer(QString username, QString person, bool isAi);
+    NetworkPlayer(const NetworkPlayer &other);
     QString getUsername();
     void setUsername(QString username);
     int getPosition();

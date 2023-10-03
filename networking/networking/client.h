@@ -60,6 +60,7 @@ signals: // used to notify clientmessagebroker of new data,
     void playerResult(Message &msg);
     void playerTurn(Message &msg);
     void playerKicked(Message &msg);
+    void moveError();
 
 };
 

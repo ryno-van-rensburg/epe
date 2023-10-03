@@ -81,14 +81,14 @@ ClientConnection::~ClientConnection(){
     }
 }
 void ClientConnection::incrementErrorTally(QString errorType){
-    this->violationCounts[errorType]++;
+    this->violationCounts[errorType] += 1;
     this->checkViolationCounters();
 }
 
 void ClientConnection::checkViolationCounters(){
     QMap<QString, int>::iterator it;
     for (it = this->violationCounts.begin(); it != violationCounts.end(); ++it){
-        if (it.value() > 6) {
+        if (it.value() > 3) {
             QString errorType = it.key();
             // kick player
             emit this->violationsExceeded(this->username, errorType);
@@ -182,27 +182,30 @@ void ClientConnection::sendMessage(Message &msg)
 void ClientConnection::handleIncomingData()
 {
     QByteArray incomingData = this->connection->readAll();
-    if (incomingData.isEmpty()){
-        return;
-    } else {
-        QJsonParseError* errPtr = nullptr;
-        QJsonDocument contents = QJsonDocument::fromJson(incomingData, errPtr);
-        if (!contents.isNull() && contents.isObject()){
-            QJsonObject obj = contents.object();
-            QJsonValue v = obj["Type"];
-            if (v.isString()){
-                Message msg(v.toString(), contents);
-                if (msg.getType() == REQUEST_CON){
-                    this->username = obj["Username"].toString();
-                    this->isPlaying = false;
-                }
-                msg.setSource(this->connection);
-                this->ackValue = obj["ID"].toInt();
-                emit messageReceived(msg);
-                return;
-            }
+
+    QByteArray buffer;
+    QJsonParseError* errPtr = nullptr;
+    for (int i = 0; i < incomingData.size(); i++) {
+    buffer.append(incomingData[i]);
+    QJsonDocument contents = QJsonDocument::fromJson(buffer, errPtr);
+
+    if (!contents.isNull() && contents.isObject()){
+        buffer.clear();
+        QJsonObject obj = contents.object();
+        QJsonValue v = obj["Type"];
+        if (v.isString()){
+        Message msg(v.toString(), contents);
+        if (msg.getType() == REQUEST_CON){
+            this->username = obj["Username"].toString();
+            this->isPlaying = false;
+        }
+        msg.setSource(this->connection);
+        this->ackValue = obj["ID"].toInt();
+        emit messageReceived(msg);
         }
     }
+    }
+    return;
 }
 
 

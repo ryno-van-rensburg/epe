@@ -17,7 +17,7 @@ ClientMessageBroker::ClientMessageBroker(QObject *parent)
     this->client = new Client();
     // todo verification of data
     QObject::connect(this->client, SIGNAL(connectionAccepted(Message&)), this, SLOT(unpackConnectionAccepted(Message&)));
-    QObject::connect(this->client,SIGNAL(gameStateReceived(Message*)), this, SLOT(unpackGameState(Message*)));
+    QObject::connect(this->client,SIGNAL(gameStateReceived(Message&)), this, SLOT(unpackGameState(Message&)));
     QObject::connect(this->client, SIGNAL(suggestionStateUpdate(Message&)), this, SLOT(unpackSuggestionStateUpdate(Message&)));
     QObject::connect(this->client, SIGNAL(connectionDenied(Message&)), this, SLOT(unpackConnectionRejected(Message&)));
     QObject::connect(this->client, SIGNAL(cardRequested(Message&)), this, SLOT(unpackCardRequested(Message&)));
@@ -29,6 +29,7 @@ ClientMessageBroker::ClientMessageBroker(QObject *parent)
     QObject::connect(this->client, SIGNAL(playerTurn(Message&)), this, SLOT(unpackPlayerTurn(Message&)));
     QObject::connect(this->client, SIGNAL(playerResult(Message&)), this, SLOT(unpackPlayerResult(Message&)));
     QObject::connect(this->client, SIGNAL(gameTerminated(Message&)), this, SLOT(unpackGameTerminated(Message&)));
+    QObject::connect(this->client, SIGNAL(moveError()), this, SIGNAL(invalidMove()));
 }
 
 

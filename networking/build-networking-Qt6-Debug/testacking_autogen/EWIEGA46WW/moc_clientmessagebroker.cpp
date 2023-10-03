@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ClientMessageBroker_t {
-    const uint offsetsAndSize[134];
-    char stringdata0[872];
+    const uint offsetsAndSize[136];
+    char stringdata0[884];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_ClientMessageBroker_t, stringdata0) + ofs), len 
@@ -71,32 +71,33 @@ QT_MOC_LITERAL(429, 10), // "moveUpdate"
 QT_MOC_LITERAL(440, 8), // "position"
 QT_MOC_LITERAL(449, 19), // "cardRequestedSignal"
 QT_MOC_LITERAL(469, 10), // "suggestion"
-QT_MOC_LITERAL(480, 17), // "requestConnection"
-QT_MOC_LITERAL(498, 7), // "address"
-QT_MOC_LITERAL(506, 4), // "port"
-QT_MOC_LITERAL(511, 8), // "makeMove"
-QT_MOC_LITERAL(520, 8), // "showCard"
-QT_MOC_LITERAL(529, 14), // "makeAccusation"
-QT_MOC_LITERAL(544, 6), // "weapon"
-QT_MOC_LITERAL(551, 4), // "room"
-QT_MOC_LITERAL(556, 14), // "makeSuggestion"
-QT_MOC_LITERAL(571, 16), // "requestStateSlot"
-QT_MOC_LITERAL(588, 21), // "sendConnectionRequest"
-QT_MOC_LITERAL(610, 15), // "unpackGameState"
-QT_MOC_LITERAL(626, 8), // "Message&"
-QT_MOC_LITERAL(635, 3), // "msg"
-QT_MOC_LITERAL(639, 19), // "unpackCardRequested"
-QT_MOC_LITERAL(659, 10), // "unpackMove"
-QT_MOC_LITERAL(670, 24), // "unpackConnectionAccepted"
-QT_MOC_LITERAL(695, 24), // "unpackConnectionRejected"
-QT_MOC_LITERAL(720, 18), // "unpackPlayerResult"
-QT_MOC_LITERAL(739, 20), // "unpackGameTerminated"
-QT_MOC_LITERAL(760, 15), // "unpackCardShown"
-QT_MOC_LITERAL(776, 16), // "unpackCardsDealt"
-QT_MOC_LITERAL(793, 27), // "unpackSuggestionStateUpdate"
-QT_MOC_LITERAL(821, 16), // "unpackPlayerTurn"
-QT_MOC_LITERAL(838, 10), // "unpackKick"
-QT_MOC_LITERAL(849, 22) // "unpackShowCardToPlayer"
+QT_MOC_LITERAL(480, 11), // "invalidMove"
+QT_MOC_LITERAL(492, 17), // "requestConnection"
+QT_MOC_LITERAL(510, 7), // "address"
+QT_MOC_LITERAL(518, 4), // "port"
+QT_MOC_LITERAL(523, 8), // "makeMove"
+QT_MOC_LITERAL(532, 8), // "showCard"
+QT_MOC_LITERAL(541, 14), // "makeAccusation"
+QT_MOC_LITERAL(556, 6), // "weapon"
+QT_MOC_LITERAL(563, 4), // "room"
+QT_MOC_LITERAL(568, 14), // "makeSuggestion"
+QT_MOC_LITERAL(583, 16), // "requestStateSlot"
+QT_MOC_LITERAL(600, 21), // "sendConnectionRequest"
+QT_MOC_LITERAL(622, 15), // "unpackGameState"
+QT_MOC_LITERAL(638, 8), // "Message&"
+QT_MOC_LITERAL(647, 3), // "msg"
+QT_MOC_LITERAL(651, 19), // "unpackCardRequested"
+QT_MOC_LITERAL(671, 10), // "unpackMove"
+QT_MOC_LITERAL(682, 24), // "unpackConnectionAccepted"
+QT_MOC_LITERAL(707, 24), // "unpackConnectionRejected"
+QT_MOC_LITERAL(732, 18), // "unpackPlayerResult"
+QT_MOC_LITERAL(751, 20), // "unpackGameTerminated"
+QT_MOC_LITERAL(772, 15), // "unpackCardShown"
+QT_MOC_LITERAL(788, 16), // "unpackCardsDealt"
+QT_MOC_LITERAL(805, 27), // "unpackSuggestionStateUpdate"
+QT_MOC_LITERAL(833, 16), // "unpackPlayerTurn"
+QT_MOC_LITERAL(850, 10), // "unpackKick"
+QT_MOC_LITERAL(861, 22) // "unpackShowCardToPlayer"
 
     },
     "ClientMessageBroker\0connectionStarted\0"
@@ -113,9 +114,9 @@ QT_MOC_LITERAL(849, 22) // "unpackShowCardToPlayer"
     "playerResult\0accusation\0errorSignal\0"
     "ERROR_TYPE\0err\0moveUpdate\0position\0"
     "cardRequestedSignal\0suggestion\0"
-    "requestConnection\0address\0port\0makeMove\0"
-    "showCard\0makeAccusation\0weapon\0room\0"
-    "makeSuggestion\0requestStateSlot\0"
+    "invalidMove\0requestConnection\0address\0"
+    "port\0makeMove\0showCard\0makeAccusation\0"
+    "weapon\0room\0makeSuggestion\0requestStateSlot\0"
     "sendConnectionRequest\0unpackGameState\0"
     "Message&\0msg\0unpackCardRequested\0"
     "unpackMove\0unpackConnectionAccepted\0"
@@ -133,53 +134,54 @@ static const uint qt_meta_data_ClientMessageBroker[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      37,   14, // methods
+      38,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      17,       // signalCount
+      18,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  236,    2, 0x06,    1 /* Public */,
-       4,    5,  239,    2, 0x06,    3 /* Public */,
-      10,    4,  250,    2, 0x06,    9 /* Public */,
-      13,    1,  259,    2, 0x06,   14 /* Public */,
-      15,    2,  262,    2, 0x06,   16 /* Public */,
-      17,    2,  267,    2, 0x06,   19 /* Public */,
-      19,    2,  272,    2, 0x06,   22 /* Public */,
-      20,    1,  277,    2, 0x06,   25 /* Public */,
-      21,    3,  280,    2, 0x06,   27 /* Public */,
-      25,    2,  287,    2, 0x06,   31 /* Public */,
-      27,    2,  292,    2, 0x06,   34 /* Public */,
-      28,    0,  297,    2, 0x06,   37 /* Public */,
-      29,    5,  298,    2, 0x06,   38 /* Public */,
-      32,    3,  309,    2, 0x06,   44 /* Public */,
-      34,    2,  316,    2, 0x06,   48 /* Public */,
-      37,    2,  321,    2, 0x06,   51 /* Public */,
-      39,    2,  326,    2, 0x06,   54 /* Public */,
+       1,    1,  242,    2, 0x06,    1 /* Public */,
+       4,    5,  245,    2, 0x06,    3 /* Public */,
+      10,    4,  256,    2, 0x06,    9 /* Public */,
+      13,    1,  265,    2, 0x06,   14 /* Public */,
+      15,    2,  268,    2, 0x06,   16 /* Public */,
+      17,    2,  273,    2, 0x06,   19 /* Public */,
+      19,    2,  278,    2, 0x06,   22 /* Public */,
+      20,    1,  283,    2, 0x06,   25 /* Public */,
+      21,    3,  286,    2, 0x06,   27 /* Public */,
+      25,    2,  293,    2, 0x06,   31 /* Public */,
+      27,    2,  298,    2, 0x06,   34 /* Public */,
+      28,    0,  303,    2, 0x06,   37 /* Public */,
+      29,    5,  304,    2, 0x06,   38 /* Public */,
+      32,    3,  315,    2, 0x06,   44 /* Public */,
+      34,    2,  322,    2, 0x06,   48 /* Public */,
+      37,    2,  327,    2, 0x06,   51 /* Public */,
+      39,    2,  332,    2, 0x06,   54 /* Public */,
+      41,    0,  337,    2, 0x06,   57 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      41,    3,  331,    2, 0x0a,   57 /* Public */,
-      44,    1,  338,    2, 0x0a,   61 /* Public */,
-      45,    1,  341,    2, 0x0a,   63 /* Public */,
-      46,    3,  344,    2, 0x0a,   65 /* Public */,
-      49,    3,  351,    2, 0x0a,   69 /* Public */,
-      50,    0,  358,    2, 0x0a,   73 /* Public */,
-      51,    1,  359,    2, 0x0a,   74 /* Public */,
-      52,    1,  362,    2, 0x08,   76 /* Private */,
-      55,    1,  365,    2, 0x08,   78 /* Private */,
-      56,    1,  368,    2, 0x08,   80 /* Private */,
-      57,    1,  371,    2, 0x08,   82 /* Private */,
-      58,    1,  374,    2, 0x08,   84 /* Private */,
-      59,    1,  377,    2, 0x08,   86 /* Private */,
-      60,    1,  380,    2, 0x08,   88 /* Private */,
-      61,    1,  383,    2, 0x08,   90 /* Private */,
-      62,    1,  386,    2, 0x08,   92 /* Private */,
-      63,    1,  389,    2, 0x08,   94 /* Private */,
-      64,    1,  392,    2, 0x08,   96 /* Private */,
-      65,    1,  395,    2, 0x08,   98 /* Private */,
-      66,    1,  398,    2, 0x08,  100 /* Private */,
+      42,    3,  338,    2, 0x0a,   58 /* Public */,
+      45,    1,  345,    2, 0x0a,   62 /* Public */,
+      46,    1,  348,    2, 0x0a,   64 /* Public */,
+      47,    3,  351,    2, 0x0a,   66 /* Public */,
+      50,    3,  358,    2, 0x0a,   70 /* Public */,
+      51,    0,  365,    2, 0x0a,   74 /* Public */,
+      52,    1,  366,    2, 0x0a,   75 /* Public */,
+      53,    1,  369,    2, 0x08,   77 /* Private */,
+      56,    1,  372,    2, 0x08,   79 /* Private */,
+      57,    1,  375,    2, 0x08,   81 /* Private */,
+      58,    1,  378,    2, 0x08,   83 /* Private */,
+      59,    1,  381,    2, 0x08,   85 /* Private */,
+      60,    1,  384,    2, 0x08,   87 /* Private */,
+      61,    1,  387,    2, 0x08,   89 /* Private */,
+      62,    1,  390,    2, 0x08,   91 /* Private */,
+      63,    1,  393,    2, 0x08,   93 /* Private */,
+      64,    1,  396,    2, 0x08,   95 /* Private */,
+      65,    1,  399,    2, 0x08,   97 /* Private */,
+      66,    1,  402,    2, 0x08,   99 /* Private */,
+      67,    1,  405,    2, 0x08,  101 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -199,28 +201,29 @@ static const uint qt_meta_data_ClientMessageBroker[] = {
     QMetaType::Void, 0x80000000 | 35, QMetaType::QString,   36,    3,
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,   38,
     QMetaType::Void, QMetaType::QString, QMetaType::QStringList,   23,   40,
+    QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::UInt, QMetaType::UShort, QMetaType::QString,   42,   43,    3,
+    QMetaType::Void, QMetaType::UInt, QMetaType::UShort, QMetaType::QString,   43,   44,    3,
     QMetaType::Void, QMetaType::Int,   38,
     QMetaType::Void, QMetaType::QString,   26,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   11,   47,   48,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   11,   47,   48,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   11,   48,   49,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   11,   48,   49,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    3,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
-    QMetaType::Void, 0x80000000 | 53,   54,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
+    QMetaType::Void, 0x80000000 | 54,   55,
 
        0        // eod
 };
@@ -248,26 +251,27 @@ void ClientMessageBroker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 14: _t->errorSignal((*reinterpret_cast< std::add_pointer_t<ERROR_TYPE>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 15: _t->moveUpdate((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 16: _t->cardRequestedSignal((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[2]))); break;
-        case 17: _t->requestConnection((*reinterpret_cast< std::add_pointer_t<quint32>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint16>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 18: _t->makeMove((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 19: _t->showCard((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 20: _t->makeAccusation((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 21: _t->makeSuggestion((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 22: _t->requestStateSlot(); break;
-        case 23: _t->sendConnectionRequest((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 24: _t->unpackGameState((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 25: _t->unpackCardRequested((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 26: _t->unpackMove((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 27: _t->unpackConnectionAccepted((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 28: _t->unpackConnectionRejected((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 29: _t->unpackPlayerResult((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 30: _t->unpackGameTerminated((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 31: _t->unpackCardShown((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 32: _t->unpackCardsDealt((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 33: _t->unpackSuggestionStateUpdate((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 34: _t->unpackPlayerTurn((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 35: _t->unpackKick((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 36: _t->unpackShowCardToPlayer((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 17: _t->invalidMove(); break;
+        case 18: _t->requestConnection((*reinterpret_cast< std::add_pointer_t<quint32>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint16>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 19: _t->makeMove((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 20: _t->showCard((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 21: _t->makeAccusation((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 22: _t->makeSuggestion((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 23: _t->requestStateSlot(); break;
+        case 24: _t->sendConnectionRequest((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 25: _t->unpackGameState((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 26: _t->unpackCardRequested((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 27: _t->unpackMove((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 28: _t->unpackConnectionAccepted((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 29: _t->unpackConnectionRejected((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 30: _t->unpackPlayerResult((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 31: _t->unpackGameTerminated((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 32: _t->unpackCardShown((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 33: _t->unpackCardsDealt((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 34: _t->unpackSuggestionStateUpdate((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 35: _t->unpackPlayerTurn((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 36: _t->unpackKick((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 37: _t->unpackShowCardToPlayer((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -391,6 +395,13 @@ void ClientMessageBroker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
                 return;
             }
         }
+        {
+            using _t = void (ClientMessageBroker::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClientMessageBroker::invalidMove)) {
+                *result = 17;
+                return;
+            }
+        }
     }
 }
 
@@ -401,7 +412,7 @@ const QMetaObject ClientMessageBroker::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_ClientMessageBroker_t
-, QtPrivate::TypeAndForceComplete<ClientMessageBroker, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ERROR_TYPE, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>
+, QtPrivate::TypeAndForceComplete<ClientMessageBroker, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ERROR_TYPE, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<quint32, std::false_type>, QtPrivate::TypeAndForceComplete<quint16, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>
 
 
@@ -429,13 +440,13 @@ int ClientMessageBroker::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 37)
+        if (_id < 38)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 37;
+        _id -= 38;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 37)
+        if (_id < 38)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 37;
+        _id -= 38;
     }
     return _id;
 }
@@ -556,6 +567,12 @@ void ClientMessageBroker::cardRequestedSignal(QString _t1, QVector<QString> _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 16, _a);
+}
+
+// SIGNAL 17
+void ClientMessageBroker::invalidMove()
+{
+    QMetaObject::activate(this, &staticMetaObject, 17, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

@@ -4,6 +4,13 @@ NetworkPlayer::NetworkPlayer(QObject *parent){
     return;
 }
 
+NetworkPlayer::NetworkPlayer(const NetworkPlayer &other){
+    this->username = other.username;
+    this->person = other.person;
+    this->position = other.position;
+    this->myTurn = other.myTurn;
+    this->AI = other.AI;
+}
 
 NetworkPlayer::NetworkPlayer(QString username, QString person, bool isAi) {
     this->username = username;

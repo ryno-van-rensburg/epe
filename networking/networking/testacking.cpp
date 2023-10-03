@@ -20,6 +20,8 @@ private:
     ClientMessageBroker* clientBroker;
     ServerMessageBroker* serverBroker;
     int accepted = 0;
+    int moved = 0;
+    int memdice1, memdice2;
 public slots:
     void acceptJoin(QString handle) {
         serverBroker->acceptPlayer(handle, "Green", 1,1);
@@ -31,13 +33,25 @@ public slots:
         return;
     }
 
-    void acceptMove(QString username , int position) {
-        serverBroker->updateStateSlot(username, position);
+    void acceptMove(NetworkPlayer &player , quint32 position) {
+        serverBroker->updateStateSlot(player.getUsername(), position);
         return;
     }
-
-    void playMove(int dice1, int dice2){
-        clientBroker->makeMove(dice1+dice2);
+    void rejectMove(NetworkPlayer &player, quint32 position) {
+        serverBroker->invalidMove(player.getUsername());
+        return;
+    }
+    void retryMove() {
+        playMove();
+        return;
+    }
+    void playMove(int dice1=-1, int dice2=-1){
+        if (dice1 != -1 && dice2 != -1){
+            memdice1 = dice1;
+            memdice2 = dice2;
+        }
+        clientBroker->makeMove(memdice1+memdice2);
+        moved = 1;
         return;
     }
     //void accusationWinSlot();
@@ -72,8 +86,45 @@ private slots:
         QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
         QObject::connect(this->serverBroker,SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)), this, SLOT(acceptMove(QString,int)));
         QObject::connect(this->clientBroker, SIGNAL(yourTurnSignal(int,int)), this, SLOT(playMove(int,int)));
+
         QSignalSpy diceRollSpy(this->clientBroker, SIGNAL(yourTurnSignal(int,int)));
-        QSignalSpy moverecievedSpy(this->serverBroker, SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)));
+        QSignalSpy moveReceived(this->serverBroker, SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)));
+        serverBroker->listen(6444);
+        quint32 address = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
+        clientBroker->requestConnection(address,6444, "weirdAl");
+        QTest::qWait(1000);
+        NetworkPlayer player;
+        player.setPerson("Green");
+        player.setUsername("weirdAl");
+        serverBroker->notifyPlayerMove(1,1,player);
+        QTest::qWait(10000);
+        QVERIFY(diceRollSpy.isValid());
+        QCOMPARE(diceRollSpy.count(), 1);
+        QVERIFY(moveReceived.isValid());
+        QCOMPARE(moveReceived.count(), 1);
+        QCOMPARE(this->moved, 1);
+        QList<QVariant> arguments = moveReceived.takeFirst();
+        QCOMPARE(arguments.at(1), 2);
+        delete clientBroker;
+        delete serverBroker;
+        return;
+    }
+
+    void testKick(){
+        clientBroker = new ClientMessageBroker();
+        serverBroker = new ServerMessageBroker();
+        QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
+        QObject::connect(this->serverBroker,SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)), this, SLOT(rejectMove(NetworkPlayer&,quint32)));
+        QObject::connect(this->clientBroker, SIGNAL(yourTurnSignal(int,int)), this, SLOT(playMove(int,int)));
+
+        QSignalSpy diceRollSpy(this->clientBroker, SIGNAL(yourTurnSignal(int,int)));
+
+        QSignalSpy moveReceived(this->serverBroker, SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)));
+
+        QSignalSpy invalidMoveSpy(this->clientBroker, SIGNAL(invalidMove()));
+
+        QSignalSpy kickedSpy(this->clientBroker, SIGNAL(playerKicked(QString,QString)));
+        QObject::connect(this->clientBroker, SIGNAL(invalidMove()), this, SLOT(retryMove()));
         serverBroker->listen(6444);
         quint32 address = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
         clientBroker->requestConnection(address,6444, "weirdAl");
@@ -83,16 +134,25 @@ private slots:
         player.setUsername("weirdAl");
         serverBroker->notifyPlayerMove(1,1,player);
         QTest::qWait(1000);
+        QVERIFY(invalidMoveSpy.isValid());
+        QVERIFY(diceRollSpy.isValid());
+        QVERIFY(kickedSpy.isValid());
+        QVERIFY(moveReceived.isValid());
+        QCOMPARE(invalidMoveSpy.count(),4);
+        QCOMPARE(diceRollSpy.count(), 1);
+        QCOMPARE(moveReceived.count(),4);
+        QCOMPARE(kickedSpy.count(), 1);
 
-
-    }
-    void testKick(){
+        delete clientBroker;
+        delete serverBroker;
+        return;
         return;
     }
     void testTerminate(){
         return;
     }
     void testSuggestionStateUpdate(){
+
         return;
     }
     void testAccusationStateUpdate(){

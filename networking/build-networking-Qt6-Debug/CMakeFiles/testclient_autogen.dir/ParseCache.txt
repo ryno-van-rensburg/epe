@@ -2186,7 +2186,7 @@
  mdp:/usr/lib/x86_64-linux-gnu/include/sys/cdefs.h
  mdp:/usr/lib/x86_64-linux-gnu/include/sys/syscall.h
 /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.cpp
-/home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.cpp
+/home/ryno/Documents/practicals/epe/group-6/networking/networking/client.cpp
 /home/ryno/Documents/practicals/epe/group-6/networking/networking/testclient.cpp
  mmc:Q_OBJECT
  mid:testclient.moc
@@ -2644,4 +2644,4 @@
  mdp:/usr/lib/x86_64-linux-gnu/include/gnu/stubs.h
  mdp:/usr/lib/x86_64-linux-gnu/include/sys/cdefs.h
  mdp:/usr/lib/x86_64-linux-gnu/include/sys/syscall.h
-/home/ryno/Documents/practicals/epe/group-6/networking/networking/client.cpp
+/home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.cpp

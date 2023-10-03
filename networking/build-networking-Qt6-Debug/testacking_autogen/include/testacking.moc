@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_testAcking_t {
-    const uint offsetsAndSize[34];
-    char stringdata0[184];
+    const uint offsetsAndSize[40];
+    char stringdata0[218];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_testAcking_t, stringdata0) + ofs), len 
@@ -34,21 +34,25 @@ QT_MOC_LITERAL(22, 0), // ""
 QT_MOC_LITERAL(23, 6), // "handle"
 QT_MOC_LITERAL(30, 10), // "rejectJoin"
 QT_MOC_LITERAL(41, 10), // "acceptMove"
-QT_MOC_LITERAL(52, 8), // "username"
-QT_MOC_LITERAL(61, 8), // "position"
-QT_MOC_LITERAL(70, 8), // "playMove"
-QT_MOC_LITERAL(79, 5), // "dice1"
-QT_MOC_LITERAL(85, 5), // "dice2"
-QT_MOC_LITERAL(91, 8), // "testJoin"
-QT_MOC_LITERAL(100, 8), // "testMove"
-QT_MOC_LITERAL(109, 8), // "testKick"
-QT_MOC_LITERAL(118, 13), // "testTerminate"
-QT_MOC_LITERAL(132, 25), // "testSuggestionStateUpdate"
-QT_MOC_LITERAL(158, 25) // "testAccusationStateUpdate"
+QT_MOC_LITERAL(52, 14), // "NetworkPlayer&"
+QT_MOC_LITERAL(67, 6), // "player"
+QT_MOC_LITERAL(74, 8), // "position"
+QT_MOC_LITERAL(83, 10), // "rejectMove"
+QT_MOC_LITERAL(94, 9), // "retryMove"
+QT_MOC_LITERAL(104, 8), // "playMove"
+QT_MOC_LITERAL(113, 5), // "dice1"
+QT_MOC_LITERAL(119, 5), // "dice2"
+QT_MOC_LITERAL(125, 8), // "testJoin"
+QT_MOC_LITERAL(134, 8), // "testMove"
+QT_MOC_LITERAL(143, 8), // "testKick"
+QT_MOC_LITERAL(152, 13), // "testTerminate"
+QT_MOC_LITERAL(166, 25), // "testSuggestionStateUpdate"
+QT_MOC_LITERAL(192, 25) // "testAccusationStateUpdate"
 
     },
     "testAcking\0acceptJoin\0\0handle\0rejectJoin\0"
-    "acceptMove\0username\0position\0playMove\0"
+    "acceptMove\0NetworkPlayer&\0player\0"
+    "position\0rejectMove\0retryMove\0playMove\0"
     "dice1\0dice2\0testJoin\0testMove\0testKick\0"
     "testTerminate\0testSuggestionStateUpdate\0"
     "testAccusationStateUpdate"
@@ -61,7 +65,7 @@ static const uint qt_meta_data_testAcking[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,22 +73,30 @@ static const uint qt_meta_data_testAcking[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   74,    2, 0x0a,    1 /* Public */,
-       4,    1,   77,    2, 0x0a,    3 /* Public */,
-       5,    2,   80,    2, 0x0a,    5 /* Public */,
-       8,    2,   85,    2, 0x0a,    8 /* Public */,
-      11,    0,   90,    2, 0x08,   11 /* Private */,
-      12,    0,   91,    2, 0x08,   12 /* Private */,
-      13,    0,   92,    2, 0x08,   13 /* Private */,
-      14,    0,   93,    2, 0x08,   14 /* Private */,
-      15,    0,   94,    2, 0x08,   15 /* Private */,
-      16,    0,   95,    2, 0x08,   16 /* Private */,
+       1,    1,   98,    2, 0x0a,    1 /* Public */,
+       4,    1,  101,    2, 0x0a,    3 /* Public */,
+       5,    2,  104,    2, 0x0a,    5 /* Public */,
+       9,    2,  109,    2, 0x0a,    8 /* Public */,
+      10,    0,  114,    2, 0x0a,   11 /* Public */,
+      11,    2,  115,    2, 0x0a,   12 /* Public */,
+      11,    1,  120,    2, 0x2a,   15 /* Public | MethodCloned */,
+      11,    0,  123,    2, 0x2a,   17 /* Public | MethodCloned */,
+      14,    0,  124,    2, 0x08,   18 /* Private */,
+      15,    0,  125,    2, 0x08,   19 /* Private */,
+      16,    0,  126,    2, 0x08,   20 /* Private */,
+      17,    0,  127,    2, 0x08,   21 /* Private */,
+      18,    0,  128,    2, 0x08,   22 /* Private */,
+      19,    0,  129,    2, 0x08,   23 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
-    QMetaType::Void, QMetaType::QString, QMetaType::Int,    6,    7,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,    9,   10,
+    QMetaType::Void, 0x80000000 | 6, QMetaType::UInt,    7,    8,
+    QMetaType::Void, 0x80000000 | 6, QMetaType::UInt,    7,    8,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   12,   13,
+    QMetaType::Void, QMetaType::Int,   12,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -103,14 +115,18 @@ void testAcking::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->acceptJoin((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 1: _t->rejectJoin((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 2: _t->acceptMove((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 3: _t->playMove((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 4: _t->testJoin(); break;
-        case 5: _t->testMove(); break;
-        case 6: _t->testKick(); break;
-        case 7: _t->testTerminate(); break;
-        case 8: _t->testSuggestionStateUpdate(); break;
-        case 9: _t->testAccusationStateUpdate(); break;
+        case 2: _t->acceptMove((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint32>>(_a[2]))); break;
+        case 3: _t->rejectMove((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint32>>(_a[2]))); break;
+        case 4: _t->retryMove(); break;
+        case 5: _t->playMove((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 6: _t->playMove((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 7: _t->playMove(); break;
+        case 8: _t->testJoin(); break;
+        case 9: _t->testMove(); break;
+        case 10: _t->testKick(); break;
+        case 11: _t->testTerminate(); break;
+        case 12: _t->testSuggestionStateUpdate(); break;
+        case 13: _t->testAccusationStateUpdate(); break;
         default: ;
         }
     }
@@ -124,7 +140,7 @@ const QMetaObject testAcking::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_testAcking_t
 , QtPrivate::TypeAndForceComplete<testAcking, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<NetworkPlayer &, std::false_type>, QtPrivate::TypeAndForceComplete<quint32, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<NetworkPlayer &, std::false_type>, QtPrivate::TypeAndForceComplete<quint32, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -151,13 +167,13 @@ int testAcking::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 14)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 14;
     }
     return _id;
 }
