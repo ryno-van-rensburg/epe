@@ -22,6 +22,86 @@ Message::Message(MESSAGE_TYPE type, QByteArray &arr)
     }
 }
 
+Message::Message(MESSAGE_TYPE type, QJsonObject obj)
+{
+    // convert QByteArray to a string, strip whitespace
+
+    this->type = type;
+    this->source = nullptr;
+    this->status = MESSAGE_STATUS::MESSAGE_UNACKED;
+    this->messageContents = QJsonDocument(obj);
+}
+
+bool shouldMessageBeAcked(MESSAGE_TYPE type) {
+    switch (type) {
+        case CONNECTION_DENIED:
+            return true;
+            break;
+        case REQUEST_CON:
+            return true;
+            break;
+        case ACK:
+            return  false;
+            break;
+        case MAKE_MOVE:
+            return true;
+            break;
+        case SHOW_CARD:
+            return true;
+            break;
+        case MAKE_SUGGESTION:
+            return true;
+            break;
+        case MAKE_ACC:
+            return true;
+            break;
+        case	REQ_GAME_STATE:
+            return false;
+            break;
+        case    GAME_STATE:
+            return false;
+            break;
+        case    DICE_ROLL:
+            return true;
+            break;
+        case    PLAYER_ACCEPTED:
+            return false;
+            break;
+        case    GAME_STATE_UPDATE:
+            return true;
+            break;
+        case    SUGGESTION_STATE_UPDATE:
+            return false;
+            break;
+        case    PLAYER_RESULT:
+            return false;
+            break;
+        case    PLAYER_KICKED:
+            return false;
+            break;
+        case    CARD_SHOWN:
+            return true;
+            break;
+        case    GAME_TERMINATION:
+            return false;
+            break;
+        case    DEAL_CARDS:
+            return true;
+            break;
+        case    REQUEST_CARD:
+            return true;
+            break;
+        case    GAME_STATE_REPLY:
+            return true;
+            break;
+        case    ERROR:
+           return false;
+            break;
+
+    };
+    return false;
+}
+
 bool isWeaponValid(QString weapon){
     QVector<QString> weapons = {
         "Candlestick", "Dagger", "Lead Pipe", "Pistol", "Rope", "Wrench"
@@ -63,7 +143,7 @@ bool isRoomValid(QString room){
         "Living Room"
     } ;
     for (auto i =0 ; i < rooms.size(); i++){
-        if (rooms.at(i) == person){
+        if (rooms.at(i) == room){
             return true;
         }
     }
@@ -139,6 +219,27 @@ MESSAGE_TYPE strToMessageType(QString messageType) {
         return  MESSAGE_TYPE::ERROR;
     }
 }
+
+ERROR_TYPE strtoError(QString error) {
+    if (error == "CONNECTION_DENIED") {
+        return ERR_CONNECTION_DENIED;
+    } else if (error == "INVALID_MOVE") {
+        return INVALID_MOVE;
+    } else if (error == "OUT_OF_TURN") {
+        return OUT_OF_TURN;
+    } else if (error == "NOT_GAME_PARTICIPANT") {
+        return NOT_GAME_PARTICIPANT;
+    } else if (error == "INVALID_MESSAGE_FORMAT") {
+        return INVALID_MESSAGE_FORMAT;
+    } else if (error == "INVALID_PERSON_NAME") {
+        return INVALID_PERSON_NAME;
+    } else if (error == "INVALID_WEAPON_NAME") {
+        return INVALID_WEAPON_NAME;
+    } else {
+        return INVALID_ROOM_NAME;
+    }
+}
+
 /**
  * @brief Constructs a Message object from a message type and QJsonDocument.
  *
@@ -164,7 +265,7 @@ Message::Message(QString messageType, QJsonDocument contents)
  * @param messageType The message type.
  * @param contents The QJsonObject containing message contents.
  */
-Message::Message(QString messageType, QJsonObject contents){
+Message::Message(QString messageType, QJsonObject &contents){
     this->type = strToMessageType(messageType);
     this->source = nullptr;
     this->status = MESSAGE_STATUS::MESSAGE_UNACKED;

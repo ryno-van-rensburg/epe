@@ -3,6 +3,7 @@
   /app/include/QtCore/QJsonDocument \
   /app/include/QtCore/QJsonObject \
   /app/include/QtCore/QObject \
+  /app/include/QtCore/QString \
   /app/include/QtCore/QVector \
   /app/include/QtCore/qalgorithms.h \
   /app/include/QtCore/qanystringview.h \
@@ -99,8 +100,8 @@
   /app/include/QtNetwork/qtnetwork-config.h \
   /app/include/QtNetwork/qtnetworkexports.h \
   /app/include/QtNetwork/qtnetworkglobal.h \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \

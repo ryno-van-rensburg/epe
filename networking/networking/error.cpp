@@ -2,7 +2,7 @@
 
 ERROR_TYPE strtoError(QString error) {
     if (error == "CONNECTION_DENIED") {
-        return CONNECTION_DENIED;
+        return ERR_CONNECTION_DENIED;
     } else if (error == "INVALID_MOVE") {
         return INVALID_MOVE;
     } else if (error == "OUT_OF_TURN") {

@@ -199,6 +199,7 @@ void ClientMessageBroker::requestStateSlot()
 /**
  * @brief Unpacks and processes the received game state message.
  *
+ this->isPlaying = false
  * This function unpacks and processes the game state information received
  * from the server in the form of a `Message`. It extracts relevant data
  * such as the number of players, player information, dice roll, current
@@ -215,7 +216,7 @@ void ClientMessageBroker::unpackGameState(Message &msg) {
     int currentTurn = obj["Current_Turn"].toInt();
     QJsonArray faceupCards = obj["Face_Up_Cards"].toArray();
     // TODO ack this message
-    delete msg;
+    client->ack(msg);
     emit this->gameStateSignal(numPlayers,players,dice,currentTurn,faceupCards);
 }
 
@@ -232,13 +233,13 @@ void ClientMessageBroker::unpackPlayerTurn(Message &msg){
 }
 
 void ClientMessageBroker::unpackCardsDealt(Message &msg){
-    QJsonObject obj = msg->getObj();
+    QJsonObject obj = msg.getObj();
     int numberOfCards = obj["Number_Of_Cards"].toInt();
     QVector<QString> cards;
     QJsonObject cardsObject = obj["Cards"].toObject();
     for (int i = 0 ; i < numberOfCards; i++) {
         QString key = "Card" + QString::number(i);
-        cards.append(cardsObject[key]);
+        cards.append(cardsObject[key].toString());
     }
 
     client->ack(msg);
@@ -247,11 +248,11 @@ void ClientMessageBroker::unpackCardsDealt(Message &msg){
 }
 
 void ClientMessageBroker::unpackCardRequested(Message &msg){
-    QJsonObject obj = msg->getObj();
+    QJsonObject obj = msg.getObj();
     QString askedCard = obj["Asked_Card"].toString();
     QJsonObject suggestionObj = obj["Suggestion"].toObject();
     QString weapon = suggestionObj["Weapon"].toString();
-    QString room = suggetionObj["Room"].toString();
+    QString room = suggestionObj["Room"].toString();
     QString person = suggestionObj["Person"].toString();
     QVector<QString> suggestion = {person, weapon, room};
     client->ack(msg);
@@ -306,6 +307,7 @@ void ClientMessageBroker::unpackPlayerResult(Message &msg)
 {
     QVector<QString> accusation;
     QJsonObject root = msg.getObj();
+    bool hasWon = false;
     QJsonObject accObj = root["Accusation"].toObject();
     QString username = root["Username"].toString();
     accusation.append(accObj["Person"].toString()) ;
@@ -313,7 +315,7 @@ void ClientMessageBroker::unpackPlayerResult(Message &msg)
     accusation.append(accObj["Room"].toString());
     int win = root["Win"].toInt();
     if (win == 1){
-        bool hasWon = true;
+        hasWon = true;
     } else {
         hasWon = false;
     }

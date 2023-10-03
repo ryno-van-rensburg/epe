@@ -121,14 +121,6 @@ build CMakeFiles/networking.dir/player.cpp.o: CXX_COMPILER__networking_Debug /ho
   OBJECT_DIR = CMakeFiles/networking.dir
   OBJECT_FILE_DIR = CMakeFiles/networking.dir
 
-build CMakeFiles/networking.dir/error.cpp.o: CXX_COMPILER__networking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.cpp || cmake_object_order_depends_target_networking
-  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
-  DEP_FILE = CMakeFiles/networking.dir/error.cpp.o.d
-  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
-  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
-  OBJECT_DIR = CMakeFiles/networking.dir
-  OBJECT_FILE_DIR = CMakeFiles/networking.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target networking
@@ -137,7 +129,7 @@ build CMakeFiles/networking.dir/error.cpp.o: CXX_COMPILER__networking_Debug /hom
 #############################################
 # Link the executable networking
 
-build networking: CXX_EXECUTABLE_LINKER__networking_Debug CMakeFiles/networking.dir/networking_autogen/mocs_compilation.cpp.o CMakeFiles/networking.dir/main.cpp.o CMakeFiles/networking.dir/client.cpp.o CMakeFiles/networking.dir/message.cpp.o CMakeFiles/networking.dir/clientmessagebroker.cpp.o CMakeFiles/networking.dir/clientconnection.cpp.o CMakeFiles/networking.dir/serversession.cpp.o CMakeFiles/networking.dir/servermessagebroker.cpp.o CMakeFiles/networking.dir/player.cpp.o CMakeFiles/networking.dir/error.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || networking_autogen networking_autogen_timestamp_deps
+build networking: CXX_EXECUTABLE_LINKER__networking_Debug CMakeFiles/networking.dir/networking_autogen/mocs_compilation.cpp.o CMakeFiles/networking.dir/main.cpp.o CMakeFiles/networking.dir/client.cpp.o CMakeFiles/networking.dir/message.cpp.o CMakeFiles/networking.dir/clientmessagebroker.cpp.o CMakeFiles/networking.dir/clientconnection.cpp.o CMakeFiles/networking.dir/serversession.cpp.o CMakeFiles/networking.dir/servermessagebroker.cpp.o CMakeFiles/networking.dir/player.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || networking_autogen networking_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -Wl,-rpath,/app/lib:  /app/lib/libQt6Network.so.6.3.1  /app/lib/libQt6Test.so.6.3.1  /app/lib/libQt6Core.so.6.3.1  -pthread
   OBJECT_DIR = CMakeFiles/networking.dir
@@ -203,17 +195,17 @@ build CMakeFiles/testclient.dir/serversession.cpp.o: CXX_COMPILER__testclient_De
   OBJECT_DIR = CMakeFiles/testclient.dir
   OBJECT_FILE_DIR = CMakeFiles/testclient.dir
 
-build CMakeFiles/testclient.dir/error.cpp.o: CXX_COMPILER__testclient_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.cpp || cmake_object_order_depends_target_testclient
+build CMakeFiles/testclient.dir/testclient.cpp.o: CXX_COMPILER__testclient_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/testclient.cpp || cmake_object_order_depends_target_testclient
   DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
-  DEP_FILE = CMakeFiles/testclient.dir/error.cpp.o.d
+  DEP_FILE = CMakeFiles/testclient.dir/testclient.cpp.o.d
   FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
   INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
   OBJECT_DIR = CMakeFiles/testclient.dir
   OBJECT_FILE_DIR = CMakeFiles/testclient.dir
 
-build CMakeFiles/testclient.dir/testclient.cpp.o: CXX_COMPILER__testclient_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/testclient.cpp || cmake_object_order_depends_target_testclient
+build CMakeFiles/testclient.dir/player.cpp.o: CXX_COMPILER__testclient_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.cpp || cmake_object_order_depends_target_testclient
   DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
-  DEP_FILE = CMakeFiles/testclient.dir/testclient.cpp.o.d
+  DEP_FILE = CMakeFiles/testclient.dir/player.cpp.o.d
   FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
   INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testclient_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
   OBJECT_DIR = CMakeFiles/testclient.dir
@@ -227,7 +219,7 @@ build CMakeFiles/testclient.dir/testclient.cpp.o: CXX_COMPILER__testclient_Debug
 #############################################
 # Link the executable testclient
 
-build testclient: CXX_EXECUTABLE_LINKER__testclient_Debug CMakeFiles/testclient.dir/testclient_autogen/mocs_compilation.cpp.o CMakeFiles/testclient.dir/client.cpp.o CMakeFiles/testclient.dir/message.cpp.o CMakeFiles/testclient.dir/clientmessagebroker.cpp.o CMakeFiles/testclient.dir/clientconnection.cpp.o CMakeFiles/testclient.dir/serversession.cpp.o CMakeFiles/testclient.dir/error.cpp.o CMakeFiles/testclient.dir/testclient.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || testclient_autogen testclient_autogen_timestamp_deps
+build testclient: CXX_EXECUTABLE_LINKER__testclient_Debug CMakeFiles/testclient.dir/testclient_autogen/mocs_compilation.cpp.o CMakeFiles/testclient.dir/client.cpp.o CMakeFiles/testclient.dir/message.cpp.o CMakeFiles/testclient.dir/clientmessagebroker.cpp.o CMakeFiles/testclient.dir/clientconnection.cpp.o CMakeFiles/testclient.dir/serversession.cpp.o CMakeFiles/testclient.dir/testclient.cpp.o CMakeFiles/testclient.dir/player.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || testclient_autogen testclient_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -Wl,-rpath,/app/lib  /app/lib/libQt6Network.so.6.3.1  /app/lib/libQt6Test.so.6.3.1  /app/lib/libQt6Core.so.6.3.1  -pthread
   OBJECT_DIR = CMakeFiles/testclient.dir
@@ -293,14 +285,6 @@ build CMakeFiles/testserver.dir/serversession.cpp.o: CXX_COMPILER__testserver_De
   OBJECT_DIR = CMakeFiles/testserver.dir
   OBJECT_FILE_DIR = CMakeFiles/testserver.dir
 
-build CMakeFiles/testserver.dir/error.cpp.o: CXX_COMPILER__testserver_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.cpp || cmake_object_order_depends_target_testserver
-  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
-  DEP_FILE = CMakeFiles/testserver.dir/error.cpp.o.d
-  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
-  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
-  OBJECT_DIR = CMakeFiles/testserver.dir
-  OBJECT_FILE_DIR = CMakeFiles/testserver.dir
-
 build CMakeFiles/testserver.dir/servermessagebroker.cpp.o: CXX_COMPILER__testserver_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.cpp || cmake_object_order_depends_target_testserver
   DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
   DEP_FILE = CMakeFiles/testserver.dir/servermessagebroker.cpp.o.d
@@ -317,6 +301,14 @@ build CMakeFiles/testserver.dir/testServerSession.cpp.o: CXX_COMPILER__testserve
   OBJECT_DIR = CMakeFiles/testserver.dir
   OBJECT_FILE_DIR = CMakeFiles/testserver.dir
 
+build CMakeFiles/testserver.dir/player.cpp.o: CXX_COMPILER__testserver_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.cpp || cmake_object_order_depends_target_testserver
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testserver.dir/player.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/testserver.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target testserver
@@ -325,7 +317,7 @@ build CMakeFiles/testserver.dir/testServerSession.cpp.o: CXX_COMPILER__testserve
 #############################################
 # Link the executable testserver
 
-build testserver: CXX_EXECUTABLE_LINKER__testserver_Debug CMakeFiles/testserver.dir/testserver_autogen/mocs_compilation.cpp.o CMakeFiles/testserver.dir/client.cpp.o CMakeFiles/testserver.dir/message.cpp.o CMakeFiles/testserver.dir/clientmessagebroker.cpp.o CMakeFiles/testserver.dir/clientconnection.cpp.o CMakeFiles/testserver.dir/serversession.cpp.o CMakeFiles/testserver.dir/error.cpp.o CMakeFiles/testserver.dir/servermessagebroker.cpp.o CMakeFiles/testserver.dir/testServerSession.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || testserver_autogen testserver_autogen_timestamp_deps
+build testserver: CXX_EXECUTABLE_LINKER__testserver_Debug CMakeFiles/testserver.dir/testserver_autogen/mocs_compilation.cpp.o CMakeFiles/testserver.dir/client.cpp.o CMakeFiles/testserver.dir/message.cpp.o CMakeFiles/testserver.dir/clientmessagebroker.cpp.o CMakeFiles/testserver.dir/clientconnection.cpp.o CMakeFiles/testserver.dir/serversession.cpp.o CMakeFiles/testserver.dir/servermessagebroker.cpp.o CMakeFiles/testserver.dir/testServerSession.cpp.o CMakeFiles/testserver.dir/player.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || testserver_autogen testserver_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -Wl,-rpath,/app/lib  /app/lib/libQt6Network.so.6.3.1  /app/lib/libQt6Test.so.6.3.1  /app/lib/libQt6Core.so.6.3.1  -pthread
   OBJECT_DIR = CMakeFiles/testserver.dir
@@ -333,6 +325,104 @@ build testserver: CXX_EXECUTABLE_LINKER__testserver_Debug CMakeFiles/testserver.
   PRE_LINK = :
   TARGET_FILE = testserver
   TARGET_PDB = testserver.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target testacking
+
+
+#############################################
+# Order-only phony target for testacking
+
+build cmake_object_order_depends_target_testacking: phony || testacking_autogen testacking_autogen/mocs_compilation.cpp testacking_autogen/timestamp testacking_autogen_timestamp_deps
+
+build CMakeFiles/testacking.dir/testacking_autogen/mocs_compilation.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/testacking_autogen/mocs_compilation.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir/testacking_autogen
+
+build CMakeFiles/testacking.dir/client.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/client.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/client.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+build CMakeFiles/testacking.dir/message.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/message.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+build CMakeFiles/testacking.dir/clientmessagebroker.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/clientmessagebroker.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+build CMakeFiles/testacking.dir/clientconnection.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/clientconnection.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+build CMakeFiles/testacking.dir/serversession.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/serversession.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+build CMakeFiles/testacking.dir/servermessagebroker.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/servermessagebroker.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+build CMakeFiles/testacking.dir/testacking.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/testacking.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/testacking.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+build CMakeFiles/testacking.dir/player.cpp.o: CXX_COMPILER__testacking_Debug /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.cpp || cmake_object_order_depends_target_testacking
+  DEFINES = -DQT_CORE_LIB -DQT_NETWORK_LIB -DQT_TESTCASE_BUILDDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug\" -DQT_TESTCASE_SOURCEDIR=\"/home/ryno/Documents/practicals/epe/group-6/networking/networking\" -DQT_TESTLIB_LIB
+  DEP_FILE = CMakeFiles/testacking.dir/player.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fPIC -pthread -std=gnu++17
+  INCLUDES = -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug -I/home/ryno/Documents/practicals/epe/group-6/networking/networking -I/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/include -isystem /app/include/QtCore -isystem /app/include -isystem /app/mkspecs/linux-g++ -isystem /app/include/QtNetwork -isystem /app/include/QtTest
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  OBJECT_FILE_DIR = CMakeFiles/testacking.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target testacking
+
+
+#############################################
+# Link the executable testacking
+
+build testacking: CXX_EXECUTABLE_LINKER__testacking_Debug CMakeFiles/testacking.dir/testacking_autogen/mocs_compilation.cpp.o CMakeFiles/testacking.dir/client.cpp.o CMakeFiles/testacking.dir/message.cpp.o CMakeFiles/testacking.dir/clientmessagebroker.cpp.o CMakeFiles/testacking.dir/clientconnection.cpp.o CMakeFiles/testacking.dir/serversession.cpp.o CMakeFiles/testacking.dir/servermessagebroker.cpp.o CMakeFiles/testacking.dir/testacking.cpp.o CMakeFiles/testacking.dir/player.cpp.o | /app/lib/libQt6Network.so.6.3.1 /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 || testacking_autogen testacking_autogen_timestamp_deps
+  FLAGS = -DQT_QML_DEBUG -g
+  LINK_LIBRARIES = -Wl,-rpath,/app/lib  /app/lib/libQt6Network.so.6.3.1  /app/lib/libQt6Test.so.6.3.1  /app/lib/libQt6Core.so.6.3.1  -pthread
+  OBJECT_DIR = CMakeFiles/testacking.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = testacking
+  TARGET_PDB = testacking.dbg
 
 
 #############################################
@@ -450,6 +540,18 @@ build testserver_autogen: phony CMakeFiles/testserver_autogen testserver_autogen
 
 
 #############################################
+# Utility command for testacking_autogen_timestamp_deps
+
+build testacking_autogen_timestamp_deps: phony CMakeFiles/testacking_autogen_timestamp_deps
+
+
+#############################################
+# Utility command for testacking_autogen
+
+build testacking_autogen: phony CMakeFiles/testacking_autogen testacking_autogen/timestamp testacking_autogen/mocs_compilation.cpp testacking_autogen_timestamp_deps
+
+
+#############################################
 # Custom command for networking_autogen/timestamp
 
 build networking_autogen/timestamp networking_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}networking_autogen/timestamp ${cmake_ninja_workdir}networking_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /app/./libexec/moc || networking_autogen_timestamp_deps
@@ -476,6 +578,16 @@ build testserver_autogen/timestamp testserver_autogen/mocs_compilation.cpp | ${c
   COMMAND = cd /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug && /usr/bin/cmake -E cmake_autogen /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/testserver_autogen.dir/AutogenInfo.json Debug && /usr/bin/cmake -E touch /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/timestamp && /usr/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /home/ryno/Documents/practicals/epe/group-6/networking/networking /home/ryno/Documents/practicals/epe/group-6/networking/networking /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/deps /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/d/17a49305d0c69e4f541702b20b3a5e2600975fd6100dced48aaef3edd566c44a.d
   DESC = Automatic MOC and UIC for target testserver
   depfile = /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/d/17a49305d0c69e4f541702b20b3a5e2600975fd6100dced48aaef3edd566c44a.d
+  restat = 1
+
+
+#############################################
+# Custom command for testacking_autogen/timestamp
+
+build testacking_autogen/timestamp testacking_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}testacking_autogen/timestamp ${cmake_ninja_workdir}testacking_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /app/./libexec/moc || testacking_autogen_timestamp_deps
+  COMMAND = cd /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug && /usr/bin/cmake -E cmake_autogen /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/testacking_autogen.dir/AutogenInfo.json Debug && /usr/bin/cmake -E touch /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/timestamp && /usr/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /home/ryno/Documents/practicals/epe/group-6/networking/networking /home/ryno/Documents/practicals/epe/group-6/networking/networking /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/deps /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/d/53d9549062e62159631e29bb4458a9b46acf2b943455d732f85bb2d30ca41b26.d
+  DESC = Automatic MOC and UIC for target testacking
+  depfile = /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/d/53d9549062e62159631e29bb4458a9b46acf2b943455d732f85bb2d30ca41b26.d
   restat = 1
 
 
@@ -514,6 +626,18 @@ build CMakeFiles/testserver_autogen_timestamp_deps | ${cmake_ninja_workdir}CMake
 
 build CMakeFiles/testserver_autogen | ${cmake_ninja_workdir}CMakeFiles/testserver_autogen: phony testserver_autogen/timestamp || testserver_autogen_timestamp_deps
 
+
+#############################################
+# Phony custom command for CMakeFiles/testacking_autogen_timestamp_deps
+
+build CMakeFiles/testacking_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/testacking_autogen_timestamp_deps: phony /app/./libexec/moc /app/lib/libQt6Test.so.6.3.1 /app/lib/libQt6Core.so.6.3.1 /app/lib/libQt6Network.so.6.3.1
+
+
+#############################################
+# Phony custom command for CMakeFiles/testacking_autogen
+
+build CMakeFiles/testacking_autogen | ${cmake_ninja_workdir}CMakeFiles/testacking_autogen: phony testacking_autogen/timestamp || testacking_autogen_timestamp_deps
+
 # =============================================================================
 # Target aliases.
 
@@ -525,7 +649,7 @@ build CMakeFiles/testserver_autogen | ${cmake_ninja_workdir}CMakeFiles/testserve
 #############################################
 # Folder: /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug
 
-build all: phony networking testclient testserver
+build all: phony networking testclient testserver testacking
 
 # =============================================================================
 # Built-in targets

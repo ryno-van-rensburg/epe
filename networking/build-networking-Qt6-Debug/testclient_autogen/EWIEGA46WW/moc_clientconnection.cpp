@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ClientConnection_t {
     const uint offsetsAndSize[26];
-    char stringdata0[138];
+    char stringdata0[142];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_ClientConnection_t, stringdata0) + ofs), len 
@@ -32,22 +32,22 @@ static const qt_meta_stringdata_ClientConnection_t qt_meta_stringdata_ClientConn
 QT_MOC_LITERAL(0, 16), // "ClientConnection"
 QT_MOC_LITERAL(17, 18), // "violationsExceeded"
 QT_MOC_LITERAL(36, 0), // ""
-QT_MOC_LITERAL(37, 12), // "MESSAGE_TYPE"
-QT_MOC_LITERAL(50, 4), // "type"
-QT_MOC_LITERAL(55, 12), // "errorMessage"
-QT_MOC_LITERAL(68, 7), // "timeOut"
-QT_MOC_LITERAL(76, 8), // "userName"
-QT_MOC_LITERAL(85, 11), // "messageSent"
-QT_MOC_LITERAL(97, 8), // "Message&"
-QT_MOC_LITERAL(106, 3), // "msg"
-QT_MOC_LITERAL(110, 11), // "sendMessage"
-QT_MOC_LITERAL(122, 15) // "messageReceived"
+QT_MOC_LITERAL(37, 8), // "username"
+QT_MOC_LITERAL(46, 6), // "reason"
+QT_MOC_LITERAL(53, 7), // "timeOut"
+QT_MOC_LITERAL(61, 8), // "userName"
+QT_MOC_LITERAL(70, 15), // "messageReceived"
+QT_MOC_LITERAL(86, 8), // "Message&"
+QT_MOC_LITERAL(95, 3), // "msg"
+QT_MOC_LITERAL(99, 11), // "messageSent"
+QT_MOC_LITERAL(111, 11), // "sendMessage"
+QT_MOC_LITERAL(123, 18) // "handleIncomingData"
 
     },
     "ClientConnection\0violationsExceeded\0"
-    "\0MESSAGE_TYPE\0type\0errorMessage\0timeOut\0"
-    "userName\0messageSent\0Message&\0msg\0"
-    "sendMessage\0messageReceived"
+    "\0username\0reason\0timeOut\0userName\0"
+    "messageReceived\0Message&\0msg\0messageSent\0"
+    "sendMessage\0handleIncomingData"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,29 +57,31 @@ static const uint qt_meta_data_ClientConnection[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   44,    2, 0x06,    1 /* Public */,
-       6,    1,   49,    2, 0x06,    4 /* Public */,
-       8,    1,   52,    2, 0x06,    6 /* Public */,
+       1,    2,   50,    2, 0x06,    1 /* Public */,
+       5,    1,   55,    2, 0x06,    4 /* Public */,
+       7,    1,   58,    2, 0x06,    6 /* Public */,
+      10,    1,   61,    2, 0x06,    8 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      11,    1,   55,    2, 0x0a,    8 /* Public */,
-      12,    0,   58,    2, 0x0a,   10 /* Public */,
+      11,    1,   64,    2, 0x0a,   10 /* Public */,
+      12,    0,   67,    2, 0x0a,   12 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3, QMetaType::QString,    4,    5,
-    QMetaType::Void, QMetaType::QString,    7,
-    QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
+    QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, 0x80000000 | 8,    9,
+    QMetaType::Void, 0x80000000 | 8,    9,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
 
        0        // eod
@@ -91,17 +93,18 @@ void ClientConnection::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         auto *_t = static_cast<ClientConnection *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->violationsExceeded((*reinterpret_cast< std::add_pointer_t<MESSAGE_TYPE>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 0: _t->violationsExceeded((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 1: _t->timeOut((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 2: _t->messageSent((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 3: _t->sendMessage((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
-        case 4: _t->messageReceived(); break;
+        case 2: _t->messageReceived((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 3: _t->messageSent((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 4: _t->sendMessage((*reinterpret_cast< std::add_pointer_t<Message&>>(_a[1]))); break;
+        case 5: _t->handleIncomingData(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (ClientConnection::*)(MESSAGE_TYPE , QString );
+            using _t = void (ClientConnection::*)(QString , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClientConnection::violationsExceeded)) {
                 *result = 0;
                 return;
@@ -116,8 +119,15 @@ void ClientConnection::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         }
         {
             using _t = void (ClientConnection::*)(Message & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClientConnection::messageSent)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClientConnection::messageReceived)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (ClientConnection::*)(Message & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClientConnection::messageSent)) {
+                *result = 3;
                 return;
             }
         }
@@ -131,7 +141,7 @@ const QMetaObject ClientConnection::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_ClientConnection_t
-, QtPrivate::TypeAndForceComplete<ClientConnection, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<MESSAGE_TYPE, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>
+, QtPrivate::TypeAndForceComplete<ClientConnection, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Message &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
@@ -159,19 +169,19 @@ int ClientConnection::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }
 
 // SIGNAL 0
-void ClientConnection::violationsExceeded(MESSAGE_TYPE _t1, QString _t2)
+void ClientConnection::violationsExceeded(QString _t1, QString _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
@@ -185,10 +195,17 @@ void ClientConnection::timeOut(QString _t1)
 }
 
 // SIGNAL 2
-void ClientConnection::messageSent(Message & _t1)
+void ClientConnection::messageReceived(Message & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void ClientConnection::messageSent(Message & _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

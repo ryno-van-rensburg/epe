@@ -166,8 +166,8 @@
   /app/include/QtTest/qttestglobal.h \
   /app/include/QtTest/qttestlib-config.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/client.h \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \

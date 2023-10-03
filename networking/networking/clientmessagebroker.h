@@ -4,7 +4,6 @@
 #include <QObject>
 #include <client.h>
 #include <message.h>
-#include "error.h"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>

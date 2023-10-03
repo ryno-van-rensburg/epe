@@ -3,4 +3,5 @@
 #include "EWIEGA46WW/moc_clientconnection.cpp"
 #include "EWIEGA46WW/moc_clientmessagebroker.cpp"
 #include "EWIEGA46WW/moc_message.cpp"
+#include "EWIEGA46WW/moc_player.cpp"
 #include "EWIEGA46WW/moc_serversession.cpp"

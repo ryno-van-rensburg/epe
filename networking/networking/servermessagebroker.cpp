@@ -12,14 +12,18 @@ ServerMessageBroker::ServerMessageBroker(QObject *parent)
 
     // connections between servermessagebroker and serversession
 }
+void ServerMessageBroker::listen(int port = -1){
+    this->session->startListening(port);
+    return;
+}
 
 ServerMessageBroker::~ServerMessageBroker(){
-
+    delete this->session;
 }
 
 
 void ServerMessageBroker::extractMoveData(Message &msg){
-    Player* player;
+    NetworkPlayer* player;
     int move;
     QJsonObject d = msg.getObj();
     bool valid = true;
@@ -47,7 +51,7 @@ void ServerMessageBroker::extractMoveData(Message &msg){
 
 
 void ServerMessageBroker::extractAccusationData(Message &msg){
-    Player* player;
+    NetworkPlayer* player;
     QString weapon;
     QString person;
     QString room;
@@ -71,7 +75,7 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
     }
 
     QJsonValue roomJson = d["Room"];
-    if (!roomJson.toString()){
+    if (roomJson.toString() == ""){
         valid = false;
     } else {
         room = roomJson.toString();
@@ -86,7 +90,7 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
         obj["Error"] = "NOT_GAME_PARTICIPANT";
         obj["Message"] = "Not game participant";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
 
     }
 
@@ -98,7 +102,7 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
         obj["Error"] = "INVALID_ROOM";
         obj["Message"] = "Invalid room name";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
         // increment error tally
     }
     if (!isPersonValid(person)){
@@ -109,9 +113,9 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
         obj["Error"] = "INVALID_PERSON";
         obj["Message"] = "Invalid person name";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
     }
-    if (!weaponValid(weapon)){
+    if (!isWeaponValid(weapon)){
         // weapon invalid
         QJsonObject obj;
         obj["Type"] = "ERROR";
@@ -119,7 +123,7 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
         obj["Error"] = "INVALID_PERSON";
         obj["Message"] = "Invalid weapon name";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
     }
     if (valid) {
         emit accusationReceivedSignal(*player, person, weapon, room);
@@ -131,17 +135,18 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
         obj["Error"] = "INVALID_MESSAGE_FORMAT";
         obj["Message"] = "Message malformed";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
     }
 
 }
 
 
 void ServerMessageBroker::extractSuggestionData(Message &msg){
-    Player* player;
+    NetworkPlayer* player;
     QString weapon;
     QString person;
     QString room;
+    bool valid = true;
      QJsonObject d = msg.getObj();
     if (d.isEmpty()){
         valid = false;
@@ -161,7 +166,7 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
     }
 
     QJsonValue roomJson = d["Room"];
-    if (!roomJson.toString()){
+    if (!roomJson.isString()){
         valid = false;
     } else {
         room = roomJson.toString();
@@ -177,7 +182,7 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
         obj["Error"] = "NOT_GAME_PARTICIPANT";
         obj["Message"] = "Not game participant";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
 
     }
      if (!isRoomValid(room)){
@@ -188,7 +193,7 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
         obj["Error"] = "INVALID_ROOM";
         obj["Message"] = "Invalid room name";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
         // increment error tally
     }
     if (!isPersonValid(person)){
@@ -199,9 +204,9 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
         obj["Error"] = "INVALID_PERSON";
         obj["Message"] = "Invalid person name";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
     }
-    if (!weaponValid(weapon)){
+    if (!isWeaponValid(weapon)){
         // weapon invalid
         QJsonObject obj;
         obj["Type"] = "ERROR";
@@ -209,7 +214,7 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
         obj["Error"] = "INVALID_PERSON";
         obj["Message"] = "Invalid weapon name";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
     }
 
     if (valid) {
@@ -222,13 +227,13 @@ void ServerMessageBroker::extractSuggestionData(Message &msg){
         obj["Error"] = "INVALID_MESSAGE_FORMAT";
         obj["Message"] = "Message malformed";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
     }
 }
 
 
 void ServerMessageBroker::extractCardShownData(Message &msg){
-    Player* player;
+    NetworkPlayer* player;
     QString card;
     bool valid = true;
     QJsonObject d = msg.getObj();
@@ -250,11 +255,11 @@ void ServerMessageBroker::extractCardShownData(Message &msg){
         obj["Error"] = "NOT_GAME_PARTICIPANT";
         obj["Message"] = "Not game participant";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
         return;
     }
     if (valid) {
-        emit cardShownSignal(player, card);
+        emit cardShownSignal(*player, card);
     } else {
         // send error message and increase error tally
         QJsonObject obj;
@@ -263,7 +268,7 @@ void ServerMessageBroker::extractCardShownData(Message &msg){
         obj["Error"] = "INVALID_MESSAGE_FORMAT";
         obj["Message"] = "Message malformed";
         Message errMsg(ERROR, obj);
-        session->unicastMessage(errMsg,player->GetUsername());
+        session->unicastMessage(errMsg,player->getUsername());
     }
 }
 
@@ -282,12 +287,12 @@ void ServerMessageBroker::updateStateSlot(QString username, int position){
 
 void ServerMessageBroker::gameStateReplySlot(QString requesting, int diceRoll, QVector<QString> faceup, int currentTurn){
     QJsonArray playerArr;
-    QVector<Player*> players = session->getPlayers();
+    QVector<NetworkPlayer*> players = session->getPlayers();
     for (auto i =0; i < players.size(); i++) {
-        Player* p = players.at(i);
-        QString username = p->GetUsername();
+        NetworkPlayer* p = players.at(i);
+        QString username = p->getUsername();
         QString person = p->getPerson();
-        QString position = p->GetPosition();
+        int position = p->getPosition();
         int ai = p->isAi();
         QJsonObject e;
         e["Username"] = username;
@@ -318,12 +323,12 @@ void ServerMessageBroker::gameStateReplySlot(QString requesting, int diceRoll, Q
 
 void ServerMessageBroker::gameStateSlot( int diceRoll, QVector<QString> faceup, int currentTurn){
     QJsonArray playerArr;
-    QVector<Player*> players = session->getPlayers();
+    QVector<NetworkPlayer*> players = session->getPlayers();
     for (auto i =0; i < players.size(); i++) {
-        Player* p = players.at(i);
-        QString username = p->GetUsername();
+        NetworkPlayer* p = players.at(i);
+        QString username = p->getUsername();
         QString person = p->getPerson();
-        QString position = p->GetPosition();
+        int position = p->getPosition();
         int ai = p->isAi();
         QJsonObject e;
         e["Username"] = username;
@@ -372,12 +377,21 @@ void ServerMessageBroker::invalidMove(QString username)
 {
     QJsonObject errObj;
     errObj["Type"] = "ERROR";
-
-
+    errObj["Error"] = "INVALID_MOVE";
+    errObj["Message"] = "Cannot reach the requested position with the current dice roll";
+    Message msg(ERROR, errObj);
+    session->unicastMessage(msg, username);
+    return;
 }
 
 void ServerMessageBroker::outOfTurn(QString username){
-
+    QJsonObject errObj;
+    errObj["Type"] = "ERROR";
+    errObj["Error"] = "OUT_OF_TURN";
+    errObj["Message"] = "Not your turn";
+    Message msg(ERROR, errObj);
+    session->unicastMessage(msg, username);
+    return;
 }
 
 void ServerMessageBroker::suggestionUpdateSlot(QString username, QVector<QString> suggestion)
@@ -412,11 +426,11 @@ void ServerMessageBroker::shownCardSlot(QString asking, QString showing, bool ha
     return;
 }
 
-void ServerMessageBroker::notifyPlayerMove(int dice1, int dice2, Player &player){
+void ServerMessageBroker::notifyPlayerMove(int dice1, int dice2, NetworkPlayer &player){
     QJsonObject root;
     root["Type"] = "DICE_ROLL";
-    root["ID"] = session->getAckCount();
-    root["Username"] = player.GetUsername();
+    root["ID"] = (int) session->getAckCount();
+    root["Username"] = player.getUsername();
     root["Dice1"] = dice1;
     root["Dice2"] = dice2;
     Message msg(DICE_ROLL,root);
@@ -424,13 +438,8 @@ void ServerMessageBroker::notifyPlayerMove(int dice1, int dice2, Player &player)
     return;
 }
 
-void connectionDenied(QString handle, QString reason){
-   QJsonObject err;
-   err["Type"] = "CONNECTION_DENIED";
-   err["ID"] = (int) this->session->getAckcount();
-   err["REASON"] = reason;
-   Message msg(CONNECTION_DENIED, err);
-   session->rejectConnection(msg, handle);
+void ServerMessageBroker::connectionDenied(QString handle, QString reason){
+   session->rejectConnection(reason, handle);
    return;
 }
 
@@ -439,12 +448,12 @@ void ServerMessageBroker::dealCardsSlot(qint16 numPlayers, QVector<QVector<QStri
     for (int i = 0; i < usernames.size(); i++){
         QJsonObject root;
         root["Type"] = "DEAL_CARDS";
-        root["ID"] = session->getAckCount();
+        root["ID"] = (int) session->getAckCount();
         root["Number_Of_Cards"] = (int) cards.at(i).size();
         QJsonObject cardsObj;
         for (auto j = 0; j < cards.at(i).size(); j++){
             QString key = "Card" + QString::number(j);
-            cardsObj[key] = cards.at(j);
+            cardsObj[key] = cards.at(i).at(j);
         }
         root["Cards"] = cardsObj;
         Message msg(DEAL_CARDS, root);
@@ -453,18 +462,18 @@ void ServerMessageBroker::dealCardsSlot(qint16 numPlayers, QVector<QVector<QStri
     return;
 }
 
-void ServerMessageBroker::requestCardSlot(Player& askingPlayer, QString person, QString weapon, QString room){
+void ServerMessageBroker::requestCardSlot(NetworkPlayer& askingPlayer, QString person, QString weapon, QString room){
     QJsonObject root;
     root["Type"] = "REQUEST_CARD";
     root["ID"] = (int) session->getAckCount();
-    root["Asked_Card"] = askingPlayer.GetUsername();
+    root["Asked_Card"] = askingPlayer.getUsername();
     QJsonObject suggestion;
     suggestion["Person"] = person;
     suggestion["Weapon"]= weapon;
     suggestion["Room"] = room;
     root["Suggestion"] = suggestion;
     Message msg(REQUEST_CARD, root);
-    session->unicastMessage(msg, askingPlayer.GetUsername());
+    session->unicastMessage(msg, askingPlayer.getUsername());
     return;
 }
 
@@ -473,22 +482,23 @@ void ServerMessageBroker::terminateGameSlot(){
     return;
 }
 
-void ServerMessageBroker::showCardSlot(Player &player, QString card){
+void ServerMessageBroker::showCardSlot(NetworkPlayer &player, QString card){
     QJsonObject obj {
         {"Type",  "SHOW_CARD" },
         {"ID" , (int) session->getAckCount()},
-        {"Username", player.GetUsername()},
+        {"Username", player.getUsername()},
         {"Card", card},
     };
-    Messsage msg(SHOW_CARD, obj);
-    session->unicastMessage(msg, player.GetUsername());
+    Message msg(SHOW_CARD, obj);
+    session->unicastMessage(msg, player.getUsername());
     return;
 }
 
-void ServerMessageBroker::acceptPlayer(const Player* playerObj, QString username, QString person, int dice1, int dice2)
+void ServerMessageBroker::acceptPlayer(QString username, QString person, int dice1, int dice2)
 {
-    // add player in list
-
+    // add player to listoperator overloading c++
+    NetworkPlayer* playerObj = new NetworkPlayer(username, person, false);
+    session->addPlayer(playerObj);
     QJsonObject obj  {
         {"Type" , "PLAYER_ACCEPTED" },
         {"Username", username},
@@ -499,5 +509,13 @@ void ServerMessageBroker::acceptPlayer(const Player* playerObj, QString username
     Message msg(PLAYER_ACCEPTED, obj);
     session->ackMessage(username);
     session->unicastMessage(msg, username);
+    return;
+}
+
+void ServerMessageBroker::processJoiningRequest(Message &msg)
+{
+    QJsonObject obj = msg.getObj();
+    QString username = obj["Username"].toString();
+    emit this->connectionRequest(username);
     return;
 }

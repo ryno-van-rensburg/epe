@@ -10,6 +10,8 @@
 #include <iostream>
 #include <clientconnection.h>
 #include <message.h>
+#include "player.h"
+
 
 class ServerSession : public QObject
 {
@@ -29,20 +31,20 @@ public:
     explicit ServerSession(QObject *parent = nullptr);
     ~ServerSession();
     void startListening(int port = -1);
-    Player* getPlayer(QString playerName);
-    Player* getPlayer(QHostAddress address);
+    NetworkPlayer* getPlayer(QString playerName);
+    NetworkPlayer* getPlayer(QHostAddress address);
 
     QVector<QString> getPlayerNames() {
         QVector<QString> names;
         for (auto i= 0; i < connections.size(); i++){
-            names.append(connections.at(i).getUsername());
+            names.append(connections.at(i)->getUsername());
         }
         return names;
     }
-    QVector<Player*> getPlayers(){
-        QVector<Player*> players;
+    QVector<NetworkPlayer*> getPlayers(){
+        QVector<NetworkPlayer*> players;
         for (auto i= 0; i < connections.size(); i++){
-            players.append(connections.at(i).getPlayer());
+            players.append(connections.at(i)->getPlayer());
         }
         return players;
     }
@@ -52,14 +54,14 @@ public:
     }
 public slots:
     void ackMessage(QString username);
-    void addPlayer(Player* obj);
+    void addPlayer(NetworkPlayer* obj);
     void handleNewConnection();
     void broadCastMessage(Message &msg);
     void unicastMessage(Message &msg, QString username);
     void handleMessage(Message &msg);
     void kickPlayer(QString username, QString reason);
     void handleDataFromPendingConnections();
-    void rejectConnection(Message &msg, QString handle);
+    void rejectConnection(QString reason, QString handle);
 signals:
     void joiningRequest(Message &msg);
     void gameStateRequested();

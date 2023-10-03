@@ -233,10 +233,10 @@ testclient_autogen/timestamp: \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.cpp \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.h \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.cpp \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.cpp \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.cpp \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.cpp \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/testclient.cpp \

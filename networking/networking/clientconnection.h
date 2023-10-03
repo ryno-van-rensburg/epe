@@ -16,7 +16,7 @@ class ClientConnection : public QObject
 private:
     QTcpSocket* connection;
     ServerSession* session;
-    Player* playerObj;
+    NetworkPlayer* playerObj;
     QTimer* minTimer;
     QTimer* timerOut;
     QString username;
@@ -29,24 +29,29 @@ private:
     int  ackValue;
 public:
     explicit ClientConnection(QObject *parent = nullptr);
-    explicit ClientConnection(QTcpSocket &connection, Player &playerObj, ServerSession &session);
+    explicit ClientConnection(QTcpSocket &connection, NetworkPlayer &playerObj, ServerSession &session);
+    explicit ClientConnection(QTcpSocket *connection, ServerSession* session);
     QString getUsername(); // temporary declarations.
-    void joinPlayer(const Player* playerObj);
+    ~ClientConnection();
     void setUsername(QString username);
+    void setPlaying(bool );
+    QHostAddress getAddr(){
+        return this->addr;
+    }
     void setSession(ServerSession& session);
-    void setPlayer(Player &playerObj);
+    void setPlayer(NetworkPlayer &playerObj);
     void incrementErrorTally(QString errorType);
-    Player* getPlayer();
-    QHostAddress getAddr();
+    NetworkPlayer* getPlayer();
     void setConnection(QTcpSocket &connection);
 
 public slots:
     void sendMessage(Message &msg);
-    void messageReceived(Message &msg);
+    void handleIncomingData();
 
 signals:
-    void violationsExceeded(MESSAGE_TYPE type, QString errorMessage);
+    void violationsExceeded(QString username, QString reason);
     void timeOut(QString userName);
+    void messageReceived(Message &msg);
     void messageSent(Message &msg);
 };
 

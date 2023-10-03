@@ -4,6 +4,7 @@ networking_autogen/timestamp: \
   /app/include/QtCore/QJsonObject \
   /app/include/QtCore/QMap \
   /app/include/QtCore/QObject \
+  /app/include/QtCore/QString \
   /app/include/QtCore/QTimer \
   /app/include/QtCore/QVector \
   /app/include/QtCore/qalgorithms.h \
@@ -169,11 +170,13 @@ networking_autogen/timestamp: \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.cpp \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.h \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.cpp \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/error.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/main.cpp \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.cpp \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.cpp \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.cpp \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.cpp \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.h \
   /usr/include/asm-generic/errno-base.h \

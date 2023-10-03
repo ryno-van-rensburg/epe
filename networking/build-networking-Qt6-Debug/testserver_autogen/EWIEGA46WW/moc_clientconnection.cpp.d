@@ -4,7 +4,9 @@
   /app/include/QtCore/QJsonObject \
   /app/include/QtCore/QMap \
   /app/include/QtCore/QObject \
+  /app/include/QtCore/QString \
   /app/include/QtCore/QTimer \
+  /app/include/QtCore/QVector \
   /app/include/QtCore/qalgorithms.h \
   /app/include/QtCore/qanystringview.h \
   /app/include/QtCore/qarraydata.h \
@@ -93,6 +95,7 @@
   /app/include/QtCore/quuid.h \
   /app/include/QtCore/qvariant.h \
   /app/include/QtCore/qvarlengtharray.h \
+  /app/include/QtCore/qvector.h \
   /app/include/QtCore/qversiontagging.h \
   /app/include/QtNetwork/QTcpSocket \
   /app/include/QtNetwork/qabstractsocket.h \
@@ -102,6 +105,7 @@
   /app/include/QtNetwork/qtnetworkexports.h \
   /app/include/QtNetwork/qtnetworkglobal.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \

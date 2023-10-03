@@ -14,7 +14,6 @@ enum ERROR_TYPE {
     INVALID_ROOM_NAME
 };
 
-ERROR_TYPE strtoError(QString error);
 
 
 #endif // ERROR_H

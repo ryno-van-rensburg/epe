@@ -2,6 +2,7 @@
   /home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testserver_autogen/moc_predefs.h \
   /app/include/QtCore/QJsonDocument \
   /app/include/QtCore/QJsonObject \
+  /app/include/QtCore/QVector \
   /app/include/QtCore/qalgorithms.h \
   /app/include/QtCore/qanystringview.h \
   /app/include/QtCore/qarraydata.h \
@@ -88,6 +89,7 @@
   /app/include/QtCore/quuid.h \
   /app/include/QtCore/qvariant.h \
   /app/include/QtCore/qvarlengtharray.h \
+  /app/include/QtCore/qvector.h \
   /app/include/QtCore/qversiontagging.h \
   /app/include/QtNetwork/QTcpSocket \
   /app/include/QtNetwork/qabstractsocket.h \

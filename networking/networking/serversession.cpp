@@ -27,8 +27,6 @@ quint32 extractIdServer(Message &msg){
 }
 
 
-
-
 /**
  * @brief Constructs a ServerSession object.
  *
@@ -56,11 +54,11 @@ ServerSession::~ServerSession() {
    if (this->serverConnection != nullptr) {
        delete this->serverConnection;
    }
-   while (this->ackList.count()){
-       if (this->ackList.takeLast() != nullptr) {
-           delete this->ackList.takeLast();
-       }
-   }
+   //while (this->ackList.count()){
+   //    if (this->ackList.takeLast() != nullptr) {
+   //        delete this->ackList.takeLast();
+   //    }
+   //}
    while (this->connections.count()){
        if (this->connections.takeLast() != nullptr){
            delete this->connections.takeLast();
@@ -98,7 +96,16 @@ void ServerSession::startListening(int port){
     return;
 }
 
-Player* ServerSession::getPlayer(QHostAddress address){
+void ServerSession::ackMessage(QString username){
+    QJsonObject obj {
+        {"Type" , "ACK"},{"ID_ACK" , 0}
+    };
+    Message ack(ACK, obj);
+    this->unicastMessage(ack, username);
+
+}
+
+NetworkPlayer* ServerSession::getPlayer(QHostAddress address){
     for (int i =0; i < this->connections.size(); i++) {
         ClientConnection* conn = this->connections.at(i);
         if (conn)
@@ -111,8 +118,23 @@ Player* ServerSession::getPlayer(QHostAddress address){
     return nullptr;
 }
 
+void ServerSession::addPlayer(NetworkPlayer *obj){
+    if (obj == nullptr ){
+       return;
+    }
+    QString username = obj->getUsername();
+    for (int i =0; i < connections.size(); i++){
+        ClientConnection* conn = connections.at(i);
+        if (conn->getUsername() == username){
+            conn->setPlayer(*obj);
+            conn->setPlaying(true);
+            return;
+        }
+    }
+    return;
+}
 
-Player* ServerSession::getPlayer(QString playerName){
+NetworkPlayer* ServerSession::getPlayer(QString playerName){
     for (int i =0; i < this->connections.size(); i++) {
         ClientConnection* conn = this->connections.at(i);
         if (conn)
@@ -135,13 +157,21 @@ Player* ServerSession::getPlayer(QString playerName){
  */
 void ServerSession::handleNewConnection(){
      QTcpSocket* sock = this->serverConnection->nextPendingConnection();
-     // check if this client is already part in the new thing
-
-
-     QObject::connect(sock, SIGNAL(readyRead()), this, SLOT(handleDataFromPendingConnections()));
-     pendingConnections.push_back(sock);
-    return;
+     // check if this client is already connected
+     QHostAddress addr = sock->peerAddress();
+     for (int i =0; i < this->connections.size(); i++){
+         if (this->connections.at(i)->getAddr() == addr){
+            return;
+         }
+     }
+     // create a new clientconnection without a player connection, and set not playing
+     ClientConnection* connection = new ClientConnection(sock, this );
+     this->connections.append(connection);
+     QObject::connect(connection, SIGNAL(messageReceived(Message&)), this, SLOT(handleMessage(Message&)));
+     QObject::connect(connection, SIGNAL(violationsExceeded(QString,QString)), this, SLOT(kickPlayer(QString,QString)));
+     return;
 }
+
 /**
  * @brief Handles a message received from a client.
  *
@@ -153,7 +183,6 @@ void ServerSession::handleMessage(Message &msg)
 {
    //if (msg.getType() == MESSAGE_TYPE::REQUEST_CON ) {
     MESSAGE_TYPE t = msg.getType();
-    ERROR_TYPE error;
     bool playerInGame = true;
     QHostAddress address = msg.getSource()->peerAddress();
     if (isConnectionPending(address) && getPlayer(address) == nullptr){
@@ -164,24 +193,7 @@ void ServerSession::handleMessage(Message &msg)
     // player not in game yet.
     case (REQUEST_CON):
     {
-        for  (int i = 0; i < this->pendingConnections.size(); i++)
-        {
-        if (this->pendingConnections.at(i) ==  msg.getSource())
-        {
-            if (1) {
-            // TODO, delegate connection acception to game server
-                // an accepted player should have player accepted slot called with the correct player object
-                // this player object should then be used to construct a new client connection
-                QJsonObject obj  {
-                    {"Type" ,"PLAYER_ACCEPTED"}};
-                QJsonDocument doc;
-                doc.setObject(obj);
-                msg.getSource()->write(doc.toJson());
-            } else {
-                emit joiningRequest(msg);
-            }
-        }
-        }
+        emit joiningRequest(msg);
 
         break;
     }
@@ -260,7 +272,7 @@ void ServerSession::handleDataFromPendingConnections()
     QTcpSocket* sock = (QTcpSocket*) QObject::sender();
     QByteArray data = sock->readAll();
     Message msg(MESSAGE_TYPE::REQUEST_CON, data);
-    msg->setSource(*sock);
+    msg.setSource(sock);
     this->handleMessage(msg);
     return;
  }
@@ -278,8 +290,9 @@ void ServerSession::unicastMessage(Message &msg, QString username){
     for (auto i = 0; i < this->connections.size(); i++) {
         ClientConnection* client = connections[i];
         if(client->getUsername() == username){
-            if (msg.getType() == "ERROR") {
-                QString errorMessage = msg.getObj()["Error"].toString();
+            if (msg.getType() == ERROR) {
+               QString errorMessage = msg.getObj()["Error"].toString();
+                // create a new message with the correct ackId
                if (errorMessage != "NOT_GAME_PARTICIPANT" && errorMessage != "CONNECTION_DENIED" ){
                     client->incrementErrorTally(errorMessage);
                }
@@ -325,11 +338,23 @@ void ServerSession::kickPlayer(QString username, QString reason)
             obj["Type"] = "PLAYER_KICKED";
             obj["Kicked_Player"] = username;
             obj["Reason"] = reason;
-            Message kickMessage(PLAYER_KICKED, reason);
+            Message kickMessage(PLAYER_KICKED, obj);
             this->broadCastMessage(kickMessage);
             // remove connection from list
             this->connections.remove(i);
             std::cout <<"Player: " << username.toStdString() << "kicked" << std::endl;
         }
     }
+}
+
+void ServerSession::rejectConnection(QString reason, QString handle){
+    this->ackMessage(handle);
+    QJsonObject obj {
+        {"Type" , "CONNECTION_DENIED"},
+        {"ID", (int) this->getAckCount()} ,
+        {"REASON", reason}
+    } ;
+    Message rejectionMessage(CONNECTION_DENIED, obj);
+    this->unicastMessage(rejectionMessage, handle);
+    return;
 }

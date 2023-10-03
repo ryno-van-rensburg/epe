@@ -17,9 +17,6 @@ ClientConnection::ClientConnection(QObject *parent)
     this->session = nullptr;
     this->minTimer = new QTimer(this);
     this->timerOut = new QTimer(this);
-    for (int i = 0; i < ; i++){
-        this->violationCounts.insert((MESSAGE_TYPE)i, 0);
-    }
     this->violationCounts.insert("INVALID_ROOM", 0);
     this->violationCounts.insert("INVALID_WEAPON", 0);
     this->violationCounts.insert("INVALID_PERSON", 0);
@@ -33,22 +30,6 @@ ClientConnection::ClientConnection(QObject *parent)
     this->isPlaying = false; // First need to check if the player is allowed into the lobby
 }
 
-void ClientConnection::incrementErrorTally(QString errorType){
-    this->violationCounts[errorType]++;
-    this->checkViolationCounters();
-}
-
-void ClientConnection::checkViolationCounters(){
-    QMap<QString, int>::iterator it;
-    for (it = this->violationCounts.begin(); it != violationCounts.end(); ++it){
-        if (it.value() > 6) {
-            QString errorType = it.key();
-            // kick player
-            this->session->kickPlayer(this->username, errorType);
-            return;
-        }
-    }
-}
 
 /**
  * @brief Constructs a ClientConnection object with connection details.
@@ -61,23 +42,60 @@ void ClientConnection::checkViolationCounters(){
  * @param playerObj The Player object associated with the client.
  * @param session The ServerSession object associated with the client.
  */
-ClientConnection::ClientConnection(QTcpSocket &connection, Player &playerObj, ServerSession &session)
-{
+ClientConnection::ClientConnection(QTcpSocket &connection, NetworkPlayer &playerObj, ServerSession &session){
+    //DANGER, DO NOT USE THIS FUNCTION
     this->connection = &connection;
-    this->session = &session;
     this->minTimer = new QTimer(this);
     this->timerOut = new QTimer(this);
-    for (int i = 0; i < NUM_MESSAGE_TYPES; i++){
-        this->violationCounts.insert((MESSAGE_TYPE)i, 0);
-    }
-    this->addr = connection.peerAddress();
-    this->port = connection.peerPort();
+    this->violationCounts.insert("INVALID_ROOM", 0);
+    this->violationCounts.insert("INVALID_WEAPON", 0);
+    this->violationCounts.insert("INVALID_PERSON", 0);
+    this->violationCounts.insert("OUT_OF_TURN", 0);
+    this->violationCounts.insert("INVALID_MESSAGE_FORMAT", 0);
+    this->violationCounts.insert("INVALID_MOVE", 0);
+
     this->playerObj = &playerObj;
-    this->isFirstTurn = false;
-    this->isPlaying = true;
-    return;
+    this->port = 0;
+    this->isPlaying = false; // First need to check if the player is allowed into the lobby
 }
 
+ClientConnection::ClientConnection(QTcpSocket *connection, ServerSession *session){
+    this->session = session;
+    this->connection = connection;
+    this->violationCounts.insert("INVALID_ROOM", 0);
+    this->violationCounts.insert("INVALID_WEAPON", 0);
+    this->violationCounts.insert("INVALID_PERSON", 0);
+    this->violationCounts.insert("OUT_OF_TURN", 0);
+    this->violationCounts.insert("INVALID_MESSAGE_FORMAT", 0);
+    this->violationCounts.insert("INVALID_MOVE", 0);
+    this->playerObj =nullptr;
+    this->addr = connection->peerAddress();
+    this->isPlaying = false;
+    this->ackValue = 0;
+    QObject::connect(this->connection, SIGNAL(readyRead()), this, SLOT(handleIncomingData()));
+}
+
+ClientConnection::~ClientConnection(){
+    if (this->playerObj != nullptr) {
+        delete this->playerObj;
+    }
+}
+void ClientConnection::incrementErrorTally(QString errorType){
+    this->violationCounts[errorType]++;
+    this->checkViolationCounters();
+}
+
+void ClientConnection::checkViolationCounters(){
+    QMap<QString, int>::iterator it;
+    for (it = this->violationCounts.begin(); it != violationCounts.end(); ++it){
+        if (it.value() > 6) {
+            QString errorType = it.key();
+            // kick player
+            emit this->violationsExceeded(this->username, errorType);
+            return;
+        }
+    }
+}
 
 /**
  * @brief Sets the Player object associated with the client.
@@ -86,7 +104,7 @@ ClientConnection::ClientConnection(QTcpSocket &connection, Player &playerObj, Se
  *
  * @param playerObj The Player object associated with the client.
  */
-void ClientConnection::setPlayer(Player &playerObj){
+void ClientConnection::setPlayer(NetworkPlayer &playerObj){
     this->playerObj = &playerObj;
 }
 
@@ -112,6 +130,11 @@ void ClientConnection::setSession(ServerSession& session){
     this->session = &session;
 }
 
+
+NetworkPlayer* ClientConnection::getPlayer(){
+    return this->playerObj;
+}
+
 /**
  * @brief Sends a message to the client.
  *
@@ -128,6 +151,13 @@ void ClientConnection::sendMessage(Message &msg)
         // TODO, tried sending message to nonexistent connection. This should never ever happen
         return;
     }
+    // TODO if the message is an error or an ack you should add the ackID here.
+    if (type == ACK || type == ERROR) {
+        QJsonObject data = msg.getObj();
+        data["ACK_ID"] = this->ackValue;
+        QJsonDocument doc(data);
+        content = doc.toJson();
+    }
    // send message.
     qint64 bytesWritten = this->connection->write(content);
     // TODO handle error here
@@ -136,7 +166,7 @@ void ClientConnection::sendMessage(Message &msg)
             std::cout << "void Client::sendMessage could not send message" << std::endl;
         }
     } else {
-        if (type != MESSAGE_TYPE::REQ_GAME_STATE && type != MESSAGE_TYPE::ACK && type != MESSAGE_TYPE::ERROR) {
+        if (shouldMessageBeAcked(msg.getType())) {
             // this signal is used to add the message to the ack queue.
             emit messageSent(msg);
         }
@@ -149,7 +179,7 @@ void ClientConnection::sendMessage(Message &msg)
  * This function is called when a message is received from the client. It processes
  * the received data and constructs a `Message` object for further handling.
  */
-void ClientConnection::messageReceived()
+void ClientConnection::handleIncomingData()
 {
     QByteArray incomingData = this->connection->readAll();
     if (incomingData.isEmpty()){
@@ -162,6 +192,10 @@ void ClientConnection::messageReceived()
             QJsonValue v = obj["Type"];
             if (v.isString()){
                 Message msg(v.toString(), contents);
+                if (msg.getType() == REQUEST_CON){
+                    this->username = obj["Username"].toString();
+                    this->isPlaying = false;
+                }
                 msg.setSource(this->connection);
                 this->ackValue = obj["ID"].toInt();
                 emit messageReceived(msg);
@@ -195,6 +229,7 @@ void ClientConnection::setUsername(QString username){
 }
 
 
-void ClientConnection::joinPlayer(const Player* playerObj){
-
+void ClientConnection::setPlaying(bool playing){
+    this->isPlaying = playing;
+    return;
 }

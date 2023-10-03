@@ -6,7 +6,6 @@
 #include <iostream>
 #include <QVector>
 #include "message.h"
-#include "error.h"
 #include "player.h"
 
 
@@ -19,7 +18,7 @@ class Client : public QObject
     Q_OBJECT
 private:
     quint64 ackCounter;
-    const Player* playerObj;
+    NetworkPlayer* playerObj;
     QTcpSocket* serverConnection;
     QHostAddress addr;
     quint16 port;
@@ -36,9 +35,7 @@ public:
     quint64 getAckCount();
     quint16 getPort();
     quint32 getAddr();
-    void getUsername(){
-        this->playerObj->GetUsername();
-    }
+    QString getUsername();
     void setPort(quint16 port);
     void setAddr(quint32 ipAddr);
     void connect(quint32 ipAddr, quint16 port);

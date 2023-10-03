@@ -25,7 +25,7 @@ add_executable(networking
     serversession.h serversession.cpp
     servermessagebroker.cpp servermessagebroker.h
     player.cpp player.h
-    error.cpp error.h)
+    )
 
 add_executable(testclient
     client.h client.cpp
@@ -33,8 +33,8 @@ add_executable(testclient
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
-    error.cpp error.h
     testclient.cpp testclient.h
+    player.cpp player.h
 )
 add_executable(testserver
     client.h client.cpp
@@ -42,17 +42,30 @@ add_executable(testserver
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
-    error.cpp error.h
     servermessagebroker.cpp servermessagebroker.h
     testServerSession.cpp testServerSession.h
+    player.cpp player.h
 )
 
+add_executable(testacking
+    client.h client.cpp
+    message.h message.cpp
+    clientmessagebroker.h clientmessagebroker.cpp
+    clientconnection.h clientconnection.cpp
+    serversession.h serversession.cpp
+    servermessagebroker.cpp servermessagebroker.h
+    testacking.cpp testacking.h
+    player.cpp player.h
+
+)
 add_test(NAME testclient COMMAND testclient)
 add_test(NAME testserver COMMAND testserver)
+add_test(NAME testacking COMMAND testacking)
 
 target_link_libraries(testclient Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
 target_link_libraries(testserver Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
 target_link_libraries(networking Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
+target_link_libraries(testacking Qt${QT_VERSION_MAJOR}::Core Qt6::Network Qt6::Test)
 
 install(TARGETS networking
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

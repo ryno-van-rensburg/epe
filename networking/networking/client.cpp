@@ -22,7 +22,7 @@ quint64 Client::getAckCount(){
 /**
  * @brief Sends a message to the server over the network.
  *
- * This function sends a message to the server using the established
+ * This function sends a message to the server uoperator overloading c++sing the established
  * network connection. It extracts the JSON content from the provided
  * message and sends it as a QByteArray to the server. If the message
  * is successfully sent, the function returns; otherwise, it handles
@@ -50,8 +50,8 @@ void Client::sendMessage(Message &msg)
         return;
     }
     // TODO handle error here
-    if (type != MESSAGE_TYPE::REQ_GAME_STATE && type != MESSAGE_TYPE::ACK && type != MESSAGE_TYPE::ERROR) {
-        this->ackMessages.append(&msg);
+    if (shouldMessageBeAcked(msg.getType())) {
+        this->ackMessages.append(msg);
     }
     return;
 }
@@ -132,12 +132,6 @@ int extractAckId(Message &msg) {
     }
 }
 
-int extractId(Message &msg) {
-    QJsonObject obj = msg.getObj();
-    int id = obj["ID"].toInt(-1);
-    return id;
-}
-
 
 /**
  * @brief Extracts an ID from a JSON message.
@@ -153,17 +147,13 @@ int extractId(Message &msg) {
  * @return The extracted ID from the message, or 0 if not found or not a valid
  *         integer.
  */
-quint32 extractId(Message &msg){
-    QJsonObject obj = QJsonObject(msg.getObj());
-    QJsonValue id = obj["ID"];
-    if (!id.isUndefined()){
-        return (quint32) id.toInt();
-    } else {
-        return 0;
-    }
+
+
+int extractId(Message &msg) {
+    QJsonObject obj = msg.getObj();
+    int id = obj["ID"].toInt(-1);
+    return id;
 }
-
-
 
 
 void Client::handleError(Message &msg)
@@ -178,7 +168,7 @@ void Client::handleError(Message &msg)
             // check error type
             QJsonObject obj(msg.getObj());
             switch(strtoError(obj["Error"].toString())) {
-            case(ERROR_TYPE::CONNECTION_DENIED):
+            case(ERROR_TYPE::ERR_CONNECTION_DENIED):
                 // TODO signal gui that the connection has been denied
                 std::cout << "Connection with server denied" << std::endl;
                 break;
@@ -258,6 +248,9 @@ void Client::handleAck(Message &msg)
     return;
 }
 
+QString Client::getUsername(){
+    return this->playerObj->getUsername();
+}
 
 /**
  * @brief Handles incoming messages from the server.
@@ -333,7 +326,7 @@ void Client::handleMessage(){
         }
 
         case(PLAYER_ACCEPTED):{
-            emit this->connectionAccepted(Message &msg);
+            emit this->connectionAccepted(msg);
             break;
         }
         case(CARD_SHOWN): {
@@ -349,7 +342,7 @@ void Client::handleMessage(){
             break;
         }
         case (PLAYER_KICKED):{
-            emit this->playerKicked(Message &msg);
+            emit this->playerKicked(msg);
             break;
         }
 
@@ -373,7 +366,7 @@ void Client::handleMessage(){
  *
  * @param id The acknowledgment ID to include in the acknowledgment message.
  */
-void Client::ack(qint64 id){
+void Client::ack(quint64 id){
     QJsonObject obj
     {
         {"Type", "ACKNOWLEDGE"},
@@ -393,8 +386,8 @@ void Client::ack(Message &msg){
         {"ID_ACK", ackId},
     };
 
-    Message msg("ACKNOWLEDGE", obj);
-    this->sendMessage(msg);
+    Message ackmsg("ACKNOWLEDGE", obj);
+    this->sendMessage(ackmsg);
     return;
 }
 
