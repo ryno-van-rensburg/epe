@@ -16,7 +16,7 @@ ClientMessageBroker::ClientMessageBroker(QObject *parent)
 {
     this->client = new Client();
     // todo verification of data
-    QObject::connect(this->client, SIGNAL(connectedToGame()), this, SIGNAL(playerAcceptedSignal()) );
+    QObject::connect(this->client, SIGNAL(connectionAccepted(Message&)), this, SLOT(unpackConnectionAccepted(Message&)));
     QObject::connect(this->client,SIGNAL(gameStateReceived(Message*)), this, SLOT(unpackGameState(Message*)));
     QObject::connect(this->client, SIGNAL(suggestionStateUpdate(Message&)), this, SLOT(unpackSuggestionStateUpdate(Message&)));
     QObject::connect(this->client, SIGNAL(connectionDenied(Message&)), this, SLOT(unpackConnectionRejected(Message&)));
@@ -52,8 +52,8 @@ void ClientMessageBroker::sendConnectionRequest(QString username){
         {"ID", (int)this->client->getAckCount()},
         {"Username", username}
     };
-    Message* msg = new Message("REQUEST_CONNECTION", obj);
-    this->client->sendMessage(*msg);
+    Message msg("REQUEST_CONNECTION", obj);
+    this->client->sendMessage(msg);
     return;
 }
 /**
@@ -69,9 +69,9 @@ void ClientMessageBroker::sendConnectionRequest(QString username){
  */
 void ClientMessageBroker::requestConnection(quint32 address, quint16 port, QString username) {
     this->client->connect(address, port);
-     // Now I have to wait for the signal to be emitted
-    QObject::connect(this, SIGNAL(connectionStarted(QString)), this, SLOT(sendConnectionRequest(QString)));
-    emit this->connectionStarted(username);
+
+ //   QObject::connect(this, SIGNAL(connectionStarted(QString)), this, SLOT(sendConnectionRequest(QString)));
+    sendConnectionRequest(username);
     return;
 }
 
@@ -91,7 +91,7 @@ void ClientMessageBroker::makeMove(int position){
         {"ID", (int)this->client->getAckCount()},
         {"Position", position}
     };
-    Message* msg = new Message ("MAKE_MOVE", obj);
+    Message* msg = new Message("MAKE_MOVE", obj);
     this->client->sendMessage(*msg);
     return;
 }

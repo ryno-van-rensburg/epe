@@ -59,11 +59,7 @@ ServerSession::~ServerSession() {
    //        delete this->ackList.takeLast();
    //    }
    //}
-   while (this->connections.count()){
-       if (this->connections.takeLast() != nullptr){
-           delete this->connections.takeLast();
-       }
-   }
+
 }
 
 bool ServerSession::isConnectionPending(QHostAddress address){
@@ -209,12 +205,7 @@ void ServerSession::handleMessage(Message &msg)
         break;
     case (MAKE_MOVE):
         // extract move information
-        if (!playerInGame) {
-            // send error message
-            return;
-        } else {
-            emit moveMade(msg);
-        }
+        emit moveMade(msg);
         break;
     case(SHOW_CARD):
         // extract card information

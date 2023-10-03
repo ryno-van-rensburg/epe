@@ -46,10 +46,7 @@ void Client::sendMessage(Message &msg)
     QByteArray content = msg.getBytes();    // check if QTcpSocket is working.
       // send message.
     this->serverConnection->write(content);
-    if (serverConnection->waitForBytesWritten()){
-        return;
-    }
-    // TODO handle error here
+   // TODO handle error here
     if (shouldMessageBeAcked(msg.getType())) {
         this->ackMessages.append(msg);
     }
@@ -267,93 +264,104 @@ QString Client::getUsername(){
  */
 
 // TODO apply factory design pattern to messages.
+
 void Client::handleMessage(){
     QByteArray incomingData = this->serverConnection->readAll();
     if (incomingData.isEmpty()){
     return;
     } else {
     // construct the Message class
+    QByteArray buffer;
     QJsonParseError* errPtr = nullptr;
-    QJsonDocument contents = QJsonDocument::fromJson(incomingData, errPtr);
-    if (!contents.isNull() && contents.isObject()){
-        // get the message type and construct a new message.
-        QJsonObject obj = contents.object();
-        QJsonValue v = obj["Type"];
-        if (v.isString()) {
-        Message msg(v.toString(), contents);
+    for (int i = 0; i < incomingData.size(); i++) {
+        buffer.append(incomingData[i]);
+        QJsonDocument  contents = QJsonDocument::fromJson(buffer, errPtr);
 
-        switch (msg.getType())
-        {
-        case (MESSAGE_TYPE::GAME_STATE) : {
+        if (!contents.isNull() && contents.isObject()){
+        // get the message type and construct a new message.
+            buffer.clear();
+            QJsonObject obj = contents.object();
+            QJsonValue v = obj["Type"];
+        if (v.isString()) {
+            Message msg(v.toString(), contents);
+
+            switch (msg.getType())
+            {
+            case (MESSAGE_TYPE::GAME_STATE) : {
             // Extract game state from data and send it on to gui
             emit this->gameStateReceived(msg);
             break;
-        }
-        case (MESSAGE_TYPE::ACK):
-        {
+            }
+            case (MESSAGE_TYPE::ACK):
+            {
             // get message id and remove from ack list
             this->handleAck(msg);
             break;
-        }
-        case (MESSAGE_TYPE::ERROR):
-        {
+            }
+            case (MESSAGE_TYPE::ERROR):
+            {
             this->handleError(msg);
             break;
-        }
+            }
+            case (MESSAGE_TYPE::DICE_ROLL):{
 
-        case(SUGGESTION_STATE_UPDATE):
-        {
+                emit this->playerTurn(msg);
+        break;
+            }
+            case(SUGGESTION_STATE_UPDATE):
+            {
             emit this->suggestionStateUpdate(msg);
             break;
-        }
+            }
 
-        case(GAME_STATE_REPLY):
-        {
+            case(GAME_STATE_REPLY):
+            {
             emit this->gameStateReceived(msg);
             break;
-        }
+            }
 
-        case(GAME_STATE_UPDATE):
-        {
+            case(GAME_STATE_UPDATE):
+            {
             emit this->moveUpdate(msg);
             break;
-        }
+            }
 
-        case(CONNECTION_DENIED):
-        {
+            case(CONNECTION_DENIED):
+            {
             emit this->connectionDenied(msg);
             break;
-        }
+            }
 
-        case(PLAYER_ACCEPTED):{
-            emit this->connectionAccepted(msg);
+            case(PLAYER_ACCEPTED):{
+                this->playerObj = new NetworkPlayer();
+                this->playerObj->setPerson(msg.getObj()["Person"].toString());
+                this->playerObj->setUsername(msg.getObj()["Username"].toString());
+                emit this->connectionAccepted(msg);
             break;
-        }
-        case(CARD_SHOWN): {
+            }
+            case(CARD_SHOWN): {
             emit this->cardShown(msg);
             break;
-        }
-        case (GAME_TERMINATION):{
+            }
+            case (GAME_TERMINATION):{
             emit gameTerminated(msg);
             break;
-        }
-        case (DEAL_CARDS) : {
+            }
+            case (DEAL_CARDS) : {
             emit cardsDealt(msg);
             break;
-        }
-        case (PLAYER_KICKED):{
+            }
+            case (PLAYER_KICKED):{
             emit this->playerKicked(msg);
             break;
-        }
+            }
 
-        };
-    } else {
-        // TODO handle error
-        return;
+            };
         }
     }
     }
     return;
+    }
 }
 
 /**

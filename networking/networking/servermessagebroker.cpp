@@ -9,7 +9,7 @@ ServerMessageBroker::ServerMessageBroker(QObject *parent)
     QObject::connect(this->session, SIGNAL(accusationMade(Message&)), this, SLOT(extractAccusationData(Message&)));
     QObject::connect(this->session, SIGNAL(moveMade(Message&)), this, SLOT(extractMoveData(Message&)));
     QObject::connect(this->session, SIGNAL(cardShown(Message&)), this, SLOT(extractCardShownData(Message&)));
-
+    QObject::connect(this->session, SIGNAL(joiningRequest(Message&)), this, SLOT(processJoiningRequest(Message&)));
     // connections between servermessagebroker and serversession
 }
 void ServerMessageBroker::listen(int port = -1){
@@ -508,7 +508,7 @@ void ServerMessageBroker::acceptPlayer(QString username, QString person, int dic
     };
     Message msg(PLAYER_ACCEPTED, obj);
     session->ackMessage(username);
-    session->unicastMessage(msg, username);
+    session->broadCastMessage(msg);
     return;
 }
 
