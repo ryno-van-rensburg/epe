@@ -6,6 +6,11 @@ Client::Client(QObject *parent)
 {
 
 }
+void Client::testReceiveMessage(QString& message){
+    qDebug() << "Received message from broker: " << message;
+    QString s("Hello from client");
+    emit testSendMessageToBroker(s);
+}
 
 int Client::playerTurn() const
 {

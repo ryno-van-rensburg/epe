@@ -10,18 +10,31 @@
 
 #include "testrunner.h"
 #include "client.h"
+#include "clientmessagebroker.h"
+
+/*
+    * Connects the signals from the client to the signals of the broker
+    * @param client the client to connect
+    * @param broker the broker to connect    
+*/
+// void connectClientNetworkSignals(Client &client,ClientMessageBroker &broker){
+//     QObject::connect(client, SIGNAL(testSendMessageToBroker()), broker, SLOT(testReceiveMessageFromClient()) );
+//     QObject::connect(broker, SIGNAL(testSendMessageToClient()), client, SLOT(testReceiveMessage()) );
+// }
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
-    //Q_INIT_RESOURCE(cluedo_gui);  // Load the resources
-    //qDebug() <<" NOT TESTING";
-
     QQmlApplicationEngine engine;
+    Client& client = new Client;
+    ClientMessageBroker& broker = new ClientMessageBroker;
+    //connectClientNetworkSignals(&client,&broker);
 
-    Client client;
-    engine.rootContext()->setContextProperty("client",&client); // expose client to QML
+    emit client->testSendMessageToBroker("Hello from client");
+    //emit broker->testSendMessageToClient("Hello from broker");
+
+    engine.rootContext()->setContextProperty("client",client); // expose client to QML
+
 
     if (app.arguments().contains("--runtests")) { // for running tests
         qDebug() <<"TESTING";
@@ -30,21 +43,9 @@ int main(int argc, char *argv[])
         //QTest::qExec(&testObject, app.arguments());
         return 0;
     }
-    client.setPlayerTurn(1); // demo purposes
-
     engine.addImportPath(":/imports");
-    engine.load(QUrl(QLatin1String("main.qml")));
+    engine.load("main.qml");
     if (engine.rootObjects().isEmpty())
         return -1;
-
-    QTimer timer; // This displays the player Turn interactions
-    timer.setInterval(9000); // milliseconds
-    QObject::connect(&timer, &QTimer::timeout, [&client]() {
-        int currentTurn = client.playerTurn();
-        int nextTurn = currentTurn > 6 ? 1:(currentTurn + 1);
-        client.setPlayerTurn(nextTurn);
-    });
-    timer.start();
-
     return app.exec();
 }
