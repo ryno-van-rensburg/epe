@@ -13,7 +13,7 @@ public:
     ~ClientMessageBroker();
 
 signals:
-    void testSendMessage(QString& message);
+    void testSendMessageToClient(QString& message);
     
     void connectionStarted(QString username);
     void gameStartedSignal(int numPlayers, QJsonArray players, int dice1,int currentTurn, QVector<QString> faceUpCards);

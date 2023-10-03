@@ -21,13 +21,13 @@ ClientMessageBroker::ClientMessageBroker(QObject *parent)
 //    QObject::connect(this->client, SIGNAL(gameTerminated(Message&)), this, SLOT(unpackGameTerminated(Message&)));
 }
 
-
-ClientMessageBroker::testReceiveMessageFromClient(QString& message){
-    qDebug() << "Received message from client: " << message;
-}
-
 ClientMessageBroker::~ClientMessageBroker(){
 }
+
+void ClientMessageBroker::testReceiveMessageFromClient(QString& message){
+    qDebug() << "Broker:Received message from client: " << message;
+}
+
 
 /**
  * @brief Sends a connection request to the server.
