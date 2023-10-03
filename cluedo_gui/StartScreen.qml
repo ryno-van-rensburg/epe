@@ -6,7 +6,7 @@ Rectangle {
     id: root
     width: 1920; height: 1080
     color: "Transparent"
-    signal switchToGameScreen()
+    signal switchToGameScreen // calling function directly instead of signalling
 
     Image {
         id: bg

@@ -6,7 +6,7 @@ Rectangle
     width: 1920; height: 1080
     color: "Transparent"
 
-    signal switchToStartScreen()
+    signal switchToStartScreen
 
     Image {
         id: background
@@ -275,7 +275,7 @@ Rectangle
                 height: 121
                 onClicked: {
                     console.log("Clicked on btnExit" )
-                    switchToStartScreen()
+                    switchToStartScreen();
                 }
 
                 HoverHandler {

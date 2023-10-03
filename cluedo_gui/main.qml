@@ -18,12 +18,12 @@ Window {
 
     Connections { //for switching between screens
             target: screenLoader.item
-
+            ignoreUnknownSignals: true
             // Connect the custom signal from StartScreen to switch to GameScreen
-            onSwitchToGameScreen: function(){
+            function onSwitchToGameScreen() {
                 screenLoader.sourceComponent = gameScreenComponent;
             }
-            onSwitchToStartScreen: function(){
+            function onSwitchToStartScreen() {
                 screenLoader.sourceComponent = startScreenComponent;
             }
     }
