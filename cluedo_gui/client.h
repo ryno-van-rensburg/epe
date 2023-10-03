@@ -9,7 +9,7 @@ class Client : public QObject
     Q_PROPERTY(int playerTurn READ playerTurn WRITE setPlayerTurn NOTIFY playerTurnChanged)
 public slots:
     void testReceiveMessage(QString& message);
-    
+    void onNameEntered(QString name);
     void onTurnEnded();
     void onSuggestionMade(QString room,QString person, QString item);
 public:
@@ -18,7 +18,7 @@ public:
     void setPlayerTurn(int turn);
 signals:
     void testSendMessageToBroker(QString& message);
-    
+    void validUsername();
     void playerTurnChanged();
 private:
     int currentPlayerTurn;

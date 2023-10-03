@@ -314,7 +314,7 @@ Rectangle
         y: 0
         width: 1920
         height: 1080
-        visible: true
+        visible: false
         source: "images/Suggestion_Prompt.jpeg"
         fillMode: Image.PreserveAspectFit
 

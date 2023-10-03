@@ -17,6 +17,12 @@ int Client::playerTurn() const
     return currentPlayerTurn;
 }
 
+void Client::onNameEntered(QString name){
+    qDebug() << "Name entered: " << name;
+    //SIMON FUNCTION
+    emit validUsername();
+}
+
 void Client::setPlayerTurn(int turn)
 {
     if(currentPlayerTurn != turn){

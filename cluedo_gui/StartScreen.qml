@@ -7,7 +7,7 @@ Rectangle {
     width: 1920; height: 1080
     color: "Transparent"
     signal switchToGameScreen // calling function directly instead of signalling
-
+    property bool validUsername: false;
     Image {
         id: bg
         x: 0
@@ -133,6 +133,14 @@ Rectangle {
                 textInput.visible = true
             }
         }
+        Connections {
+            target: client
+            ignoreUnknownSignals: true
+            function onValidUsername(){
+                validUsername = true
+            }
+
+        }
 
         Text {
             id: confirm
@@ -155,8 +163,11 @@ Rectangle {
                     console.log("Clicked on Confirm")
                     loading.visible =true
                     namePrompt.visible = false
-                    closeTimer.running = true
 
+                    client.onNameEntered(textInput.text);
+                    if (validUsername) {
+                        closeTimer.running = true
+                    }
                 }
             }
 
