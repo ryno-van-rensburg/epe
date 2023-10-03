@@ -2,7 +2,7 @@
 #include <QDebug>
 
 Client::Client(QObject *parent)
-    : QObject{parent}, currentPlayerTurn(0)
+    : QObject{parent}, currentPlayerTurn(1)
 {
 
 }

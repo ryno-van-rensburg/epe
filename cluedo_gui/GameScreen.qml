@@ -7,7 +7,7 @@ Rectangle
     color: "Transparent"
 
     signal switchToStartScreen
-
+    property int prompt_state: 0 // 0 is suggest, 1 is accusse
     Image {
         id: background
         x: 0
@@ -26,55 +26,51 @@ Rectangle
         height: 857
         spacing: 10
 
-        FontLoader {
-            id: customFontLoader
-            source: "imports/space.ttf" // for some reason other font loads automatically but not this one
-        }
-
         Text{
             width: c_player.width;
-            color: client.playerTurn === 1 ? "white" : "cyan";
+            color: client.playerTurn === 1 ? "white" : "#7eacbb"
             font.pointSize: 39;
-            text:"Player  1";
-            font.family: customFontLoader.name}
+            text:"PLAYER  1";
+            font.family: "Pixel"
+            }
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 2 ? "white" : "cyan";
-            text: "Player 2"
-            font.family: "Space Age"
+            color: client.playerTurn === 2 ? "white" : "#7eacbb"
+            text: "PLAYER 2"
+            font.family: "Pixel"
             font.pointSize: 39
         }
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 3 ? "white" : "cyan";
-            text: "Player 3"
-            font.family: "Space Age"
+            color: client.playerTurn === 3? "white" : "#7eacbb"
+            text: "PLAYER 3" 
+            font.family: "Pixel"
             font.pointSize: 39
         }
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 4 ? "white" : "cyan";
-            text: "Player 4"
-            font.family: "Space Age"
+            color: client.playerTurn === 4 ? "white" : "#7eacbb"
+            text: "PLAYER 4"
+            font.family: "Pixel"
             font.pointSize: 39
         }
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 5 ? "white" : "cyan";
-            text: "Player 5"
-            font.family: "Space Age"
+            color: client.playerTurn === 5 ? "white" : "#7eacbb"
+            text: "PLAYER 5"
+            font.family: "Pixel"
             font.pointSize: 39
         }
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 6 ? "white" : "cyan";
-            text: "Player 6"
-            font.family: "Space Age"
+            color: client.playerTurn === 6 ? "white" : "#7eacbb"
+            text: "PLAYER 6"
+            font.family: "Pixel"
             font.pointSize: 39
         }
     }
@@ -138,6 +134,7 @@ Rectangle
                 onClicked: {
                     console.log("Clicked on btnSuggest" )
                     panelState = !panelState;
+                    prompt_state = 0;
                     suggestionPrompt.visible = true
 
                 }
@@ -167,6 +164,10 @@ Rectangle
                 height: 121
                 onClicked: {
                     console.log("Clicked on btnAccuse" )
+                    prompt_state = 1;
+                    panelState = !panelState;
+                    suggestionPrompt.visible = true
+                    
                 }
 
                 HoverHandler {
@@ -313,7 +314,7 @@ Rectangle
         y: 0
         width: 1920
         height: 1080
-        visible: false
+        visible: true
         source: "images/Suggestion_Prompt.jpeg"
         fillMode: Image.PreserveAspectFit
 
@@ -334,7 +335,7 @@ Rectangle
                 cursorShape: Qt.PointingHandCursor
             }
         }
-        signal onSuggestButtonClicked()
+        //signal onSuggestButtonClicked()
         MouseArea {
             id: btnConfirmSuggestion
             x: 1449
@@ -343,10 +344,17 @@ Rectangle
             height: 151
             // something: mouse_.hovered? "prop":"prop" 
             onClicked: {
-                onSuggestButtonClicked()
-                console.log("Clicked on btnConfirmSuggestion" )
-                suggestionPrompt.visible = false
-                client.onSuggestionMade("ROOM","PERSON","ITEM")
+                if (prompt_state === 0){
+                    console.log("Suggesting")
+                    //onSuggestButtonClicked()
+                    console.log("Clicked on btnConfirmSuggestion" )
+                    suggestionPrompt.visible = false
+                    client.onSuggestionMade(tRoom.text,tPerson.text, tWeapon.text)
+                } else {
+                    console.log("Accusing")
+                
+                }
+                
             }
 
             HoverHandler {
@@ -354,6 +362,42 @@ Rectangle
                 acceptedDevices: PointerDevice.Mouse
                 cursorShape: Qt.PointingHandCursor
             }
+        }
+
+        TextInput {
+            id: tPerson
+            x: 531
+            y: 751
+            width: 273
+            height: 50
+            color: "#5e81ab"
+            text: qsTr("PERSON")
+            font.pixelSize: 50
+            font.family: "Pixel"
+        }
+
+        TextInput {
+            id: tWeapon
+            x: 845
+            y: 751
+            width: 273
+            height: 50
+            color: "#5e81ab"
+            text: qsTr("WEAPON")
+            font.pixelSize: 50
+            font.family: "Pixel"
+        }
+
+        TextInput {
+            id: tRoom
+            x: 1170
+            y: 751
+            width: 273
+            height: 50
+            color: "#5e81ab"
+            text: qsTr("ROOM")
+            font.pixelSize: 50
+            font.family: "Pixel"
         }
     }
 }

@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QObject>
 
-#include "testrunner.h"
+//#include "testrunner.h"
 #include "client.h"
 #include "clientmessagebroker.h"
 
@@ -21,6 +21,7 @@
  void connectClientNetworkSignals(Client* client,ClientMessageBroker* broker){
      QObject::connect(client, SIGNAL(testSendMessageToBroker(QString&)),broker,SLOT(testReceiveMessageFromClient(QString&)));
      QObject::connect(broker, SIGNAL(testSendMessageToClient(QString&)), client, SLOT(testReceiveMessage(QString&)) );
+
 }
 
 int main(int argc, char *argv[])
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
     connectClientNetworkSignals(client,broker);
     QString s("Hello from client");
     emit client->testSendMessageToBroker(s);
-    QString a("Hello from Broker");
+    QString a("Hello from main");
     emit broker->testSendMessageToClient(a);
 
     engine.rootContext()->setContextProperty("client",client); // expose client to QML
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     if (app.arguments().contains("--runtests")) { // for running tests
         qDebug() <<"TESTING";
         engine.addImportPath(QStringLiteral("qrc:/tests"));
-        TestRunner testObject;
+        //TestRunner testObject;
         //QTest::qExec(&testObject, app.arguments());
         return 0;
     }
