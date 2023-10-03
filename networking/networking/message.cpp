@@ -215,6 +215,8 @@ MESSAGE_TYPE strToMessageType(QString messageType) {
 
     }else if (messageType == "GAME_STATE_REPLY"){
         return  MESSAGE_TYPE::GAME_STATE_REPLY;
+    }else if (messageType == "GAME_TERMINATION"){
+        return MESSAGE_TYPE::GAME_TERMINATION;
     }else {
         return  MESSAGE_TYPE::ERROR;
     }

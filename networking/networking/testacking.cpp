@@ -142,17 +142,49 @@ private slots:
         QCOMPARE(diceRollSpy.count(), 1);
         QCOMPARE(moveReceived.count(),4);
         QCOMPARE(kickedSpy.count(), 1);
-
         delete clientBroker;
         delete serverBroker;
         return;
-        return;
     }
     void testTerminate(){
+        clientBroker = new ClientMessageBroker();
+        serverBroker = new ServerMessageBroker();
+        QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
+        QSignalSpy termSpy(this->clientBroker, SIGNAL(gameEndedSignal()));
+        serverBroker->listen(6444);
+        quint32 address = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
+        clientBroker->requestConnection(address,6444, "weirdAl");
+        QTest::qWait(1000);
+        NetworkPlayer player;
+        player.setPerson("Green");
+        player.setUsername("weirdAl");
+        serverBroker->terminateGameSlot();
+        QTest::qWait(1000);
+        QVERIFY(termSpy.isValid());
+        QCOMPARE(termSpy.count(), 1);
+        delete clientBroker;
+        delete serverBroker;
         return;
     }
     void testSuggestionStateUpdate(){
-
+        clientBroker = new ClientMessageBroker();
+        serverBroker = new ServerMessageBroker();
+        QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
+        QSignalSpy termSpy(this->clientBroker, SIGNAL(gameEndedSignal()));
+        serverBroker->listen(6444);
+        quint32 address = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
+        clientBroker->requestConnection(address,6444, "weirdAl");
+        QTest::qWait(1000);
+        NetworkPlayer player;
+        player.setPerson("Green");
+        player.setUsername("weirdAl");
+        serverBroker->terminateGameSlot();
+        QTest::qWait(1000);
+        QVERIFY(termSpy.isValid());
+        QCOMPARE(termSpy.count(), 1);
+        delete clientBroker;
+        delete serverBroker;
+        return;
         return;
     }
     void testAccusationStateUpdate(){

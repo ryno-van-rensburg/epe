@@ -153,6 +153,22 @@ int extractId(Message &msg) {
 }
 
 
+/**
+ * @brief Handles error messages received from the server (INCOMPLETE - NOT YET IMPLEMENTED).
+ *
+ * WARNING: This function is not finished and should not be used until it is
+ * completed and tested. It is provided here as a placeholder and is not
+ * functional.
+ *
+ * This function is intended to handle error messages received from the server.
+ * It extracts the acknowledgment ID from the provided message and looks for
+ * a matching ID in the acknowledgment queue. If a matching ID is found, it
+ * processes the error message based on its type. Depending on the error type,
+ * different actions or signals to the GUI may be required.
+ *
+ *
+ */
+
 void Client::handleError(Message &msg)
 {
     int id = extractAckId(msg);
@@ -211,24 +227,6 @@ void Client::handleError(Message &msg)
 
     // do what it takes to resend the message, probably going to call a slot again.
 }
-
-/**
- * @brief Handles error messages received from the server (INCOMPLETE - NOT YET IMPLEMENTED).
- *
- * WARNING: This function is not finished and should not be used until it is
- * completed and tested. It is provided here as a placeholder and is not
- * functional.
- *
- * This function is intended to handle error messages received from the server.
- * It extracts the acknowledgment ID from the provided message and looks for
- * a matching ID in the acknowledgment queue. If a matching ID is found, it
- * processes the error message based on its type. Depending on the error type,
- * different actions or signals to the GUI may be required.
- *
- * @param msg The error message received from the server (if implemented).
- *
- * @note The behavior of this function is undefined until it is fully implemented.
- */
 
 void Client::handleAck(Message &msg)
 {

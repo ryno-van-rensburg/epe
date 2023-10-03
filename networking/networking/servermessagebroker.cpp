@@ -22,6 +22,16 @@ ServerMessageBroker::~ServerMessageBroker(){
 }
 
 
+
+/**
+ * @brief Extracts move data from a received message and processes it.
+ *
+ * This function extracts move data (position) from a JSON message
+ * and performs validation checks on the extracted data. If the data is valid,
+ * it emits a signal to notify the application of the received move.
+ *
+ * @param msg The Message object containing the move data.
+ */
 void ServerMessageBroker::extractMoveData(Message &msg){
     NetworkPlayer* player;
     int move;
@@ -48,6 +58,17 @@ void ServerMessageBroker::extractMoveData(Message &msg){
 
     }
 }
+
+
+/**
+ * @brief Extracts accusation data from a received message and processes it.
+ *
+ * This function extracts accusation data (weapon, person, room) from a JSON message
+ * and performs validation checks on the extracted data. If the data is valid, it emits
+ * a signal to notify the application of the received accussation.
+ *
+ * @param msg The Message object containing the accusation data.
+ */
 
 
 void ServerMessageBroker::extractAccusationData(Message &msg){
@@ -140,6 +161,16 @@ void ServerMessageBroker::extractAccusationData(Message &msg){
 
 }
 
+
+/**
+ * @brief Extracts suggestion data from a received message and processes it.
+ *
+ * This function extracts suggestion data (weapon, person, room) from a JSON message
+ * and performs validation checks on the extracted data. If the data is valid, it emits
+ * a signal to notify the application of the received suggestion.
+ *
+ * @param msg The Message object containing the suggestion data.
+ */
 
 void ServerMessageBroker::extractSuggestionData(Message &msg){
     NetworkPlayer* player;
@@ -284,6 +315,14 @@ void ServerMessageBroker::updateStateSlot(QString username, int position){
     this->session->broadCastMessage(msg);
     return;
 }
+/**
+ * @brief Extracts card shown data from a received message and processes it.
+ *
+ * This function extracts card data from a JSON message and performs validation checks on the extracted data.
+ * If the data is valid, it emits a signal to notify the application of the card shown event.
+ *
+ * @param msg The Message object containing the card shown data.
+ */
 
 void ServerMessageBroker::gameStateReplySlot(QString requesting, int diceRoll, QVector<QString> faceup, int currentTurn){
     QJsonArray playerArr;
@@ -321,6 +360,17 @@ void ServerMessageBroker::gameStateReplySlot(QString requesting, int diceRoll, Q
 }
 
 
+/**
+ * @brief Handles the game state update and broadcasts it to all players.
+ *
+ * This function constructs a JSON representation of the game state, including player information,
+ * face-up cards, dice roll, and the current turn. It then creates a message and broadcasts it to all players.
+ *
+ * @param diceRoll The current dice roll value.
+ * @param faceup A QVector of face-up cards.
+ * @param currentTurn The current turn number.
+ */
+
 void ServerMessageBroker::gameStateSlot( int diceRoll, QVector<QString> faceup, int currentTurn){
     QJsonArray playerArr;
     QVector<NetworkPlayer*> players = session->getPlayers();
@@ -355,6 +405,20 @@ void ServerMessageBroker::gameStateSlot( int diceRoll, QVector<QString> faceup, 
     return;
 }
 
+
+/**
+ * @brief Handles and broadcasts the result of a player's accusation or solution suggestion.
+ *
+ * This function constructs a JSON message to convey the result of a player's accusation or solution suggestion.
+ * It includes the player's username, the suggested person, weapon, and room, and whether the player won or lost.
+ * The message is then broadcast to all players in the session.
+ *
+ * @param playerName The username of the player.
+ * @param person The suggested person in the accusation/suggestion.
+ * @param weapon The suggested weapon in the accusation/suggestion.
+ * @param room The suggested room in the accusation/suggestion.
+ * @param win A flag indicating whether the player won (true) or lost (false).
+ */
 void ServerMessageBroker::playerResultSlot(QString playerName, QString person, QString weapon, QString room, bool win){
     QJsonObject obj;
     obj["Type"] = "PLAYER_RESULT";
@@ -373,6 +437,15 @@ void ServerMessageBroker::playerResultSlot(QString playerName, QString person, Q
     return;
 }
 
+
+/**
+ * @brief Notifies a player about an invalid move request.
+ *
+ * This function sends an error message to a specific player to notify them that their move request
+ * is invalid because they cannot reach the requested position with the current dice roll.
+ *
+ * @param username The username of the player who made the invalid move request.
+ */
 void ServerMessageBroker::invalidMove(QString username)
 {
     QJsonObject errObj;
@@ -384,6 +457,8 @@ void ServerMessageBroker::invalidMove(QString username)
     return;
 }
 
+
+
 void ServerMessageBroker::outOfTurn(QString username){
     QJsonObject errObj;
     errObj["Type"] = "ERROR";
@@ -394,6 +469,14 @@ void ServerMessageBroker::outOfTurn(QString username){
     return;
 }
 
+/**
+ * @brief Notifies a player that they are out of turn.
+ *
+ * This function sends an error message to a specific player to notify them that it is not their turn
+ * to perform a game action.
+ *
+ * @param username The username of the player who is out of turn.
+ */
 void ServerMessageBroker::suggestionUpdateSlot(QString username, QVector<QString> suggestion)
 {
     // Ack user first
@@ -409,7 +492,16 @@ void ServerMessageBroker::suggestionUpdateSlot(QString username, QVector<QString
     session->broadCastMessage(msg);
     return;
 }
-
+/**
+ * @brief Notifies players about a card shown during the game.
+ *
+ * This function sends a message to all players in the game to notify them about a card that has been shown.
+ * It includes information about the asking player, the card being shown, and whether the showing player has the card.
+ *
+ * @param asking The username of the player who asked to see the card.
+ * @param showing The username of the player who is showing the card.
+ * @param hasCard A flag indicating whether the showing player has the card (true) or not (false).
+ */
 void ServerMessageBroker::shownCardSlot(QString asking, QString showing, bool hasCard){
     QJsonObject root;
     root["Type"]= "CARD_SHOWN";
@@ -426,6 +518,16 @@ void ServerMessageBroker::shownCardSlot(QString asking, QString showing, bool ha
     return;
 }
 
+/**
+ * @brief Notifies all players about a player's move and dice roll.
+ *
+ * This function sends a message to all players in the game to notify them about a player's move and the result of two dice rolls.
+ * It includes information about the player who made the move, the values of the two dice, and a unique message ID.
+ *
+ * @param dice1 The value of the first dice roll.
+ * @param dice2 The value of the second dice roll.
+ * @param player The player who made the move.
+ */
 void ServerMessageBroker::notifyPlayerMove(int dice1, int dice2, NetworkPlayer &player){
     QJsonObject root;
     root["Type"] = "DICE_ROLL";
@@ -438,10 +540,28 @@ void ServerMessageBroker::notifyPlayerMove(int dice1, int dice2, NetworkPlayer &
     return;
 }
 
+/**
+ * @brief Denies a connection request from a client.
+ *
+ * This function is used to reject a connection request from a client and
+ * provides a reason for the rejection.
+ *
+ * @param handle The handle or identifier of the client making the connection request.
+ * @param reason The reason for denying the connection request.
+ */
 void ServerMessageBroker::connectionDenied(QString handle, QString reason){
    session->rejectConnection(reason, handle);
    return;
 }
+/**
+ * @brief Deals cards to players and sends the card information to each player.
+ *
+ * This function is responsible for dealing cards to players and sending the card
+ * information to each player individually.
+ *
+ * @param numPlayers The number of players in the game.
+ * @param cards A two-dimensional vector containing the cards to be dealt to each player.
+ */
 
 void ServerMessageBroker::dealCardsSlot(qint16 numPlayers, QVector<QVector<QString> > cards){
     QVector<QString> usernames = session->getPlayerNames();
@@ -461,6 +581,16 @@ void ServerMessageBroker::dealCardsSlot(qint16 numPlayers, QVector<QVector<QStri
     }
     return;
 }
+/**
+ * @brief Sends a request for a card suggestion to a specific player.
+ *
+ * This function sends a request for a card suggestion to a specific player in the game.
+ *
+ * @param askingPlayer The player requesting the card suggestion.
+ * @param person The suggested person card.
+ * @param weapon The suggested weapon card.
+ * @param room The suggested room card.
+ */
 
 void ServerMessageBroker::requestCardSlot(NetworkPlayer& askingPlayer, QString person, QString weapon, QString room){
     QJsonObject root;
@@ -477,10 +607,31 @@ void ServerMessageBroker::requestCardSlot(NetworkPlayer& askingPlayer, QString p
     return;
 }
 
-void ServerMessageBroker::terminateGameSlot(){
+/**
+ * @brief Terminates the ongoing game.
+ *
+ * This function is used to terminate the ongoing game and notify all players about
+ * the game termination.
+ */
 
+void ServerMessageBroker::terminateGameSlot(){
+    QJsonObject root;
+    root["Type"] = "GAME_TERMINATION";
+    Message msg(GAME_TERMINATION, root);
+    session->broadCastMessage(msg);
     return;
 }
+
+
+/**
+ * @brief Notifies a player about a card shown during the game.
+ *
+ * This function is responsible for notifying a specific player about a card that
+ * has been shown during the game.
+ *
+ * @param player The player to be notified.
+ * @param card The card that has been shown.
+ */
 
 void ServerMessageBroker::showCardSlot(NetworkPlayer &player, QString card){
     QJsonObject obj {
@@ -493,6 +644,20 @@ void ServerMessageBroker::showCardSlot(NetworkPlayer &player, QString card){
     session->unicastMessage(msg, player.getUsername());
     return;
 }
+
+
+/**
+ * @brief Accepts a player into the game and notifies other players.
+ *
+ * This function adds a player to the game, notifies other players about the new
+ * player's acceptance, and provides information about the player's username, chosen
+ * person card, and dice rolls.
+ *
+ * @param username The username of the player being accepted.
+ * @param person The person card chosen by the player.
+ * @param dice1 The value of the first dice roll.
+ * @param dice2 The value of the second dice roll.
+ */
 
 void ServerMessageBroker::acceptPlayer(QString username, QString person, int dice1, int dice2)
 {
@@ -512,6 +677,15 @@ void ServerMessageBroker::acceptPlayer(QString username, QString person, int dic
     return;
 }
 
+
+/**
+ * @brief Processes a joining request message.
+ *
+ * This function processes a joining request message received from a client. It extracts
+ * the username from the message and emits a signal to handle the connection request.
+ *
+ * @param msg The joining request message to be processed.
+ */
 void ServerMessageBroker::processJoiningRequest(Message &msg)
 {
     QJsonObject obj = msg.getObj();
