@@ -8,8 +8,9 @@
 #include <QtQuickTest/QtQuickTest>
 #include <QDebug>
 #include <QObject>
+#include <QTest>
 
-//#include "testrunner.h"
+#include "testrunner.h"
 #include "client.h"
 #include "clientmessagebroker.h"
 
@@ -37,14 +38,11 @@ int main(int argc, char *argv[])
     emit broker->testSendMessageToClient(a);
 
     engine.rootContext()->setContextProperty("client",client); // expose client to QML
-
-    
-
     if (app.arguments().contains("--runtests")) { // for running tests
         qDebug() <<"TESTING";
         engine.addImportPath(QStringLiteral("qrc:/tests"));
-        //TestRunner testObject;
-        //QTest::qExec(&testObject, app.arguments());
+        TestRunner testRunner;
+        int result = QTest::qExec(&testRunner);
         return 0;
     }
     engine.addImportPath(":/imports");

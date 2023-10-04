@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 11.0.2, 2023-10-03T22:29:48. -->
+<!-- Written by QtCreator 11.0.2, 2023-10-04T03:29:07. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -453,6 +453,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">cluedo_gui</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.cluedo_gui</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">cluedo_gui</value>
+    <value type="QString" key="RunConfiguration.Arguments">--runtests</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
