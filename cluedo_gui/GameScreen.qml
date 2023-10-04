@@ -17,7 +17,136 @@ Rectangle
         source: "images/GameBoard.png"
         fillMode: Image.PreserveAspectFit
     }
+    
+    Item {
+        x: 457
+        y: 199
+        width: 1006
+        height: 677
+        Player {
+            id: player1
+            playerId : 1
+            x: 551
+            y: 253
+            dragEnable: false
+            color: "#00fefefe"
+            clip: false
+            //anchors.centerIn: parent
+            playerIcon: "images/player1_icon.png"   
+        }
+        Player {
+            id: player2
+            playerId : 2
+            x: 389
+            y: 359
+            dragEnable: false
+            color: "#00fefefe"
+            clip: false
+            //anchors.centerIn: parent
+            playerIcon: "images/player2_icon.png"   
+        }
 
+        Player {
+            id: player3
+            playerId : 3
+            x: 544
+            y: 359
+            dragEnable: false
+            color: "#00ffffff"
+            playerIcon: "images/player3_icon.png"
+            //anchors.centerIn: parent
+        }
+
+        Player {
+            id: player4
+            playerId : 4
+            x: 389
+            y: 264
+            dragEnable: false
+            visible: true
+            color: "#00ffffff"
+            //anchors.centerIn: parent
+            playerIcon: "images/player4_icon.png"
+        }
+
+        Player {
+            id: player5
+            playerId : 5
+            x: 464
+            y: 191
+            dragEnable: false
+            color: "#00ffffff"
+            //anchors.centerIn: parent
+            playerIcon: "images/player5_icon.png"
+        }
+
+        Player {
+            id: player6
+            playerId : 6
+            x: 464
+            y: 304
+            dragEnable: false
+            color: "#00ffffff"
+            //anchors.centerIn: parent
+            playerIcon: "images/player6_icon.png"
+        } 
+    
+    
+    Connections {
+        target: client
+        ignoreUnknownSignals: true
+        function onPlayerPositionUpdated(playerId,newX,newY){
+        //    function handleUpdate(playerId, newX, newY) {
+                //var playerIndex = -1;
+                //var receivedPlayerId = playerId;
+                // for (var i = 0; i < playerModel.count; ++i) {
+                //     if (playerModel.get(i).playerId === receivedPlayerId) {
+                //         playerIndex = i;
+                //         console.debug("Player Found");
+                //         break;
+                // }
+                // }
+                console.debug(newX+" "+newY);
+                switch(playerId){
+                    case 1:
+                        player1.x = newX;
+                        player1.y = newY;
+                        break;
+                    case 2: 
+                        player2.x = newX;
+                        player2.y = newY;
+                        break;
+                    case 3:     
+                        player3.x = newX;
+                        player3.y = newY;
+                        break;
+                    case 4:
+                        player4.x = newX;
+                        player4.y = newY;
+                        break;
+                    case 5: 
+                        player5.x = newX;
+                        player5.y = newY;
+                        break;
+                    case 6:     
+                        player6.x = newX;
+                        player6.y = newY;
+                        break;
+                }
+                
+                // if (playerIndex !== null) {
+                //     player.xGrid = newX;
+                //     player.yGrid = newY;
+                // }else {
+                //     console.debug("Player with ID", playerId, "not found in the model.");
+                // }
+            //}
+            //handleUpdate(playerId, newX, newY);
+        }
+      }
+    }
+
+   
     Column {
         id: c_player
         x: 19
@@ -194,7 +323,36 @@ Rectangle
                 width: 144
                 height: 121
                 onClicked: {
-                    console.log("Clicked on btnMove" )
+                        panelState = !panelState; // Toggle the panel state
+                        player1.dragEnable = false;
+                        player2.dragEnable = false;
+                        player3.dragEnable = false;
+                        player4.dragEnable = false;
+                        player5.dragEnable = false;
+                        player6.dragEnable = false;
+
+                switch(client.playerTurn){
+                    case 1:
+                        player1.dragEnable = true;
+                        break;
+                    case 2: 
+                        
+                        player2.dragEnable = true;
+                        break;
+                    case 3:     
+                        player3.dragEnable = true;
+                        break;
+                    case 4:
+                        
+                        player4.dragEnable = true;
+                        break;
+                    case 5: 
+                        player5.dragEnable = true;
+                        break;
+                    case 6:     
+                        player6.dragEnable = true;
+                        break;
+                }
                 }
 
                 HoverHandler {

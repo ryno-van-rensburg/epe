@@ -16,9 +16,13 @@ public:
     explicit Client(QObject *parent = nullptr);
     int playerTurn() const;
     void setPlayerTurn(int turn);
+    Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
+    void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
+    std::tuple<int,int> getPlayerPosition(int playerId); // will be network slot in future
 signals:
     void testSendMessageToBroker(QString& message);
     void validUsername();
+    void playerPositionUpdated(int playerId, int newX, int newY);
     void playerTurnChanged();
 private:
     int currentPlayerTurn;

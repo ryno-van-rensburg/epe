@@ -139,7 +139,6 @@ Rectangle {
             function onValidUsername(){
                 validUsername = true
             }
-
         }
 
         Text {
@@ -195,7 +194,7 @@ Rectangle {
         }
         Timer {
                id: closeTimer
-               interval: 3000 //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
+               interval:500 //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
                running: false
                onTriggered: {
                  // Close the window when the timer triggers

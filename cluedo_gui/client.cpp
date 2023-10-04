@@ -4,10 +4,6 @@
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
-    errorMessage.setIcon(QMessageBox::Critical);
-    errorMessage.setWindowTitle("Error");
-    errorMessage.setText("Invalid Player ID. Please enter 'KingZander'.");
-    errorMessage.setStandardButtons(QMessageBox::Ok);
 }
 void Client::testReceiveMessage(QString& message){
     qDebug() << "Received message from broker: " << message;
@@ -15,9 +11,26 @@ void Client::testReceiveMessage(QString& message){
     emit testSendMessageToBroker(s);
 }
 
+std::tuple<int,int> Client::getPlayerPosition(int playerId){
+
+} 
+
 int Client::playerTurn() const
 {
     return currentPlayerTurn;
+}
+
+void Client::updatePlayerPosition(int playerId, int newX, int newY)
+{   
+    emit playerPositionUpdated(playerId, newX, newY);
+}
+
+void Client::playerPositionSet(int playerId, int newX, int newY)
+{
+   
+    qDebug() << "Player position set: " << playerId << newX << newY;
+    //emit playerTurnChanged();
+    this->onTurnEnded();
 }
 
 void Client::onNameEntered(QString name){
@@ -38,20 +51,13 @@ void Client::setPlayerTurn(int turn)
 }
 
 void Client::onTurnEnded(){
-    int nextTurn = currentPlayerTurn > 6 ? 1:(currentPlayerTurn + 1);
+    int nextTurn = currentPlayerTurn > 6 ? 1:(currentPlayerTurn % 7 + 1);
     this->setPlayerTurn(nextTurn);
+    qDebug()<<"TEST: Moving Player";
+    this->updatePlayerPosition(nextTurn, (std::rand() % 1000) , (std::rand() % 700));
 }
-
 
 void Client::onSuggestionMade(QString room,QString person, QString item)
 {
     qDebug() << person << room << item;
-}
-
-void Client::checkPlayerID(const QString& playerID)
-{
-    if (playerID != "KingZander")
-    {
-        errorMessage.exec();
-    }
 }
