@@ -503,16 +503,16 @@ Rectangle
             // something: mouse_.hovered? "prop":"prop" 
             onClicked: {
                 if (prompt_state === 0){
-                    console.log("Suggesting")
-                    //onSuggestButtonClicked()
-                    console.log("Clicked on btnConfirmSuggestion" )
+                    console.log("Suggesting")            
                     suggestionPrompt.visible = false
                     client.onSuggestionMade(tRoom.text,tPerson.text, tWeapon.text)
                 } else {
                     console.log("Accusing")
-                
+                    client.onAccusationMade(tRoom.text,tPerson.text, tWeapon.text)
                 }
-                
+                tRoom.text = "ROOM";
+                tPerson.text = "PERSON";
+                tWeapon.text = "WEAPON";
             }
 
             HoverHandler {

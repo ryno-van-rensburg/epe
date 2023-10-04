@@ -11,6 +11,7 @@ public slots:
     void testReceiveMessage(QString& message);
     void onNameEntered(QString name);
     void onTurnEnded();
+    void onAccusationMade(QString room,QString person, QString item);
     void onSuggestionMade(QString room,QString person, QString item);
 public:
     explicit Client(QObject *parent = nullptr);

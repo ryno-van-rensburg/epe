@@ -57,7 +57,11 @@ void Client::onTurnEnded(){
     this->updatePlayerPosition(nextTurn, (std::rand() % 1000) , (std::rand() % 700));
 }
 
+void Client::onAccusationMade(QString room,QString person, QString item)
+{
+    qDebug() << "Accusation" << person << room << item;
+}
 void Client::onSuggestionMade(QString room,QString person, QString item)
 {
-    qDebug() << person << room << item;
+    qDebug() << "Suggestion" << person << room << item;
 }
