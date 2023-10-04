@@ -20,6 +20,16 @@ int Client::playerTurn() const
     return currentPlayerTurn;
 }
 
+void Client::emitMakeMoveSignal(int position){
+    emit makeMove(position);
+}
+
+void Client::onSuggestionReceived(QString room,QString person, QString item)
+{
+    qDebug() << "Suggestion" << person << room << item;
+    emit makeSuggestion(person, item, room);
+}
+
 void Client::updatePlayerPosition(int playerId, int newX, int newY)
 {   
     emit playerPositionUpdated(playerId, newX, newY);
@@ -30,7 +40,25 @@ void Client::playerPositionSet(int playerId, int newX, int newY)
    
     qDebug() << "Player position set: " << playerId << newX << newY;
     //emit playerTurnChanged();
+    emit makeMove(newX);
     this->onTurnEnded();
+}
+
+void Client::emitRequestConnectionSignal(quint32 address, quint16 port, QString username)
+{
+    emit requestConnection(address, port, username);
+}
+void  Client::emitRequestStateSlotSignal(){
+    emit requestStateSlot();
+}
+
+void Client::emitSendConnectionRequestSignal(QString username)
+{
+    emit sendConnectionRequest(username);
+}
+
+void Client::emitValidUsernameSignal(){
+    emit validUsername();
 }
 
 void Client::onNameEntered(QString name){
@@ -50,6 +78,9 @@ void Client::setPlayerTurn(int turn)
     }
 }
 
+void Client :: emitShowCardSignal(QString card){
+    emit showCard(card);
+}
 void Client::onTurnEnded(){
     int nextTurn = currentPlayerTurn > 6 ? 1:(currentPlayerTurn % 7 + 1);
     this->setPlayerTurn(nextTurn);
@@ -60,8 +91,10 @@ void Client::onTurnEnded(){
 void Client::onAccusationMade(QString room,QString person, QString item)
 {
     qDebug() << "Accusation" << person << room << item;
+    emit    makeAccusation(person, item, room);
 }
 void Client::onSuggestionMade(QString room,QString person, QString item)
 {
     qDebug() << "Suggestion" << person << room << item;
+    emit makeSuggestion(person, item, room);
 }

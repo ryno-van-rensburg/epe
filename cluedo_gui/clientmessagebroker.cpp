@@ -23,8 +23,8 @@ void ClientMessageBroker::testReceiveMessageFromClient(QString& message){
  *
  * @param username The username for the connection request.
  */
-void ClientMessageBroker::sendConnectionRequest(QString username){
-
+void ClientMessageBroker::onSendConnectionRequest(QString username){
+    qDebug() << "Broker: Received connection request from client: " << username;
 }
 /**
  * @brief Initiates a connection request to the server.
@@ -37,8 +37,8 @@ void ClientMessageBroker::sendConnectionRequest(QString username){
  * @param port The port number of the server to connect to.
  * @param username The username for the connection request.
  */
-void ClientMessageBroker::requestConnection(quint32 address, quint16 port, QString username) {
-    
+void ClientMessageBroker::onRequestConnection(quint32 address, quint16 port, QString username) {
+   qDebug() << "Broker: Received connection request from client: " << address << port << username; 
 }
 
 /**
@@ -50,7 +50,8 @@ void ClientMessageBroker::requestConnection(quint32 address, quint16 port, QStri
  *
  * @param position The position to move to.
  */
-void ClientMessageBroker::makeMove(int position){
+void ClientMessageBroker::onMakeMove(int position){
+    qDebug() << "Broker: Received move request from client: " << position;
 }
 
 /**
@@ -62,7 +63,7 @@ void ClientMessageBroker::makeMove(int position){
  *
  * @param card The name of the card to show.
  */
-void ClientMessageBroker::showCard(QString card){
+void ClientMessageBroker::onShowCard(QString card){
     
 }
 
@@ -77,9 +78,9 @@ void ClientMessageBroker::showCard(QString card){
  * @param weapon The accused weapon.
  * @param room The accused room.
  */
-void ClientMessageBroker::makeAccusation(QString person, QString weapon, QString room)
+void ClientMessageBroker::onMakeAccusation(QString person, QString weapon, QString room)
 {
-    
+    qDebug() << "Broker: Received accusation from client: " << person << weapon << room;
 }
 
 /**
@@ -93,9 +94,9 @@ void ClientMessageBroker::makeAccusation(QString person, QString weapon, QString
  * @param weapon The suggested weapon.
  * @param room The suggested room.
  */
-void ClientMessageBroker::makeSuggestion(QString person, QString weapon, QString room)
+void ClientMessageBroker::onMakeSuggestion(QString person, QString weapon, QString room)
 {
-   
+  qDebug() << "Broker: Received suggestion from client: " << person << weapon << room; 
 }
 
 /**
@@ -105,7 +106,7 @@ void ClientMessageBroker::makeSuggestion(QString person, QString weapon, QString
  * constructs a `Message` object representing the request and sends it using
  * the internal `Client` instance.
  */
-void ClientMessageBroker::requestStateSlot()
+void ClientMessageBroker::onRequestStateSlot()
 {
    
 }

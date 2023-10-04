@@ -20,9 +20,15 @@
     * @param broker the broker to connect    
 */
  void connectClientNetworkSignals(Client* client,ClientMessageBroker* broker){
-     QObject::connect(client, SIGNAL(testSendMessageToBroker(QString&)),broker,SLOT(testReceiveMessageFromClient(QString&)));
-     QObject::connect(broker, SIGNAL(testSendMessageToClient(QString&)), client, SLOT(testReceiveMessage(QString&)) );
-
+    QObject::connect(client, SIGNAL(testSendMessageToBroker(QString&)),broker,SLOT(testReceiveMessageFromClient(QString&)));
+    QObject::connect(broker, SIGNAL(testSendMessageToClient(QString&)), client, SLOT(testReceiveMessage(QString&)) );
+    QObject::connect(client, SIGNAL(requestConnection(quint32, quint16, QString)), broker, SLOT(onRequestConnection(quint32, quint16, QString)));
+    QObject::connect(client, SIGNAL(makeMove(int)), broker, SLOT(onMakeMove(int)));
+    QObject::connect(client, SIGNAL(showCard(QString)), broker, SLOT(onShowCard(QString)));
+    QObject::connect(client, SIGNAL(makeAccusation(QString, QString, QString)), broker, SLOT(onMakeAccusation(QString, QString, QString)));
+    QObject::connect(client, SIGNAL(makeSuggestion(QString, QString, QString)), broker, SLOT(onMakeSuggestion(QString, QString, QString)));
+    QObject::connect(client, SIGNAL(requestStateSlot()), broker, SLOT(onRequestStateSlot()));
+    QObject::connect(client, SIGNAL(sendConnectionRequest(QString)), broker, SLOT(onSendConnectionRequest(QString)));
 }
 
 int main(int argc, char *argv[])

@@ -8,6 +8,7 @@ class ClientMessageBroker : public QObject
 {
     Q_OBJECT
 private:
+    
 public:
     explicit ClientMessageBroker(QObject *parent = nullptr);
     ~ClientMessageBroker();
@@ -34,14 +35,14 @@ signals:
 
 public slots:
     void testReceiveMessageFromClient(QString& message);
-    
-    void requestConnection(quint32 address, quint16 port, QString username);
-    void makeMove(int position);
-    void showCard(QString card);
-    void makeAccusation(QString person, QString weapon, QString room);
-    void makeSuggestion(QString person, QString weapon, QString room);
-    void requestStateSlot();
-    void sendConnectionRequest(QString username);
+
+    void onRequestConnection(quint32 address, quint16 port, QString username);
+    void onMakeMove(int position);
+    void onShowCard(QString card);
+    void onMakeAccusation(QString person, QString weapon, QString room);
+    void onMakeSuggestion(QString person, QString weapon, QString room);
+    void onRequestStateSlot();
+    void onSendConnectionRequest(QString username);
 
 private slots:
   };
