@@ -32,6 +32,9 @@ public:
     void emitSendConnectionRequestSignal(QString username);
     void emitValidUsernameSignal();
     void emitSendSuggestionSignal(QString username);
+
+    Q_INVOKABLE void testBox(QString in);
+
     //void emitCardShownSignal(QString showed);
     //void emitPlayerAcceptedSignal(QString username, QString person, int dice1, int dice2);
 signals:

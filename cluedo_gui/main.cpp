@@ -1,7 +1,7 @@
 // Copyright (C) 2020 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
-#include <QGuiApplication>
+//#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QTimer>
@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QObject>
 #include <QTest>
+#include <QApplication>
 
 #include "testrunner.h"
 #include "client.h"
@@ -19,7 +20,7 @@
     * @param client the client to connect
     * @param broker the broker to connect    
 */
- void connectClientNetworkSignals(Client* client,ClientMessageBroker* broker){
+ void connectClientBroker(Client* client,ClientMessageBroker* broker){
     QObject::connect(client, SIGNAL(testSendMessageToBroker(QString&)),broker,SLOT(testReceiveMessageFromClient(QString&)));
     QObject::connect(broker, SIGNAL(testSendMessageToClient(QString&)), client, SLOT(testReceiveMessage(QString&)) );
     QObject::connect(client, SIGNAL(requestConnection(quint32, quint16, QString)), broker, SLOT(onRequestConnection(quint32, quint16, QString)));
@@ -33,22 +34,18 @@
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
     QQmlApplicationEngine engine;
     Client* client = new Client;
     ClientMessageBroker* broker = new ClientMessageBroker;
-    connectClientNetworkSignals(client,broker);
-    QString s("Hello from client");
-    emit client->testSendMessageToBroker(s);
-    QString a("Hello from main");
-    emit broker->testSendMessageToClient(a);
-
+    connectClientBroker(client,broker);
+    
     engine.rootContext()->setContextProperty("client",client); // expose client to QML
-    if (app.arguments().contains("--runtests")) { // for running tests
+    if (app.arguments().contains("--runtests")) { // for running tests when given run arguments
         qDebug() <<"TESTING";
         engine.addImportPath(QStringLiteral("qrc:/tests"));
         TestRunner testRunner;
-        int result = QTest::qExec(&testRunner);
+        int result = QTest::qExec(&testRunner); // runs tests
         return 0;
     }
     engine.addImportPath(":/imports");

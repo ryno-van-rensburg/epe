@@ -324,6 +324,7 @@ Rectangle
                 height: 121
                 onClicked: {
                         panelState = !panelState; // Toggle the panel state
+                        // This ensures only the current player can be moved
                         player1.dragEnable = false;
                         player2.dragEnable = false;
                         player3.dragEnable = false;
@@ -502,7 +503,7 @@ Rectangle
             height: 151
             // something: mouse_.hovered? "prop":"prop" 
             onClicked: {
-                if (prompt_state === 0){
+                if (prompt_state === 0){ // prompt state shows acc/suggest since i reuse menus
                     console.log("Suggesting")            
                     client.onSuggestionMade(tRoom.text,tPerson.text, tWeapon.text)
                 } else {

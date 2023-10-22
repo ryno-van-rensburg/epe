@@ -47,6 +47,7 @@ Rectangle {
                 aiArea.enabled = false
                 startArea.enabled = false
                 btnStart.visible = false
+                client.testBox("Yes testing testing")
             }
         }
 

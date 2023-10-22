@@ -1,5 +1,7 @@
 #include "client.h"
 #include <QDebug>
+#include <QMessageBox>
+#include <QApplication>
 
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
@@ -29,7 +31,8 @@ void Client::testReceiveMessage(QString& message){
  * @return A tuple containing X and Y coordinates of the player.
  */
 std::tuple<int,int> Client::getPlayerPosition(int playerId){
-
+    std::tuple<int,int> a;
+    return a;
 }
 
 /**
@@ -174,4 +177,13 @@ void Client::onSuggestionMade(QString room,QString person, QString item)
 {
     qDebug() << "Suggestion" << person << room << item;
     emit makeSuggestion(person, item, room);
+}
+void Client::testBox(QString in)
+{
+    QMessageBox msgBox;
+    msgBox.setText("The document has been modified.");
+    msgBox.setInformativeText(in);
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
 }
