@@ -207,9 +207,9 @@ void Client::testBox(QString in)
 void Client::onRequestAnswered(QString room, QString person, QString item)
 {
     qDebug()<< "Answered Suggestion with: "  << person << room << item;
-
+    // emit to broker here
 }
 
 void Client::onRequestReceived(){
-    emit promptRequest();
+    emit promptRequested();
 }

@@ -95,7 +95,7 @@ Rectangle
     Connections {
         target: client
         ignoreUnknownSignals: true
-        function onPromptRequest(){
+        function onPromptRequested(){
             prompt_state = 2
             suggestionPrompt.visible = true;
         }

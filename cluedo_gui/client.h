@@ -34,13 +34,11 @@ public:
     void emitValidUsernameSignal();
     void emitSendSuggestionSignal(QString username);
     void onRequestReceived();
-
     Q_INVOKABLE void testBox(QString in);
-
     //void emitCardShownSignal(QString showed);
     //void emitPlayerAcceptedSignal(QString username, QString person, int dice1, int dice2);
 signals:
-    void promptRequest();
+    void promptRequested();
     void testSendMessageToBroker(QString& message);
     void validUsername();
     void playerPositionUpdated(int playerId, int newX, int newY);
