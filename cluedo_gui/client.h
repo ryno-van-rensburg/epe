@@ -19,9 +19,10 @@ public slots:
     
 public:
     explicit Client(QObject *parent = nullptr);
-    int playerTurn() const;
-    void setPlayerTurn(int turn);
+    Q_INVOKABLE int playerTurn() const;
+    Q_INVOKABLE int getCurrentDiceValue() const;
     Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
+    void setPlayerTurn(int turn);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
     std::tuple<int,int> getPlayerPosition(int playerId); // will be network slot in future
     void emitRequestConnectionSignal(quint32 address, quint16 port, QString username);
@@ -53,6 +54,7 @@ signals:
     void sendConnectionRequest(QString username);
 private:
     int currentPlayerTurn;
+    int diceValue;
 };
 
 #endif // CLIENT_H

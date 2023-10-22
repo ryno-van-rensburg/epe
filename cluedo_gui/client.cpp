@@ -6,6 +6,7 @@
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
+    diceValue = 1;
 }
 /**
  * @brief Sends a test message received from the broker.
@@ -45,6 +46,9 @@ std::tuple<int,int> Client::getPlayerPosition(int playerId){
 int Client::playerTurn() const
 {
     return currentPlayerTurn;
+}
+int Client::getCurrentDiceValue() const{
+    return diceValue;
 }
 
 /**
@@ -170,6 +174,8 @@ void Client::setPlayerTurn(int turn)
 {
     if(currentPlayerTurn != turn){
         currentPlayerTurn = turn;
+        diceValue =  std::rand()%6 +1 ;//dice;
+        qDebug() << "Dice value:" << diceValue;
         emit playerTurnChanged();
     }
 }
@@ -179,6 +185,7 @@ void Client :: emitShowCardSignal(QString card){
 }
 void Client::onTurnEnded(){
     int nextTurn = currentPlayerTurn > 6 ? 1:(currentPlayerTurn % 7 + 1);
+
     this->setPlayerTurn(nextTurn);
     qDebug()<<"TEST: Moving Player";
     this->updatePlayerPosition(nextTurn, (std::rand() % 1000) , (std::rand() % 700));
@@ -213,3 +220,4 @@ void Client::onRequestAnswered(QString room, QString person, QString item)
 void Client::onRequestReceived(){
     emit promptRequested();
 }
+

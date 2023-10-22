@@ -8,8 +8,9 @@ Rectangle
 
     signal switchToStartScreen
     property int prompt_state: 0 // 0 is suggest, 1 is accusse
-    property int dice_moves: 1
     property int dice_radius: 50 // pixels
+    property int dice_moves: 1
+
     Image {
         id: background
         x: 0
@@ -333,6 +334,7 @@ Rectangle
                 width: 144
                 height: 121
                 onClicked: {
+                        dice_moves = client.getCurrentDiceValue()
                         panelState = !panelState; // Toggle the panel state
                         // This ensures only the current player can be moved
                         player1.dragEnable = false;

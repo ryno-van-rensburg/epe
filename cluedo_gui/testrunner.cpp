@@ -33,12 +33,12 @@ void TestRunner::testPlayerPositionSet(){
 }
 void TestRunner::testOnMakeMove()
 {
-    QSignalSpy spy(&client, SIGNAL(makeMove(int)));
+    QSignalSpy spy(&client, SIGNAL(makeMove(int,int)));
 
     int position = 42; // Example position value
 
     client.emitMakeMoveSignal(position);
-    client.setPlayerTurn(1); // should not emit signal since the default player turn is 0
+    //client.setPlayerTurn(1,1); // should not emit signal since the default player turn is 0
 
     QCOMPARE(spy.count(), 1); // SHOULD BE 1 instead of 2
     QList<QVariant> arguments = spy.takeFirst();

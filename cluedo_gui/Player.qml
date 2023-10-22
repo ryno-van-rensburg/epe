@@ -11,6 +11,7 @@ Rectangle {
     property bool dragEnable: false
     property real initial_x :0
     property real initial_y :0
+
     // Animate x and y properties to move the player
 
     Behavior on x {
@@ -39,6 +40,8 @@ Rectangle {
 
         drag.target: dragEnable ? parent : null
         onPressed: {
+
+                    console.debug(dice_moves)
                     drag.minimumX = parent.x - dice_moves * dice_radius
                     drag.maximumX = parent.x + dice_moves * dice_radius
                     drag.minimumY = parent.y - dice_moves * dice_radius
