@@ -8,6 +8,8 @@ Rectangle
 
     signal switchToStartScreen
     property int prompt_state: 0 // 0 is suggest, 1 is accusse
+    property int dice_moves: 1
+    property int dice_radius: 50 // pixels
     Image {
         id: background
         x: 0
@@ -28,6 +30,8 @@ Rectangle
             playerId : 1
             x: 551
             y: 253
+            initial_x : x
+            initial_y: y
             dragEnable: false
             color: "#00fefefe"
             clip: false
@@ -39,6 +43,8 @@ Rectangle
             playerId : 2
             x: 389
             y: 359
+            initial_x : x
+            initial_y: y
             dragEnable: false
             color: "#00fefefe"
             clip: false
@@ -51,6 +57,8 @@ Rectangle
             playerId : 3
             x: 544
             y: 359
+            initial_x : x
+            initial_y: y
             dragEnable: false
             color: "#00ffffff"
             playerIcon: "images/player3_icon.png"
@@ -62,6 +70,8 @@ Rectangle
             playerId : 4
             x: 389
             y: 264
+            initial_x : x
+            initial_y: y
             dragEnable: false
             visible: true
             color: "#00ffffff"
@@ -74,6 +84,9 @@ Rectangle
             playerId : 5
             x: 464
             y: 191
+            initial_x : x
+            initial_y: y
+
             dragEnable: false
             color: "#00ffffff"
             //anchors.centerIn: parent
@@ -85,6 +98,8 @@ Rectangle
             playerId : 6
             x: 464
             y: 304
+            initial_x : x
+            initial_y: y
             dragEnable: false
             color: "#00ffffff"
             //anchors.centerIn: parent
