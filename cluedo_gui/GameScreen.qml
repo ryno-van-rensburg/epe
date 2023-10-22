@@ -95,17 +95,12 @@ Rectangle
     Connections {
         target: client
         ignoreUnknownSignals: true
+        function onPromptRequest(){
+            prompt_state = 2
+            suggestionPrompt.visible = true;
+        }
+
         function onPlayerPositionUpdated(playerId,newX,newY){
-        //    function handleUpdate(playerId, newX, newY) {
-                //var playerIndex = -1;
-                //var receivedPlayerId = playerId;
-                // for (var i = 0; i < playerModel.count; ++i) {
-                //     if (playerModel.get(i).playerId === receivedPlayerId) {
-                //         playerIndex = i;
-                //         console.debug("Player Found");
-                //         break;
-                // }
-                // }
                 console.debug(newX+" "+newY);
                 switch(playerId){
                     case 1:
@@ -467,6 +462,7 @@ Rectangle
         }
     }
 
+
     Image {
         id: suggestionPrompt
         x: 0
@@ -494,7 +490,7 @@ Rectangle
                 cursorShape: Qt.PointingHandCursor
             }
         }
-        //signal onSuggestButtonClicked()
+
         MouseArea {
             id: btnConfirmSuggestion
             x: 1449
@@ -506,10 +502,14 @@ Rectangle
                 if (prompt_state === 0){ // prompt state shows acc/suggest since i reuse menus
                     console.log("Suggesting")            
                     client.onSuggestionMade(tRoom.text,tPerson.text, tWeapon.text)
-                } else {
+                } else if (prompt_state ==1) {
                     console.log("Accusing")
                     client.onAccusationMade(tRoom.text,tPerson.text, tWeapon.text)
+                } else if (prompt_state ==2){
+                    console.log("Responding")
+                    client.onRequestAnswered(tRoom.text,tPerson.text,tWeapon.text)
                 }
+
                 suggestionPrompt.visible = false
                 tRoom.text = "ROOM";
                 tPerson.text = "PERSON";
@@ -556,6 +556,32 @@ Rectangle
             color: "#5e81ab"
             text: qsTr("ROOM")
             font.pixelSize: 50
+            font.family: "Pixel"
+        }
+
+        Text {
+            id: prompt_type
+            x: 531
+            y: 245
+            width: 901
+            height: 86
+            color: "#d2d9e3"
+            text: {
+                switch(prompt_state)
+                {
+                case 0:
+                   return qsTr("SUGGESTION");
+                case 1:
+                    return qsTr("ACCUSATION");
+                case 2:
+                    return qsTr("RESPOND TO SUGGESTION");
+                default:
+                    break;
+                }
+            }
+            font.pixelSize: 70
+            horizontalAlignment: Text.AlignHCenter
+            font.weight: Font.Normal
             font.family: "Pixel"
         }
     }

@@ -161,12 +161,11 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     console.log("Clicked on Confirm")
-                    loading.visible =true
-                    namePrompt.visible = false
-
                     client.onNameEntered(textInput.text);
                     if (validUsername) {
                         closeTimer.running = true
+                        loading.visible =true
+                        namePrompt.visible = false
                     }
                 }
             }

@@ -144,9 +144,25 @@ void Client::emitValidUsernameSignal(){
 void Client::onNameEntered(QString name){
     qDebug() << "Name entered: " << name;
     //SIMON FUNCTION
-    if(true){
 
-    emit validUsername();
+    QString readtext = name;
+
+    //flags for validating the incoming text
+    bool is_emptytext = false; // assume there's text first.
+    QMessageBox msgBox;
+    msgBox.setText("Warning");
+    if(readtext.isEmpty()){
+        is_emptytext = true;
+    }
+
+    if(!is_emptytext)
+    {
+        emit validUsername();
+    }
+    else if (is_emptytext)
+    {
+        msgBox.setInformativeText("Empty! add plz");
+        msgBox.exec();
     }
 }
 
@@ -181,9 +197,19 @@ void Client::onSuggestionMade(QString room,QString person, QString item)
 void Client::testBox(QString in)
 {
     QMessageBox msgBox;
-    msgBox.setText("The document has been modified.");
+    msgBox.setText("Testing Dialog Boxes");
     msgBox.setInformativeText(in);
     msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
     msgBox.setDefaultButton(QMessageBox::Save);
     int ret = msgBox.exec();
+}
+
+void Client::onRequestAnswered(QString room, QString person, QString item)
+{
+    qDebug()<< "Answered Suggestion with: "  << person << room << item;
+
+}
+
+void Client::onRequestReceived(){
+    emit promptRequest();
 }

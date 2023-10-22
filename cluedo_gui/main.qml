@@ -27,7 +27,6 @@ Window {
                 screenLoader.sourceComponent = startScreenComponent;
             }
     }
-
       // Components for StartScreen and GameScreen
       Component {
       id: startScreenComponent

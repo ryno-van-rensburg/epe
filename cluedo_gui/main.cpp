@@ -53,9 +53,6 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    // client->updatePlayerPosition(1, 5, 5);
-    // client->updatePlayerPosition(3, 5, 5);
-    // client->updatePlayerPosition(6, 5, 5);
 
     int app_code = app.exec();
     delete client;
