@@ -20,6 +20,8 @@ public slots:
     void onRequestAnswered(QString room,QString person, QString item);
     void emitConnectionAccepted();
     void emitConnectionRejected();
+    void onCardShown(bool hasCard, QString asked, QString showed); // Multicast
+    void onCardShownToPlayer(QString username, QString card);      // Unicast
 public:
     explicit Client(QObject *parent = nullptr);
     Q_INVOKABLE int playerTurn() const;
@@ -63,6 +65,7 @@ private:
     void connectClientBroker();
     ClientMessageBroker broker;
     int currentPlayerTurn;
+    int getRoomNumber(int x, int y);
     int diceValue;
     QString player1_id; // White
     QString player2_id; // Green

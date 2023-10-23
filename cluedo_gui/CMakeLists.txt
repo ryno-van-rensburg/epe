@@ -18,7 +18,6 @@ qt_add_executable(cluedo_gui
     TestRunner.qml
     testrunner.h testrunner.cpp
     clientmessagebroker.h clientmessagebroker.cpp
-    NoteBookItem.qml
 )
 
 set_target_properties(cluedo_gui PROPERTIES

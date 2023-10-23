@@ -27,12 +27,14 @@ signals:
     void accusationResultSignal(QVector<QString> cards, bool win);
     void turnSignal(QString username, int dice1, int dice2);
     void cardsDealt(QVector<QString> cards);
-    void cardShown(bool hasCard, QString asked, QString showed);
-    void cardShownToPlayer(QString username, QString card);
+    void cardShown(bool hasCard, QString asked, QString showed); // Multicast
+    void cardShownToPlayer(QString username, QString card);      // Unicast
     void playerKicked(QString username, QString reason);
     void gameEndedSignal();
     void gameStateSignal(int numPlayers, QJsonArray players, int dice, int currentTurn, QJsonArray faceupCards);
     void playerResult(QString username, QVector<QString> accusation,bool win);
+    // error signal can be sent in response to ANY message you send, so make sure you handle all of them 
+    // in a single slot. 
     void errorSignal(ERROR_TYPE err, QString username);
     void moveUpdate(QString username, int position);
     void cardRequestedSignal(QString asked, QVector<QString> suggestion );

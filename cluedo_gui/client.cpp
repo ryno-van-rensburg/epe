@@ -137,8 +137,9 @@ void Client::emitMakeMoveSignal(int position){
  */
 void Client::onSuggestionReceived(QString room, QString person, QString item)
 {
+
     qDebug() << "Suggestion" << person << room << item;
-    emit makeSuggestion(person, item, room);
+    broker.makeSuggestion(person, item, room);
 }
 
 /**
@@ -232,26 +233,8 @@ void Client::onNameEntered(QString name){
     QString readtext = name;
 
     //flags for validating the incoming text
-    //    bool is_emptytext = false; // assume there's text first.
     QMessageBox msgBox;
-    //    msgBox.setText("Warning");
-    //    if(readtext.isEmpty()){
-    //        is_emptytext = true;
-    //    }
-
-    //    if(!is_emptytext)
-    //    {
-    //        emit validUsername();
-    //    }
-    //    else if (is_emptytext)
-    //    {
-    //        msgBox.setInformativeText("Empty! add plz");
-    //        msgBox.exec();
-    //    }
-
-    //    QString readtext = id;
-
-    //flags for validating the incoming text
+   
     bool is_emptytext = false; // assume there's text first.
     bool is_groupnumber = false; // if there's a group number at the beginning of the playerID
     bool is_underscore = false; // if there's underscore followed after the group number
@@ -372,7 +355,7 @@ void Client::onAccusationMade(QString room,QString person, QString item)
 void Client::onSuggestionMade(QString room,QString person, QString item)
 {
     qDebug() << "Suggestion" << person << room << item;
-    emit makeSuggestion(person, item, room);
+    broker.makeSuggestion(person, item, room);
 }
 void Client::testBox(QString in)
 {
@@ -442,4 +425,13 @@ void Client::emitConnectionAccepted(){
 
 void Client::emitConnectionRejected(){
     emit connectionRejected();
+}
+
+void Client::onCardShown(bool hasCard, QString asked, QString showed) // Multicast
+{
+
+}
+void Client::onCardShownToPlayer(QString username, QString card)      // Unicast
+{
+
 }
