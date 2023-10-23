@@ -377,6 +377,7 @@ QString Client::getPlayerID(int n){
     default:
         break;
     }
+    return "None";
 }
 
 void Client::emitConnectionAccepted(){
