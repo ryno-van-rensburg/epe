@@ -303,7 +303,7 @@ build GameServer_autogen/timestamp GameServer_autogen/mocs_compilation.cpp | ${c
 #############################################
 # Phony custom command for CMakeFiles\GameServer_autogen_timestamp_deps
 
-build CMakeFiles/GameServer_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/GameServer_autogen_timestamp_deps: phony D$:/Qt/6.5.2/mingw_64/lib/libQt6Core.a D$:/Qt/6.5.2/mingw_64/./bin/moc.exe D$:/Qt/6.5.2/mingw_64/lib/libQt6Network.a
+build CMakeFiles/GameServer_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/GameServer_autogen_timestamp_deps: phony D$:/Qt/6.5.2/mingw_64/lib/libQt6Network.a D$:/Qt/6.5.2/mingw_64/./bin/moc.exe D$:/Qt/6.5.2/mingw_64/lib/libQt6Core.a
 
 
 #############################################
