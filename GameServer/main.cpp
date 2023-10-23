@@ -20,6 +20,8 @@
 
 int main(int argc, char *argv[])
 {
+    GameServer gameserver;
+
     QCoreApplication app(argc,argv);
 
     return app.exec();
