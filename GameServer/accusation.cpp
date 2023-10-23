@@ -1,5 +1,5 @@
 #include "accusation.h"
-#include "CharacterCard.h"
+#include "charactercard.h"
 
 Accusation::Accusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon, QObject* parent) : QObject(parent), character(nullptr), room(nullptr), weapon(nullptr)
 {

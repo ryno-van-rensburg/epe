@@ -572,7 +572,7 @@ void GameServer::MoveRequestedSlot(NetworkPlayer &player, quint32 pos)
     {
         playerToMove->SetPosition(destination);
         ServerMessageBroker* s = new ServerMessageBroker();
-        QObject::connect(this,&GameServer::UpdateStateSignal,s,ServerMessageBroker::updateStateSlot);
+        QObject::connect(this,&GameServer::UpdateStateSignal,s,&ServerMessageBroker::updateStateSlot);
         emit this->UpdateStateSignal(playerToMove->GetUsername(),destination);
         logEvent(playerToMove->GetUsername()+" moved from "+c+" to "+d);
         qDebug("Valid move");
