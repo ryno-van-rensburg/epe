@@ -166,7 +166,7 @@ Rectangle {
                 onClicked: {
                     console.log("Clicked on Confirm")
                     client.onNameEntered(textInput.text);
-                    switchToGameScreen()
+                    //switchToGameScreen()
                     if (validUsername) {
                         closeTimer.running = true
                         loading.visible =true

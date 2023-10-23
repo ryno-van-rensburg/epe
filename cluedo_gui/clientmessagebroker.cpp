@@ -224,7 +224,7 @@ void ClientMessageBroker::unpackGameState(Message &msg) {
 void ClientMessageBroker::unpackPlayerTurn(Message &msg){
     // TODO error checking
     QJsonObject obj = msg.getObj();
-    QString username = obj["Username"];
+    QString username = obj["Username"].toString();
     if (username == client->getUsername()) {
         client->ack(msg);
     }
