@@ -13,7 +13,7 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
     QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
-    //QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)));
+    QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
     //QObject::connect(broker, SIGNAL(gameEndedSignal()));
     //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)));
