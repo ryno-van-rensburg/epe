@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Network)
 
 add_executable(GameServer
   main.cpp
@@ -25,10 +25,12 @@ add_executable(GameServer
   weaponcard.h weaponcard.cpp
   envelope.h envelope.cpp
   room.h room.cpp
+  serversession.cpp serversession.h
+  message.cpp message.h
+  clientconnection.h clientconnection.cpp
   servermessagebroker.h servermessagebroker.cpp
-
 )
-target_link_libraries(GameServer Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(GameServer Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Network)
 
 include(GNUInstallDirs)
 install(TARGETS GameServer
