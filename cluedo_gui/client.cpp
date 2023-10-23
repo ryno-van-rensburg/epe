@@ -429,9 +429,35 @@ void Client::emitConnectionRejected(){
 
 void Client::onCardShown(bool hasCard, QString asked, QString showed) // Multicast
 {
+    // {showed} has/hasn't shown a card to {asked}.
+    if (hasCard == true)
+    {
+       QMessageBox msgBox;
+       msgBox.setText(showed + "has shown a card" + asked);
+       msgBox.setInformativeText(showed + "has shown a card" + asked);
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+       msgBox.exec();
+    }
+    else
+    {
+       QMessageBox msgBox;
+       msgBox.setText(showed + "hasn't shown a card" + asked);
+       msgBox.setInformativeText(showed + "has shown a card" + asked);
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+      msgBox.exec();
+    }
 
 }
 void Client::onCardShownToPlayer(QString username, QString card)      // Unicast
 {
+
+       QMessageBox msgBox;
+       msgBox.setText(username + "has shown a card" + card);
+       msgBox.setInformativeText(username + "has shown a card" + card);
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+       msgBox.exec();
 
 }
