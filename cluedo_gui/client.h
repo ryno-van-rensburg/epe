@@ -22,9 +22,11 @@ public slots:
     void emitConnectionRejected();
     void onCardShown(bool hasCard, QString asked, QString showed); // Multicast
     void onCardShownToPlayer(QString username, QString card);      // Unicast
+    //void onGameStarted(int, QJSonArray,int,int,QList);
 public:
     explicit Client(QObject *parent = nullptr);
     Q_INVOKABLE int playerTurn() const;
+    Q_INVOKABLE bool isMyTurn() const;
     Q_INVOKABLE int getCurrentDiceValue() const;
     Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
     Q_INVOKABLE QString getPlayerID(int n);
@@ -74,7 +76,7 @@ private:
     QString player5_id; // Purple, Plum
     QString player6_id; // Red, Scarlet
     QString my_id;
-    QString my_person;
+    int my_player_number;
     
 };
 

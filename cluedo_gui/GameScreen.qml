@@ -367,28 +367,27 @@ Rectangle
                     player4.dragEnable = false;
                     player5.dragEnable = false;
                     player6.dragEnable = false;
-
-                    switch(client.playerTurn){
-                    case 1:
-                        player1.dragEnable = true;
-                        break;
-                    case 2:
-                        
-                        player2.dragEnable = true;
-                        break;
-                    case 3:
-                        player3.dragEnable = true;
-                        break;
-                    case 4:
-                        
-                        player4.dragEnable = true;
-                        break;
-                    case 5:
-                        player5.dragEnable = true;
-                        break;
-                    case 6:
-                        player6.dragEnable = true;
-                        break;
+                    if(client.isMyTurn === true){
+                        switch(client.playerTurn){
+                        case 1:
+                            player1.dragEnable = true;
+                            break;
+                        case 2:
+                            player2.dragEnable = true;
+                            break;
+                        case 3:
+                            player3.dragEnable = true;
+                            break;
+                        case 4:
+                            player4.dragEnable = true;
+                            break;
+                        case 5:
+                            player5.dragEnable = true;
+                            break;
+                        case 6:
+                            player6.dragEnable = true;
+                            break;
+                        }
                     }
                 }
 

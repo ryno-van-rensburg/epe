@@ -413,5 +413,5 @@ void NetworkClient::connMade() {
 void NetworkClient::connectionError() {
     // TODO handle error, probably have to emit some signal
     this->connected = false;
-    std::cout << "Error occurred" << std::endl;
+    std::cout << "Connection Error occurred" << std::endl;
 }
