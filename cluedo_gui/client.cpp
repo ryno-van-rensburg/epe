@@ -11,7 +11,7 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(cardsDealt(QList)));
     //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
-    //QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)));
+    QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
     //QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
@@ -381,6 +381,28 @@ QString Client::getPlayerID(int n){
     default:
         break;
     }
+}
+void Client::onPlayerAccepted(QString username, QString person, int dice1, int dice2)
+{
+    if (person == "Reverend Green") {
+       player2_id = username;
+    } else if (person == "Miss Scarlett") {
+        player6_id = username;
+    } else if (person == "Chef White") {
+        player1_id = username;
+    } else if (person == "Mrs. Peacock") {
+        player4_id = username;
+    } else if (person == "Professor Plum") {
+        player5_id = username;
+    } else if (person == "Colonel Mustard") {
+        player3_id = username;
+    }
+    if (username == this->my_id)
+    {
+        // TODO assign user to player accepted.
+       emit connectionAccepted();
+    }
+    return;
 }
 
 void Client::emitConnectionAccepted(){
