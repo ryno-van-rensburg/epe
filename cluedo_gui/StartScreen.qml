@@ -163,7 +163,7 @@ Rectangle {
                     console.log("Clicked on Confirm")
                     client.onNameEntered(textInput.text);
                     if (validUsername) {
-                        closeTimer.running = true
+                        //closeTimer.running = true
                         loading.visible =true
                         namePrompt.visible = false
                     }

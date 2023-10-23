@@ -7,6 +7,13 @@ Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
     diceValue = 1;
+    player1_id = "PLAYER 1";
+    player2_id = "PLAYER 2";
+    player3_id = "PLAYER 3";
+    player4_id = "PLAYER 4";
+    player5_id = "PLAYER 5";
+    player6_id = "PLAYER 6";
+
 }
 /**
  * @brief Sends a test message received from the broker.
@@ -221,3 +228,21 @@ void Client::onRequestReceived(){
     emit promptRequested();
 }
 
+QString Client::getPlayerID(int n){
+    switch(n){
+    case 1:
+        return player1_id;
+    case 2:
+        return player2_id;
+    case 3:
+        return player3_id;
+    case 4:
+        return player4_id;
+    case 5:
+        return player5_id;
+    case 6:
+        return player6_id;
+    default:
+        break;
+    }
+}

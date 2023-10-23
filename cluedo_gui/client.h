@@ -22,6 +22,7 @@ public:
     Q_INVOKABLE int playerTurn() const;
     Q_INVOKABLE int getCurrentDiceValue() const;
     Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
+    Q_INVOKABLE QString getPlayerID(int n);
     void setPlayerTurn(int turn);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
     std::tuple<int,int> getPlayerPosition(int playerId); // will be network slot in future
@@ -55,6 +56,12 @@ signals:
 private:
     int currentPlayerTurn;
     int diceValue;
+    QString player1_id;
+    QString player2_id;
+    QString player3_id;
+    QString player4_id;
+    QString player5_id;
+    QString player6_id;
 };
 
 #endif // CLIENT_H

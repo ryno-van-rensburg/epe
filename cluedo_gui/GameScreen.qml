@@ -170,14 +170,19 @@ Rectangle
             width: c_player.width;
             color: client.playerTurn === 1 ? "white" : "#7eacbb"
             font.pointSize: 39;
-            text:"PLAYER  1";
+            text:{
+                client.getPlayerID(1);
+            }
+
             font.family: "Pixel"
             }
 
         Text {
             width: c_player.width
             color: client.playerTurn === 2 ? "white" : "#7eacbb"
-            text: "PLAYER 2"
+            text:{
+                client.getPlayerID(2);
+            }
             font.family: "Pixel"
             font.pointSize: 39
         }
@@ -185,7 +190,9 @@ Rectangle
         Text {
             width: c_player.width
             color: client.playerTurn === 3? "white" : "#7eacbb"
-            text: "PLAYER 3" 
+            text:{
+                client.getPlayerID(3);
+            }
             font.family: "Pixel"
             font.pointSize: 39
         }
@@ -193,7 +200,9 @@ Rectangle
         Text {
             width: c_player.width
             color: client.playerTurn === 4 ? "white" : "#7eacbb"
-            text: "PLAYER 4"
+            text:{
+                client.getPlayerID(4);
+            }
             font.family: "Pixel"
             font.pointSize: 39
         }
@@ -201,7 +210,9 @@ Rectangle
         Text {
             width: c_player.width
             color: client.playerTurn === 5 ? "white" : "#7eacbb"
-            text: "PLAYER 5"
+            text:{
+                client.getPlayerID(5);
+            }
             font.family: "Pixel"
             font.pointSize: 39
         }
@@ -209,7 +220,9 @@ Rectangle
         Text {
             width: c_player.width
             color: client.playerTurn === 6 ? "white" : "#7eacbb"
-            text: "PLAYER 6"
+            text:{
+                client.getPlayerID(6);
+            }
             font.family: "Pixel"
             font.pointSize: 39
         }
