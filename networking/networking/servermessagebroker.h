@@ -4,7 +4,7 @@
 #include <QObject>
 #include "message.h"
 #include "serversession.h"
-#include "player.h"
+#include "networkplayer.h"
 
 class ServerMessageBroker : public QObject
 {

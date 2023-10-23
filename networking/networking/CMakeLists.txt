@@ -18,44 +18,44 @@ enable_testing(true)
 
 add_executable(networking
     main.cpp
-    client.h client.cpp
+    networkclient.h networkclient.cpp
     message.h message.cpp
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
     servermessagebroker.cpp servermessagebroker.h
-    player.cpp player.h
+    networkplayer.cpp networkplayer.h
     )
 
 add_executable(testclient
-    client.h client.cpp
+    networkclient.h networkclient.cpp
     message.h message.cpp
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
     testclient.cpp testclient.h
-    player.cpp player.h
+    networkplayer.cpp networkplayer.h
 )
 add_executable(testserver
-    client.h client.cpp
+    networkclient.h networkclient.cpp
     message.h message.cpp
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
     servermessagebroker.cpp servermessagebroker.h
     testServerSession.cpp testServerSession.h
-    player.cpp player.h
+    networkplayer.cpp networkplayer.h
 )
 
 add_executable(testacking
-    client.h client.cpp
+    networkclient.h networkclient.cpp
     message.h message.cpp
     clientmessagebroker.h clientmessagebroker.cpp
     clientconnection.h clientconnection.cpp
     serversession.h serversession.cpp
     servermessagebroker.cpp servermessagebroker.h
     testacking.cpp testacking.h
-    player.cpp player.h
+    networkplayer.cpp networkplayer.h
 
 )
 add_test(NAME testclient COMMAND testclient)

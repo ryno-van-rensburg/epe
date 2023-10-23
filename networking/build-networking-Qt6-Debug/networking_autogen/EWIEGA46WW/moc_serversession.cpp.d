@@ -110,7 +110,7 @@
   /app/include/QtNetwork/qtnetworkglobal.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/networkplayer.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \

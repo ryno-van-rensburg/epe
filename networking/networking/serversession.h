@@ -10,7 +10,7 @@
 #include <iostream>
 #include <clientconnection.h>
 #include <message.h>
-#include "player.h"
+#include "networkplayer.h"
 
 
 class ServerSession : public QObject

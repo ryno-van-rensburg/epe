@@ -2,7 +2,7 @@
 #define CLIENTMESSAGEBROKER_H
 
 #include <QObject>
-#include <client.h>
+#include <networkclient.h>
 #include <message.h>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -12,7 +12,7 @@ class ClientMessageBroker : public QObject
 {
     Q_OBJECT
 private:
-    Client* client = nullptr;
+    NetworkClient* client = nullptr;
 public:
     explicit ClientMessageBroker(QObject *parent = nullptr);
     ~ClientMessageBroker();

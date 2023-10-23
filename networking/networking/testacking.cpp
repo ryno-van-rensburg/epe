@@ -75,7 +75,7 @@ private slots:
         serverBroker->listen(6444);
         quint32 address = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
         clientBroker->requestConnection(address, 6444, "weirdAl");
-        QTest::qWait(10000);
+        QTest::qWait(1000);
         QVERIFY(acceptedSpy.isValid());
         QCOMPARE(acceptedSpy.count(), 1);
         QList<QVariant> arguments = acceptedSpy.takeFirst();
@@ -93,7 +93,7 @@ private slots:
         clientBroker = new ClientMessageBroker();
         serverBroker = new ServerMessageBroker();
         QObject::connect(this->serverBroker,SIGNAL(connectionRequest(QString)), this, SLOT(acceptJoin(QString)));
-        QObject::connect(this->serverBroker,SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)), this, SLOT(acceptMove(QString,int)));
+        QObject::connect(this->serverBroker,SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)), this, SLOT(acceptMove(NetworkPlayer&,int)));
         QObject::connect(this->clientBroker, SIGNAL(yourTurnSignal(int,int)), this, SLOT(playMove(int,int)));
         QSignalSpy diceRollSpy(this->clientBroker, SIGNAL(yourTurnSignal(int,int)));
         QSignalSpy moveReceived(this->serverBroker, SIGNAL(moveReceivedSignal(NetworkPlayer&,quint32)));
@@ -105,7 +105,7 @@ private slots:
         player.setPerson("Green");
         player.setUsername("weirdAl");
         serverBroker->notifyPlayerMove(1,1,player);
-        QTest::qWait(10000);
+        QTest::qWait(1000);
         QVERIFY(diceRollSpy.isValid());
         QCOMPARE(diceRollSpy.count(), 1);
         QVERIFY(moveReceived.isValid());

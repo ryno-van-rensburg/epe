@@ -171,11 +171,11 @@
   /app/include/QtTest/qttestexports.h \
   /app/include/QtTest/qttestglobal.h \
   /app/include/QtTest/qttestlib-config.h \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/client.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
-  /home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/networkclient.h \
+  /home/ryno/Documents/practicals/epe/group-6/networking/networking/networkplayer.h \
   /home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \

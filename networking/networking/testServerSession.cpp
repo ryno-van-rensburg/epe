@@ -6,7 +6,7 @@
 #include <iostream>
 #include <serversession.h>
 #include <QSignalSpy>
-#include <client.h>
+#include <networkclient.h>
 #include <clientmessagebroker.h>
 
 class testServerSession : public QObject

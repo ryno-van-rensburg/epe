@@ -6,7 +6,7 @@
 #include <QTimer>
 #include <QMap>
 #include <message.h>
-#include "player.h"
+#include "networkplayer.h"
 
 class ServerSession;
 

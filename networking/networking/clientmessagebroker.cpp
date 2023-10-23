@@ -14,7 +14,7 @@
 ClientMessageBroker::ClientMessageBroker(QObject *parent)
     : QObject{parent}
 {
-    this->client = new Client();
+    this->client = new NetworkClient();
     // todo verification of data
     QObject::connect(this->client, SIGNAL(connectionAccepted(Message&)), this, SLOT(unpackConnectionAccepted(Message&)));
     QObject::connect(this->client,SIGNAL(gameStateReceived(Message&)), this, SLOT(unpackGameState(Message&)));

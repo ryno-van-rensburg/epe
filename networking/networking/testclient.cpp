@@ -7,7 +7,7 @@
 #include <iostream>
 #include <QSignalSpy>
 #include "message.h"
-#include "client.h"
+#include "networkclient.h"
 
 // todo finish client tests
 class testClient : public QObject
@@ -18,7 +18,7 @@ private slots:
        QTcpServer* dummyServer = new QTcpServer(this);
        dummyServer->listen();
        quint16 port = dummyServer->serverPort();
-       Client* client = new Client();
+       NetworkClient* client = new NetworkClient();
        quint32 ipAddr = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
 
        QSignalSpy spy1(dummyServer, SIGNAL(newConnection()));
@@ -38,7 +38,7 @@ private slots:
     {
         QTcpServer* dummyServer = new QTcpServer(this);
         dummyServer->listen();
-        Client* client = new Client();
+        NetworkClient* client = new NetworkClient();
         quint16 port  = dummyServer->serverPort();
         quint32 ipAddr = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
         client->connect(ipAddr, port);
@@ -66,7 +66,7 @@ private slots:
     void testHandleMessage(){
         QTcpServer* dummyServer = new QTcpServer(this);
         dummyServer->listen();
-        Client* client = new Client();
+        NetworkClient* client = new NetworkClient();
         quint16 port  = dummyServer->serverPort();
         quint32 ipAddr = QHostAddress(QHostAddress::LocalHost).toIPv4Address();
         client->connect(ipAddr, port);

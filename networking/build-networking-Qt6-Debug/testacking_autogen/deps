@@ -223,20 +223,20 @@ testacking_autogen/timestamp: \
 	/app/lib/cmake/Qt6Test/Qt6TestTargets.cmake \
 	/app/lib/cmake/Qt6Test/Qt6TestVersionlessTargets.cmake \
 	/app/share/qtcreator/package-manager/auto-setup.cmake \
-	/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake \
-	/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/3.25.2/CMakeSystem.cmake \
+	/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/3.27.6/CMakeCXXCompiler.cmake \
+	/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/3.27.6/CMakeSystem.cmake \
 	/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/testacking_autogen/moc_predefs.h \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/CMakeLists.txt \
-	/home/ryno/Documents/practicals/epe/group-6/networking/networking/client.cpp \
-	/home/ryno/Documents/practicals/epe/group-6/networking/networking/client.h \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.cpp \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientconnection.h \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.cpp \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/clientmessagebroker.h \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/message.cpp \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/message.h \
-	/home/ryno/Documents/practicals/epe/group-6/networking/networking/player.cpp \
-	/home/ryno/Documents/practicals/epe/group-6/networking/networking/player.h \
+	/home/ryno/Documents/practicals/epe/group-6/networking/networking/networkclient.cpp \
+	/home/ryno/Documents/practicals/epe/group-6/networking/networking/networkclient.h \
+	/home/ryno/Documents/practicals/epe/group-6/networking/networking/networkplayer.cpp \
+	/home/ryno/Documents/practicals/epe/group-6/networking/networking/networkplayer.h \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.cpp \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/servermessagebroker.h \
 	/home/ryno/Documents/practicals/epe/group-6/networking/networking/serversession.cpp \
@@ -527,32 +527,33 @@ testacking_autogen/timestamp: \
 	/usr/lib/x86_64-linux-gnu/include/gnu/stubs.h \
 	/usr/lib/x86_64-linux-gnu/include/sys/cdefs.h \
 	/usr/lib/x86_64-linux-gnu/include/sys/syscall.h \
-	/usr/share/cmake-3.25/Modules/CMakeCXXInformation.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeFindDependencyMacro.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeGenericSystem.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeParseArguments.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake \
-	/usr/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake \
-	/usr/share/cmake-3.25/Modules/CheckCXXCompilerFlag.cmake \
-	/usr/share/cmake-3.25/Modules/CheckCXXSourceCompiles.cmake \
-	/usr/share/cmake-3.25/Modules/CheckIncludeFileCXX.cmake \
-	/usr/share/cmake-3.25/Modules/CheckLibraryExists.cmake \
-	/usr/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
-	/usr/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake \
-	/usr/share/cmake-3.25/Modules/Compiler/GNU.cmake \
-	/usr/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake \
-	/usr/share/cmake-3.25/Modules/FindPackageMessage.cmake \
-	/usr/share/cmake-3.25/Modules/FindThreads.cmake \
-	/usr/share/cmake-3.25/Modules/GNUInstallDirs.cmake \
-	/usr/share/cmake-3.25/Modules/Internal/CheckCompilerFlag.cmake \
-	/usr/share/cmake-3.25/Modules/Internal/CheckFlagCommonConfig.cmake \
-	/usr/share/cmake-3.25/Modules/Internal/CheckSourceCompiles.cmake \
-	/usr/share/cmake-3.25/Modules/Platform/Linux-GNU-CXX.cmake \
-	/usr/share/cmake-3.25/Modules/Platform/Linux-GNU.cmake \
-	/usr/share/cmake-3.25/Modules/Platform/Linux.cmake \
-	/usr/share/cmake-3.25/Modules/Platform/UnixPaths.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeCXXInformation.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeFindDependencyMacro.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeGenericSystem.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeParseArguments.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake \
+	/usr/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake \
+	/usr/share/cmake-3.27/Modules/CheckCXXCompilerFlag.cmake \
+	/usr/share/cmake-3.27/Modules/CheckCXXSourceCompiles.cmake \
+	/usr/share/cmake-3.27/Modules/CheckIncludeFileCXX.cmake \
+	/usr/share/cmake-3.27/Modules/CheckLibraryExists.cmake \
+	/usr/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
+	/usr/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake \
+	/usr/share/cmake-3.27/Modules/Compiler/GNU.cmake \
+	/usr/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake \
+	/usr/share/cmake-3.27/Modules/FindPackageMessage.cmake \
+	/usr/share/cmake-3.27/Modules/FindThreads.cmake \
+	/usr/share/cmake-3.27/Modules/GNUInstallDirs.cmake \
+	/usr/share/cmake-3.27/Modules/Internal/CheckCompilerFlag.cmake \
+	/usr/share/cmake-3.27/Modules/Internal/CheckFlagCommonConfig.cmake \
+	/usr/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake \
+	/usr/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake \
+	/usr/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake \
+	/usr/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake \
+	/usr/share/cmake-3.27/Modules/Platform/Linux.cmake \
+	/usr/share/cmake-3.27/Modules/Platform/UnixPaths.cmake \
 	/usr/bin/cmake
