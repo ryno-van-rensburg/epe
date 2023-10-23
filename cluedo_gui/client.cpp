@@ -1,3 +1,4 @@
+#include <QInputDialog>
 #include "client.h"
 #include <QDebug>
 #include <QMessageBox>
@@ -130,7 +131,17 @@ void Client::playerPositionSet(int playerId, int newX, int newY)
  */
 void Client::emitRequestConnectionSignal(quint32 address, quint16 port, QString username)
 {
+  
+    bool ok1;
+    QString ip = QInputDialog::getText(this, tr("QInputDialog::getText()"),
+                                         tr("Enter IP:"), QLineEdit::Normal,
+                                         "192.168.0.0.0", &ok1);
+
+
+    if (ok1 && !ip.isEmpty()){
     emit requestConnection(address, port, username);
+
+    }
 }
 
 /**
@@ -245,4 +256,12 @@ QString Client::getPlayerID(int n){
     default:
         break;
     }
+}
+
+void Client::emitConnectionAccepted(){
+    emit connectionAccepted();    
+}
+
+void Client::emitConnectionRejected(){
+    emit connectionRejected();
 }

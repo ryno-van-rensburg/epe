@@ -16,7 +16,8 @@ public slots:
     void onSuggestionMade(QString room,QString person, QString item);
     void onSuggestionReceived(QString room,QString person, QString item);
     void onRequestAnswered(QString room,QString person, QString item);
-
+    void emitConnectionAccepted();
+    void emitConnectionRejected();
 public:
     explicit Client(QObject *parent = nullptr);
     Q_INVOKABLE int playerTurn() const;
@@ -40,6 +41,8 @@ public:
     //void emitCardShownSignal(QString showed);
     //void emitPlayerAcceptedSignal(QString username, QString person, int dice1, int dice2);
 signals:
+    void connectionAccepted();
+    void connectionRejected();
     void promptRequested();
     void testSendMessageToBroker(QString& message);
     void validUsername();
