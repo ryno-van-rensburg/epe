@@ -15,6 +15,7 @@ class Player : public QObject
     Q_OBJECT
 private:
     QString username;
+    QString person;
     int position;
     QString person;
     bool myTurn;
@@ -25,9 +26,11 @@ private:
     //GameBoard viewOfGameBoard;
 public:
     explicit Player(QObject *parent = nullptr);
+    Player(QString username);
     Player(QString username,QVector<CharacterCard*> heldCharacterCards, QVector<RoomCard*> heldRoomCards, QVector<WeaponCard*> heldWeaponCards, int position, bool AI);
     ~Player();
     QString GetUsername();
+    QString GetPerson();
     int GetPosition();
     QString GetPerson();
     bool GetAI();

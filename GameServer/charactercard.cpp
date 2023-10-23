@@ -1,8 +1,8 @@
 #include "charactercard.h"
 
 
-CharacterCard::CharacterCard(QString& name,QObject *parent)
-    : QObject{parent}, cardName(name)
+CharacterCard::CharacterCard(QObject *parent)
+    : QObject{parent}
 {
 
 }

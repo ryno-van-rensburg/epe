@@ -11,6 +11,11 @@ Player::Player(QObject *parent)
 
 }
 
+Player::Player(QString username)
+{
+    this->username = username;
+}
+
 Player::Player(QString username, QVector<CharacterCard*> heldCharacterCards, QVector<RoomCard*> heldRoomCards, QVector<WeaponCard*> heldWeaponCards, int position, bool AI)
 {
     this->username = username;
@@ -29,6 +34,11 @@ Player::~Player()
 QString Player::GetUsername()
 {
     return username;
+}
+
+QString Player::GetPerson()
+{
+    return this->person;
 }
 
 int Player::GetPosition()

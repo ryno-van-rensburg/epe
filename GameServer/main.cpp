@@ -19,10 +19,10 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+//    QCoreApplication a(argc, argv);
 
-//    TestClass test;
-//    QTest::qExec(&test,argc,argv);
+////    TestClass test;
+////    QTest::qExec(&test,argc,argv);
 //    QVector<CharacterCard*> x;
 //    QVector<RoomCard*> y;
 //    QVector<WeaponCard*> z;

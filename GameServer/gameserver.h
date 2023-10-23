@@ -55,8 +55,8 @@ signals:
     void UpdateStateSignal(QString username, int position);
     void GameStateReply(QString requesting,int diceRoll, QVector<QString> faceup, int currentTurn);
     void SuggestionStateSignal(CharacterCard* suggestedCharac, WeaponCard* suggestedWeapon, RoomCard* suggestedRoom);
-    void PlayerResultSignal(Player* playerMakingAccusation, Accusation* finalAccusation, bool result);
-    void ShowCardSignal(Player* playerToShowCard, QString nameOfCardToShow);
+    void PlayerResultSignal(QString playerName, QString person, QString weapon, QString room, bool win);
+    void ShowCardSignal(NetworkPlayer* player, QString card);
     void RequestCardSignal(Suggestion* suggestionMade);
     void TerminateGameSignal();
     void NotifyPlayerMoveSignal(int dice1,int dice2, NetworkPlayer& playerToMove);
@@ -66,12 +66,12 @@ signals:
     void MovesAvailableSignal(QVector<int> optionsToMove);
 
 public slots:
-    void MoveRequestedSlot(NetworkPlayer &player, quint32 position);
-    void SuggestionReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon);
-    void AccusationReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon);
-    void CardShownSlot(Player* playerShown, QString cardName);
-    void AddPlayerSlot(Player* newPlayer);
-    void StateRequestSlot(QString requesting);
+    void MoveRequestedSlot(Player* playerToMove, int destination);
+    void SuggestionReceivedSlot(NetworkPlayer &player, QString person, QString weapon, QString room);
+    void AccusationReceivedSlot(NetworkPlayer &player, QString person, QString weapon, QString room);
+    void CardShownSlot(NetworkPlayer &player, QString cardName);
+    void AddPlayerSlot(QString username);
+    void StateRequestSlot();
 
 };
 

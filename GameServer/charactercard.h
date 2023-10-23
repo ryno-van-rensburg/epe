@@ -9,7 +9,7 @@ class CharacterCard : public QObject
 private:
     QString cardName;
 public:
-    explicit CharacterCard(QString& name,QObject *parent = nullptr);
+    explicit CharacterCard(QObject *parent = nullptr);
     CharacterCard(QString name);
     ~CharacterCard();
     QString GetCardName();

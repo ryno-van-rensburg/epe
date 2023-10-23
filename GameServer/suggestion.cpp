@@ -49,7 +49,7 @@ Suggestion::Suggestion(Player* player, CharacterCard* inCharac, RoomCard* inRoom
     else if (inCharac->GetCardName() == "Mrs. Peacock") {
         characFine = true;
     }
-    else if (inCharac->GetCardName() == "Professor Plumt") {
+    else if (inCharac->GetCardName() == "Professor Plum") {
         characFine = true;
     }
 
