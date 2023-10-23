@@ -194,7 +194,6 @@ private slots:
         delete clientBroker;
         delete serverBroker;
         return;
-        return;
     }
 };
 

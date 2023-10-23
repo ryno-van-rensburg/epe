@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.1, 2023-10-03T19:33:59. -->
+<!-- Written by QtCreator 8.0.1, 2023-10-04T15:20:32. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -71,6 +71,11 @@
     <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testServerSession.cpp:testServerSession">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testServerSession.cpp:testserverandbroker">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testacking.cpp:testAcking">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testacking.cpp:testJoin">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testacking.cpp:testKick">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testacking.cpp:testMove">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testacking.cpp:testSuggestionStateUpdate">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testacking.cpp:testTerminate">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testclient.cpp:testClient">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testclient.cpp:testConnect">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/networking/networking/testclient.cpp:testHandleMessage">Checked</value>
