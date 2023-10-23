@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     engine.addImportPath(":/imports");
-    engine.load("main.qml");
+    engine.load("C:/Users/SIGMA Pro/Documents/University of Pretoria/2023/EPE 321/Cluedo Group projectGitlab/group-6/cluedo_gui/main.qml");
     if (engine.rootObjects().isEmpty())
         return -1;
 

@@ -159,21 +159,109 @@ void Client::onNameEntered(QString name){
     QString readtext = name;
 
     //flags for validating the incoming text
-    bool is_emptytext = false; // assume there's text first.
+    //    bool is_emptytext = false; // assume there's text first.
     QMessageBox msgBox;
-    msgBox.setText("Warning");
-    if(readtext.isEmpty()){
+    //    msgBox.setText("Warning");
+    //    if(readtext.isEmpty()){
+    //        is_emptytext = true;
+    //    }
+
+    //    if(!is_emptytext)
+    //    {
+    //        emit validUsername();
+    //    }
+    //    else if (is_emptytext)
+    //    {
+    //        msgBox.setInformativeText("Empty! add plz");
+    //        msgBox.exec();
+    //    }
+
+    //    QString readtext = id;
+
+    //flags for validating the incoming text
+    bool is_emptytext = false; // assume there's text first.
+    bool is_groupnumber = false; // if there's a group number at the beginning of the playerID
+    bool is_underscore = false; // if there's underscore followed after the group number
+    bool is_lastnumber = false; // if there's a unique number at the end of the playerID
+    bool funnysymbol = false; // if there is any symbol except underscore, i.e. .#$@
+
+    if(readtext.isEmpty())
         is_emptytext = true;
+
+
+    // case 1: the playerID doesn't start with a group number
+
+    if (!is_emptytext && readtext[0].isNumber())
+        is_groupnumber = true;
+
+
+    // case 2: The underscore is not followed after the group number while approaching the end of the input text
+    // i indicates the prev char in the text, while j is for the current char
+    for(int i = 0, j = 1; !is_underscore && j < readtext.length(); i++, j++)
+    {
+        if(readtext[i].isNumber() && readtext.at(j) == '_')
+            is_underscore = true;
+
     }
 
-    if(!is_emptytext)
+    // case 3: checking if the ID lasts with a number while approaching the end of the input text.
+    for(int i = 0; !is_lastnumber && i < readtext.length(); i++)
     {
+        if(i == readtext.length()-1 && readtext[i].isNumber())
+            is_lastnumber = true;
+    }
+
+    // case 4: check if there's no other symbol apart from the underscore
+    for(int i = 0; !funnysymbol && i < readtext.length(); i++)
+    {
+        if(!readtext[i].isLetterOrNumber() && readtext.at(i) != '_')
+            funnysymbol = true;
+    }
+
+
+    // after iterating and checking the input text, open a the loading page so that the user joins a game session.
+    if(!is_emptytext && is_groupnumber && is_underscore && is_lastnumber && !funnysymbol)
+    {
+        //QMessageBox::information(this, "Message", "Login successful. You're joined in an active game session.");
+        //        connect(QMessageBox:, QPushButton::clicked,this, &UsernameScreen::callLoadingPage);
+        //        callLoadingPage();
         emit validUsername();
     }
     else if (is_emptytext)
     {
-        msgBox.setInformativeText("Empty! add plz");
+        //If there is no text, show an incomplete message
+        //QMessageBox::warning(this, "Error", "Invalid playerID. Empty PlayerID. Please try again.");
+        msgBox.setInformativeText("Invalid playerID. Empty PlayerID. Please try again.");
         msgBox.exec();
+    }
+    else if(!is_groupnumber)
+    {
+        msgBox.setInformativeText(" Invalid playerID. No group number in the beginning.  Please try again.");
+        msgBox.exec();
+        //QMessageBox::warning(this, "Error", " Invalid playerID. No group number in the beginning.  Please try again.");
+    }
+    else if(!is_underscore)
+    {
+        msgBox.setInformativeText(" Invalid playerID. No undrscore followed after group number.  Please try again.");
+        msgBox.exec();
+
+        //QMessageBox::warning(this, "Error", "Invalid playerID. No undrscore followed after group number.  Please try again.");
+    }
+    else if(!is_lastnumber)
+    {
+        msgBox.setInformativeText("Invalid playerID. No last number after playerID.  Please try again.");
+        msgBox.exec();
+
+
+        //QMessageBox::warning(this, "Error", "Invalid playerID. No last number after playerID.  Please try again.");
+    }
+    else if(funnysymbol)
+    {
+        msgBox.setInformativeText("Invalid playerID. No last number after playerID.  Please try again.");
+        msgBox.exec();
+
+
+        //QMessageBox::warning(this, "Error", "Invalid playerID. Funny symbol in playerID - only underscore '_' allowed. Please try again.");
     }
 }
 
