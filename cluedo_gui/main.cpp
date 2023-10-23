@@ -15,24 +15,13 @@
 #include "client.h"
 #include "clientmessagebroker.h"
 
-/*
-    * Connects the signals from the client to the signals of the broker
-    * @param client the client to connect
-    * @param broker the broker to connect    
-*/
- void connectClientBroker(Client* client,ClientMessageBroker* broker){
-    //QObject::connect(client, SIGNAL(testSendMessageToBroker(QString&)),broker,SLOT(testReceiveMessageFromClient(QString&)));    QObject::connect(broker, SIGNAL(testSendMessageToClient(QString&)), client, SLOT(testReceiveMessage(QString&)) );
-    //QObject::connect(client, SIGNAL(sendConnectionRequest(QString)), broker, SLOT(onSendConnectionRequest(QString)));
-}
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     QQmlApplicationEngine engine;
     Client* client = new Client;
-    ClientMessageBroker* broker = new ClientMessageBroker;
-    connectClientBroker(client,broker);
-    
+
     engine.rootContext()->setContextProperty("client",client); // expose client to QML
     if (app.arguments().contains("--runtests")) { // for running tests when given run arguments
         qDebug() <<"TESTING";
@@ -42,13 +31,13 @@ int main(int argc, char *argv[])
         return 0;
     }
     engine.addImportPath(":/imports");
-    engine.load("C:/Users/SIGMA Pro/Documents/University of Pretoria/2023/EPE 321/Cluedo Group projectGitlab/group-6/cluedo_gui/main.qml");
+    engine.load("main.qml");
     if (engine.rootObjects().isEmpty())
         return -1;
 
 
     int app_code = app.exec();
     delete client;
-    delete broker;
+
     return app_code;
 }

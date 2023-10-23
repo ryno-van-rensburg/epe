@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QObject>
+#include "clientmessagebroker.h"
 
 class Client : public QObject
 {
@@ -16,7 +17,8 @@ public slots:
     void onSuggestionMade(QString room,QString person, QString item);
     void onSuggestionReceived(QString room,QString person, QString item);
     void onRequestAnswered(QString room,QString person, QString item);
-
+    void emitConnectionAccepted();
+    void emitConnectionRejected();
 public:
     explicit Client(QObject *parent = nullptr);
     Q_INVOKABLE int playerTurn() const;
@@ -26,7 +28,7 @@ public:
     void setPlayerTurn(int turn);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
     std::tuple<int,int> getPlayerPosition(int playerId); // will be network slot in future
-    void emitRequestConnectionSignal(quint32 address, quint16 port, QString username);
+    Q_INVOKABLE void emitRequestConnectionSignal();
     void emitMakeMoveSignal(int position);
     void emitShowCardSignal(QString card);
     void emitMakeAccusatonSignal(QString person, QString weapon, QString room);
@@ -40,6 +42,8 @@ public:
     //void emitCardShownSignal(QString showed);
     //void emitPlayerAcceptedSignal(QString username, QString person, int dice1, int dice2);
 signals:
+    void connectionAccepted();
+    void connectionRejected();
     void promptRequested();
     void testSendMessageToBroker(QString& message);
     void validUsername();
@@ -54,6 +58,8 @@ signals:
     void requestStateSlot();
     void sendConnectionRequest(QString username);
 private:
+    void connectClientBroker();
+    ClientMessageBroker broker;
     int currentPlayerTurn;
     int diceValue;
     QString player1_id;
@@ -62,6 +68,7 @@ private:
     QString player4_id;
     QString player5_id;
     QString player6_id;
+    QString my_id;
 };
 
 #endif // CLIENT_H

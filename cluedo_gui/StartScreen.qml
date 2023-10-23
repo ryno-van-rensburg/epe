@@ -8,6 +8,10 @@ Rectangle {
     color: "Transparent"
     signal switchToGameScreen // calling function directly instead of signalling
     property bool validUsername: false;
+    property bool connectionRequested: false;
+    property bool connectionAccepted: false;
+    property bool connectionRejected: false;
+
     Image {
         id: bg
         x: 0
@@ -163,7 +167,7 @@ Rectangle {
                     console.log("Clicked on Confirm")
                     client.onNameEntered(textInput.text);
                     if (validUsername) {
-                        //closeTimer.running = true
+                        closeTimer.running = true
                         loading.visible =true
                         namePrompt.visible = false
                     }
@@ -194,14 +198,36 @@ Rectangle {
         }
         Timer {
                id: closeTimer
-               interval:500 //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
+               interval:500  //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
                running: false
                onTriggered: {
-                 // Close the window when the timer triggers
-                 //   Qt.quit();
-                 switchToGameScreen()
+                   if (connectionRequested=== false){
+                     client.emitRequestConnectionSignal()
+                     console.debug("ConnectionRequested")
+                     connectionRequested = true
+                 } else {
+                    if(connectionAccpeted === true){
+                        switchToGameScreen()
+                    }
+                    if(connectionRejected === true){
+                        Qt.quit()
+                    }
+                 }
                }
            }
+        Connections {
+            target: client
+            ignoreUnknownSignals: true
+            function onValidUsername(){
+                validUsername = true
+            }
+            function onConnectionAccepted(){
+                connectionAccepted = true
+            }
+            function onConnectionRejected(){
+                connectionRejected = true
+            }
+        }
 
     }
 

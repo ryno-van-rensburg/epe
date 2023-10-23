@@ -1,11 +1,35 @@
+#include <QInputDialog>
 #include "client.h"
+#include <QTcpSocket>
 #include <QDebug>
 #include <QMessageBox>
 #include <QApplication>
 
+void Client::connectClientBroker(){
+    //QObject::connect(broker, SIGNAL(accusationResultSignal(QList,bool)));
+    //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList));
+    //QObject::connect(broker, SIGNAL(cardsDealt(QList)));
+    //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
+    //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
+    //QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)));
+    //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
+    //QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)));
+    //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
+    //QObject::connect(broker, SIGNAL(gameEndedSignal()));
+    //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)));
+    //QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
+    //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
+    //QObject::connect(broker, SIGNAL(invalidMove()));
+    //QObject::connect(broker, SIGNAL(playerKicked()));
+    //QObject::connect(broker, SIGNAL(yourTurnSignal(int,int))); // make sure you store the dice value
+    //QObject::connect(broker, SIGNAL(playerResult(QString,QList,bool)));
+    //QObject::connect(broker, SIGNAL(gameStateSignal(int,QJsonArray,int,int,QJsonArray));// somewhere
+}
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
+
+    connectClientBroker();
     diceValue = 1;
     player1_id = "PLAYER 1";
     player2_id = "PLAYER 2";
@@ -13,6 +37,7 @@ Client::Client(QObject *parent)
     player4_id = "PLAYER 4";
     player5_id = "PLAYER 5";
     player6_id = "PLAYER 6";
+
 
 }
 /**
@@ -128,9 +153,26 @@ void Client::playerPositionSet(int playerId, int newX, int newY)
  * @param port The port number to connect to on the server.
  * @param username The username used for the connection.
  */
-void Client::emitRequestConnectionSignal(quint32 address, quint16 port, QString username)
+void Client::emitRequestConnectionSignal()
 {
-    emit requestConnection(address, port, username);
+     quint32 send_address;
+     int a_port;
+     bool ok;
+     QString ipAddress = QInputDialog::getText(nullptr, "Server Details",
+                                                "Enter IP Address:", QLineEdit::Normal,
+                                                "", &ok);
+        if (ok && !ipAddress.isEmpty()) {
+        send_address =  QHostAddress(ipAddress).toIPv4Address();
+        
+        a_port = QInputDialog::getInt(nullptr, "Server Details",
+                                       "Enter Port:", 0, 0, 65535, 1, &ok);
+        if (ok) {
+            broker.requestConnection(send_address, a_port, this->my_id);
+        }
+    }
+    qDebug() << "Requesting connection to server at " << send_address << ":" << a_port << " with username " << my_id;
+    
+    //    emit requestConnection(address, port, username);
 }
 
 /**
@@ -155,6 +197,7 @@ void Client::emitValidUsernameSignal(){
 void Client::onNameEntered(QString name){
     qDebug() << "Name entered: " << name;
     //SIMON FUNCTION
+    
 
     QString readtext = name;
 
@@ -225,7 +268,11 @@ void Client::onNameEntered(QString name){
         //QMessageBox::information(this, "Message", "Login successful. You're joined in an active game session.");
         //        connect(QMessageBox:, QPushButton::clicked,this, &UsernameScreen::callLoadingPage);
         //        callLoadingPage();
+<<<<<<< HEAD
         readtext.replace(" ", "");
+=======
+        my_id = name;
+>>>>>>> gui_integration
         emit validUsername();
     }
     else if (is_emptytext)
@@ -334,4 +381,12 @@ QString Client::getPlayerID(int n){
     default:
         break;
     }
+}
+
+void Client::emitConnectionAccepted(){
+    emit connectionAccepted();    
+}
+
+void Client::emitConnectionRejected(){
+    emit connectionRejected();
 }
