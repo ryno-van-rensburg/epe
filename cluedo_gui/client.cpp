@@ -268,11 +268,11 @@ void Client::onNameEntered(QString name){
         //QMessageBox::information(this, "Message", "Login successful. You're joined in an active game session.");
         //        connect(QMessageBox:, QPushButton::clicked,this, &UsernameScreen::callLoadingPage);
         //        callLoadingPage();
-<<<<<<< HEAD
+
         readtext.replace(" ", "");
-=======
+
         my_id = name;
->>>>>>> gui_integration
+
         emit validUsername();
     }
     else if (is_emptytext)
