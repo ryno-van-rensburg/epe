@@ -18,6 +18,11 @@ add_executable(GameServer
   player.h player.cpp
   gameserver.h gameserver.cpp
   move.h move.cpp
+  networkplayer.cpp networkplayer.h
+  clientconnection.cpp clientconnection.h
+  message.h message.cpp
+  servermessagebroker.cpp servermessagebroker.h
+  serversession.cpp serversession.h
   suggestion.h suggestion.cpp
   accusation.h accusation.cpp
   charactercard.h charactercard.cpp

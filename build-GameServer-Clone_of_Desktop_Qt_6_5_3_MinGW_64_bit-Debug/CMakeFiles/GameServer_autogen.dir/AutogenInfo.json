@@ -182,6 +182,12 @@
 			null
 		],
 		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/clientconnection.h",
+			"MU",
+			"EWIEGA46WW/moc_clientconnection.cpp",
+			null
+		],
+		[
 			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/envelope.h",
 			"MU",
 			"EWIEGA46WW/moc_envelope.cpp",
@@ -200,9 +206,21 @@
 			null
 		],
 		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/message.h",
+			"MU",
+			"EWIEGA46WW/moc_message.cpp",
+			null
+		],
+		[
 			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/move.h",
 			"MU",
 			"EWIEGA46WW/moc_move.cpp",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/networkplayer.h",
+			"MU",
+			"EWIEGA46WW/moc_networkplayer.cpp",
 			null
 		],
 		[
@@ -221,6 +239,18 @@
 			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/roomcard.h",
 			"MU",
 			"EWIEGA46WW/moc_roomcard.cpp",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/servermessagebroker.h",
+			"MU",
+			"EWIEGA46WW/moc_servermessagebroker.cpp",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/serversession.h",
+			"MU",
+			"EWIEGA46WW/moc_serversession.cpp",
 			null
 		],
 		[
@@ -313,6 +343,11 @@
 			null
 		],
 		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/clientconnection.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/envelope.cpp",
 			"MU",
 			null
@@ -333,7 +368,17 @@
 			null
 		],
 		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/message.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/move.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/networkplayer.cpp",
 			"MU",
 			null
 		],
@@ -349,6 +394,16 @@
 		],
 		[
 			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/roomcard.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/servermessagebroker.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/serversession.cpp",
 			"MU",
 			null
 		],

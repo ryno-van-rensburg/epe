@@ -97,6 +97,46 @@ build CMakeFiles/GameServer.dir/move.cpp.obj: CXX_COMPILER__GameServer_Debug C$:
   OBJECT_DIR = CMakeFiles\GameServer.dir
   OBJECT_FILE_DIR = CMakeFiles\GameServer.dir
 
+build CMakeFiles/GameServer.dir/networkplayer.cpp.obj: CXX_COMPILER__GameServer_Debug C$:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/networkplayer.cpp || cmake_object_order_depends_target_GameServer
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_NETWORK_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\GameServer.dir\networkplayer.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/DuncanBranch/group-6/build-GameServer-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/GameServer_autogen/include -isystem C:/Qt/6.5.3/mingw_64/include/QtCore -isystem C:/Qt/6.5.3/mingw_64/include -isystem C:/Qt/6.5.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.5.3/mingw_64/include/QtNetwork
+  OBJECT_DIR = CMakeFiles\GameServer.dir
+  OBJECT_FILE_DIR = CMakeFiles\GameServer.dir
+
+build CMakeFiles/GameServer.dir/clientconnection.cpp.obj: CXX_COMPILER__GameServer_Debug C$:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/clientconnection.cpp || cmake_object_order_depends_target_GameServer
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_NETWORK_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\GameServer.dir\clientconnection.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/DuncanBranch/group-6/build-GameServer-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/GameServer_autogen/include -isystem C:/Qt/6.5.3/mingw_64/include/QtCore -isystem C:/Qt/6.5.3/mingw_64/include -isystem C:/Qt/6.5.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.5.3/mingw_64/include/QtNetwork
+  OBJECT_DIR = CMakeFiles\GameServer.dir
+  OBJECT_FILE_DIR = CMakeFiles\GameServer.dir
+
+build CMakeFiles/GameServer.dir/message.cpp.obj: CXX_COMPILER__GameServer_Debug C$:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/message.cpp || cmake_object_order_depends_target_GameServer
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_NETWORK_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\GameServer.dir\message.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/DuncanBranch/group-6/build-GameServer-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/GameServer_autogen/include -isystem C:/Qt/6.5.3/mingw_64/include/QtCore -isystem C:/Qt/6.5.3/mingw_64/include -isystem C:/Qt/6.5.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.5.3/mingw_64/include/QtNetwork
+  OBJECT_DIR = CMakeFiles\GameServer.dir
+  OBJECT_FILE_DIR = CMakeFiles\GameServer.dir
+
+build CMakeFiles/GameServer.dir/servermessagebroker.cpp.obj: CXX_COMPILER__GameServer_Debug C$:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/servermessagebroker.cpp || cmake_object_order_depends_target_GameServer
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_NETWORK_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\GameServer.dir\servermessagebroker.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/DuncanBranch/group-6/build-GameServer-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/GameServer_autogen/include -isystem C:/Qt/6.5.3/mingw_64/include/QtCore -isystem C:/Qt/6.5.3/mingw_64/include -isystem C:/Qt/6.5.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.5.3/mingw_64/include/QtNetwork
+  OBJECT_DIR = CMakeFiles\GameServer.dir
+  OBJECT_FILE_DIR = CMakeFiles\GameServer.dir
+
+build CMakeFiles/GameServer.dir/serversession.cpp.obj: CXX_COMPILER__GameServer_Debug C$:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/serversession.cpp || cmake_object_order_depends_target_GameServer
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_NETWORK_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\GameServer.dir\serversession.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -IC:/Users/Justin/Desktop/DuncanBranch/group-6/build-GameServer-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/GameServer_autogen/include -isystem C:/Qt/6.5.3/mingw_64/include/QtCore -isystem C:/Qt/6.5.3/mingw_64/include -isystem C:/Qt/6.5.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.5.3/mingw_64/include/QtNetwork
+  OBJECT_DIR = CMakeFiles\GameServer.dir
+  OBJECT_FILE_DIR = CMakeFiles\GameServer.dir
+
 build CMakeFiles/GameServer.dir/suggestion.cpp.obj: CXX_COMPILER__GameServer_Debug C$:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/suggestion.cpp || cmake_object_order_depends_target_GameServer
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_NETWORK_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\GameServer.dir\suggestion.cpp.obj.d
@@ -161,7 +201,7 @@ build CMakeFiles/GameServer.dir/room.cpp.obj: CXX_COMPILER__GameServer_Debug C$:
 #############################################
 # Link the executable GameServer.exe
 
-build GameServer.exe: CXX_EXECUTABLE_LINKER__GameServer_Debug CMakeFiles/GameServer.dir/GameServer_autogen/mocs_compilation.cpp.obj CMakeFiles/GameServer.dir/main.cpp.obj CMakeFiles/GameServer.dir/gameboard.cpp.obj CMakeFiles/GameServer.dir/player.cpp.obj CMakeFiles/GameServer.dir/gameserver.cpp.obj CMakeFiles/GameServer.dir/move.cpp.obj CMakeFiles/GameServer.dir/suggestion.cpp.obj CMakeFiles/GameServer.dir/accusation.cpp.obj CMakeFiles/GameServer.dir/charactercard.cpp.obj CMakeFiles/GameServer.dir/roomcard.cpp.obj CMakeFiles/GameServer.dir/weaponcard.cpp.obj CMakeFiles/GameServer.dir/envelope.cpp.obj CMakeFiles/GameServer.dir/room.cpp.obj | C$:/Qt/6.5.3/mingw_64/lib/libQt6Network.a C$:/Qt/6.5.3/mingw_64/lib/libQt6Core.a || GameServer_autogen GameServer_autogen_timestamp_deps
+build GameServer.exe: CXX_EXECUTABLE_LINKER__GameServer_Debug CMakeFiles/GameServer.dir/GameServer_autogen/mocs_compilation.cpp.obj CMakeFiles/GameServer.dir/main.cpp.obj CMakeFiles/GameServer.dir/gameboard.cpp.obj CMakeFiles/GameServer.dir/player.cpp.obj CMakeFiles/GameServer.dir/gameserver.cpp.obj CMakeFiles/GameServer.dir/move.cpp.obj CMakeFiles/GameServer.dir/networkplayer.cpp.obj CMakeFiles/GameServer.dir/clientconnection.cpp.obj CMakeFiles/GameServer.dir/message.cpp.obj CMakeFiles/GameServer.dir/servermessagebroker.cpp.obj CMakeFiles/GameServer.dir/serversession.cpp.obj CMakeFiles/GameServer.dir/suggestion.cpp.obj CMakeFiles/GameServer.dir/accusation.cpp.obj CMakeFiles/GameServer.dir/charactercard.cpp.obj CMakeFiles/GameServer.dir/roomcard.cpp.obj CMakeFiles/GameServer.dir/weaponcard.cpp.obj CMakeFiles/GameServer.dir/envelope.cpp.obj CMakeFiles/GameServer.dir/room.cpp.obj | C$:/Qt/6.5.3/mingw_64/lib/libQt6Network.a C$:/Qt/6.5.3/mingw_64/lib/libQt6Core.a || GameServer_autogen GameServer_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = C:/Qt/6.5.3/mingw_64/lib/libQt6Network.a  C:/Qt/6.5.3/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lws2_32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GameServer.dir
