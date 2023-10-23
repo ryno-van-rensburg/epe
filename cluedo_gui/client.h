@@ -71,6 +71,8 @@ private:
     QString player5_id; // Purple, Plum
     QString player6_id; // Red, Scarlet
     QString my_id;
+    QString my_person;
+    
 };
 
 #endif // CLIENT_H

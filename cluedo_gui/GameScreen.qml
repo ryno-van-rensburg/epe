@@ -44,7 +44,7 @@ Rectangle
             color: "#00fefefe"
             clip: false
             //anchors.centerIn: parent
-            playerIcon: "images/player1_icon.png"   
+            playerIcon: "images/player1_icon.png"
         }
         Player {
             id: player2
@@ -57,7 +57,7 @@ Rectangle
             color: "#00fefefe"
             clip: false
             //anchors.centerIn: parent
-            playerIcon: "images/player2_icon.png"   
+            playerIcon: "images/player2_icon.png"
         }
 
         Player {
@@ -112,44 +112,44 @@ Rectangle
             color: "#00ffffff"
             //anchors.centerIn: parent
             playerIcon: "images/player6_icon.png"
-        } 
-    
-    
-    Connections {
-        target: client
-        ignoreUnknownSignals: true
-        function onPromptRequested(){
-            prompt_state = 2
-            suggestionPrompt.visible = true;
         }
 
-        function onPlayerPositionUpdated(playerId,newX,newY){
+
+        Connections {
+            target: client
+            ignoreUnknownSignals: true
+            function onPromptRequested(){
+                prompt_state = 2
+                suggestionPrompt.visible = true;
+            }
+
+            function onPlayerPositionUpdated(playerId,newX,newY){
                 console.debug(newX+" "+newY);
                 switch(playerId){
-                    case 1:
-                        player1.x = newX;
-                        player1.y = newY;
-                        break;
-                    case 2: 
-                        player2.x = newX;
-                        player2.y = newY;
-                        break;
-                    case 3:     
-                        player3.x = newX;
-                        player3.y = newY;
-                        break;
-                    case 4:
-                        player4.x = newX;
-                        player4.y = newY;
-                        break;
-                    case 5: 
-                        player5.x = newX;
-                        player5.y = newY;
-                        break;
-                    case 6:     
-                        player6.x = newX;
-                        player6.y = newY;
-                        break;
+                case 1:
+                    player1.x = newX;
+                    player1.y = newY;
+                    break;
+                case 2:
+                    player2.x = newX;
+                    player2.y = newY;
+                    break;
+                case 3:
+                    player3.x = newX;
+                    player3.y = newY;
+                    break;
+                case 4:
+                    player4.x = newX;
+                    player4.y = newY;
+                    break;
+                case 5:
+                    player5.x = newX;
+                    player5.y = newY;
+                    break;
+                case 6:
+                    player6.x = newX;
+                    player6.y = newY;
+                    break;
                 }
                 
                 // if (playerIndex !== null) {
@@ -158,13 +158,13 @@ Rectangle
                 // }else {
                 //     console.debug("Player with ID", playerId, "not found in the model.");
                 // }
-            //}
-            //handleUpdate(playerId, newX, newY);
+                //}
+                //handleUpdate(playerId, newX, newY);
+            }
         }
-      }
     }
 
-   
+
     Column {
         id: c_player
         x: 19
@@ -182,7 +182,7 @@ Rectangle
             }
 
             font.family: "Pixel"
-            }
+        }
 
         Text {
             width: c_player.width
@@ -253,14 +253,16 @@ Rectangle
             anchors.fill: parent
             onClicked: {
                 panelState = !panelState; // Toggle the panel state
+                noteBook.visible = false;
             }
         }
         HoverHandler {
-                    id: mouse_panel
-                    acceptedDevices: PointerDevice.Mouse
-                    cursorShape: Qt.PointingHandCursor
-                }
+            id: mouse_panel
+            acceptedDevices: PointerDevice.Mouse
+            cursorShape: Qt.PointingHandCursor
+        }
     }
+
     Rectangle{
         id: slidingPanel
         y: 0
@@ -274,6 +276,8 @@ Rectangle
                 easing.type: Easing.InOutQuad // Easing function
             }
         }
+
+
 
 
         Image {
@@ -354,38 +358,38 @@ Rectangle
                 width: 144
                 height: 121
                 onClicked: {
-                        dice_moves = client.getCurrentDiceValue()
-                        panelState = !panelState; // Toggle the panel state
-                        // This ensures only the current player can be moved
-                        player1.dragEnable = false;
-                        player2.dragEnable = false;
-                        player3.dragEnable = false;
-                        player4.dragEnable = false;
-                        player5.dragEnable = false;
-                        player6.dragEnable = false;
+                    dice_moves = client.getCurrentDiceValue()
+                    panelState = !panelState; // Toggle the panel state
+                    // This ensures only the current player can be moved
+                    player1.dragEnable = false;
+                    player2.dragEnable = false;
+                    player3.dragEnable = false;
+                    player4.dragEnable = false;
+                    player5.dragEnable = false;
+                    player6.dragEnable = false;
 
-                switch(client.playerTurn){
+                    switch(client.playerTurn){
                     case 1:
                         player1.dragEnable = true;
                         break;
-                    case 2: 
+                    case 2:
                         
                         player2.dragEnable = true;
                         break;
-                    case 3:     
+                    case 3:
                         player3.dragEnable = true;
                         break;
                     case 4:
                         
                         player4.dragEnable = true;
                         break;
-                    case 5: 
+                    case 5:
                         player5.dragEnable = true;
                         break;
-                    case 6:     
+                    case 6:
                         player6.dragEnable = true;
                         break;
-                }
+                    }
                 }
 
                 HoverHandler {
@@ -413,6 +417,7 @@ Rectangle
                 height: 121
                 onClicked: {
                     console.log("Clicked on btnNotebook" )
+                    noteBook.visible = true;
                 }
 
                 HoverHandler {
@@ -486,18 +491,103 @@ Rectangle
                     fillMode: Image.PreserveAspectFit
                 }
             }
-
-            Image {
-                id: image
-                x: 107
-                y: 19
-                width: 113
-                height: 95
-                source: mouse_panel.hovered? "images/panel_close_active.png":"images/panel_close_inactive.png"
-                fillMode: Image.PreserveAspectFit
-            }
         }
+
+
+
+        Rectangle {
+            id: noteBook
+            x: -16
+            y: 0
+            width: 274
+            height: 1080
+            visible: false
+            color: "#3b4252"
+            radius: 20
+            border.width: 0
+
+            Text {
+                id: text1
+                x: 11
+                y: 109
+                color: "#5e81ac"
+                text: qsTr("NOTEBOOK")
+                font.pixelSize: 41
+                font.family: "Pixel"
+            }
+
+            ListView {
+                anchors.fill: parent
+                anchors.rightMargin: 29
+                anchors.bottomMargin: 44
+                anchors.leftMargin: 11
+                anchors.topMargin: 162
+                model: ListModel {
+                    ListElement { item_name: "Courtyard"; clicked: false }
+                    ListElement { item_name: "Garage"; clicked: false }
+                    ListElement { item_name: "Game Room"; clicked: false }
+                    ListElement { item_name: "Bedroom"; clicked: false }
+                    ListElement { item_name: "Bathroom"; clicked: false }
+                    ListElement { item_name: "Study"; clicked: false }
+                    ListElement { item_name: "Kitchen"; clicked: false }
+                    ListElement { item_name: "Dining Room"; clicked: false }
+                    ListElement { item_name: "Living Room"; clicked: false }
+                    ListElement { item_name: "Candlestick"; clicked: false }
+                    ListElement { item_name: "Dagger"; clicked: false }
+                    ListElement { item_name: "Lead Pipe"; clicked: false }
+                    ListElement { item_name: "Pistol"; clicked: false }
+                    ListElement { item_name: "Rope"; clicked: false }
+                    ListElement { item_name: "Wrench"; clicked: false }
+                    ListElement { item_name: "Mr. Green"; clicked: false }
+                    ListElement { item_name: "Mustard"; clicked: false }
+                    ListElement { item_name: "Mrs. Peacock"; clicked: false }
+                    ListElement { item_name: "Proff Plum"; clicked: false }
+                    ListElement { item_name: "Miss Scarlet"; clicked: false }
+                    ListElement { item_name: "Mrs. White"; clicked: false }
+
+
+                    // Add more elements as needed
+                }
+
+                delegate: Item {
+                    width: 200
+                    height: 50
+
+                    property string item_name: model.item_name
+                    property bool clicked: model.clicked
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: item_name
+                        font.pointSize: 20
+                        font.family: "Pixel"
+                        color: clicked ? "white" : "#7eacbb"
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                model.clicked = !model.clicked
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        Image {
+            id: image
+            x: 83
+            y: 19
+            width: 113
+            height: 95
+            source: mouse_panel.hovered? "images/panel_close_active.png":"images/panel_close_inactive.png"
+            fillMode: Image.PreserveAspectFit
+        }
+
     }
+
+
 
 
     Image {
@@ -534,10 +624,10 @@ Rectangle
             y: 692
             width: 153
             height: 151
-            // something: mouse_.hovered? "prop":"prop" 
+            // something: mouse_.hovered? "prop":"prop"
             onClicked: {
                 if (prompt_state === 0){ // prompt state shows acc/suggest since i reuse menus
-                    console.log("Suggesting")            
+                    console.log("Suggesting")
                     client.onSuggestionMade(tRoom.text,tPerson.text, tWeapon.text)
                 } else if (prompt_state ==1) {
                     console.log("Accusing")
@@ -607,7 +697,7 @@ Rectangle
                 switch(prompt_state)
                 {
                 case 0:
-                   return qsTr("SUGGESTION");
+                    return qsTr("SUGGESTION");
                 case 1:
                     return qsTr("ACCUSATION");
                 case 2:
@@ -622,4 +712,5 @@ Rectangle
             font.family: "Pixel"
         }
     }
+
 }
