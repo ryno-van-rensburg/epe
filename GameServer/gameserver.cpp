@@ -3,23 +3,18 @@
 #include <vector>
 #include <unordered_set>
 #include <set>
+#include <iostream>
 
+
+// Constructor for GameServer class. Initializes log file for game events.
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-    QString filePath = QCoreApplication::applicationDirPath() + "/game_log.txt";
-
-    // Check if the log file exists
-    QFile existingLogFile(filePath);
-    if (existingLogFile.exists()) {
-        // Delete the existing log file
-        existingLogFile.remove();
-    }
-
+    // Initialize log file for game events
     log = new QFile("game_log.txt");
     if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
-        printf("Log opened succesfully");
+        printf("Log opened succesfully\n");
     }
     else
     {
@@ -27,30 +22,37 @@ GameServer::GameServer(QObject *parent)
     }
 }
 
+// Destructor for GameServer class. Frees memory allocated for players and log file.
 GameServer::~GameServer(){
+    // Free memory allocated for players
     for (Player* player : players) {
         delete player;
     }
     players.clear();
     delete winEnvelope;
+    // Close log file if it is open
     if (log && log->isOpen())
     {
         log->close();
     }
 }
 
+//Get GameID
 QString GameServer::GetGameID(){
     return gameID;
 }
 
+//Get players vector
 QVector<Player*> GameServer::GetPlayers(){
     return players;
 }
 
+//Get win envelope
 Envelope* GameServer::GetEnvelopeCards(){
     return winEnvelope;
 }
 
+// Set the turn for a specific player and calculate available moves based on dice roll.
 void GameServer::SetPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
         if (inPlayer->GetUsername() == players[i] -> GetUsername()){
@@ -64,6 +66,7 @@ void GameServer::SetPlayerTurn(Player* inPlayer){
     }
 }
 
+// End the turn for a specific player.
 void GameServer::EndPlayerTurn(Player* inPlayer){
     for (int i = 0; i < players.size(); i++){
         if (inPlayer->GetUsername() == players[i] -> GetUsername()){
@@ -72,31 +75,37 @@ void GameServer::EndPlayerTurn(Player* inPlayer){
     }
 }
 
+// Set the number of players in the game.
 void GameServer::setNumPlayers(int num)
 {
     this->numPlayers = num;
 }
 
+// Get the initial dice values rolled by each player at the start of the game.
 QVector<int> GameServer::getStartDice()
 {
     return startDice;
 }
 
+// Get face-up character cards.
 QVector<CharacterCard *> GameServer::getCharacFaceUp()
 {
     return characFaceUp;
 }
 
+// Get face-up room cards.
 QVector<RoomCard *> GameServer::getRoomFaceUp()
 {
     return roomFaceUp;
 }
 
+// Get face-up weapon cards.
 QVector<WeaponCard *> GameServer::getWeaponFaceUp()
 {
     return weaponFaceUp;
 }
 
+// Recursive function to find possible positions based on current position and dice roll.
 void GameServer::findPossiblePositions(int currentPosition, int diceRoll, std::vector<int> &possiblePositions, std::unordered_set<int> &visitedRooms, bool canEnterRoom)
 {
     if (currentPosition < 0 || currentPosition >= data.size() || visitedRooms.count(currentPosition) || diceRoll < 0) {
@@ -125,8 +134,10 @@ void GameServer::findPossiblePositions(int currentPosition, int diceRoll, std::v
     visitedRooms.erase(currentPosition);
 }
 
+// Log an event message to the log file.
 void GameServer::logEvent(const QString &message)
 {
+    //Check log file is open
     if (log && log->isOpen())
     {
         QTextStream stream(log);
@@ -135,13 +146,18 @@ void GameServer::logEvent(const QString &message)
     }
 }
 
+// Get the current dice value.
 int GameServer::GetCurrentDice()
 {
     return currentDice;
 }
 
+// Get available moves for a player based on their position and dice roll.
 QVector<int> GameServer::getAvailableMoves(int pos, int dice)
 {
+    //Vector of all possible moves from a specific position, the index of the vector is the
+    //current position, while the 4 values are the possible moves left, right, up and down
+    //from that position
     data = {
         {36, 37, 20, 68},
         {40, 50, -1, -1},
@@ -437,6 +453,7 @@ void GameServer::DealCards()
 
     int count = 1;
 
+    //Logs the cards that have been dealt to each player and the remaining cards
     for (Player* temp: players)
     {
         emit DealCardsSignal(temp,temp->GetCharacCards(),temp->GetWeaponCards(),temp->GetRoomCards());
@@ -491,6 +508,7 @@ void GameServer::DealCards()
 
 
 //slots
+// Slot function to handle player movement request.
 void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
 {
     // Your implementation here, e.g., move the player to the specified destination
@@ -500,6 +518,8 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
     int position = playerToMove->GetPosition();
     bool valid = false;
     QVector<int> posPosition = getAvailableMoves(position,currentDice);
+    logEvent(playerToMove->GetUsername()+" is attempting to move from "+c+" to "+d);
+    //Compares move to all possible moves based on current position and dice roll
     for (int temp : posPosition)
     {
         if (destination == temp)
@@ -513,25 +533,93 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
         emit NotifyPlayerMoveSignal(playerToMove,destination);
         emit UpdateStateSignal(playerToMove,destination);
         logEvent(playerToMove->GetUsername()+" moved from "+c+" to "+d);
+        qDebug("Valid move");
     }
     else
     {
         emit SendErrorSignal("INVALID_MOVE");
         logEvent("Invalid move from "+c+" to "+d);
+        qDebug("Invalid move");
     }
 }
 
-void GameServer::SuggestionReceivedSlot(QString character, QString room, QString weapon)
+void GameServer::SuggestionReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon)
 {
     // Your implementation here, e.g., handle the received suggestion
     // For example, process the suggestion and send a response.
+    qDebug("in suggestion slot");
+    for (int i = 0; i < players.size(); i++){
+        Player* tempPlayer = players[i];
+        if (tempPlayer->GetUsername() == character->GetCardName()){
+            tempPlayer->SetPosition(inPlayer->GetPosition());
+        }
+    }
+
+    inPlayer->MakeAccusation(inPlayer, character, room, weapon);
+
+    bool cardShown = false;
+
+    for (int i = 0; i < players.size(); i++){
+        Player* currPlayer = players[i];
+
+
+        QVector<CharacterCard*> charCards = currPlayer->GetCharacCards();
+
+        for (int j = 0; j < currPlayer->GetCharacCards().size(); j++){
+            if (charCards[j] -> GetCardName() == character->GetCardName()){
+                //connect up the show card signal and emit the signal to notify the GUI to show a card and the name of the card to show
+                emit this -> ShowCardSignal(inPlayer, character->GetCardName());
+                cardShown = true;
+                break;
+            }
+        }
+
+        if (cardShown == false){
+            QVector<RoomCard*> rooCards = currPlayer->GetRoomCards();
+            for (int j = 0; j < currPlayer->GetRoomCards().size(); j++){
+                RoomCard* temp = rooCards[j];
+                if (temp->GetCardName() == room->GetCardName()){
+                    //connect signal here
+                    emit this -> ShowCardSignal(inPlayer, room->GetCardName());
+                    cardShown = true;
+                    break;
+                }
+            }
+
+            if(cardShown == false){
+                QVector<WeaponCard*> weapCards = currPlayer->GetWeaponCards();
+
+                for (int j = 0; j < currPlayer->GetWeaponCards().size(); j++){
+                    WeaponCard* tempWeap = weapCards[j];
+
+                    if (tempWeap->GetCardName() == weapon->GetCardName()){
+                        //connect signal here
+                        emit this -> ShowCardSignal(inPlayer, room->GetCardName());
+                        cardShown = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Implement the AccusationReceivedSlot function
-void GameServer::AccusationReceivedSlot(QString character, QString room, QString weapon)
+void GameServer::AccusationReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon)
 {
     // Your implementation here, e.g., handle the received accusation
     // For example, check if the accusation is correct and take appropriate action.
+
+
+    if (winEnvelope->CompareAccusation(character, room, weapon)){
+        qDebug("YOU WON");
+    }
+    else{
+        qDebug("YOU LOST");
+    }
+
+    //you need to connect this
+    emit this->TerminateGameSignal();
 }
 
 // Implement the CardShownSlot function
@@ -546,70 +634,79 @@ void GameServer::AddPlayerSlot(Player* newPlayer)
 {
     // Your implementation here, e.g., add a new player to the game
     // For example, store the player in a data structure or perform necessary initialization.
-    srand(time(0));
-    players.append(newPlayer);
-    if (players.size() == 1)
+
+    srand(time(0)+players.size());
+    if (players.size()<numPlayers)
     {
-        logEvent("Player 1 added");
-    }
-    else if (players.size() == 2)
-    {
-        logEvent("Player 2 added");
-    }
-    else if (players.size() == 3)
-    {
-        logEvent("Player 3 added");
-    }
-    else if (players.size() == 4)
-    {
-        logEvent("Player 4 added");
-    }
-    else if (players.size() == 5)
-    {
-        logEvent("Player 5 added");
-    }
-    else if (players.size() == 6)
-    {
-        logEvent("Player 6 added");
-    }
-    startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
-    if (players.size() == 1)
-    {
-        QString d = QString::number(startDice[0]);
-        logEvent("Player 1 start dice is: "+d);
-    }
-    else if (players.size() == 2)
-    {
-        QString d = QString::number(startDice[1]);
-        logEvent("Player 2 start dice is: "+d);
-    }
-    else if (players.size() == 3)
-    {
-        QString d = QString::number(startDice[2]);
-        logEvent("Player 3 start dice is: "+d);
-    }
-    else if (players.size() == 4)
-    {
-        QString d = QString::number(startDice[3]);
-        logEvent("Player 4 start dice is: "+d);
-    }
-    else if (players.size() == 5)
-    {
-        QString d = QString::number(startDice[4]);
-        logEvent("Player 5 start dice is: "+d);
-    }
-    else if (players.size() == 6)
-    {
-        QString d = QString::number(startDice[5]);
-        logEvent("Player 6 start dice is: "+d);
-    }
-    if (players.size() == numPlayers)
-    {
-        emit StartGameSignal();
-        DealCards();
+        players.append(newPlayer);
+        //Log the player being added
+        if (players.size() == 1)
+        {
+            logEvent("Player 1 added");
+        }
+        else if (players.size() == 2)
+        {
+            logEvent("Player 2 added");
+        }
+        else if (players.size() == 3)
+        {
+            logEvent("Player 3 added");
+        }
+        else if (players.size() == 4)
+        {
+            logEvent("Player 4 added");
+        }
+        else if (players.size() == 5)
+        {
+            logEvent("Player 5 added");
+        }
+        else if (players.size() == 6)
+        {
+            logEvent("Player 6 added");
+        }
+        //Log the start dice roll for each player
+        startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
+        if (players.size() == 1)
+        {
+            QString d = QString::number(startDice[0]);
+            logEvent("Player 1 start dice is: "+d);
+        }
+        else if (players.size() == 2)
+        {
+            QString d = QString::number(startDice[1]);
+            logEvent("Player 2 start dice is: "+d);
+        }
+        else if (players.size() == 3)
+        {
+            QString d = QString::number(startDice[2]);
+            logEvent("Player 3 start dice is: "+d);
+        }
+        else if (players.size() == 4)
+        {
+            QString d = QString::number(startDice[3]);
+            logEvent("Player 4 start dice is: "+d);
+        }
+        else if (players.size() == 5)
+        {
+            QString d = QString::number(startDice[4]);
+            logEvent("Player 5 start dice is: "+d);
+        }
+        else if (players.size() == 6)
+        {
+            QString d = QString::number(startDice[5]);
+            logEvent("Player 6 start dice is: "+d);
+        }
+        if (players.size() == numPlayers)
+        {
+            emit StartGameSignal();
+            logEvent("Game started");
+            qDebug("Game started");
+            DealCards();
+        }
     }
 }
 
+//Slot to return the game state upon a request
 void GameServer::StateRequestSlot()
 {
     int currentTurn = 0;
@@ -623,6 +720,41 @@ void GameServer::StateRequestSlot()
     }
     emit GameStateReply(players,players.size(),currentDice,currentTurn,characFaceUp,weaponFaceUp,roomFaceUp);
     logEvent("Game state request received");
+    qDebug("Players: ");
+    logEvent("Players: ");
+    for (int i=0;i<players.size();i++)
+    {
+        logEvent(players[i]->GetUsername());
+        qDebug()<<players[i]->GetUsername();
+    }
+    qDebug("Number of Players: ");
+    logEvent("Number of Players: ");
+    qDebug()<<players.size();
+    int size = players.size();
+    logEvent(QString::number(size));
+    qDebug("Current dice roll: ");
+    logEvent("Current dice roll: ");
+    qDebug()<<currentDice;
+    int dicePrint = currentDice;
+    logEvent(QString::number(dicePrint));
+    qDebug("Current turn: ");
+    logEvent("Current turn: ");
+    qDebug()<<currentTurn;
+    logEvent(QString::number(currentTurn));
+    qDebug("Face up cards: ");
+    logEvent("Face up cards: ");
+    for (int i=0;i<characFaceUp.size();i++){
+        logEvent(characFaceUp[i]->GetCardName());
+        qDebug()<<characFaceUp[i]->GetCardName();
+    }
+    for (int i=0;i<roomFaceUp.size();i++){
+        logEvent(roomFaceUp[i]->GetCardName());
+        qDebug()<<roomFaceUp[i]->GetCardName();
+    }
+    for (int i=0;i<weaponFaceUp.size();i++){
+        logEvent(weaponFaceUp[i]->GetCardName());
+        qDebug()<<weaponFaceUp[i]->GetCardName();
+    }
 }
 
 

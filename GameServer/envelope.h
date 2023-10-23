@@ -18,6 +18,12 @@ public:
     Envelope(CharacterCard* charac, RoomCard* ro, WeaponCard* weap);
     ~Envelope();
     bool CompareAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
+    QString GetCharacter();
+    QString GetWeapon();
+    QString GetRoom();
 };
 
 #endif // ENVELOPE_H
+
+
+

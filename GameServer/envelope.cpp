@@ -18,6 +18,11 @@ Envelope::~Envelope()
 
 }
 
+/* Function to verify if a guess made is correct compared to the winning envelope
+ *
+ * Inputs: inCharac: Character card that was guessed, inRoom: Room card guessed, inWeapon: Weapon card guessed
+ * Output: bool indicating whether they match or not
+ */
 bool Envelope::CompareAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon)
 {
     if (inCharac->GetCardName() != character->GetCardName())

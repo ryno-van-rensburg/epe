@@ -66,8 +66,8 @@ signals:
 
 public slots:
     void MoveRequestedSlot(Player* playerToMove, int destination);
-    void SuggestionReceivedSlot(QString, QString, QString);
-    void AccusationReceivedSlot(QString, QString, QString);
+    void SuggestionReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon);
+    void AccusationReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon);
     void CardShownSlot(Player* playerShown, QString cardName);
     void AddPlayerSlot(Player* newPlayer);
     void StateRequestSlot();
@@ -75,3 +75,5 @@ public slots:
 };
 
 #endif // GAMESERVER_H
+
+
