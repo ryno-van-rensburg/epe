@@ -18,11 +18,27 @@
 /*
     * Connects the signals from the client to the signals of the broker
     * @param client the client to connect
-    * @param broker the broker to connect    
+    * @param broker the broker to connect
 */
- void connectClientBroker(Client* client,ClientMessageBroker* broker){
-    //QObject::connect(client, SIGNAL(testSendMessageToBroker(QString&)),broker,SLOT(testReceiveMessageFromClient(QString&)));    QObject::connect(broker, SIGNAL(testSendMessageToClient(QString&)), client, SLOT(testReceiveMessage(QString&)) );
-    //QObject::connect(client, SIGNAL(sendConnectionRequest(QString)), broker, SLOT(onSendConnectionRequest(QString)));
+void connectClientBroker(Client* client,ClientMessageBroker* broker){
+    QObject::connect(broker, SIGNAL(accusationResultSignal(QList,bool)));
+    QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList));
+    QObject::connect(broker, SIGNAL(cardsDealt(QList)));
+    QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
+    QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
+    QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)));
+    QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
+    QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)));
+    QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
+    QObject::connect(broker, SIGNAL(gameEndedSignal()));
+    QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)));
+    QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
+    QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
+    QObject::connect(broker, SIGNAL(invalidMove()));
+    QObject::connect(broker, SIGNAL(playerKicked()));
+    QObject::connect(broker, SIGNAL(yourTurnSignal(int,int))); // make sure you store the dice value
+    QObject::connect(broker, SIGNAL(playerResult(QString,QList,bool)));
+    QObject::connect(broker, SIGNAL(gameStateSignal(int,QJsonArray,int,int,QJsonArray));// somewhere
 }
 
 int main(int argc, char *argv[])
@@ -32,7 +48,7 @@ int main(int argc, char *argv[])
     Client* client = new Client;
     ClientMessageBroker* broker = new ClientMessageBroker;
     connectClientBroker(client,broker);
-    
+
     engine.rootContext()->setContextProperty("client",client); // expose client to QML
     if (app.arguments().contains("--runtests")) { // for running tests when given run arguments
         qDebug() <<"TESTING";
@@ -42,7 +58,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     engine.addImportPath(":/imports");
-    engine.load("C:/Users/SIGMA Pro/Documents/University of Pretoria/2023/EPE 321/Cluedo Group projectGitlab/group-6/cluedo_gui/main.qml");
+    engine.load("main.qml");
     if (engine.rootObjects().isEmpty())
         return -1;
 
