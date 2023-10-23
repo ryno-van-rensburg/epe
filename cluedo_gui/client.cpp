@@ -295,20 +295,24 @@ void Client::onNameEntered(QString name){
     }
     else if (is_emptytext)
     {
+
         //If there is no text, show an incomplete message
         //QMessageBox::warning(this, "Error", "Invalid playerID. Empty PlayerID. Please try again.");
         msgBox.setInformativeText("Invalid playerID. Empty PlayerID. Please try again.");
+        msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
     }
     else if(!is_groupnumber)
     {
         msgBox.setInformativeText(" Invalid playerID. No group number in the beginning.  Please try again.");
+        msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
         //QMessageBox::warning(this, "Error", " Invalid playerID. No group number in the beginning.  Please try again.");
     }
     else if(!is_underscore)
     {
         msgBox.setInformativeText(" Invalid playerID. No undrscore followed after group number.  Please try again.");
+        msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
 
         //QMessageBox::warning(this, "Error", "Invalid playerID. No undrscore followed after group number.  Please try again.");
@@ -316,6 +320,7 @@ void Client::onNameEntered(QString name){
     else if(!is_lastnumber)
     {
         msgBox.setInformativeText("Invalid playerID. No last number after playerID.  Please try again.");
+        msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
 
 
@@ -324,6 +329,7 @@ void Client::onNameEntered(QString name){
     else if(funnysymbol)
     {
         msgBox.setInformativeText("Invalid playerID. No last number after playerID.  Please try again.");
+        msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
 
 
@@ -446,9 +452,36 @@ void Client::emitConnectionRejected(){
 
 void Client::onCardShown(bool hasCard, QString asked, QString showed) // Multicast
 {
+    // {showed} has/hasn't shown a card to {asked}.
+    if (hasCard == true)
+    {
+       QMessageBox msgBox;
+       msgBox.setText(showed + "has shown a card" + asked);
+       msgBox.setInformativeText(showed + "has shown a card" + asked);
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+       msgBox.exec();
+    }
+    else
+    {
+       QMessageBox msgBox;
+       msgBox.setText(showed + "hasn't shown a card" + asked);
+       msgBox.setInformativeText(showed + "has shown a card" + asked);
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+      msgBox.exec();
+    }
 
 }
 void Client::onCardShownToPlayer(QString username, QString card)      // Unicast
 {
 
+       QMessageBox msgBox;
+       msgBox.setText(username + "has shown a card" + card);
+       msgBox.setInformativeText(username + "has shown a card" + card);
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+       msgBox.exec();
+
 }
+
