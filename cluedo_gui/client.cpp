@@ -25,6 +25,36 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(playerResult(QString,QList,bool)));
     //QObject::connect(broker, SIGNAL(gameStateSignal(int,QJsonArray,int,int,QJsonArray));// somewhere
 }
+
+int Client::getRoomNumber(int x, int y)
+{
+    if ((x >= 0 && x < 2) && (y >= 0 && y < 2))  // Room 7 Kitchen
+       return 7;
+    else if ((x >= 0 && x < 2) && (y >= 3 && y < 6)) // Room 8 Dining room
+       return 8;
+    else if ((x >= 0 && x < 2) && (y >= 6 && y < 10)) // Room 9 Living room
+       return 9;
+
+    else if ((x >=2  && x < 6) && (y >= 6 && y < 10)) // Room 1 Courtyard
+       return 1;
+
+    else if ((x >=6  && x < 10) && (y >= 6 && y < 10)) // Room 2 Garage
+       return 2;
+
+    else if ((x >=6  && x < 10) && (y >= 3 && y < 6)) // Room 3 Game room
+       return 3;
+
+    else if ((x >=6  && x < 10) && (y >= 0 && y < 2)) // Room 4 Bedroom
+       return 4;
+
+    else if ((x >=3  && x < 4) && (y >= 0 && y < 2)) // Room 5 Bathroom
+       return 5;
+
+    else if ((x >=4  && x < 5) && (y >= 0 && y < 2)) // Room 6 Bathroom
+       return 6;
+
+
+}
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
