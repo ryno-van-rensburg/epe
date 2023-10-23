@@ -11,9 +11,9 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(cardsDealt(QList)));
     //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
-    //QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)));
+    QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
-    //QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)));
+    QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
     //QObject::connect(broker, SIGNAL(gameEndedSignal()));
     //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)));
@@ -268,7 +268,11 @@ void Client::onNameEntered(QString name){
         //QMessageBox::information(this, "Message", "Login successful. You're joined in an active game session.");
         //        connect(QMessageBox:, QPushButton::clicked,this, &UsernameScreen::callLoadingPage);
         //        callLoadingPage();
+
+        readtext.replace(" ", "");
+
         my_id = name;
+
         emit validUsername();
     }
     else if (is_emptytext)
@@ -378,6 +382,28 @@ QString Client::getPlayerID(int n){
         break;
     }
     return "None";
+}
+void Client::onPlayerAccepted(QString username, QString person, int dice1, int dice2)
+{
+    if (person == "Reverend Green") {
+       player2_id = username;
+    } else if (person == "Miss Scarlett") {
+        player6_id = username;
+    } else if (person == "Chef White") {
+        player1_id = username;
+    } else if (person == "Mrs. Peacock") {
+        player4_id = username;
+    } else if (person == "Professor Plum") {
+        player5_id = username;
+    } else if (person == "Colonel Mustard") {
+        player3_id = username;
+    }
+    if (username == this->my_id)
+    {
+        // TODO assign user to player accepted.
+       emit connectionAccepted();
+    }
+    return;
 }
 
 void Client::emitConnectionAccepted(){

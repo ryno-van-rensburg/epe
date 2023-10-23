@@ -25,7 +25,7 @@ signals:
     void connectionRejectedSignal(QString reason);
     void suggestionStateUpdate(QString username, QString person, QString weapon, QString room);
     void accusationResultSignal(QVector<QString> cards, bool win);
-    void yourTurnSignal(int dice1, int dice2);
+    void turnSignal(QString username, int dice1, int dice2);
     void cardsDealt(QVector<QString> cards);
     void cardShown(bool hasCard, QString asked, QString showed);
     void cardShownToPlayer(QString username, QString card);

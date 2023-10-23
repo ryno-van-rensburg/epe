@@ -13,6 +13,7 @@ public slots:
     void testReceiveMessage(QString& message);
     void onNameEntered(QString name);
     void onTurnEnded();
+    void onPlayerAccepted(QString username, QString person , int dice1, int dice2);
     void onAccusationMade(QString room,QString person, QString item);
     void onSuggestionMade(QString room,QString person, QString item);
     void onSuggestionReceived(QString room,QString person, QString item);
@@ -58,16 +59,17 @@ signals:
     void requestStateSlot();
     void sendConnectionRequest(QString username);
 private:
+
     void connectClientBroker();
     ClientMessageBroker broker;
     int currentPlayerTurn;
     int diceValue;
-    QString player1_id;
-    QString player2_id;
-    QString player3_id;
-    QString player4_id;
-    QString player5_id;
-    QString player6_id;
+    QString player1_id; // White
+    QString player2_id; // Green
+    QString player3_id; // Mustard, Yellow
+    QString player4_id; // Blue, Peacock
+    QString player5_id; // Purple, Plum
+    QString player6_id; // Red, Scarlet
     QString my_id;
 };
 

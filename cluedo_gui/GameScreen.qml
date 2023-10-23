@@ -26,6 +26,13 @@ Rectangle
         y: 199
         width: 1006
         height: 677
+
+        MouseArea{
+            onClicked: {
+                console.debug("x: " +MouseX + " y: " +MouseY)
+            }
+        }
+
         Player {
             id: player1
             playerId : 1
