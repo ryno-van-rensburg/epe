@@ -6,12 +6,14 @@ project(cluedo_gui LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick Test Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick Test Widgets Network)
 enable_testing(true)
 
 qt_add_executable(cluedo_gui
     main.cpp
     client.h client.cpp
+    message.cpp message.h
+    networkplayer.cpp networkplayer.h
     TestRunner.qml
     testrunner.h testrunner.cpp
     clientmessagebroker.h clientmessagebroker.cpp
@@ -29,6 +31,7 @@ target_link_libraries(cluedo_gui PRIVATE
     Qt6::Quick
     Qt6::Test
     Qt6::Widgets
+    Qt6::Network
 )
 
 # Resources:
