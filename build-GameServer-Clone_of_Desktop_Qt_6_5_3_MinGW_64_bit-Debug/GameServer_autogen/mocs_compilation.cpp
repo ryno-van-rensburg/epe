@@ -7,6 +7,5 @@
 #include "EWIEGA46WW/moc_move.cpp"
 #include "EWIEGA46WW/moc_player.cpp"
 #include "EWIEGA46WW/moc_roomcard.cpp"
-#include "EWIEGA46WW/moc_servermessagebroker.cpp"
 #include "EWIEGA46WW/moc_suggestion.cpp"
 #include "EWIEGA46WW/moc_weaponcard.cpp"
