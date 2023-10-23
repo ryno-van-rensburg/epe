@@ -3,9 +3,9 @@
 #include <QString>
 #include <QObject>
 #include <QVector>
-#include "CharacterCard.h"
-#include "RoomCard.h"
-#include "WeaponCard.h"
+#include "charactercard.h"
+#include "roomcard.h"
+#include "weaponcard.h"
 
 
 

@@ -1,8 +1,8 @@
 #ifndef SUGGESTION_H
 #define SUGGESTION_H
-#include "CharacterCard.h"
-#include "RoomCard.h"
-#include "WeaponCard.h"
+#include "charactercard.h"
+#include "roomcard.h"
+#include "weaponcard.h"
 #include "player.h"
 
 #include <QObject>

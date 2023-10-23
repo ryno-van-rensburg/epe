@@ -1,8 +1,8 @@
 #ifndef ACCUSATION_H
 #define ACCUSATION_H
-#include "CharacterCard.h"
-#include "RoomCard.h"
-#include "WeaponCard.h"
+#include "charactercard.h"
+#include "roomcard.h"
+#include "weaponcard.h"
 
 #include <QObject>
 

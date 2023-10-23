@@ -1,9 +1,8 @@
 #include "player.h"
 #include <cstdlib> // For rand() and srand()
 #include <time.h>
-#include "Suggestion.h"
-#include "Accusation.h"
-
+#include "suggestion.h"
+#include "accusation.h"
 
 Player::Player(QObject *parent)
     : QObject{parent}
