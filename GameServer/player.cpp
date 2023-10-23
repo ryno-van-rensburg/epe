@@ -46,10 +46,6 @@ int Player::GetPosition()
     return position;
 }
 
-QString Player::GetPerson()
-{
-    return person;
-}
 
 bool Player::GetAI()
 {

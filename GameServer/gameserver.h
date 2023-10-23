@@ -66,12 +66,12 @@ signals:
     void MovesAvailableSignal(QVector<int> optionsToMove);
 
 public slots:
-    void MoveRequestedSlot(Player* playerToMove, int destination);
+    void MoveRequestedSlot(NetworkPlayer &player, quint32 pos);
     void SuggestionReceivedSlot(NetworkPlayer &player, QString person, QString weapon, QString room);
     void AccusationReceivedSlot(NetworkPlayer &player, QString person, QString weapon, QString room);
     void CardShownSlot(NetworkPlayer &player, QString cardName);
     void AddPlayerSlot(QString username);
-    void StateRequestSlot();
+    void StateRequestSlot(QString requesting);
 
 };
 

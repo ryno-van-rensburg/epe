@@ -17,7 +17,6 @@ private:
     QString username;
     QString person;
     int position;
-    QString person;
     bool myTurn;
     QVector<CharacterCard*> heldCharacterCards;
     QVector<RoomCard*> heldRoomCards;
@@ -32,7 +31,6 @@ public:
     QString GetUsername();
     QString GetPerson();
     int GetPosition();
-    QString GetPerson();
     bool GetAI();
     bool GetMyTurn();
     QVector<CharacterCard*> GetCharacCards();
