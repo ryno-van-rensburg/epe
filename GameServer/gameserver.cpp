@@ -20,6 +20,9 @@ GameServer::GameServer(QObject *parent)
     {
         printf("Failed to open log");
     }
+    ServerMessageBroker* s = new ServerMessageBroker();
+    QObject::connect(this,&GameServer::portSignal,s,&ServerMessageBroker::listen);
+    emit this->portSignal(42069);
 }
 
 // Destructor for GameServer class. Frees memory allocated for players and log file.

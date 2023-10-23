@@ -64,6 +64,7 @@ signals:
     void gameStateSlot(int diceRoll, QVector<QString> faceup, int currentTurn);
     void DealCardsSignal(qint16 numPlayers, QVector<QVector<QString>> cards);
     void MovesAvailableSignal(QVector<int> optionsToMove);
+    void portSignal(int port);
 
 public slots:
     void MoveRequestedSlot(NetworkPlayer &player, quint32 pos);

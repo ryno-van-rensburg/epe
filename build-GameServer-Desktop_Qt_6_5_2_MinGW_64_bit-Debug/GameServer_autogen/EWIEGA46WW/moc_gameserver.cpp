@@ -57,14 +57,15 @@ static constexpr auto qt_meta_stringdata_CLASSGameServerENDCLASS = QtMocHelpers:
     "RoomCard*",
     "suggestedRoom",
     "PlayerResultSignal",
-    "Player*",
-    "playerMakingAccusation",
-    "Accusation*",
-    "finalAccusation",
-    "result",
+    "playerName",
+    "person",
+    "weapon",
+    "room",
+    "win",
     "ShowCardSignal",
-    "playerToShowCard",
-    "nameOfCardToShow",
+    "NetworkPlayer*",
+    "player",
+    "card",
     "RequestCardSignal",
     "Suggestion*",
     "suggestionMade",
@@ -83,24 +84,20 @@ static constexpr auto qt_meta_stringdata_CLASSGameServerENDCLASS = QtMocHelpers:
     "MovesAvailableSignal",
     "QList<int>",
     "optionsToMove",
+    "portSignal",
+    "port",
     "MoveRequestedSlot",
-    "player",
+    "pos",
     "SuggestionReceivedSlot",
-    "inPlayer",
-    "character",
-    "room",
-    "weapon",
     "AccusationReceivedSlot",
     "CardShownSlot",
-    "playerShown",
     "cardName",
     "AddPlayerSlot",
-    "newPlayer",
     "StateRequestSlot"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSGameServerENDCLASS_t {
-    uint offsetsAndSizes[116];
+    uint offsetsAndSizes[110];
     char stringdata0[11];
     char stringdata1[18];
     char stringdata2[1];
@@ -119,46 +116,43 @@ struct qt_meta_stringdata_CLASSGameServerENDCLASS_t {
     char stringdata15[10];
     char stringdata16[14];
     char stringdata17[19];
-    char stringdata18[8];
-    char stringdata19[23];
-    char stringdata20[12];
-    char stringdata21[16];
-    char stringdata22[7];
+    char stringdata18[11];
+    char stringdata19[7];
+    char stringdata20[7];
+    char stringdata21[5];
+    char stringdata22[4];
     char stringdata23[15];
-    char stringdata24[17];
-    char stringdata25[17];
-    char stringdata26[18];
-    char stringdata27[12];
-    char stringdata28[15];
-    char stringdata29[20];
-    char stringdata30[23];
-    char stringdata31[6];
+    char stringdata24[15];
+    char stringdata25[7];
+    char stringdata26[5];
+    char stringdata27[18];
+    char stringdata28[12];
+    char stringdata29[15];
+    char stringdata30[20];
+    char stringdata31[23];
     char stringdata32[6];
-    char stringdata33[15];
-    char stringdata34[13];
-    char stringdata35[12];
-    char stringdata36[14];
-    char stringdata37[16];
-    char stringdata38[11];
-    char stringdata39[22];
-    char stringdata40[6];
-    char stringdata41[21];
-    char stringdata42[11];
-    char stringdata43[14];
-    char stringdata44[18];
-    char stringdata45[7];
-    char stringdata46[23];
-    char stringdata47[9];
-    char stringdata48[10];
-    char stringdata49[5];
-    char stringdata50[7];
-    char stringdata51[23];
-    char stringdata52[14];
-    char stringdata53[12];
-    char stringdata54[9];
-    char stringdata55[14];
-    char stringdata56[10];
-    char stringdata57[17];
+    char stringdata33[6];
+    char stringdata34[15];
+    char stringdata35[13];
+    char stringdata36[12];
+    char stringdata37[14];
+    char stringdata38[16];
+    char stringdata39[11];
+    char stringdata40[22];
+    char stringdata41[6];
+    char stringdata42[21];
+    char stringdata43[11];
+    char stringdata44[14];
+    char stringdata45[11];
+    char stringdata46[5];
+    char stringdata47[18];
+    char stringdata48[4];
+    char stringdata49[23];
+    char stringdata50[23];
+    char stringdata51[14];
+    char stringdata52[9];
+    char stringdata53[14];
+    char stringdata54[17];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSGameServerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -182,46 +176,43 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGameServerENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(183, 9),  // "RoomCard*"
         QT_MOC_LITERAL(193, 13),  // "suggestedRoom"
         QT_MOC_LITERAL(207, 18),  // "PlayerResultSignal"
-        QT_MOC_LITERAL(226, 7),  // "Player*"
-        QT_MOC_LITERAL(234, 22),  // "playerMakingAccusation"
-        QT_MOC_LITERAL(257, 11),  // "Accusation*"
-        QT_MOC_LITERAL(269, 15),  // "finalAccusation"
-        QT_MOC_LITERAL(285, 6),  // "result"
-        QT_MOC_LITERAL(292, 14),  // "ShowCardSignal"
-        QT_MOC_LITERAL(307, 16),  // "playerToShowCard"
-        QT_MOC_LITERAL(324, 16),  // "nameOfCardToShow"
-        QT_MOC_LITERAL(341, 17),  // "RequestCardSignal"
-        QT_MOC_LITERAL(359, 11),  // "Suggestion*"
-        QT_MOC_LITERAL(371, 14),  // "suggestionMade"
-        QT_MOC_LITERAL(386, 19),  // "TerminateGameSignal"
-        QT_MOC_LITERAL(406, 22),  // "NotifyPlayerMoveSignal"
-        QT_MOC_LITERAL(429, 5),  // "dice1"
-        QT_MOC_LITERAL(435, 5),  // "dice2"
-        QT_MOC_LITERAL(441, 14),  // "NetworkPlayer&"
-        QT_MOC_LITERAL(456, 12),  // "playerToMove"
-        QT_MOC_LITERAL(469, 11),  // "invalidMove"
-        QT_MOC_LITERAL(481, 13),  // "gameStateSlot"
-        QT_MOC_LITERAL(495, 15),  // "DealCardsSignal"
-        QT_MOC_LITERAL(511, 10),  // "numPlayers"
-        QT_MOC_LITERAL(522, 21),  // "QList<QList<QString>>"
-        QT_MOC_LITERAL(544, 5),  // "cards"
-        QT_MOC_LITERAL(550, 20),  // "MovesAvailableSignal"
-        QT_MOC_LITERAL(571, 10),  // "QList<int>"
-        QT_MOC_LITERAL(582, 13),  // "optionsToMove"
-        QT_MOC_LITERAL(596, 17),  // "MoveRequestedSlot"
-        QT_MOC_LITERAL(614, 6),  // "player"
-        QT_MOC_LITERAL(621, 22),  // "SuggestionReceivedSlot"
-        QT_MOC_LITERAL(644, 8),  // "inPlayer"
-        QT_MOC_LITERAL(653, 9),  // "character"
-        QT_MOC_LITERAL(663, 4),  // "room"
-        QT_MOC_LITERAL(668, 6),  // "weapon"
-        QT_MOC_LITERAL(675, 22),  // "AccusationReceivedSlot"
-        QT_MOC_LITERAL(698, 13),  // "CardShownSlot"
-        QT_MOC_LITERAL(712, 11),  // "playerShown"
-        QT_MOC_LITERAL(724, 8),  // "cardName"
-        QT_MOC_LITERAL(733, 13),  // "AddPlayerSlot"
-        QT_MOC_LITERAL(747, 9),  // "newPlayer"
-        QT_MOC_LITERAL(757, 16)   // "StateRequestSlot"
+        QT_MOC_LITERAL(226, 10),  // "playerName"
+        QT_MOC_LITERAL(237, 6),  // "person"
+        QT_MOC_LITERAL(244, 6),  // "weapon"
+        QT_MOC_LITERAL(251, 4),  // "room"
+        QT_MOC_LITERAL(256, 3),  // "win"
+        QT_MOC_LITERAL(260, 14),  // "ShowCardSignal"
+        QT_MOC_LITERAL(275, 14),  // "NetworkPlayer*"
+        QT_MOC_LITERAL(290, 6),  // "player"
+        QT_MOC_LITERAL(297, 4),  // "card"
+        QT_MOC_LITERAL(302, 17),  // "RequestCardSignal"
+        QT_MOC_LITERAL(320, 11),  // "Suggestion*"
+        QT_MOC_LITERAL(332, 14),  // "suggestionMade"
+        QT_MOC_LITERAL(347, 19),  // "TerminateGameSignal"
+        QT_MOC_LITERAL(367, 22),  // "NotifyPlayerMoveSignal"
+        QT_MOC_LITERAL(390, 5),  // "dice1"
+        QT_MOC_LITERAL(396, 5),  // "dice2"
+        QT_MOC_LITERAL(402, 14),  // "NetworkPlayer&"
+        QT_MOC_LITERAL(417, 12),  // "playerToMove"
+        QT_MOC_LITERAL(430, 11),  // "invalidMove"
+        QT_MOC_LITERAL(442, 13),  // "gameStateSlot"
+        QT_MOC_LITERAL(456, 15),  // "DealCardsSignal"
+        QT_MOC_LITERAL(472, 10),  // "numPlayers"
+        QT_MOC_LITERAL(483, 21),  // "QList<QList<QString>>"
+        QT_MOC_LITERAL(505, 5),  // "cards"
+        QT_MOC_LITERAL(511, 20),  // "MovesAvailableSignal"
+        QT_MOC_LITERAL(532, 10),  // "QList<int>"
+        QT_MOC_LITERAL(543, 13),  // "optionsToMove"
+        QT_MOC_LITERAL(557, 10),  // "portSignal"
+        QT_MOC_LITERAL(568, 4),  // "port"
+        QT_MOC_LITERAL(573, 17),  // "MoveRequestedSlot"
+        QT_MOC_LITERAL(591, 3),  // "pos"
+        QT_MOC_LITERAL(595, 22),  // "SuggestionReceivedSlot"
+        QT_MOC_LITERAL(618, 22),  // "AccusationReceivedSlot"
+        QT_MOC_LITERAL(641, 13),  // "CardShownSlot"
+        QT_MOC_LITERAL(655, 8),  // "cardName"
+        QT_MOC_LITERAL(664, 13),  // "AddPlayerSlot"
+        QT_MOC_LITERAL(678, 16)   // "StateRequestSlot"
     },
     "GameServer",
     "UpdateStateSignal",
@@ -241,14 +232,15 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGameServerENDCLASS_t qt_meta_st
     "RoomCard*",
     "suggestedRoom",
     "PlayerResultSignal",
-    "Player*",
-    "playerMakingAccusation",
-    "Accusation*",
-    "finalAccusation",
-    "result",
+    "playerName",
+    "person",
+    "weapon",
+    "room",
+    "win",
     "ShowCardSignal",
-    "playerToShowCard",
-    "nameOfCardToShow",
+    "NetworkPlayer*",
+    "player",
+    "card",
     "RequestCardSignal",
     "Suggestion*",
     "suggestionMade",
@@ -267,19 +259,15 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGameServerENDCLASS_t qt_meta_st
     "MovesAvailableSignal",
     "QList<int>",
     "optionsToMove",
+    "portSignal",
+    "port",
     "MoveRequestedSlot",
-    "player",
+    "pos",
     "SuggestionReceivedSlot",
-    "inPlayer",
-    "character",
-    "room",
-    "weapon",
     "AccusationReceivedSlot",
     "CardShownSlot",
-    "playerShown",
     "cardName",
     "AddPlayerSlot",
-    "newPlayer",
     "StateRequestSlot"
 };
 #undef QT_MOC_LITERAL
@@ -292,55 +280,57 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGameServerENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      12,       // signalCount
+      13,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,  122,    2, 0x06,    1 /* Public */,
-       5,    4,  127,    2, 0x06,    4 /* Public */,
-      10,    3,  136,    2, 0x06,    9 /* Public */,
-      17,    3,  143,    2, 0x06,   13 /* Public */,
-      23,    2,  150,    2, 0x06,   17 /* Public */,
-      26,    1,  155,    2, 0x06,   20 /* Public */,
-      29,    0,  158,    2, 0x06,   22 /* Public */,
-      30,    3,  159,    2, 0x06,   23 /* Public */,
-      35,    1,  166,    2, 0x06,   27 /* Public */,
-      36,    3,  169,    2, 0x06,   29 /* Public */,
-      37,    2,  176,    2, 0x06,   33 /* Public */,
-      41,    1,  181,    2, 0x06,   36 /* Public */,
+       1,    2,  128,    2, 0x06,    1 /* Public */,
+       5,    4,  133,    2, 0x06,    4 /* Public */,
+      10,    3,  142,    2, 0x06,    9 /* Public */,
+      17,    5,  149,    2, 0x06,   13 /* Public */,
+      23,    2,  160,    2, 0x06,   19 /* Public */,
+      27,    1,  165,    2, 0x06,   22 /* Public */,
+      30,    0,  168,    2, 0x06,   24 /* Public */,
+      31,    3,  169,    2, 0x06,   25 /* Public */,
+      36,    1,  176,    2, 0x06,   29 /* Public */,
+      37,    3,  179,    2, 0x06,   31 /* Public */,
+      38,    2,  186,    2, 0x06,   35 /* Public */,
+      42,    1,  191,    2, 0x06,   38 /* Public */,
+      45,    1,  194,    2, 0x06,   40 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      44,    2,  184,    2, 0x0a,   38 /* Public */,
-      46,    4,  189,    2, 0x0a,   41 /* Public */,
-      51,    4,  198,    2, 0x0a,   46 /* Public */,
-      52,    2,  207,    2, 0x0a,   51 /* Public */,
-      55,    1,  212,    2, 0x0a,   54 /* Public */,
-      57,    1,  215,    2, 0x0a,   56 /* Public */,
+      47,    2,  197,    2, 0x0a,   42 /* Public */,
+      49,    4,  202,    2, 0x0a,   45 /* Public */,
+      50,    4,  211,    2, 0x0a,   50 /* Public */,
+      51,    2,  220,    2, 0x0a,   55 /* Public */,
+      53,    1,  225,    2, 0x0a,   58 /* Public */,
+      54,    1,  228,    2, 0x0a,   60 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,    4,
     QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::QStringList, QMetaType::Int,    6,    7,    8,    9,
     QMetaType::Void, 0x80000000 | 11, 0x80000000 | 13, 0x80000000 | 15,   12,   14,   16,
-    QMetaType::Void, 0x80000000 | 18, 0x80000000 | 20, QMetaType::Bool,   19,   21,   22,
-    QMetaType::Void, 0x80000000 | 18, QMetaType::QString,   24,   25,
-    QMetaType::Void, 0x80000000 | 27,   28,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   18,   19,   20,   21,   22,
+    QMetaType::Void, 0x80000000 | 24, QMetaType::QString,   25,   26,
+    QMetaType::Void, 0x80000000 | 28,   29,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, 0x80000000 | 33,   31,   32,   34,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, 0x80000000 | 34,   32,   33,   35,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::Int, QMetaType::QStringList, QMetaType::Int,    7,    8,    9,
-    QMetaType::Void, QMetaType::Short, 0x80000000 | 39,   38,   40,
-    QMetaType::Void, 0x80000000 | 42,   43,
+    QMetaType::Void, QMetaType::Short, 0x80000000 | 40,   39,   41,
+    QMetaType::Void, 0x80000000 | 43,   44,
+    QMetaType::Void, QMetaType::Int,   46,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 33, QMetaType::UInt,   45,    4,
-    QMetaType::Void, 0x80000000 | 18, 0x80000000 | 11, 0x80000000 | 15, 0x80000000 | 13,   47,   48,   49,   50,
-    QMetaType::Void, 0x80000000 | 18, 0x80000000 | 11, 0x80000000 | 15, 0x80000000 | 13,   47,   48,   49,   50,
-    QMetaType::Void, 0x80000000 | 18, QMetaType::QString,   53,   54,
-    QMetaType::Void, 0x80000000 | 18,   56,
+    QMetaType::Void, 0x80000000 | 34, QMetaType::UInt,   25,   48,
+    QMetaType::Void, 0x80000000 | 34, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   19,   20,   21,
+    QMetaType::Void, 0x80000000 | 34, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   19,   20,   21,
+    QMetaType::Void, 0x80000000 | 34, QMetaType::QString,   25,   52,
+    QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    6,
 
        0        // eod
@@ -372,12 +362,14 @@ Q_CONSTINIT const QMetaObject GameServer::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<RoomCard *, std::false_type>,
         // method 'PlayerResultSignal'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Player *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Accusation *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         // method 'ShowCardSignal'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Player *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<NetworkPlayer *, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'RequestCardSignal'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -404,29 +396,32 @@ Q_CONSTINIT const QMetaObject GameServer::staticMetaObject = { {
         // method 'MovesAvailableSignal'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QVector<int>, std::false_type>,
+        // method 'portSignal'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'MoveRequestedSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<NetworkPlayer &, std::false_type>,
         QtPrivate::TypeAndForceComplete<quint32, std::false_type>,
         // method 'SuggestionReceivedSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Player *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<CharacterCard *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<RoomCard *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<WeaponCard *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<NetworkPlayer &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'AccusationReceivedSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Player *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<CharacterCard *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<RoomCard *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<WeaponCard *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<NetworkPlayer &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'CardShownSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Player *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<NetworkPlayer &, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'AddPlayerSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Player *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'StateRequestSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>
@@ -443,8 +438,8 @@ void GameServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->UpdateStateSignal((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 1: _t->GameStateReply((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4]))); break;
         case 2: _t->SuggestionStateSignal((*reinterpret_cast< std::add_pointer_t<CharacterCard*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<WeaponCard*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<RoomCard*>>(_a[3]))); break;
-        case 3: _t->PlayerResultSignal((*reinterpret_cast< std::add_pointer_t<Player*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Accusation*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[3]))); break;
-        case 4: _t->ShowCardSignal((*reinterpret_cast< std::add_pointer_t<Player*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 3: _t->PlayerResultSignal((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[5]))); break;
+        case 4: _t->ShowCardSignal((*reinterpret_cast< std::add_pointer_t<NetworkPlayer*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 5: _t->RequestCardSignal((*reinterpret_cast< std::add_pointer_t<Suggestion*>>(_a[1]))); break;
         case 6: _t->TerminateGameSignal(); break;
         case 7: _t->NotifyPlayerMoveSignal((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[3]))); break;
@@ -452,12 +447,13 @@ void GameServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->gameStateSlot((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
         case 10: _t->DealCardsSignal((*reinterpret_cast< std::add_pointer_t<qint16>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QList<QList<QString>>>>(_a[2]))); break;
         case 11: _t->MovesAvailableSignal((*reinterpret_cast< std::add_pointer_t<QList<int>>>(_a[1]))); break;
-        case 12: _t->MoveRequestedSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint32>>(_a[2]))); break;
-        case 13: _t->SuggestionReceivedSlot((*reinterpret_cast< std::add_pointer_t<Player*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<CharacterCard*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<RoomCard*>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<WeaponCard*>>(_a[4]))); break;
-        case 14: _t->AccusationReceivedSlot((*reinterpret_cast< std::add_pointer_t<Player*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<CharacterCard*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<RoomCard*>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<WeaponCard*>>(_a[4]))); break;
-        case 15: _t->CardShownSlot((*reinterpret_cast< std::add_pointer_t<Player*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 16: _t->AddPlayerSlot((*reinterpret_cast< std::add_pointer_t<Player*>>(_a[1]))); break;
-        case 17: _t->StateRequestSlot((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 12: _t->portSignal((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 13: _t->MoveRequestedSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint32>>(_a[2]))); break;
+        case 14: _t->SuggestionReceivedSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
+        case 15: _t->AccusationReceivedSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
+        case 16: _t->CardShownSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 17: _t->AddPlayerSlot((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 18: _t->StateRequestSlot((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -474,20 +470,11 @@ void GameServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< WeaponCard* >(); break;
             }
             break;
-        case 3:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 1:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Accusation* >(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Player* >(); break;
-            }
-            break;
         case 4:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Player* >(); break;
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< NetworkPlayer* >(); break;
             }
             break;
         case 5:
@@ -509,46 +496,6 @@ void GameServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<int> >(); break;
-            }
-            break;
-        case 13:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 1:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< CharacterCard* >(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Player* >(); break;
-            case 2:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< RoomCard* >(); break;
-            case 3:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< WeaponCard* >(); break;
-            }
-            break;
-        case 14:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 1:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< CharacterCard* >(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Player* >(); break;
-            case 2:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< RoomCard* >(); break;
-            case 3:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< WeaponCard* >(); break;
-            }
-            break;
-        case 15:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Player* >(); break;
-            }
-            break;
-        case 16:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Player* >(); break;
             }
             break;
         }
@@ -576,14 +523,14 @@ void GameServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (GameServer::*)(Player * , Accusation * , bool );
+            using _t = void (GameServer::*)(QString , QString , QString , QString , bool );
             if (_t _q_method = &GameServer::PlayerResultSignal; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 3;
                 return;
             }
         }
         {
-            using _t = void (GameServer::*)(Player * , QString );
+            using _t = void (GameServer::*)(NetworkPlayer * , QString );
             if (_t _q_method = &GameServer::ShowCardSignal; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 4;
                 return;
@@ -638,6 +585,13 @@ void GameServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 return;
             }
         }
+        {
+            using _t = void (GameServer::*)(int );
+            if (_t _q_method = &GameServer::portSignal; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 12;
+                return;
+            }
+        }
     }
 }
 
@@ -660,13 +614,13 @@ int GameServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 19;
     }
     return _id;
 }
@@ -693,14 +647,14 @@ void GameServer::SuggestionStateSignal(CharacterCard * _t1, WeaponCard * _t2, Ro
 }
 
 // SIGNAL 3
-void GameServer::PlayerResultSignal(Player * _t1, Accusation * _t2, bool _t3)
+void GameServer::PlayerResultSignal(QString _t1, QString _t2, QString _t3, QString _t4, bool _t5)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
-void GameServer::ShowCardSignal(Player * _t1, QString _t2)
+void GameServer::ShowCardSignal(NetworkPlayer * _t1, QString _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
@@ -752,5 +706,12 @@ void GameServer::MovesAvailableSignal(QVector<int> _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 11, _a);
+}
+
+// SIGNAL 12
+void GameServer::portSignal(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 12, _a);
 }
 QT_WARNING_POP

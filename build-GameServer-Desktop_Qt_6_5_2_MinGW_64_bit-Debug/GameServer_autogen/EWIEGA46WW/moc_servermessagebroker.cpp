@@ -76,6 +76,7 @@ static constexpr auto qt_meta_stringdata_CLASSServerMessageBrokerENDCLASS = QtMo
     "showing",
     "hasCard",
     "showCardSlot",
+    "NetworkPlayer*",
     "dealCardsSlot",
     "numPlayers",
     "QList<QList<QString>>",
@@ -100,7 +101,7 @@ static constexpr auto qt_meta_stringdata_CLASSServerMessageBrokerENDCLASS = QtMo
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSServerMessageBrokerENDCLASS_t {
-    uint offsetsAndSizes[116];
+    uint offsetsAndSizes[118];
     char stringdata0[20];
     char stringdata1[25];
     char stringdata2[1];
@@ -138,27 +139,28 @@ struct qt_meta_stringdata_CLASSServerMessageBrokerENDCLASS_t {
     char stringdata34[8];
     char stringdata35[8];
     char stringdata36[13];
-    char stringdata37[14];
-    char stringdata38[11];
-    char stringdata39[22];
-    char stringdata40[6];
-    char stringdata41[17];
-    char stringdata42[6];
+    char stringdata37[15];
+    char stringdata38[14];
+    char stringdata39[11];
+    char stringdata40[22];
+    char stringdata41[6];
+    char stringdata42[17];
     char stringdata43[6];
-    char stringdata44[16];
-    char stringdata45[13];
-    char stringdata46[17];
-    char stringdata47[11];
-    char stringdata48[4];
-    char stringdata49[18];
-    char stringdata50[13];
-    char stringdata51[14];
-    char stringdata52[17];
-    char stringdata53[7];
-    char stringdata54[21];
-    char stringdata55[11];
-    char stringdata56[12];
-    char stringdata57[10];
+    char stringdata44[6];
+    char stringdata45[16];
+    char stringdata46[13];
+    char stringdata47[17];
+    char stringdata48[11];
+    char stringdata49[4];
+    char stringdata50[18];
+    char stringdata51[13];
+    char stringdata52[14];
+    char stringdata53[17];
+    char stringdata54[7];
+    char stringdata55[21];
+    char stringdata56[11];
+    char stringdata57[12];
+    char stringdata58[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSServerMessageBrokerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -201,27 +203,28 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSServerMessageBrokerENDCLASS_t q
         QT_MOC_LITERAL(437, 7),  // "showing"
         QT_MOC_LITERAL(445, 7),  // "hasCard"
         QT_MOC_LITERAL(453, 12),  // "showCardSlot"
-        QT_MOC_LITERAL(466, 13),  // "dealCardsSlot"
-        QT_MOC_LITERAL(480, 10),  // "numPlayers"
-        QT_MOC_LITERAL(491, 21),  // "QList<QList<QString>>"
-        QT_MOC_LITERAL(513, 5),  // "cards"
-        QT_MOC_LITERAL(519, 16),  // "notifyPlayerMove"
-        QT_MOC_LITERAL(536, 5),  // "dice1"
-        QT_MOC_LITERAL(542, 5),  // "dice2"
-        QT_MOC_LITERAL(548, 15),  // "requestCardSlot"
-        QT_MOC_LITERAL(564, 12),  // "askingPlayer"
-        QT_MOC_LITERAL(577, 16),  // "playerResultSlot"
-        QT_MOC_LITERAL(594, 10),  // "playerName"
-        QT_MOC_LITERAL(605, 3),  // "win"
-        QT_MOC_LITERAL(609, 17),  // "terminateGameSlot"
-        QT_MOC_LITERAL(627, 12),  // "acceptPlayer"
-        QT_MOC_LITERAL(640, 13),  // "gameStateSlot"
-        QT_MOC_LITERAL(654, 16),  // "connectionDenied"
-        QT_MOC_LITERAL(671, 6),  // "reason"
-        QT_MOC_LITERAL(678, 20),  // "suggestionUpdateSlot"
-        QT_MOC_LITERAL(699, 10),  // "suggestion"
-        QT_MOC_LITERAL(710, 11),  // "invalidMove"
-        QT_MOC_LITERAL(722, 9)   // "outOfTurn"
+        QT_MOC_LITERAL(466, 14),  // "NetworkPlayer*"
+        QT_MOC_LITERAL(481, 13),  // "dealCardsSlot"
+        QT_MOC_LITERAL(495, 10),  // "numPlayers"
+        QT_MOC_LITERAL(506, 21),  // "QList<QList<QString>>"
+        QT_MOC_LITERAL(528, 5),  // "cards"
+        QT_MOC_LITERAL(534, 16),  // "notifyPlayerMove"
+        QT_MOC_LITERAL(551, 5),  // "dice1"
+        QT_MOC_LITERAL(557, 5),  // "dice2"
+        QT_MOC_LITERAL(563, 15),  // "requestCardSlot"
+        QT_MOC_LITERAL(579, 12),  // "askingPlayer"
+        QT_MOC_LITERAL(592, 16),  // "playerResultSlot"
+        QT_MOC_LITERAL(609, 10),  // "playerName"
+        QT_MOC_LITERAL(620, 3),  // "win"
+        QT_MOC_LITERAL(624, 17),  // "terminateGameSlot"
+        QT_MOC_LITERAL(642, 12),  // "acceptPlayer"
+        QT_MOC_LITERAL(655, 13),  // "gameStateSlot"
+        QT_MOC_LITERAL(669, 16),  // "connectionDenied"
+        QT_MOC_LITERAL(686, 6),  // "reason"
+        QT_MOC_LITERAL(693, 20),  // "suggestionUpdateSlot"
+        QT_MOC_LITERAL(714, 10),  // "suggestion"
+        QT_MOC_LITERAL(725, 11),  // "invalidMove"
+        QT_MOC_LITERAL(737, 9)   // "outOfTurn"
     },
     "ServerMessageBroker",
     "suggestionReceivedSignal",
@@ -260,6 +263,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSServerMessageBrokerENDCLASS_t q
     "showing",
     "hasCard",
     "showCardSlot",
+    "NetworkPlayer*",
     "dealCardsSlot",
     "numPlayers",
     "QList<QList<QString>>",
@@ -318,17 +322,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSServerMessageBrokerENDCLASS[] = 
       28,    4,  233,    2, 0x0a,   36 /* Public */,
       32,    3,  242,    2, 0x0a,   41 /* Public */,
       36,    2,  249,    2, 0x0a,   45 /* Public */,
-      37,    2,  254,    2, 0x0a,   48 /* Public */,
-      41,    3,  259,    2, 0x0a,   51 /* Public */,
-      44,    4,  266,    2, 0x0a,   55 /* Public */,
-      46,    5,  275,    2, 0x0a,   60 /* Public */,
-      49,    0,  286,    2, 0x0a,   66 /* Public */,
-      50,    4,  287,    2, 0x0a,   67 /* Public */,
-      51,    3,  296,    2, 0x0a,   72 /* Public */,
-      52,    2,  303,    2, 0x0a,   76 /* Public */,
-      54,    2,  308,    2, 0x0a,   79 /* Public */,
-      56,    1,  313,    2, 0x0a,   82 /* Public */,
-      57,    1,  316,    2, 0x0a,   84 /* Public */,
+      38,    2,  254,    2, 0x0a,   48 /* Public */,
+      42,    3,  259,    2, 0x0a,   51 /* Public */,
+      45,    4,  266,    2, 0x0a,   55 /* Public */,
+      47,    5,  275,    2, 0x0a,   60 /* Public */,
+      50,    0,  286,    2, 0x0a,   66 /* Public */,
+      51,    4,  287,    2, 0x0a,   67 /* Public */,
+      52,    3,  296,    2, 0x0a,   72 /* Public */,
+      53,    2,  303,    2, 0x0a,   76 /* Public */,
+      55,    2,  308,    2, 0x0a,   79 /* Public */,
+      57,    1,  313,    2, 0x0a,   82 /* Public */,
+      58,    1,  316,    2, 0x0a,   84 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, QMetaType::QString, QMetaType::QString, QMetaType::QString,    4,    5,    6,    7,
@@ -348,16 +352,16 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSServerMessageBrokerENDCLASS[] = 
     QMetaType::Void, QMetaType::QString, QMetaType::Int,   27,   10,
     QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::QStringList, QMetaType::Int,   14,   29,   30,   31,
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   33,   34,   35,
-    QMetaType::Void, 0x80000000 | 3, QMetaType::QString,    4,   12,
-    QMetaType::Void, QMetaType::Short, 0x80000000 | 39,   38,   40,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, 0x80000000 | 3,   42,   43,    4,
-    QMetaType::Void, 0x80000000 | 3, QMetaType::QString, QMetaType::QString, QMetaType::QString,   45,    5,    6,    7,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   47,    5,    6,    7,   48,
+    QMetaType::Void, 0x80000000 | 37, QMetaType::QString,    4,   12,
+    QMetaType::Void, QMetaType::Short, 0x80000000 | 40,   39,   41,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, 0x80000000 | 3,   43,   44,    4,
+    QMetaType::Void, 0x80000000 | 3, QMetaType::QString, QMetaType::QString, QMetaType::QString,   46,    5,    6,    7,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   48,    5,    6,    7,   49,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int,   27,    5,   42,   43,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int,   27,    5,   43,   44,
     QMetaType::Void, QMetaType::Int, QMetaType::QStringList, QMetaType::Int,   29,   30,   31,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   16,   53,
-    QMetaType::Void, QMetaType::QString, QMetaType::QStringList,   27,   55,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   16,   54,
+    QMetaType::Void, QMetaType::QString, QMetaType::QStringList,   27,   56,
     QMetaType::Void, QMetaType::QString,   27,
     QMetaType::Void, QMetaType::QString,   27,
 
@@ -434,7 +438,7 @@ Q_CONSTINIT const QMetaObject ServerMessageBroker::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         // method 'showCardSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<NetworkPlayer &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<NetworkPlayer *, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'dealCardsSlot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -510,7 +514,7 @@ void ServerMessageBroker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 12: _t->updateStateSlot((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 13: _t->gameStateReplySlot((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4]))); break;
         case 14: _t->shownCardSlot((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[3]))); break;
-        case 15: _t->showCardSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 15: _t->showCardSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 16: _t->dealCardsSlot((*reinterpret_cast< std::add_pointer_t<qint16>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QList<QList<QString>>>>(_a[2]))); break;
         case 17: _t->notifyPlayerMove((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[3]))); break;
         case 18: _t->requestCardSlot((*reinterpret_cast< std::add_pointer_t<NetworkPlayer&>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
@@ -527,6 +531,13 @@ void ServerMessageBroker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 15:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< NetworkPlayer* >(); break;
+            }
+            break;
         case 16:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
