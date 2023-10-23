@@ -4,16 +4,19 @@ Brief overview of the project
 ## Group Members and Responsibilities
 
 - Simon Lowan 17021228 : GUI
-    - Task 1 : Wireframe UI design - startup and loading page
-    - Task 2 : Main Menu Screen Functionality 
-    - Task 3 : GUI and Client integration: Accusations
-    - Task 4 : Client and GUI integration: Notification Screens
+    - SCRUM-48 Loading Screen with client integration
+    - SCRUM-49 Network Stubs and Drivers for Loading Screen
+    - SCRUM-50 Unit Tests for Loading Screens
+    - SCRUM-51 Basic Gameboard with accusation prompt
+    - SCRUM-52 Client Accusation stubs and drivers
 - Zander Polson 04603852 : GUI
-    - Task 1 : GUI Asset design
-    - Task 2 : Game Screen and Action Bar Functionality 
-    - Task 3 : Client and GUI integration: Turn Initiation and Ending
-    - Task 4 : Client and GUI integration: Movement and Board Updates
-    - Task 5 : GUI and Client integration: Suggestions
+    - SCRUM-53 QML Startup screen to Gameboard integration
+    - SCRUM-54 QML Gameboard and action bar panel
+    - SCRUM-55 QML Action bar prompts: Suggestion
+    - SCRUM-56 QML Action bar prompts: Movement
+    - SCRUM-57 UI Assets to QML
+    - SCRUM-58 Suggestion to Client Stubs and Drivers
+    - SCRUM-59 Movement Stubs and Drivers
 - Justin Wood 20563192 : Server
     - [Task 1] : [Validation of room card according to the room the client is in]
     - [Task 2] : [Validate cards chosen for accusation(room, character, weapon)]
