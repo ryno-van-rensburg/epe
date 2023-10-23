@@ -14,6 +14,7 @@ qt_add_executable(cluedo_gui
     client.h client.cpp
     message.cpp message.h
     networkclient.cpp networkclient.h
+    networkplayer.h networkplayer.cpp
     TestRunner.qml
     testrunner.h testrunner.cpp
     clientmessagebroker.h clientmessagebroker.cpp

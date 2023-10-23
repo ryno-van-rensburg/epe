@@ -2,8 +2,8 @@
 #define CLIENTMESSAGEBROKER_H
 
 #include <QObject>
-#include <networkclient.h>
-#include <message.h>
+#include "networkclient.h"
+#include "message.h"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>

@@ -1,5 +1,4 @@
 #include "networkclient.h"
-#define DEBUG 1
 NetworkClient::NetworkClient()
 {
     this->ackCounter = 0;
@@ -247,7 +246,11 @@ void NetworkClient::handleAck(Message &msg)
 }
 
 QString NetworkClient::getUsername(){
-    return this->playerObj->getUsername();
+    if (this->playerObj != nullptr) {
+        return this->playerObj->getUsername();
+    } else {
+        return "";
+    }
 }
 
 /**

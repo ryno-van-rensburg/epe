@@ -16,7 +16,7 @@ public slots:
     void onSuggestionMade(QString room,QString person, QString item);
     void onSuggestionReceived(QString room,QString person, QString item);
     void onRequestAnswered(QString room,QString person, QString item);
-    
+
 public:
     explicit Client(QObject *parent = nullptr);
     Q_INVOKABLE int playerTurn() const;
@@ -28,7 +28,7 @@ public:
     void emitRequestConnectionSignal(quint32 address, quint16 port, QString username);
     void emitMakeMoveSignal(int position);
     void emitShowCardSignal(QString card);
-    void emitMakeAccusationSignal(QString person, QString weapon, QString room);
+    void emitMakeAccusatonSignal(QString person, QString weapon, QString room);
     void emitMakeSuggestionSignal(QString person, QString weapon, QString room);
     void emitRequestStateSlotSignal();
     void emitSendConnectionRequestSignal(QString username);
