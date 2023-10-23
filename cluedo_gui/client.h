@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QObject>
+#include "clientmessagebroker.h"
 
 class Client : public QObject
 {
@@ -27,7 +28,7 @@ public:
     void setPlayerTurn(int turn);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
     std::tuple<int,int> getPlayerPosition(int playerId); // will be network slot in future
-    void emitRequestConnectionSignal(quint32 address, quint16 port, QString username);
+    Q_INVOKABLE void emitRequestConnectionSignal();
     void emitMakeMoveSignal(int position);
     void emitShowCardSignal(QString card);
     void emitMakeAccusatonSignal(QString person, QString weapon, QString room);
@@ -57,6 +58,8 @@ signals:
     void requestStateSlot();
     void sendConnectionRequest(QString username);
 private:
+    void connectClientBroker();
+    ClientMessageBroker broker;
     int currentPlayerTurn;
     int diceValue;
     QString player1_id;
@@ -65,6 +68,7 @@ private:
     QString player4_id;
     QString player5_id;
     QString player6_id;
+    QString my_id;
 };
 
 #endif // CLIENT_H

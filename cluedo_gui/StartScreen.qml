@@ -167,7 +167,7 @@ Rectangle {
                     console.log("Clicked on Confirm")
                     client.onNameEntered(textInput.text);
                     if (validUsername) {
-                        //closeTimer.running = true
+                        closeTimer.running = true
                         loading.visible =true
                         namePrompt.visible = false
                     }
@@ -202,7 +202,8 @@ Rectangle {
                running: false
                onTriggered: {
                    if (connectionRequested=== false){
-                     //broker.connectionrequest
+                     client.emitRequestConnectionSignal()
+                     console.debug("ConnectionRequested")
                      connectionRequested = true
                  } else {
                     if(connectionAccpeted === true){
