@@ -224,13 +224,11 @@ void ClientMessageBroker::unpackGameState(Message &msg) {
 void ClientMessageBroker::unpackPlayerTurn(Message &msg){
     // TODO error checking
     QJsonObject obj = msg.getObj();
-    if (obj["Username"].toString() == client->getUsername()) {
+    QString username = obj["Username"];
+    if (username == client->getUsername()) {
         client->ack(msg);
-        emit this->yourTurnSignal(obj["Dice1"].toInt(), obj["Dice2"].toInt());
-        return;
-    } else {
-        return;
     }
+    emit this->turnSignal(username,obj["Dice1"].toInt(), obj["Dice2"].toInt());
 }
 
 void ClientMessageBroker::unpackCardsDealt(Message &msg){
