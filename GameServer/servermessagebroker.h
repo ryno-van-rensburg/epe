@@ -28,7 +28,7 @@ public slots:
     void updateStateSlot(QString username, int position );
     void gameStateReplySlot(QString requesting,int diceRoll, QVector<QString> faceup, int currentTurn);
     void shownCardSlot(QString asking, QString showing, bool hasCard);
-    void showCardSlot(NetworkPlayer& player, QString card);
+    void showCardSlot(NetworkPlayer* player, QString card);
     void dealCardsSlot(qint16 numPlayers, QVector<QVector<QString>> cards );
     void notifyPlayerMove(int dice1, int dice2, NetworkPlayer& player);
     void requestCardSlot(NetworkPlayer& askingPlayer, QString person, QString weapon, QString room);
@@ -47,8 +47,16 @@ signals:
     void moveReceivedSignal(NetworkPlayer &player, quint32 position);
     void cardShownSignal(NetworkPlayer &player, QString card);
     void stateRequestSignal(QString requesting);
-    void connectionRequest(QString handle);
+    void connectionRequest(QString handle); //when a player wants to join
+
 
 };
 
 #endif // SERVERMESSAGEBROKER_H
+
+//void MoveRequestedSlot(NetworkPlayer &player, quint32 position);
+//void SuggestionReceivedSlot(NetworkPlayer &player, QString person, QString weapon, QString room);
+//void AccusationReceivedSlot(NetworkPlayer &player, QString person, QString weapon, QString room);
+//void CardShownSlot(NetworkPlayer &player, QString cardName);
+//void AddPlayerSlot(Player* newPlayer);
+//void StateRequestSlot();

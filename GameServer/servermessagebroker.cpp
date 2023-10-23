@@ -635,15 +635,15 @@ void ServerMessageBroker::terminateGameSlot(){
  * @param card The card that has been shown.
  */
 
-void ServerMessageBroker::showCardSlot(NetworkPlayer &player, QString card){
+void ServerMessageBroker::showCardSlot(NetworkPlayer* player, QString card){
     QJsonObject obj {
         {"Type",  "SHOW_CARD" },
         {"ID" , (int) session->getAckCount()},
-        {"Username", player.getUsername()},
+        {"Username", player->getUsername()},
         {"Card", card},
     };
     Message msg(SHOW_CARD, obj);
-    session->unicastMessage(msg, player.getUsername());
+    session->unicastMessage(msg, player->getUsername());
     return;
 }
 
