@@ -3,6 +3,7 @@
 #include "CharacterCard.h"
 #include "RoomCard.h"
 #include "WeaponCard.h"
+#include "player.h"
 
 #include <QObject>
 
@@ -15,7 +16,7 @@ private:
     WeaponCard* suggestedWeapon;
 public:
     explicit Suggestion(QObject *parent = nullptr);
-    Suggestion(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
+    Suggestion(Player* player, CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
     ~Suggestion();
     CharacterCard* GetCharacter();
     RoomCard* GetRoom();

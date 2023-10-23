@@ -543,17 +543,83 @@ void GameServer::MoveRequestedSlot(Player* playerToMove, int destination)
     }
 }
 
-void GameServer::SuggestionReceivedSlot(QString character, QString room, QString weapon)
+void GameServer::SuggestionReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon)
 {
     // Your implementation here, e.g., handle the received suggestion
     // For example, process the suggestion and send a response.
+    qDebug("in suggestion slot");
+    for (int i = 0; i < players.size(); i++){
+        Player* tempPlayer = players[i];
+        if (tempPlayer->GetUsername() == character->GetCardName()){
+            tempPlayer->SetPosition(inPlayer->GetPosition());
+        }
+    }
+
+    inPlayer->MakeAccusation(inPlayer, character, room, weapon);
+
+    bool cardShown = false;
+
+    for (int i = 0; i < players.size(); i++){
+        Player* currPlayer = players[i];
+
+
+        QVector<CharacterCard*> charCards = currPlayer->GetCharacCards();
+
+        for (int j = 0; j < currPlayer->GetCharacCards().size(); j++){
+            if (charCards[j] -> GetCardName() == character->GetCardName()){
+                //connect up the show card signal and emit the signal to notify the GUI to show a card and the name of the card to show
+                emit this -> ShowCardSignal(inPlayer, character->GetCardName());
+                cardShown = true;
+                break;
+            }
+        }
+
+        if (cardShown == false){
+            QVector<RoomCard*> rooCards = currPlayer->GetRoomCards();
+            for (int j = 0; j < currPlayer->GetRoomCards().size(); j++){
+                RoomCard* temp = rooCards[j];
+                if (temp->GetCardName() == room->GetCardName()){
+                    //connect signal here
+                    emit this -> ShowCardSignal(inPlayer, room->GetCardName());
+                    cardShown = true;
+                    break;
+                }
+            }
+
+            if(cardShown == false){
+                QVector<WeaponCard*> weapCards = currPlayer->GetWeaponCards();
+
+                for (int j = 0; j < currPlayer->GetWeaponCards().size(); j++){
+                    WeaponCard* tempWeap = weapCards[j];
+
+                    if (tempWeap->GetCardName() == weapon->GetCardName()){
+                        //connect signal here
+                        emit this -> ShowCardSignal(inPlayer, room->GetCardName());
+                        cardShown = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Implement the AccusationReceivedSlot function
-void GameServer::AccusationReceivedSlot(QString character, QString room, QString weapon)
+void GameServer::AccusationReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon)
 {
     // Your implementation here, e.g., handle the received accusation
     // For example, check if the accusation is correct and take appropriate action.
+
+
+    if (winEnvelope->CompareAccusation(character, room, weapon)){
+        qDebug("YOU WON");
+    }
+    else{
+        qDebug("YOU LOST");
+    }
+
+    //you need to connect this
+    emit this->TerminateGameSignal();
 }
 
 // Implement the CardShownSlot function

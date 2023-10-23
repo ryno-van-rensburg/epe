@@ -37,8 +37,8 @@ public:
     void SetWeaponCards(QVector<WeaponCard*> weap);
     void SetPosition(int pos);
     void MakeMove(int destination);
-    void MakeSuggestion(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
-    void MakeAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
+    void MakeSuggestion(Player* inPlayer, CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
+    void MakeAccusation(Player* inPlayer, CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon);
     void SetMyTurn();
     void EndMyTurn();
     int RollDice();

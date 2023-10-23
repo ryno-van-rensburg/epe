@@ -83,13 +83,13 @@ void Player::MakeMove(int destination)
 }
 
 //Creates a suggestion based on chosen cards
-void Player::MakeSuggestion(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon)
+void Player::MakeSuggestion(Player* inPlayer, CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon)
 {
-    Suggestion* x = new Suggestion(inCharac,inRoom,inWeapon);
+    Suggestion* x = new Suggestion(inPlayer, inCharac,inRoom,inWeapon);
 }
 
 //Creates an accusation based on chosen cards
-void Player::MakeAccusation(CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon)
+void Player::MakeAccusation(Player* inPlayer, CharacterCard* inCharac, RoomCard* inRoom, WeaponCard* inWeapon)
 {
     Accusation* x = new Accusation(inCharac,inRoom,inWeapon);
 }
