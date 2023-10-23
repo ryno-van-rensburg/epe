@@ -22,6 +22,8 @@ GameServer::GameServer(QObject *parent)
     }
     ServerMessageBroker* s = new ServerMessageBroker();
     QObject::connect(this,&GameServer::portSignal,s,&ServerMessageBroker::listen);
+    QString d = QString::number(42069);
+    logEvent("PORT NUMBER: "+d);
     emit this->portSignal(42069);
 }
 
