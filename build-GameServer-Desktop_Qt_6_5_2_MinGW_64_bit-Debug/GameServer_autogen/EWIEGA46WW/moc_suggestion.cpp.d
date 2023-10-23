@@ -3,7 +3,10 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   C:/Users/dunca/EPE/group-6/GameServer/CharacterCard.h \
   C:/Users/dunca/EPE/group-6/GameServer/RoomCard.h \
   C:/Users/dunca/EPE/group-6/GameServer/WeaponCard.h \
+  C:/Users/dunca/EPE/group-6/GameServer/player.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QObject \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/QString \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/QVector \
   D:/Qt/6.5.2/mingw_64/include/QtCore/q20type_traits.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qalgorithms.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qanystringview.h \
@@ -90,6 +93,7 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtypeinfo.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtypes.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qutf8stringview.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qvector.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qversiontagging.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qxptype_traits.h \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h \

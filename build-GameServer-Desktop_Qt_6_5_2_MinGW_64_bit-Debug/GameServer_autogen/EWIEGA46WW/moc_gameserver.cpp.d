@@ -5,18 +5,28 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   C:/Users/dunca/EPE/group-6/GameServer/WeaponCard.h \
   C:/Users/dunca/EPE/group-6/GameServer/accusation.h \
   C:/Users/dunca/EPE/group-6/GameServer/charactercard.h \
+  C:/Users/dunca/EPE/group-6/GameServer/clientconnection.h \
   C:/Users/dunca/EPE/group-6/GameServer/envelope.h \
   C:/Users/dunca/EPE/group-6/GameServer/gameboard.h \
+  C:/Users/dunca/EPE/group-6/GameServer/message.h \
+  C:/Users/dunca/EPE/group-6/GameServer/networkplayer.h \
   C:/Users/dunca/EPE/group-6/GameServer/player.h \
   C:/Users/dunca/EPE/group-6/GameServer/room.h \
   C:/Users/dunca/EPE/group-6/GameServer/roomcard.h \
+  C:/Users/dunca/EPE/group-6/GameServer/servermessagebroker.h \
+  C:/Users/dunca/EPE/group-6/GameServer/serversession.h \
   C:/Users/dunca/EPE/group-6/GameServer/suggestion.h \
   C:/Users/dunca/EPE/group-6/GameServer/weaponcard.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QCoreApplication \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QFile \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/QJsonArray \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/QJsonDocument \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/QJsonObject \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/QMap \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QObject \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QString \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QTextStream \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/QTimer \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QVector \
   D:/Qt/6.5.2/mingw_64/include/QtCore/q20memory.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/q20type_traits.h \
@@ -29,11 +39,15 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/6.5.2/mingw_64/include/QtCore/qatomic.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qatomic_cxx11.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qbasicatomic.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qbasictimer.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qbindingstorage.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qbytearray.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qbytearraylist.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qbytearrayview.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qcborcommon.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qcborvalue.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qchar.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qcompare.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qcompare_impl.h \
@@ -49,6 +63,7 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/6.5.2/mingw_64/include/QtCore/qcoreevent.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qdatastream.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qdatetime.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qdebug.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qexceptionhandling.h \
@@ -67,7 +82,12 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/6.5.2/mingw_64/include/QtCore/qiodevicebase.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qiterable.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qiterator.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qjsonarray.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qjsondocument.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qjsonobject.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qjsonvalue.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qlist.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qlogging.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qmalloc.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qmap.h \
@@ -86,6 +106,7 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/6.5.2/mingw_64/include/QtCore/qpair.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qprocessordetection.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qrefcount.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qscopedpointer.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qscopeguard.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qset.h \
@@ -113,6 +134,7 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtextstream.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qtimer.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtmetamacros.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtnoop.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -123,11 +145,23 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtversionchecks.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtypeinfo.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qtypes.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qurl.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qutf8stringview.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/quuid.h \
+  D:/Qt/6.5.2/mingw_64/include/QtCore/qvariant.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qvarlengtharray.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qvector.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qversiontagging.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/qxptype_traits.h \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/QTcpServer \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/QTcpSocket \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/qabstractsocket.h \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/qhostaddress.h \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/qtcpserver.h \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/qtcpsocket.h \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/qtnetwork-config.h \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/qtnetworkexports.h \
+  D:/Qt/6.5.2/mingw_64/include/QtNetwork/qtnetworkglobal.h \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/syslimits.h \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm \
@@ -170,6 +204,7 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hash_bytes.h \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ios_base.h \
+  D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/iterator_concepts.h \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/list.tcc \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_classes.h \
@@ -268,6 +303,8 @@ C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iomanip \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ios \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iosfwd \
+  D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iostream \
+  D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iterator \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits \
   D:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list \

@@ -36,6 +36,16 @@ int Player::GetPosition()
     return position;
 }
 
+QString Player::GetPerson()
+{
+    return person;
+}
+
+bool Player::GetAI()
+{
+    return AI;
+}
+
 bool Player::GetMyTurn()
 {
     return myTurn;

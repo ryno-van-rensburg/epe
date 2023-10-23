@@ -52,26 +52,26 @@ public:
 
 
 signals:
-    void UpdateStateSignal(Player* currPlayer, int boardPos);
-    void GameStateReply(QVector<Player*> playersInGame, int, int, int, QVector<CharacterCard*> faceUpCharacters, QVector<WeaponCard*> faceUpWeapons, QVector<RoomCard*> faceUpRooms);
+    void UpdateStateSignal(QString username, int position);
+    void GameStateReply(QString requesting,int diceRoll, QVector<QString> faceup, int currentTurn);
     void SuggestionStateSignal(CharacterCard* suggestedCharac, WeaponCard* suggestedWeapon, RoomCard* suggestedRoom);
     void PlayerResultSignal(Player* playerMakingAccusation, Accusation* finalAccusation, bool result);
     void ShowCardSignal(Player* playerToShowCard, QString nameOfCardToShow);
     void RequestCardSignal(Suggestion* suggestionMade);
     void TerminateGameSignal();
-    void NotifyPlayerMoveSignal(Player* playerToMove, int destination);
-    void SendErrorSignal(QString ErrorEnum);
-    void StartGameSignal();
-    void DealCardsSignal(Player* playerToReceiveCards, QVector<CharacterCard*> cCards, QVector<WeaponCard*> wCards, QVector<RoomCard*> rCards);
+    void NotifyPlayerMoveSignal(int dice1,int dice2, NetworkPlayer& playerToMove);
+    void invalidMove(QString username);
+    void gameStateSlot(int diceRoll, QVector<QString> faceup, int currentTurn);
+    void DealCardsSignal(qint16 numPlayers, QVector<QVector<QString>> cards);
     void MovesAvailableSignal(QVector<int> optionsToMove);
 
 public slots:
-    void MoveRequestedSlot(Player* playerToMove, int destination);
+    void MoveRequestedSlot(NetworkPlayer &player, quint32 position);
     void SuggestionReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon);
     void AccusationReceivedSlot(Player* inPlayer, CharacterCard* character, RoomCard* room, WeaponCard* weapon);
     void CardShownSlot(Player* playerShown, QString cardName);
     void AddPlayerSlot(Player* newPlayer);
-    void StateRequestSlot();
+    void StateRequestSlot(QString requesting);
 
 };
 
