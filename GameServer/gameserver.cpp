@@ -555,7 +555,7 @@ void GameServer::SuggestionReceivedSlot(Player* inPlayer, CharacterCard* charact
         }
     }
 
-    inPlayer->MakeAccusation(inPlayer, character, room, weapon);
+    inPlayer->MakeSuggestion(inPlayer, character, room, weapon);
 
     bool cardShown = false;
 
@@ -568,6 +568,8 @@ void GameServer::SuggestionReceivedSlot(Player* inPlayer, CharacterCard* charact
         for (int j = 0; j < currPlayer->GetCharacCards().size(); j++){
             if (charCards[j] -> GetCardName() == character->GetCardName()){
                 //connect up the show card signal and emit the signal to notify the GUI to show a card and the name of the card to show
+                ServerMessageBroker* broker = new ServerMessageBroker();
+                connect(this, &GameServer::ShowCardSignal, broker, &ServerMessageBroker::showCardSlot);
                 emit this -> ShowCardSignal(inPlayer, character->GetCardName());
                 cardShown = true;
                 break;
@@ -580,6 +582,8 @@ void GameServer::SuggestionReceivedSlot(Player* inPlayer, CharacterCard* charact
                 RoomCard* temp = rooCards[j];
                 if (temp->GetCardName() == room->GetCardName()){
                     //connect signal here
+                    ServerMessageBroker* broker = new ServerMessageBroker();
+                    connect(this, &GameServer::ShowCardSignal, broker, &ServerMessageBroker::showCardSlot);
                     emit this -> ShowCardSignal(inPlayer, room->GetCardName());
                     cardShown = true;
                     break;
@@ -594,6 +598,8 @@ void GameServer::SuggestionReceivedSlot(Player* inPlayer, CharacterCard* charact
 
                     if (tempWeap->GetCardName() == weapon->GetCardName()){
                         //connect signal here
+                        ServerMessageBroker* broker = new ServerMessageBroker();
+                        connect(this, &GameServer::ShowCardSignal, broker, &ServerMessageBroker::showCardSlot);
                         emit this -> ShowCardSignal(inPlayer, room->GetCardName());
                         cardShown = true;
                         break;
@@ -619,6 +625,8 @@ void GameServer::AccusationReceivedSlot(Player* inPlayer, CharacterCard* charact
     }
 
     //you need to connect this
+
+
     emit this->TerminateGameSignal();
 }
 

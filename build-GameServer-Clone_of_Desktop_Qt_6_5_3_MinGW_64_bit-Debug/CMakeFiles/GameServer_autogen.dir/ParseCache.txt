@@ -1769,9 +1769,14 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/build-GameServer-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/GameServer_autogen/moc_predefs.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QCoreApplication
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QFile
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QJsonArray
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QJsonDocument
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QJsonObject
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QMap
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QObject
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QString
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QTextStream
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QTimer
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QVector
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h
@@ -1784,11 +1789,15 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qatomic.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qatomic_cxx11.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qbasicatomic.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qbindingstorage.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearray.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearrayalgorithms.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearraylist.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearrayview.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qcalendar.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qcborcommon.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qcborvalue.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qchar.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qcompare.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qcompare_impl.h
@@ -1804,6 +1813,7 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qcoreevent.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qdatetime.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qeventloop.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h
@@ -1822,7 +1832,12 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qiodevicebase.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qiterable.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qiterator.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qjsonarray.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qjsondocument.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qjsonobject.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qjsonvalue.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qlist.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qlocale.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qlogging.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qmalloc.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qmap.h
@@ -1841,6 +1856,7 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qpair.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qprocessordetection.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qrefcount.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qregularexpression.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qscopedpointer.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qscopeguard.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qset.h
@@ -1869,6 +1885,7 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtdeprecationmarkers.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtenvironmentvariables.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtextstream.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtmetamacros.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtnoop.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtpreprocessorsupport.h
@@ -1879,11 +1896,23 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtversionchecks.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtypeinfo.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qtypes.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qurl.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qutf8stringview.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/quuid.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qvariant.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qvarlengtharray.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qvector.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qversiontagging.h
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/qxptype_traits.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/QTcpServer
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/QTcpSocket
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/qabstractsocket.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/qhostaddress.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtcpserver.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtcpsocket.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtnetwork-config.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtnetworkexports.h
+ mdp:C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtnetworkglobal.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/syslimits.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm
@@ -2018,6 +2047,7 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iomanip
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ios
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iosfwd
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iostream
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iterator
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits
@@ -2119,11 +2149,16 @@ C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameserver.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/weaponcard.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/accusation.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/charactercard.h
+ mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/clientconnection.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/envelope.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/gameboard.h
+ mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/message.h
+ mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/networkplayer.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/player.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/room.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/roomcard.h
+ mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/servermessagebroker.h
+ mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/serversession.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/suggestion.h
  mdp:C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/weaponcard.h
 C:/Users/Justin/Desktop/DuncanBranch/group-6/GameServer/player.h

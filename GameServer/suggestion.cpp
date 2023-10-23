@@ -32,20 +32,7 @@ Suggestion::Suggestion(Player* player, CharacterCard* inCharac, RoomCard* inRoom
     else if (inRoom->GetCardName() == "Dining Room"){
         roomInt = 9;
     }
-//    else {
-//        QFAIL("Room does not exist");
-//    }
 
-//    if (player -> GetPosition() != roomInt || roomInt == -1){
-//        QFAIL("Invalid player position with respect to player position");
-//    }
-
-    //    CharacterCard* character = new CharacterCard("Miss Scarlett");
-    //    CharacterCard* character = new CharacterCard("Colonel Mustard");
-    //    CharacterCard* character = new CharacterCard("Chef White");
-    //    CharacterCard* character = new CharacterCard("Reverend Green");
-    //    CharacterCard* character = new CharacterCard("Mrs. Peacock");
-    //    CharacterCard* character = new CharacterCard("Professor Plum");
     bool characFine = false;
     if (inCharac->GetCardName() == "Miss Scarlett"){
         characFine = true;
@@ -65,16 +52,7 @@ Suggestion::Suggestion(Player* player, CharacterCard* inCharac, RoomCard* inRoom
     else if (inCharac->GetCardName() == "Professor Plumt") {
         characFine = true;
     }
-//    else {
-//        QFAIL("Character selected does not exist");
-//    }
 
-    //    WeaponCard* weapon = new WeaponCard("Candlestick");
-    //    WeaponCard* weapon = new WeaponCard("Dagger");
-    //    WeaponCard* weapon = new WeaponCard("Lead Piping");
-    //    WeaponCard* weapon = new WeaponCard("Revolver");
-    //    WeaponCard* weapon = new WeaponCard("Rope");
-    //    WeaponCard* weapon = new WeaponCard("Spanner");
 
     bool weaponFine = false;
 
@@ -96,15 +74,14 @@ Suggestion::Suggestion(Player* player, CharacterCard* inCharac, RoomCard* inRoom
     else if (inWeapon->GetCardName() == "Spanner"){
         weaponFine = true;
     }
-//    else {
-//        QFAIL("Weapon chosen does not exist");
-//    }
+
 
     if (roomInt != -1 && characFine && weaponFine){
         this->suggestedCharacter = inCharac;
         this->suggestedRoom = inRoom;
         this->suggestedWeapon = inWeapon;
     }
+    //possibly add an else to throw an error
 }
 
 Suggestion::Suggestion(QObject *parent)

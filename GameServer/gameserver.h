@@ -12,6 +12,7 @@
 #include "envelope.h"
 #include "suggestion.h"
 #include "accusation.h"
+#include "servermessagebroker.h"
 
 class GameServer : public QObject
 {
