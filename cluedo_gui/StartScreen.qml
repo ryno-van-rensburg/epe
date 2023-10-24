@@ -168,7 +168,8 @@ Rectangle {
                     client.onNameEntered(textInput.text);
 
                     if (validUsername) {
-                        closeTimer.running = true
+                        timeout.runnig = true
+                        connectionTimer.running = true
                         loading.visible =true
                         namePrompt.visible = false
                     }
