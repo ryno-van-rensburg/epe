@@ -11,8 +11,8 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(accusationResultSignal(QList,bool)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList));
     QObject::connect(broker, SIGNAL(cardsDealt(QVector<QString>)), this, SLOT(onCardsDealt(QVector<QString>)));
-    //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
-    //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
+    //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString),this,SLOT(onCardShown(bool,QString,QString))));
+    //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)),this,SLOT(onCardShownToPlayer(QString,QString)));
     QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
     QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
