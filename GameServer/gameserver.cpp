@@ -11,7 +11,7 @@
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-    numPlayers = 3;
+    numPlayers = 4;
     this ->s= new ServerMessageBroker();
     // Initialize log file for game events
     log = new QFile("game_log.txt");
