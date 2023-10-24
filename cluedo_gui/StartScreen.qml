@@ -206,7 +206,6 @@ Rectangle {
                running: false
                repeat: true
                onTriggered: {
-                       console.log("Reached: line 179")
                        if(p_accept){
                            switchToGameScreen()
                        }

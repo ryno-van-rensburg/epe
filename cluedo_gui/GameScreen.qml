@@ -123,13 +123,13 @@ Rectangle
             target: client
             ignoreUnknownSignals: true
             function onConnectionAccepted(){
-                console.debug("Connection Accepted");
-                connectionAccepted = true;
+            console.debug("Connection Accepted");
+            connectionAccepted = true;
             }
 
             function onConnectionRejected(){
-                console.debug("Connection Rejected");
-                connectionRejected = true;;
+            console.debug("Connection Rejected");
+            connectionRejected = true;;
             }
             function onPromptRequested(){
                 prompt_state = 2;

@@ -18,7 +18,7 @@ void Client::connectClientBroker(){
     QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
     QObject::connect(broker, SIGNAL(gameEndedSignal()),this, SLOT(onGameEnded()));
-    //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)), this, SLOT(onGameStarted(int, QJSonArray,int,int,QList)));
+    QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)), this, SLOT(onGameStarted(int, QJSonArray,int,int,QList)));
     //QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
     //QObject::connect(broker, SIGNAL(invalidMove()));
@@ -71,7 +71,7 @@ void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int curr
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.exec();
 
-    //this->setPlayerTurn(currentTurn,dice1,dice1);
+    this->setPlayerTurn(1,dice1,dice1);
 
 }
 
@@ -224,10 +224,12 @@ void Client::updatePlayerPosition(int playerId, int newX, int newY)
  */
 void Client::playerPositionSet(int playerId, int newX, int newY)
 {
-    qDebug() << "Player position set: " << playerId << newX << newY;
-
-    emit makeMove(newX);
-    this->onTurnEnded();
+    int room = getRoomNumber(newX,newY);
+    qDebug() << "Player position set: " << playerId << newX << newY <<"Room: " <<room;
+    
+    this->broker->makeMove(room);
+    
+    
 }
 
 /**
