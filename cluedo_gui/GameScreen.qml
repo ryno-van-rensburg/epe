@@ -180,7 +180,7 @@ Rectangle
 
         Text{
             width: c_player.width;
-            color: client.playerTurn === 1 ? "white" : "#7eacbb"
+            color: client.getPlayerTurn === 1 ? "white" : "#7eacbb"
             font.pointSize: 39;
             text:{
                 client.getPlayerID(1);
@@ -191,7 +191,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 2 ? "white" : "#7eacbb"
+            color: client.getPlayerTurn === 2 ? "white" : "#7eacbb"
             text:{
                 client.getPlayerID(2);
             }
@@ -201,7 +201,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 3? "white" : "#7eacbb"
+            color: client.getPlayerTurn === 3? "white" : "#7eacbb"
             text:{
                 client.getPlayerID(3);
             }
@@ -211,7 +211,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 4 ? "white" : "#7eacbb"
+            color: client.getPlayerTurn === 4 ? "white" : "#7eacbb"
             text:{
                 client.getPlayerID(4);
             }
@@ -221,7 +221,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 5 ? "white" : "#7eacbb"
+            color: client.getPlayerTurn === 5 ? "white" : "#7eacbb"
             text:{
                 client.getPlayerID(5);
             }
@@ -231,7 +231,7 @@ Rectangle
 
         Text {
             width: c_player.width
-            color: client.playerTurn === 6 ? "white" : "#7eacbb"
+            color: client.getPlayerTurn === 6 ? "white" : "#7eacbb"
             text:{
                 client.getPlayerID(6);
             }
@@ -304,8 +304,9 @@ Rectangle
                     console.log("Clicked on btnSuggest" )
                     panelState = !panelState;
                     prompt_state = 0;
-                    suggestionPrompt.visible = true
-
+                    if(client.isMyTurn === true) {
+                        suggestionPrompt.visible = true
+                    }
                 }
 
                 HoverHandler {
@@ -335,7 +336,9 @@ Rectangle
                     console.log("Clicked on btnAccuse" )
                     prompt_state = 1;
                     panelState = !panelState;
-                    suggestionPrompt.visible = true
+                    if(client.isMyTurn === true) {
+                        suggestionPrompt.visible = true
+                    }
                     
                 }
 
@@ -363,35 +366,37 @@ Rectangle
                 width: 144
                 height: 121
                 onClicked: {
-                    dice_moves = client.getCurrentDiceValue()
-                    panelState = !panelState; // Toggle the panel state
-                    // This ensures only the current player can be moved
-                    player1.dragEnable = false;
-                    player2.dragEnable = false;
-                    player3.dragEnable = false;
-                    player4.dragEnable = false;
-                    player5.dragEnable = false;
-                    player6.dragEnable = false;
-                    if(client.isMyTurn === true){
-                        switch(client.playerTurn){
-                        case 1:
-                            player1.dragEnable = true;
-                            break;
-                        case 2:
-                            player2.dragEnable = true;
-                            break;
-                        case 3:
-                            player3.dragEnable = true;
-                            break;
-                        case 4:
-                            player4.dragEnable = true;
-                            break;
-                        case 5:
-                            player5.dragEnable = true;
-                            break;
-                        case 6:
-                            player6.dragEnable = true;
-                            break;
+                    if(client.isMyTurn === true) {
+                        dice_moves = client.getCurrentDiceValue()
+                        panelState = !panelState; // Toggle the panel state
+                        // This ensures only the current player can be moved
+                        player1.dragEnable = false;
+                        player2.dragEnable = false;
+                        player3.dragEnable = false;
+                        player4.dragEnable = false;
+                        player5.dragEnable = false;
+                        player6.dragEnable = false;
+                        if(client.isMyTurn === true){
+                            switch(client.getPlayerTurn){
+                            case 1:
+                                player1.dragEnable = true;
+                                break;
+                            case 2:
+                                player2.dragEnable = true;
+                                break;
+                            case 3:
+                                player3.dragEnable = true;
+                                break;
+                            case 4:
+                                player4.dragEnable = true;
+                                break;
+                            case 5:
+                                player5.dragEnable = true;
+                                break;
+                            case 6:
+                                player6.dragEnable = true;
+                                break;
+                            }
                         }
                     }
                 }
@@ -449,7 +454,9 @@ Rectangle
                 height: 121
                 onClicked: {
                     console.log("Clicked on btnEndTurn" )
-                    client.onTurnEnded();
+                    if(client.isMyTurn === true) {
+                        client.onTurnEnded();
+                    }
                 }
 
                 HoverHandler {

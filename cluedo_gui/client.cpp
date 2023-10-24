@@ -25,9 +25,30 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(playerResult(QString,QList,bool)));
     //QObject::connect(broker, SIGNAL(gameStateSignal(int,QJsonArray,int,int,QJsonArray));// somewhere
 }
-//void Client::onGameStarted(int, QJsonArray,int,int,QList){
+void Client::playerTurnChanged(){
 
-//}
+};
+void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int currentTurn,QVector<QString> faceUpCards){
+    qDebug() << "Game started";
+    qDebug() << "Num players: " << numPlayers;
+    qDebug() << "Players: " << players;
+    qDebug() << "Dice: " << dice1;
+    qDebug() << "Current turn: " << currentTurn;
+    qDebug() << "Face up cards: " << faceUpCards;
+
+    QString face_up_cards;
+    for (const QString &str : faceUpCards) {
+        face_up_cards += str;
+    }
+    QMessageBox msgBox;
+    msgBox.setText("Game Started");
+    msgBox.setInformativeText("\nFace up cards: " + face_up_cards);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();
+
+    //this->setPlayerTurn(currentTurn,dice1,dice1);
+
+}
 int Client::getRoomNumber(int x, int y)
 {
     if ((x >= 0 && x < 2) && (y >= 0 && y < 2))  // Room 7 Kitchen
@@ -109,7 +130,7 @@ std::tuple<int,int> Client::getPlayerPosition(int playerId){
  *
  * @return The player ID of the current turn.
  */
-int Client::playerTurn() const
+int Client::getPlayerTurn() const
 {
     return currentPlayerTurn;
 }
@@ -368,14 +389,11 @@ void Client::onNameEntered(QString name){
 
 }
 
-void Client::setPlayerTurn(int turn)
+void Client::setPlayerTurn(int turn, int dice1, int dice2)
 {
-    if(currentPlayerTurn != turn){
-        currentPlayerTurn = turn;
-        diceValue =  std::rand()%6 +1 ;//dice;
-        qDebug() << "Dice value:" << diceValue;
-        emit playerTurnChanged();
-    }
+    currentPlayerTurn = turn;
+    diceValue =  dice1 + dice2;
+    qDebug() << "Dice value:" << diceValue;
 }
 
 void Client :: emitShowCardSignal(QString card){
@@ -384,7 +402,7 @@ void Client :: emitShowCardSignal(QString card){
 void Client::onTurnEnded(){
     int nextTurn = currentPlayerTurn > 6 ? 1:(currentPlayerTurn % 7 + 1);
 
-    this->setPlayerTurn(nextTurn);
+    //this->setPlayerTurn(nextTurn);
     qDebug()<<"TEST: Moving Player";
     this->updatePlayerPosition(nextTurn, (std::rand() % 1000) , (std::rand() % 700));
 }
@@ -401,12 +419,12 @@ void Client::onSuggestionMade(QString room,QString person, QString item)
 }
 void Client::testBox(QString in)
 {
-    QMessageBox msgBox;
-    msgBox.setText("Testing Dialog Boxes");
-    msgBox.setInformativeText(in);
-    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Save);
-    int ret = msgBox.exec();
+    // QMessageBox msgBox;
+    // msgBox.setText("Testing Dialog Boxes");
+    // msgBox.setInformativeText(in);
+    // msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    // msgBox.setDefaultButton(QMessageBox::Save);
+    // int ret = msgBox.exec();
 }
 
 void Client::onRequestAnswered(QString room, QString person, QString item)
@@ -464,8 +482,6 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
     qDebug() << username << " " << this->my_id;     
     if (username == this->my_id)
     {
-
-        // TODO assign user to player accepted.
        my_player_number = temp_number; // this is the player as a number used in gui
        qDebug() << "Emited: Player " << temp_number;
        emit connectionAccepted();

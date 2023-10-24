@@ -7,12 +7,13 @@
 class Client : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int playerTurn READ playerTurn WRITE setPlayerTurn NOTIFY playerTurnChanged)
+    //Q_PROPERTY(int playerTurn READ playerTurn WRITE setPlayerTurn NOTIFY playerTurnChanged)
 public slots:
     //Slots from GUI:
     void testReceiveMessage(QString& message);
     void onNameEntered(QString name);
     void onTurnEnded();
+    void onGameStarted(int numPlayers, QJsonArray players, int dice1,int currentTurn, QVector<QString> faceUpCards);
     void onPlayerAccepted(QString username, QString person , int dice1, int dice2);
     void onAccusationMade(QString room,QString person, QString item);
     void onSuggestionMade(QString room,QString person, QString item);
@@ -26,12 +27,12 @@ public slots:
     //void onGameStarted(int, QJSonArray,int,int,QList);
 public:
     explicit Client(QObject *parent = nullptr);
-    Q_INVOKABLE int playerTurn() const;
+    Q_INVOKABLE int getPlayerTurn() const;
     Q_INVOKABLE bool isMyTurn() const;
     Q_INVOKABLE int getCurrentDiceValue() const;
     Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
     Q_INVOKABLE QString getPlayerID(int n);
-    void setPlayerTurn(int turn);
+    void setPlayerTurn(int turn, int dice1, int dice2);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
     std::tuple<int,int> getPlayerPosition(int playerId); // will be network slot in future
     Q_INVOKABLE void emitRequestConnectionSignal();
@@ -45,6 +46,7 @@ public:
     void emitSendSuggestionSignal(QString username);
     void onRequestReceived();
     Q_INVOKABLE void testBox(QString in);
+    void playerTurnChanged();
     //void emitCardShownSignal(QString showed);
     //void emitPlayerAcceptedSignal(QString username, QString person, int dice1, int dice2);
 signals:
@@ -54,7 +56,7 @@ signals:
     void testSendMessageToBroker(QString& message);
     void validUsername();
     void playerPositionUpdated(int playerId, int newX, int newY);
-    void playerTurnChanged();
+    
     // Network class signals
     void requestConnection(quint32 address, quint16 port, QString username);
     void makeMove(int position);

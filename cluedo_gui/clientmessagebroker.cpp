@@ -32,7 +32,6 @@ ClientMessageBroker::ClientMessageBroker(QObject *parent)
     QObject::connect(this->client, SIGNAL(moveError()), this, SIGNAL(invalidMove()));
 }
 
-
 ClientMessageBroker::~ClientMessageBroker(){
     delete this->client;
 }
@@ -345,6 +344,7 @@ void ClientMessageBroker::unpackConnectionAccepted(Message &msg)
     person = obj["Person"].toString();
     dice1 = obj["Dice1"].toInt();
     dice2 = obj["Dice2"].toInt();
+    qDebug("Player joined");
     emit this->playerAcceptedSignal(username, person, dice1, dice2);
     return;
 }
