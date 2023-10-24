@@ -56,10 +56,14 @@
 			],
 			"type" : "INTERNAL",
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug"
 ========
 			"value" : "c:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug"
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
+========
+			"value" : "c:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -432,10 +436,14 @@
 			],
 			"type" : "STATIC",
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/pkgRedirects"
 ========
 			"value" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/pkgRedirects"
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
+========
+			"value" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/pkgRedirects"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -508,10 +516,14 @@
 			],
 			"type" : "INTERNAL",
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "/home/ryno/Documents/practicals/epe/group-6/networking/networking"
 ========
 			"value" : "C:/Users/Justin/Desktop/EPECode/group-6/GameServer"
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
+========
+			"value" : "C:/Users/Justin/Desktop/EPECode/group-6/GameServer"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -716,10 +728,14 @@
 			],
 			"type" : "PATH",
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "/usr/local"
 ========
 			"value" : "C:/Program Files (x86)/GameServer"
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
+========
+			"value" : "C:/Program Files (x86)/GameServer"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 		},
 		{
 			"name" : "CMAKE_INSTALL_RUNSTATEDIR",
@@ -1028,10 +1044,14 @@
 			],
 			"type" : "FILEPATH",
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "/app/share/qtcreator/package-manager/auto-setup.cmake"
 ========
 			"value" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake"
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
+========
+			"value" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1044,10 +1064,14 @@
 			],
 			"type" : "STATIC",
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "networking"
 ========
 			"value" : "GameServer"
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
+========
+			"value" : "GameServer"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -3863,12 +3887,18 @@
 				}
 			],
 			"type" : "PATH",
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "/app/lib/cmake/Qt6"
 		},
 		{
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"name" : "THREADS_HAVE_PTHREAD_ARG",
 ========
+========
+			"value" : "C:/Qt/6.7.0/mingw_64/lib/cmake/Qt6"
+		},
+		{
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 			"name" : "WINDEPLOYQT_EXECUTABLE",
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
 			"properties" : 
@@ -3912,6 +3942,7 @@
 			],
 			"type" : "INTERNAL",
 <<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/cache-v2-532f829022b51fb67fad.json
 			"value" : "/usr/local"
 		},
 		{
@@ -3952,6 +3983,9 @@
 ========
 			"value" : "C:/Program Files (x86)/GameServer"
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/cache-v2-297e55a4fa6f4d7a7bd4.json
+========
+			"value" : "C:/Program Files (x86)/GameServer"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/cache-v2-297e55a4fa6f4d7a7bd4.json
 		}
 	],
 	"kind" : "cache",

@@ -30,6 +30,9 @@ set(__QT_DEPLOY_IMPL_DIR "/home/ryno/Documents/practicals/epe/group-6/build-clue
 ========
 set(__QT_DEPLOY_TOOL "C:/Qt/6.7.0/mingw_64/bin/windeployqt.exe")
 set(__QT_DEPLOY_IMPL_DIR "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qt")
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/.qt/QtDeploySupport.cmake
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qt/QtDeploySupport.cmake
+========
 >>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qt/QtDeploySupport.cmake
 set(__QT_DEPLOY_VERBOSE "")
 set(__QT_CMAKE_EXPORT_NAMESPACE "Qt6")

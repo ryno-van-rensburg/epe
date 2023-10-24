@@ -6,6 +6,14 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/testacking_autogen/EWIEGA46WW/moc_player.cpp
+========
+#include "../../../GameServer/player.h"
+#include <QtCore/qmetatype.h>
+
+#include <QtCore/qtmochelpers.h>
+
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/GameServer_autogen/EWIEGA46WW/moc_player.cpp
 #include <memory>
 #include "../../../networking/player.h"
 #include <QtCore/qbytearray.h>
