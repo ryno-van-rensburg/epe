@@ -145,6 +145,7 @@ NetworkPlayer* ClientConnection::getPlayer(){
  */
 void ClientConnection::sendMessage(Message &msg)
 {
+    qDebug("Message sent");
     MESSAGE_TYPE type = msg.getType();
     QByteArray content = msg.getBytes();
     if (this->connection == nullptr){

@@ -11,7 +11,7 @@
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-    this->numPlayers = numPlayers;
+    numPlayers = 1;
     this ->s= new ServerMessageBroker();
     // Initialize log file for game events
     log = new QFile("game_log.txt");
@@ -72,8 +72,9 @@ void GameServer::SetPlayerTurn(Player* inPlayer){
             currentDice = dice1+dice2;
             getAvailableMoves(pos,currentDice);
             NetworkPlayer n = NetworkPlayer(players[i]->GetUsername(),players[i]->GetPerson(),players[i]->GetAI());
-            QObject::connect(this,&GameServer::NotifyPlayerMoveSignal,this->s,&ServerMessageBroker::notifyPlayerMove);
-            emit this->NotifyPlayerMoveSignal(dice1,dice2,n);
+            // QObject::connect(this,&GameServer::NotifyPlayerMoveSignal,this->s,&ServerMessageBroker::notifyPlayerMove);
+            // emit this->NotifyPlayerMoveSignal(dice1,dice2,n);
+            s->notifyPlayerMove(dice1, dice2, n);
         }
     }
 }
@@ -171,80 +172,93 @@ QVector<int> GameServer::getAvailableMoves(int pos, int dice)
     //current position, while the 4 values are the possible moves left, right, up and down
     //from that position
     data = {
-        {36, 37, 20, 68},
-        {40, 50, -1, -1},
-        {-1, -1, 82, -1},
-        {-1, -1, 78, -1},
-        {5, -1, 74, -1},
-        {-1, 51, -1, 4},
-        {-1, -1, -1, 41},
-        {-1, 8, -1, 10},
-        {7, -1, -1, 19},
-        {-1, -1, -1, 13},
-        {-1, 11, 7, 15},
-        {10, -1, -1, 16},
-        {-1, 13, -1, 22},
-        {12, 14, 9, 23},
-        {13, -1, -1, 24},
-        {-1, 16, 10, 25},
-        {15, 17, 11, 26},
-        {16, 18, -1, 27},
-        {17, 19, -1, 28},
-        {18, 20, 8, -1},
-        {19, 21, -1, -1},
-        {20, 22, -1, -1},
-        {21, 23, 12, 29},
-        {22, 24, 13, 30},
-        {23, -1, 14, 31},
-        {-1, 26, 15, 33},
-        {25, 27, 16, 34},
-        {26, 28, 17, 35},
-        {27, -1, 18, 36},
-        {-1, 30, 22, 37},
-        {29, 31, 23, 38},
-        {30, 32, 24, 39},
-        {31, -1, -1, 40},
-        {-1, 34, 25, 43},
-        {33, 35, 26, 44},
-        {34, 36, 27, 45},
-        {35, 0, 28, 46},
-        {0, 38, 29, 47},
-        {37, 39, 30, 48},
-        {38, 40, 31, 49},
-        {39, 1, 32, 50},
-        {-1, 42, 6, 51},
-        {41, -1, -1, 52},
-        {-1, 44, 33, -1},
-        {43, 45, 34, -1},
-        {44, 46, 35, 55},
-        {45, -1, 36, 56},
-        {-1, 48, 37, 57},
-        {47, 49, 38, 58},
-        {48, 50, 39, 59},
-        {49, 1, 32, 50},
-        {5, 52, 41, 61},
-        {51, 53, 42, 62},
-        {52, 54, -1, 63},
-        {53, 55, -1, 64},
-        {54, 56, 45, 65},
-        {55, -1, 36, 66},
-        {-1, 58, 47, 70},
-        {57, 59, 48, 71},
-        {58, 60, 49, 72},
-        {59, -1, 50, -1},
-        {-1, 62, 51, 73},
-        {61, 63, 52, 74},
-        {62, 64, 53, -1},
-        {63, 65, 54, -1},
-        {64, 66, 55, 75},
-        {65, 67, 56, 76},
-        {66, 68, -1, 77},
-        {67, 69, -1, 78},
-        {68, 70, -1, 79},
-        {69, 71, 57, 80},
-        {70, 72, 58, 81},
-        {71, 73, 59, 82}
+        {50,51,29,62},
+        {55,45,-1,-1},
+        {80,81,-1,-1},
+        {75,76,-1,-1},
+        {69,70,5,-1},
+        {46,56,-1,4},
+        {-1,36,-1,-1},
+        {-1,8,10,11},
+        {7,-1,-1,16},
+        {-1,21,22,-1},
+        {-1,11,7,23},
+        {10,12,7,24},
+        {11,13,-1,25},
+        {12,14,-1,26},
+        {13,15,-1,27},
+        {14,16,-1,28},
+        {15,17,8,29},
+        {16,18,-1,30},
+        {17,19,-1,31},
+        {18,20,-1,32},
+        {19,21,-1,33},
+        {20,22,9,34},
+        {21,-1,9,35},
+        {-1,24,10,36},
+        {23,25,11,37},
+        {24,26,12,38},
+        {25,27,13,39},
+        {26,28,14,40},
+        {27,29,16,-1},
+        {28,30,16,0},
+        {29,31,17,-1},
+        {30,32,18,41},
+        {31,33,19,42},
+        {32,34,20,43},
+        {33,35,21,44},
+        {34,-1,22,45},
+        {6,37,23,46},
+        {36,38,24,47},
+        {37,39,25,48},
+        {38,40,26,49},
+        {39,-1,27,50},
+        {-1,42,31,51},
+        {41,43,32,52},
+        {42,44,33,53},
+        {43,45,34,54},
+        {44,1,35,55},
+        {5,47,36,56},
+        {46,48,37,57},
+        {47,49,38,58},
+        {48,50,39,59},
+        {49,0,40,60},
+        {0,52,41,64},
+        {51,53,42,65},
+        {52,54,43,66},
+        {53,55,44,67},
+        {54,1,45,68},
+        {5,57,46,69},
+        {56,58,47,70},
+        {57,59,48,71},
+        {58,60,49,72},
+        {59,61,-1,73},
+        {60,62,-1,74},
+        {61,63,0,75},
+        {62,64,-1,76},
+        {63,65,51,77},
+        {64,66,52,78},
+        {65,67,53,79},
+        {66,68,54,80},
+        {67,-1,55,81},
+        {-1,70,56,4},
+        {69,71,57,4},
+        {70,72,58,-1},
+        {71,73,59,-1},
+        {72,74,60,-1},
+        {73,75,61,-1},
+        {74,76,62,3},
+        {75,77,63,3},
+        {76,78,64,-1},
+        {77,79,65,-1},
+        {78,80,66,-1},
+        {79,81,67,2},
+        {80,-1,68,2}
     };
+
+
+
+
 
     bool canEnterRoom = false;
     std::vector<int> possiblePositions;
@@ -764,6 +778,7 @@ void GameServer::CardShownSlot(NetworkPlayer &player, QString cardName)
 // Implement the AddPlayerSlot function
 void GameServer::AddPlayerSlot(QString username)
 {
+    qDebug("Adding player");
     // Your implementation here, e.g., add a new player to the game
     // For example, store the player in a data structure or perform necessary initialization.
     Player* newPlayer = new Player(username);
@@ -774,26 +789,32 @@ void GameServer::AddPlayerSlot(QString username)
         //Log the player being added
         if (players.size() == 1)
         {
+            players[0]->SetPerson("Chef White");
             logEvent("Player 1 added");
         }
         else if (players.size() == 2)
         {
+            players[1]->SetPerson("Reverend Green");
             logEvent("Player 2 added");
         }
         else if (players.size() == 3)
         {
+            players[2]->SetPerson("Colonel Mustard");
             logEvent("Player 3 added");
         }
         else if (players.size() == 4)
         {
+            players[3]->SetPerson("Mrs. Peacock");
             logEvent("Player 4 added");
         }
         else if (players.size() == 5)
         {
+            players[4]->SetPerson("Professor Plum");
             logEvent("Player 5 added");
         }
         else if (players.size() == 6)
         {
+            players[5]->SetPerson("Miss Scarlett");
             logEvent("Player 6 added");
         }
         //Log the start dice roll for each player
