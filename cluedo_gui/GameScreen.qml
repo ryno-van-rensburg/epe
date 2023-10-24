@@ -123,6 +123,15 @@ Rectangle
         Connections {
             target: client
             ignoreUnknownSignals: true
+            function onConnectionAccepted(){
+                console.debug("Connection Accepted");
+                connectionAccepted = true;
+            }
+
+            function onConnectionRejected(){
+                console.debug("Connection Rejected");
+                connectionRejected = true;;
+            }
             function onPromptRequested(){
                 prompt_state = 2;
                 suggestionPrompt.visible = true;
@@ -161,7 +170,7 @@ Rectangle
                     player6.y = newY;
                     break;
                 }
-                
+                 
                 // if (playerIndex !== null) {
                 //     player.xGrid = newX;
                 //     player.yGrid = newY;

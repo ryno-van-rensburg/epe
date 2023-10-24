@@ -9,8 +9,8 @@ Rectangle {
     signal switchToGameScreen // calling function directly instead of signalling
     property bool validUsername: false;
     property bool connectionRequested: false;
-    property bool connectionAccepted: false;
-    property bool connectionRejected: false;
+    property bool p_accept: false;
+    property bool p_reject: false;
 
     Image {
         id: bg
@@ -168,10 +168,12 @@ Rectangle {
                     client.onNameEntered(textInput.text);
 
                     if (validUsername) {
-                        timeout.runnig = true
+                        timeout.running = true
                         connectionTimer.running = true
                         loading.visible =true
                         namePrompt.visible = false
+                        client.emitRequestConnectionSignal()
+
                     }
 
                 }
@@ -201,8 +203,9 @@ Rectangle {
         }
         Timer {
                id: connectionTimer
-               interval:500  //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
+               interval:500
                running: false
+               repeat: true
                onTriggered: {
                    if (connectionRequested=== false){
                      client.emitRequestConnectionSignal()
@@ -218,10 +221,11 @@ Rectangle {
                  }
                     switchToGameScreen()
                }
+
            }
         Timer {
             id:timeout
-            interval:100000
+            interval:10000
             running:false
             onTriggered:{
                 loading.visible = false
@@ -236,12 +240,15 @@ Rectangle {
             ignoreUnknownSignals: true
             function onValidUsername(){
                 validUsername = true
+                console.debug("Username accepted")
             }
             function onConnectionAccepted(){
-                connectionAccepted = true
+                console.debug("Connection Accepted")
+                p_accept = true
             }
             function onConnectionRejected(){
-                connectionRejected = true
+                console.debug("Connection Rejected")
+                p_reject = true
             }
         }
 
