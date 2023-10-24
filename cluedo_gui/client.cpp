@@ -11,6 +11,8 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(accusationResultSignal(QList,bool)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList));
     QObject::connect(broker, SIGNAL(cardsDealt(QVector<QString>)), this, SLOT(onCardsDealt(QVector<QString>)));
+    this->setPlayerCards(cards);
+    
     //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString),this,SLOT(onCardShown(bool,QString,QString))));
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)),this,SLOT(onCardShownToPlayer(QString,QString)));
     QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
@@ -613,7 +615,7 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
     if (person == "Green") {
        player2_id = username;
        temp_number = 2;
-    } else if (person == "Scarlett") {
+    } else if (person == "Scarlet") {
         player6_id = username;
         temp_number = 6;
     } else if (person == "White") {
