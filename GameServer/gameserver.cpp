@@ -1,4 +1,5 @@
 #include "gameserver.h"
+#include "networkplayer.h"
 #include <time.h>
 #include <vector>
 #include <unordered_set>
@@ -730,6 +731,24 @@ void GameServer::CardShownSlot(NetworkPlayer &player, QString cardName)
 {
     // Your implementation here, e.g., handle when a card is shown to a player
     // For example, update the game state based on the shown card.
+    Player* playerMakingSuggestion = nullptr;
+    for ( Player* temp: players) {
+        if (temp->GetMyTurn()) {
+            playerMakingSuggestion = temp;
+        }
+    }
+    NetworkPlayer recplayer(playerMakingSuggestion->GetUsername(),
+                         playerMakingSuggestion->GetPerson(),
+                         playerMakingSuggestion->GetAI());
+
+    this->s->showCardSlot(recplayer, cardName);
+    if (cardName == "None") {
+
+        this->s->shownCardSlot(player, recplayer, false);
+    } else {
+        this->s->shownCardSlot(player, recplayer, true);
+    }
+    return;
 }
 
 // Implement the AddPlayerSlot function
