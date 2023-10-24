@@ -123,6 +123,11 @@ Rectangle
                 suggestionPrompt.visible = true;
             }
 
+            funcion onGameEndedSignal(){
+                console.debug("Game Ended");
+                switchToStartScreen();
+            }
+
             function onPlayerPositionUpdated(playerId,newX,newY){
                 console.debug(newX+" "+newY);
                 switch(playerId){

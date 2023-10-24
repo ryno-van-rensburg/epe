@@ -174,6 +174,7 @@ void Client::updatePlayerPosition(int playerId, int newX, int newY)
 void Client::playerPositionSet(int playerId, int newX, int newY)
 {
     qDebug() << "Player position set: " << playerId << newX << newY;
+
     emit makeMove(newX);
     this->onTurnEnded();
 }
@@ -203,10 +204,10 @@ void Client::emitRequestConnectionSignal()
         //a_port = QInputDialog::getInt(nullptr, "Server Details",
         //                               "Enter Port:", 0, 0, 65535, 1, &ok);
         if (ok) {
+            qDebug() << "Requesting connection to server at " << send_address << ":" << a_port << " with username " << my_id;
             broker.requestConnection(send_address, a_port, this->my_id);
         }
     }
-    qDebug() << "Requesting connection to server at " << send_address << ":" << a_port << " with username " << my_id;
     
     //    emit requestConnection(address, port, username);
 }
@@ -496,11 +497,11 @@ void Client::onCardShown(bool hasCard, QString asked, QString showed) // Multica
     }
     else
     {
-       QMessageBox msgBox;
-       msgBox.setText(showed + "hasn't shown a card" + asked);
-       msgBox.setInformativeText(showed + "has shown a card" + asked);
-       msgBox.setStandardButtons(QMessageBox::Ok);
-       msgBox.setDefaultButton(QMessageBox::Ok);
+      QMessageBox msgBox;
+      msgBox.setText(showed + "hasn't shown a card" + asked);
+      msgBox.setInformativeText(showed + "has shown a card" + asked);
+      msgBox.setStandardButtons(QMessageBox::Ok);
+      msgBox.setDefaultButton(QMessageBox::Ok);
       msgBox.exec();
     }
 
@@ -517,3 +518,13 @@ void Client::onCardShownToPlayer(QString username, QString card)      // Unicast
 
 }
 
+void Client::onGameEnded(){
+       QMessageBox msgBox;
+       msgBox.setText("Game has ended");
+       msgBox.setInformativeText("Game has ended");
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+       msgBox.exec();
+       
+       emit gameEndedSignal();
+}

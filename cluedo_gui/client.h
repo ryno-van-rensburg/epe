@@ -22,6 +22,7 @@ public slots:
     void emitConnectionRejected();
     void onCardShown(bool hasCard, QString asked, QString showed); // Multicast
     void onCardShownToPlayer(QString username, QString card);      // Unicast
+    void onGameEnded();
     //void onGameStarted(int, QJSonArray,int,int,QList);
 public:
     explicit Client(QObject *parent = nullptr);
@@ -62,6 +63,7 @@ signals:
     void makeSuggestion(QString person, QString weapon, QString room);
     void requestStateSlot();
     void sendConnectionRequest(QString username);
+    void gameEndedSignal();
 private:
 
     void connectClientBroker();
