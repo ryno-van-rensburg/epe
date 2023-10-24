@@ -72,8 +72,9 @@ void GameServer::SetPlayerTurn(Player* inPlayer){
             currentDice = dice1+dice2;
             getAvailableMoves(pos,currentDice);
             NetworkPlayer n = NetworkPlayer(players[i]->GetUsername(),players[i]->GetPerson(),players[i]->GetAI());
-            QObject::connect(this,&GameServer::NotifyPlayerMoveSignal,this->s,&ServerMessageBroker::notifyPlayerMove);
-            emit this->NotifyPlayerMoveSignal(dice1,dice2,n);
+            // QObject::connect(this,&GameServer::NotifyPlayerMoveSignal,this->s,&ServerMessageBroker::notifyPlayerMove);
+            // emit this->NotifyPlayerMoveSignal(dice1,dice2,n);
+            s->notifyPlayerMove(dice1, dice2, n);
         }
     }
 }
