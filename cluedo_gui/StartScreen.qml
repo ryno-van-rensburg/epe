@@ -166,6 +166,14 @@ Rectangle {
                 onClicked: {
                     console.log("Clicked on Confirm")
                     client.onNameEntered(textInput.text);
+<<<<<<< HEAD
+                    switchToGameScreen()
+                    //if (validUsername) {
+                    //    closeTimer.running = true
+                    //    loading.visible =true
+                    //    namePrompt.visible = false
+                   // }
+=======
                     //switchToGameScreen()
                     if (validUsername) {
                         connectionTimer.running = true
@@ -173,6 +181,7 @@ Rectangle {
                         loading.visible =true
                         namePrompt.visible = false
                     }
+>>>>>>> plz_integrate
                 }
             }
 

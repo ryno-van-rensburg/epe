@@ -51,29 +51,34 @@ void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int curr
 }
 int Client::getRoomNumber(int x, int y)
 {
-    if ((x >= 0 && x < 2) && (y >= 0 && y < 2))  // Room 7 Kitchen
+    if ((x >= 0 && x < 221) && (y >= 0 && y < 100))// Room 7 Kitchen
+    {
+//       qDebug() << "Room7" << "x:" << x << "y:" << y;
        return 7;
-    else if ((x >= 0 && x < 2) && (y >= 3 && y < 6)) // Room 8 Dining room
+    }
+
+    else if ((x >= 221 && x < 755 ) && (y >= 0 && y < 100)) // Room 8 Dining room
        return 8;
-    else if ((x >= 0 && x < 2) && (y >= 6 && y < 10)) // Room 9 Living room
+
+    else if ((x >= 755 && x < 1000) && (y >= 0 && y < 100)) // Room 9 Living room
        return 9;
 
-    else if ((x >=2  && x < 6) && (y >= 6 && y < 10)) // Room 1 Courtyard
+    else if ((x >=920  && x < 1200) && (y >= 120 && y < 555)) // Room 1 Courtyard
        return 1;
 
-    else if ((x >=6  && x < 10) && (y >= 6 && y < 10)) // Room 2 Garage
+    else if ((x >=800  && x < 1200) && (y >= 550 && y < 700)) // Room 2 Garage
        return 2;
 
-    else if ((x >=6  && x < 10) && (y >= 3 && y < 6)) // Room 3 Game room
+    else if ((x >=270  && x < 755) && (y >= 580 && y < 700)) // Room 3 Game room
        return 3;
 
-    else if ((x >=6  && x < 10) && (y >= 0 && y < 2)) // Room 4 Bedroom
+    else if ((x >=1  && x < 200) && (y >= 580 && y < 700)) // Room 4 Bedroom
        return 4;
 
-    else if ((x >=3  && x < 4) && (y >= 0 && y < 2)) // Room 5 Bathroom
+    else if ((x >=1  && x < 85) && (y >= 340 && y < 560)) // Room 5 Bathroom
        return 5;
 
-    else if ((x >=4  && x < 5) && (y >= 0 && y < 2)) // Room 6 Bathroom
+    else if ((x >=1  && x < 100) && (y >= 100 && y < 320)) // Room 6 Bathroom
        return 6;
 
     return 0;

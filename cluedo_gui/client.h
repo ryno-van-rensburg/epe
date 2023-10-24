@@ -31,6 +31,7 @@ public:
     Q_INVOKABLE int getCurrentDiceValue() const;
     Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
     Q_INVOKABLE QString getPlayerID(int n);
+    Q_INVOKABLE int getRoomNumber(int x, int y);
     Q_INVOKABLE bool playerHasCard(QString card);
     void setPlayerTurn(int turn, int dice1, int dice2);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
@@ -71,7 +72,7 @@ private:
     void connectClientBroker();
     ClientMessageBroker* broker = nullptr;
     int currentPlayerTurn;
-    int getRoomNumber(int x, int y);
+    //int getRoomNumber(int x, int y); need to uncomment this later on. Once it works remove the Q_Invoke
     int diceValue;
     QString player1_id; // White
     QString player2_id; // Green
