@@ -105,6 +105,8 @@ static constexpr auto qt_meta_stringdata_CLASSClientENDCLASS = QtMocHelpers::str
     "getRoomNumber",
     "x",
     "y",
+    "getXY",
+    "roomNum",
     "playerHasCard",
     "emitRequestConnectionSignal",
     "testBox",
@@ -112,7 +114,7 @@ static constexpr auto qt_meta_stringdata_CLASSClientENDCLASS = QtMocHelpers::str
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSClientENDCLASS_t {
-    uint offsetsAndSizes[140];
+    uint offsetsAndSizes[144];
     char stringdata0[7];
     char stringdata1[19];
     char stringdata2[1];
@@ -179,10 +181,12 @@ struct qt_meta_stringdata_CLASSClientENDCLASS_t {
     char stringdata63[14];
     char stringdata64[2];
     char stringdata65[2];
-    char stringdata66[14];
-    char stringdata67[28];
-    char stringdata68[8];
-    char stringdata69[3];
+    char stringdata66[6];
+    char stringdata67[8];
+    char stringdata68[14];
+    char stringdata69[28];
+    char stringdata70[8];
+    char stringdata71[3];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSClientENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -254,10 +258,12 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSClientENDCLASS_t qt_meta_string
         QT_MOC_LITERAL(768, 13),  // "getRoomNumber"
         QT_MOC_LITERAL(782, 1),  // "x"
         QT_MOC_LITERAL(784, 1),  // "y"
-        QT_MOC_LITERAL(786, 13),  // "playerHasCard"
-        QT_MOC_LITERAL(800, 27),  // "emitRequestConnectionSignal"
-        QT_MOC_LITERAL(828, 7),  // "testBox"
-        QT_MOC_LITERAL(836, 2)   // "in"
+        QT_MOC_LITERAL(786, 5),  // "getXY"
+        QT_MOC_LITERAL(792, 7),  // "roomNum"
+        QT_MOC_LITERAL(800, 13),  // "playerHasCard"
+        QT_MOC_LITERAL(814, 27),  // "emitRequestConnectionSignal"
+        QT_MOC_LITERAL(842, 7),  // "testBox"
+        QT_MOC_LITERAL(850, 2)   // "in"
     },
     "Client",
     "connectionAccepted",
@@ -325,6 +331,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSClientENDCLASS_t qt_meta_string
     "getRoomNumber",
     "x",
     "y",
+    "getXY",
+    "roomNum",
     "playerHasCard",
     "emitRequestConnectionSignal",
     "testBox",
@@ -340,7 +348,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSClientENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      39,   14, // methods
+      40,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -348,49 +356,50 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSClientENDCLASS[] = {
       14,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  248,    2, 0x06,    1 /* Public */,
-       3,    0,  249,    2, 0x06,    2 /* Public */,
-       4,    0,  250,    2, 0x06,    3 /* Public */,
-       5,    1,  251,    2, 0x06,    4 /* Public */,
-       8,    0,  254,    2, 0x06,    6 /* Public */,
-       9,    3,  255,    2, 0x06,    7 /* Public */,
-      13,    3,  262,    2, 0x06,   11 /* Public */,
-      17,    1,  269,    2, 0x06,   15 /* Public */,
-      19,    1,  272,    2, 0x06,   17 /* Public */,
-      21,    3,  275,    2, 0x06,   19 /* Public */,
-      25,    3,  282,    2, 0x06,   23 /* Public */,
-      26,    0,  289,    2, 0x06,   27 /* Public */,
-      27,    1,  290,    2, 0x06,   28 /* Public */,
-      28,    0,  293,    2, 0x06,   30 /* Public */,
+       1,    0,  254,    2, 0x06,    1 /* Public */,
+       3,    0,  255,    2, 0x06,    2 /* Public */,
+       4,    0,  256,    2, 0x06,    3 /* Public */,
+       5,    1,  257,    2, 0x06,    4 /* Public */,
+       8,    0,  260,    2, 0x06,    6 /* Public */,
+       9,    3,  261,    2, 0x06,    7 /* Public */,
+      13,    3,  268,    2, 0x06,   11 /* Public */,
+      17,    1,  275,    2, 0x06,   15 /* Public */,
+      19,    1,  278,    2, 0x06,   17 /* Public */,
+      21,    3,  281,    2, 0x06,   19 /* Public */,
+      25,    3,  288,    2, 0x06,   23 /* Public */,
+      26,    0,  295,    2, 0x06,   27 /* Public */,
+      27,    1,  296,    2, 0x06,   28 /* Public */,
+      28,    0,  299,    2, 0x06,   30 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      29,    1,  294,    2, 0x0a,   31 /* Public */,
-      31,    1,  297,    2, 0x0a,   33 /* Public */,
-      32,    1,  300,    2, 0x0a,   35 /* Public */,
-      34,    0,  303,    2, 0x0a,   37 /* Public */,
-      35,    5,  304,    2, 0x0a,   38 /* Public */,
-      41,    4,  315,    2, 0x0a,   44 /* Public */,
-      43,    3,  324,    2, 0x0a,   49 /* Public */,
-      45,    3,  331,    2, 0x0a,   53 /* Public */,
-      46,    3,  338,    2, 0x0a,   57 /* Public */,
-      47,    1,  345,    2, 0x0a,   61 /* Public */,
-      48,    3,  348,    2, 0x0a,   63 /* Public */,
-      49,    0,  355,    2, 0x0a,   67 /* Public */,
-      50,    0,  356,    2, 0x0a,   68 /* Public */,
-      51,    3,  357,    2, 0x0a,   69 /* Public */,
-      55,    2,  364,    2, 0x0a,   73 /* Public */,
-      56,    0,  369,    2, 0x0a,   76 /* Public */,
+      29,    1,  300,    2, 0x0a,   31 /* Public */,
+      31,    1,  303,    2, 0x0a,   33 /* Public */,
+      32,    1,  306,    2, 0x0a,   35 /* Public */,
+      34,    0,  309,    2, 0x0a,   37 /* Public */,
+      35,    5,  310,    2, 0x0a,   38 /* Public */,
+      41,    4,  321,    2, 0x0a,   44 /* Public */,
+      43,    3,  330,    2, 0x0a,   49 /* Public */,
+      45,    3,  337,    2, 0x0a,   53 /* Public */,
+      46,    3,  344,    2, 0x0a,   57 /* Public */,
+      47,    1,  351,    2, 0x0a,   61 /* Public */,
+      48,    3,  354,    2, 0x0a,   63 /* Public */,
+      49,    0,  361,    2, 0x0a,   67 /* Public */,
+      50,    0,  362,    2, 0x0a,   68 /* Public */,
+      51,    3,  363,    2, 0x0a,   69 /* Public */,
+      55,    2,  370,    2, 0x0a,   73 /* Public */,
+      56,    0,  375,    2, 0x0a,   76 /* Public */,
 
  // methods: name, argc, parameters, tag, flags, initial metatype offsets
-      57,    0,  370,    2, 0x102,   77 /* Public | MethodIsConst  */,
-      58,    0,  371,    2, 0x102,   78 /* Public | MethodIsConst  */,
-      59,    0,  372,    2, 0x102,   79 /* Public | MethodIsConst  */,
-      60,    3,  373,    2, 0x02,   80 /* Public */,
-      61,    1,  380,    2, 0x02,   84 /* Public */,
-      63,    2,  383,    2, 0x02,   86 /* Public */,
-      66,    1,  388,    2, 0x02,   89 /* Public */,
-      67,    0,  391,    2, 0x02,   91 /* Public */,
-      68,    1,  392,    2, 0x02,   92 /* Public */,
+      57,    0,  376,    2, 0x102,   77 /* Public | MethodIsConst  */,
+      58,    0,  377,    2, 0x102,   78 /* Public | MethodIsConst  */,
+      59,    0,  378,    2, 0x102,   79 /* Public | MethodIsConst  */,
+      60,    3,  379,    2, 0x02,   80 /* Public */,
+      61,    1,  386,    2, 0x02,   84 /* Public */,
+      63,    2,  389,    2, 0x02,   86 /* Public */,
+      66,    1,  394,    2, 0x02,   89 /* Public */,
+      68,    1,  397,    2, 0x02,   91 /* Public */,
+      69,    0,  400,    2, 0x02,   93 /* Public */,
+      70,    1,  401,    2, 0x02,   94 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -433,9 +442,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSClientENDCLASS[] = {
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   10,   11,   12,
     QMetaType::QString, QMetaType::Int,   62,
     QMetaType::Int, QMetaType::Int, QMetaType::Int,   64,   65,
+    QMetaType::Void, QMetaType::Int,   67,
     QMetaType::Bool, QMetaType::QString,   20,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   69,
+    QMetaType::Void, QMetaType::QString,   71,
 
        0        // eod
 };
@@ -573,6 +583,9 @@ Q_CONSTINIT const QMetaObject Client::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'getXY'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'playerHasCard'
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
@@ -632,10 +645,11 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         case 35: { int _r = _t->getRoomNumber((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 36: { bool _r = _t->playerHasCard((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
+        case 36: _t->getXY((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 37: { bool _r = _t->playerHasCard((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 37: _t->emitRequestConnectionSignal(); break;
-        case 38: _t->testBox((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 38: _t->emitRequestConnectionSignal(); break;
+        case 39: _t->testBox((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -760,13 +774,13 @@ int Client::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 39)
+        if (_id < 40)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 39;
+        _id -= 40;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 39)
+        if (_id < 40)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 39;
+        _id -= 40;
     }
     return _id;
 }

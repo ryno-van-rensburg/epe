@@ -207,10 +207,7 @@ Rectangle {
                running: false
                repeat: true
                onTriggered: {
-                   if (connectionRequested=== false){
-                     client.emitRequestConnectionSignal()
-                     connectionRequested = true
-                 } else {
+
                     if(connectionAccepted === true){
                         switchToGameScreen()
                     }
@@ -219,8 +216,6 @@ Rectangle {
                         namePrompt.visible = true
                     }
                  }
-                    //switchToGameScreen()
-               }
 
            }
         Timer {
