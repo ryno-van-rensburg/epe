@@ -1,0 +1,11 @@
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/cluedo_gui.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/cluedo_gui_qmlimportscan.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/test.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/edit_cache.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/rebuild_cache.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/list_install_components.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/install.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/install/local.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/install/strip.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/cluedo_gui_autogen_timestamp_deps.dir
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/CMakeFiles/cluedo_gui_autogen.dir

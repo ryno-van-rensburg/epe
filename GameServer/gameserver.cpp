@@ -11,7 +11,7 @@
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-    numPlayers = 1;
+    numPlayers = 3;
     this ->s= new ServerMessageBroker();
     // Initialize log file for game events
     log = new QFile("game_log.txt");
@@ -783,6 +783,7 @@ void GameServer::AddPlayerSlot(QString username)
     // For example, store the player in a data structure or perform necessary initialization.
     Player* newPlayer = new Player(username);
     srand(time(0)+players.size());
+    qDebug("Adding a player now");
     if (players.size()<numPlayers)
     {
         players.append(newPlayer);
