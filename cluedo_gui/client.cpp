@@ -61,15 +61,16 @@ void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int curr
     qDebug() << "Current turn: " << currentTurn;
     qDebug() << "Face up cards: " << faceUpCards;
 
-    QString face_up_cards;
-    for (const QString &str : faceUpCards) {
-        face_up_cards += str;
-    }
-    QMessageBox msgBox;
-    msgBox.setText("Game Started");
-    msgBox.setInformativeText("\nFace up cards: " + face_up_cards);
-    msgBox.setStandardButtons(QMessageBox::Ok);
-    msgBox.exec();
+    this->setFaceupCards(faceUpCards);
+    // QString face_up_cards;
+    // for (const QString &str : faceUpCards) {
+    //     face_up_cards += str;
+    // }
+    // QMessageBox msgBox;
+    // msgBox.setText("Game Started");
+    // msgBox.setInformativeText("\nFace up cards: " + face_up_cards);
+    // msgBox.setStandardButtons(QMessageBox::Ok);
+    // msgBox.exec();
 
     this->setPlayerTurn(1,dice1,dice1);
 
@@ -287,8 +288,8 @@ void Client::playerPositionSet(int playerId, int newX, int newY)
     int room = getRoomNumber(newX,newY);
     qDebug() << "Player position set: " << playerId << newX << newY <<"Room: " <<room;
     
-    this->broker->makeMove(room);
-    
+    this->broker->makeMove(room); 
+
     
 }
 
@@ -518,6 +519,37 @@ void Client::testBox(QString in)
     // int ret = msgBox.exec();
 }
 
+bool Client::isFaceupCard(QString card){
+    for (QString t:this->faceUpCards)  {
+        if (card == t) {
+            return true;
+        }
+    }
+    return false;
+}
+
+QString Client::getCardColor(QString itemName, bool clicked){
+    bool faceup = isFaceupCard(itemName);
+    bool inHand = playerHasCard(itemName);
+    // check if the card is in the face up cards
+    if (inHand) {
+        return "#00ff00";
+    }
+    if (faceup) {
+        return "#ff0000";
+    }
+    if (clicked) {
+        return "#333333";
+    } else {
+        return "#ffffff";
+    }
+}
+
+void Client::setFaceupCards(QVector<QString> cards){
+    this->faceUpCards = cards;
+    return;
+}
+
 void Client::onRequestAnswered(QString room, QString person, QString item)
 {
     qDebug()<< "Answered Suggestion with: "  << person << room << item;
@@ -551,22 +583,22 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
 {
     qDebug()<<"Received From Server: " << username << " " << person << " " << dice1 << " " << dice2;
     int temp_number = 0;
-    if (person == "Reverend Green") {
+    if (person == "Green") {
        player2_id = username;
        temp_number = 2;
-    } else if (person == "Miss Scarlett") {
+    } else if (person == "Scarlett") {
         player6_id = username;
         temp_number = 6;
-    } else if (person == "Chef White") {
+    } else if (person == "White") {
         player1_id = username;
         temp_number = 1;
-    } else if (person == "Mrs. Peacock") {
+    } else if (person == "Peacock") {
         player4_id = username;
         temp_number = 4;
-    } else if (person == "Professor Plum") {
+    } else if (person == "Plum") {
         player5_id = username;
         temp_number = 5;
-    } else if (person == "Colonel Mustard") {
+    } else if (person == "Mustard") {
         player3_id = username;
         temp_number = 3;
     }

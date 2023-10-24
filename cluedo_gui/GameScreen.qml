@@ -560,12 +560,12 @@ Rectangle
                     ListElement { item_name: "Pistol"; clicked: false }
                     ListElement { item_name: "Rope"; clicked: false }
                     ListElement { item_name: "Wrench"; clicked: false }
-                    ListElement { item_name: "Mr. Green"; clicked: false }
+                    ListElement { item_name: "Green"; clicked: false }
                     ListElement { item_name: "Mustard"; clicked: false }
-                    ListElement { item_name: "Mrs. Peacock"; clicked: false }
-                    ListElement { item_name: "Proff Plum"; clicked: false }
-                    ListElement { item_name: "Miss Scarlet"; clicked: false }
-                    ListElement { item_name: "Mrs. White"; clicked: false }
+                    ListElement { item_name: "Peacock"; clicked: false }
+                    ListElement { item_name: "Plum"; clicked: false }
+                    ListElement { item_name: "Scarlet"; clicked: false }
+                    ListElement { item_name: "White"; clicked: false }
 
 
                     // Add more elements as needed
@@ -583,13 +583,12 @@ Rectangle
                         text: item_name
                         font.pointSize: 20
                         font.family: "Pixel"
-                        color: clicked ? "white" : "#7eacbb"
+                        color: client.getCardColor(model.item_name, model.clicked)
 
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
                                 model.clicked = !model.clicked
-
                             }
                         }
                     }

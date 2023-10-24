@@ -10,6 +10,7 @@ class Client : public QObject
 public slots:
     //Slots from GUI:
     void setPlayerCards(QVector<QString> cards);
+    void setFaceupCards(QVector<QString> cards);
     void testReceiveMessage(QString& message);
     void onNameEntered(QString name);
     void onTurnEnded();
@@ -33,9 +34,11 @@ public:
     Q_INVOKABLE int getCurrentDiceValue() const;
     Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
     Q_INVOKABLE QString getPlayerID(int n);
+    Q_INVOKABLE QString getCardColor(QString itemName, bool clicked);
     Q_INVOKABLE int getRoomNumber(int x, int y);
     Q_INVOKABLE void getXY(int roomNum);
     Q_INVOKABLE bool playerHasCard(QString card);
+    bool isFaceupCard(QString card);
     void setPlayerTurn(int turn, int dice1, int dice2);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
     std::tuple<int,int> getPlayerPosition(int playerId); // will be network slot in future
@@ -75,6 +78,7 @@ private:
 
     void connectClientBroker();
     QVector<QString> playerCards;
+    QVector<QString> faceUpCards;
     ClientMessageBroker* broker = nullptr;
     int currentPlayerTurn;
     //int getRoomNumber(int x, int y); need to uncomment this later on. Once it works remove the Q_Invoke
