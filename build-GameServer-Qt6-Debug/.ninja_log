@@ -22,3 +22,13 @@
 4	39	1698172461668865551	/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/GameServer_autogen/timestamp	32db4daf839c5fa8
 39	2817	1698160066206019780	CMakeFiles/GameServer.dir/charactercard.cpp.o	38c078e00683f1ea
 45	3101	1698160066489027472	CMakeFiles/GameServer.dir/room.cpp.o	fa4c38cdde2bb9c2
+4	39	1698177229907077067	GameServer_autogen/timestamp	32db4daf839c5fa8
+4	39	1698177229907077067	GameServer_autogen/mocs_compilation.cpp	32db4daf839c5fa8
+4	39	1698177229907077067	/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/GameServer_autogen/timestamp	32db4daf839c5fa8
+4	39	1698177229907077067	/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/GameServer_autogen/mocs_compilation.cpp	32db4daf839c5fa8
+41	1789	1698177231655128657	CMakeFiles/GameServer.dir/clientconnection.cpp.o	132fe6cfaa4eb3bc
+42	1832	1698177231699129955	CMakeFiles/GameServer.dir/serversession.cpp.o	8a23cf14a6ecac4d
+42	2006	1698177231872135061	CMakeFiles/GameServer.dir/servermessagebroker.cpp.o	176d806a7a5367a5
+43	2437	1698177232303147781	CMakeFiles/GameServer.dir/suggestion.cpp.o	33d98eb3db8ea4d6
+41	2949	1698177232812162803	CMakeFiles/GameServer.dir/gameserver.cpp.o	bd455db0c070c3bb
+2950	3285	1698177233147172690	GameServer	881c8aa1455305bb

@@ -211,6 +211,7 @@ void ClientMessageBroker::requestStateSlot()
 void ClientMessageBroker::unpackGameState(Message &msg) {
     QJsonObject obj = msg.getObj();
     MESSAGE_TYPE type = msg.getType();
+    qDebug() << obj;
     int numPlayers = obj["Number_Of_Players"].toInt();
     QJsonArray players = obj["Players"].toArray();
     int dice = obj["Current_Dice_Roll"].toInt();

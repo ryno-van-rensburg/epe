@@ -27,3 +27,17 @@
 6	36	1698172606027169328	/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/cluedo_gui_autogen/mocs_compilation.cpp	f25e3d27025a6d7
 39	1905	1698172607892224931	CMakeFiles/cluedo_gui.dir/client.cpp.o	7617545003056428
 1905	2380	1698172608363238973	cluedo_gui	fd2717f8cea4a181
+5	36	1698177223799896830	cluedo_gui_autogen/timestamp	f25e3d27025a6d7
+5	36	1698177223799896830	cluedo_gui_autogen/mocs_compilation.cpp	f25e3d27025a6d7
+5	36	1698177223799896830	/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/cluedo_gui_autogen/timestamp	f25e3d27025a6d7
+5	36	1698177223799896830	/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/cluedo_gui_autogen/mocs_compilation.cpp	f25e3d27025a6d7
+39	1591	1698177225352942664	CMakeFiles/cluedo_gui.dir/networkclient.cpp.o	8a7e7d453b491e66
+38	2021	1698177225781955325	CMakeFiles/cluedo_gui.dir/client.cpp.o	7617545003056428
+38	5637	1698177229397062016	CMakeFiles/cluedo_gui.dir/main.cpp.o	c4056777f6fbafa3
+5637	6093	1698177229851075415	cluedo_gui	fd2717f8cea4a181
+5	36	1698177362648994607	cluedo_gui_autogen/timestamp	f25e3d27025a6d7
+5	36	1698177362648994607	cluedo_gui_autogen/mocs_compilation.cpp	f25e3d27025a6d7
+5	36	1698177362648994607	/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/cluedo_gui_autogen/timestamp	f25e3d27025a6d7
+5	36	1698177362648994607	/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/cluedo_gui_autogen/mocs_compilation.cpp	f25e3d27025a6d7
+39	1589	1698177364200040382	CMakeFiles/cluedo_gui.dir/clientmessagebroker.cpp.o	a66768bbaf61102c
+1589	2050	1698177364656053840	cluedo_gui	fd2717f8cea4a181

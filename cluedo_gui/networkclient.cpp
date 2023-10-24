@@ -279,6 +279,7 @@ void NetworkClient::handleMessage(){
     // construct the Message class
     QByteArray buffer;
     QJsonParseError* errPtr = nullptr;
+    qDebug() << incomingData;
     for (int i = 0; i < incomingData.size(); i++) {
         buffer.append(incomingData[i]);
         QJsonDocument  contents = QJsonDocument::fromJson(buffer, errPtr);
