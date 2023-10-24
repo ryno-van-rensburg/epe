@@ -56,10 +56,12 @@ bool Client::playerHasCard(QString card) {
 void Client::playerTurnChanged(){
 
 }
+
 void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int currentTurn,QVector<QString> faceUpCards){
     QVector<QString> playerNames;
     for (int i = 0 ; i < players.size(); i++ ) {
         QJsonObject obj = players.at(i).toObject();
+        qDebug() << obj["Username"].toString();
         playerNames.append(obj["Username"].toString());
         switch (i) {
         case 1:
@@ -568,9 +570,9 @@ QString Client::getCardColor(QString itemName, bool clicked){
         return "#ff0000";
     }
     if (clicked) {
-        return "#333333";
-    } else {
         return "#ffffff";
+    } else {
+        return "#333333";
     }
 }
 

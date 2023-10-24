@@ -53,3 +53,10 @@ Room cards: Dining Room, Kitchen, Study, Bathroom, Living Room, Games Room, Bedr
 Weapon cards: Lead Pipe, Rope, Candlestick, Pistol, Wrench
 PORT NUMBER: 42069
 PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 5
