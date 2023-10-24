@@ -211,14 +211,20 @@ void ClientMessageBroker::requestStateSlot()
  */
 void ClientMessageBroker::unpackGameState(Message &msg) {
     QJsonObject obj = msg.getObj();
+    MESSAGE_TYPE type = msg.getType();
     int numPlayers = obj["Number_Of_Players"].toInt();
     QJsonArray players = obj["Players"].toArray();
     int dice = obj["Current_Dice_Roll"].toInt();
     int currentTurn = obj["Current_Turn"].toInt();
     QJsonArray faceupCards = obj["Face_Up_Cards"].toArray();
     // TODO ack this message
-    client->ack(msg);
-    emit this->gameStateSignal(numPlayers,players,dice,currentTurn,faceupCards);
+    if (type == GAME_STATE_REPLY){
+        client->ack(msg);
+        emit this->gameStateSignal(numPlayers,players,dice,currentTurn,faceupCards);
+    } else if (type == GAME_STATE){
+        emit this->gameStartedSignal(numPlayers,players,dice,currentTurn,faceupCards);
+    }
+    return; 
 }
 
 void ClientMessageBroker::unpackPlayerTurn(Message &msg){
