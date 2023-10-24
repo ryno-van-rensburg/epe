@@ -11,7 +11,7 @@
 GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
-    this->numPlayers = numPlayers;
+    numPlayers = 1;
     this ->s= new ServerMessageBroker();
     // Initialize log file for game events
     log = new QFile("game_log.txt");
@@ -764,6 +764,7 @@ void GameServer::CardShownSlot(NetworkPlayer &player, QString cardName)
 // Implement the AddPlayerSlot function
 void GameServer::AddPlayerSlot(QString username)
 {
+    qDebug("Adding player");
     // Your implementation here, e.g., add a new player to the game
     // For example, store the player in a data structure or perform necessary initialization.
     Player* newPlayer = new Player(username);
@@ -774,26 +775,32 @@ void GameServer::AddPlayerSlot(QString username)
         //Log the player being added
         if (players.size() == 1)
         {
+            players[0]->SetPerson("Chef White");
             logEvent("Player 1 added");
         }
         else if (players.size() == 2)
         {
+            players[1]->SetPerson("Reverend Green");
             logEvent("Player 2 added");
         }
         else if (players.size() == 3)
         {
+            players[2]->SetPerson("Colonel Mustard");
             logEvent("Player 3 added");
         }
         else if (players.size() == 4)
         {
+            players[3]->SetPerson("Mrs. Peacock");
             logEvent("Player 4 added");
         }
         else if (players.size() == 5)
         {
+            players[4]->SetPerson("Professor Plum");
             logEvent("Player 5 added");
         }
         else if (players.size() == 6)
         {
+            players[5]->SetPerson("Miss Scarlett");
             logEvent("Player 6 added");
         }
         //Log the start dice roll for each player

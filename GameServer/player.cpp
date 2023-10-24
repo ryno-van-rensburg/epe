@@ -125,3 +125,8 @@ int Player::RollDice()
 
     return std::rand() % 6 + 1;
 }
+
+void Player::SetPerson(QString person)
+{
+    this->person = person;
+}

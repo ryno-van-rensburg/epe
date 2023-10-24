@@ -46,6 +46,7 @@ public:
     void SetMyTurn();
     void EndMyTurn();
     int RollDice();
+    void SetPerson(QString person);
 
 signals:
 

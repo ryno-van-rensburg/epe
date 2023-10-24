@@ -123,7 +123,7 @@ Rectangle
                 suggestionPrompt.visible = true;
             }
 
-            funcion onGameEndedSignal(){
+            function onGameEndedSignal(){
                 console.debug("Game Ended");
                 switchToStartScreen();
             }
