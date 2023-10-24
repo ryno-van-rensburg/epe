@@ -31,7 +31,8 @@ Rectangle
             anchors.fill: parent
             onClicked: {
                 console.debug("x: " +mouseX + " y: " +mouseY + " Room: " + client.getRoomNumber(mouseX, mouseY))
-
+                var room = client.getRoomNumber(mouseX, mouseY)
+                console.debug(client.getXY(room))
 
             }
         }

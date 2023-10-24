@@ -111,6 +111,66 @@ int Client::getRoomNumber(int x, int y)
 
 
 }
+
+void Client::getXY(int roomNum)
+{
+    qDebug() <<"Pass in the current room number" << roomNum;
+    int x = 0, y = 0;
+    if(roomNum == 7)
+    {
+       x = 10, y = 50;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if (roomNum == 8)
+    {
+      x = 300, y = 50;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if (roomNum == 9)
+    {
+      x = 800, y = 50;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if(roomNum == 1)
+    {
+      x = 950, y = 350;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if(roomNum == 2)
+    {
+      x = 900, y = 600;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if(roomNum == 2)
+    {
+      x = 900, y = 600;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if(roomNum == 3)
+    {
+      x = 300, y = 600;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if(roomNum == 4)
+    {
+      x = 100, y = 600;
+    qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if(roomNum == 5)
+    {
+      x = 50, y = 400;
+      qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else if(roomNum == 6)
+    {
+      x = 50, y = 200;
+     qDebug() <<"x: " << x << "y: " <<  y;
+    }
+    else
+       qDebug() <<"x: " << x << "y: " <<  y;
+
+
+}
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
