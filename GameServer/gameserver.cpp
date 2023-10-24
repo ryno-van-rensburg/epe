@@ -804,32 +804,32 @@ void GameServer::AddPlayerSlot(QString username)
         //Log the player being added
         if (players.size() == 1)
         {
-            players[0]->SetPerson("Chef White");
+            players[0]->SetPerson("White");
             logEvent("Player 1 added");
         }
         else if (players.size() == 2)
         {
-            players[1]->SetPerson("Reverend Green");
+            players[1]->SetPerson("Green");
             logEvent("Player 2 added");
         }
         else if (players.size() == 3)
         {
-            players[2]->SetPerson("Colonel Mustard");
+            players[2]->SetPerson("Mustard");
             logEvent("Player 3 added");
         }
         else if (players.size() == 4)
         {
-            players[3]->SetPerson("Mrs. Peacock");
+            players[3]->SetPerson("Peacock");
             logEvent("Player 4 added");
         }
         else if (players.size() == 5)
         {
-            players[4]->SetPerson("Professor Plum");
+            players[4]->SetPerson("Plum");
             logEvent("Player 5 added");
         }
         else if (players.size() == 6)
         {
-            players[5]->SetPerson("Miss Scarlett");
+            players[5]->SetPerson("Scarlett");
             logEvent("Player 6 added");
         }
         //Log the start dice roll for each player

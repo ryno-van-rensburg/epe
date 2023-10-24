@@ -37,3 +37,15 @@
 48	764	7198602255413412	C:/Users/Justin/Desktop/I_Code/group-6/build-cluedo_gui-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/cluedo_gui_autogen/mocs_compilation.cpp	c3ef2de17683dc00
 816	8488	7198602332614759	CMakeFiles/cluedo_gui.dir/main.cpp.obj	2d9192e1a5aeb9b2
 8489	9553	7198602343127744	cluedo_gui.exe	b54240bee2d82cf
+16	465	7198711511517282	cluedo_gui_autogen/timestamp	c3ef2de17683dc00
+16	465	7198711511517282	cluedo_gui_autogen/mocs_compilation.cpp	c3ef2de17683dc00
+16	465	7198711511517282	C:/Users/Justin/Desktop/I_Code/group-6/build-cluedo_gui-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/cluedo_gui_autogen/timestamp	c3ef2de17683dc00
+16	465	7198711511517282	C:/Users/Justin/Desktop/I_Code/group-6/build-cluedo_gui-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/cluedo_gui_autogen/mocs_compilation.cpp	c3ef2de17683dc00
+482	641	7198711513275080	.rcc/qrc_qml.cpp	935557230ecac980
+482	641	7198711513275080	C:/Users/Justin/Desktop/I_Code/group-6/build-cluedo_gui-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.rcc/qrc_qml.cpp	935557230ecac980
+656	1329	7198711520148395	CMakeFiles/cluedo_gui.dir/.rcc/qrc_qml.cpp.obj	972319cc6bbc8469
+644	3183	7198711538672392	CMakeFiles/cluedo_gui.dir/client.cpp.obj	1f47f742da922448
+648	5132	7198711558164468	CMakeFiles/cluedo_gui.dir/main.cpp.obj	2d9192e1a5aeb9b2
+652	5269	7198711559535454	CMakeFiles/cluedo_gui.dir/testrunner.cpp.obj	18a0dcd433ed2ba6
+642	5429	7198711561131116	CMakeFiles/cluedo_gui.dir/cluedo_gui_autogen/mocs_compilation.cpp.obj	371d3ebb2d662a22
+5429	6093	7198711567739556	cluedo_gui.exe	b54240bee2d82cf

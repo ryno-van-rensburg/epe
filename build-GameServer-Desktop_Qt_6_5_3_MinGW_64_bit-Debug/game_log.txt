@@ -81,3 +81,6 @@ Player 1 added
 Player 1 start dice is: 7
 Player 2 added
 Player 2 start dice is: 6
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 11
