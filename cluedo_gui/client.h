@@ -9,7 +9,6 @@ class Client : public QObject
     Q_OBJECT
 public slots:
     //Slots from GUI:
-    bool playerHasCard(QString card);
     void setPlayerCards(QVector<QString> cards);
     void testReceiveMessage(QString& message);
     void onNameEntered(QString name);

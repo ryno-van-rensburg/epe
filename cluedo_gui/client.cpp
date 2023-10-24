@@ -417,10 +417,6 @@ void Client::onNameEntered(QString name){
 
 
 }
-bool Client::playerHasCard(QString card){
-    //check if card is owned
-    return false;
-}
 
 void Client::setPlayerTurn(int turn, int dice1, int dice2)
 {
