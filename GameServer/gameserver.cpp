@@ -708,12 +708,11 @@ void GameServer::SuggestionReceivedSlot(NetworkPlayer &player, QString person, Q
                 }
             }
         }
-
-        std::srand(std::time(nullptr));
-        int indexCardToShow = std::rand()%cardsToShow.length();
-        NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
-        s->showCardSlot(nPlayer, cardsToShow[indexCardToShow]);
     }
+    std::srand(std::time(nullptr));
+    int indexCardToShow = std::rand()%cardsToShow.length();
+    NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
+    s->showCardSlot(nPlayer, cardsToShow[indexCardToShow]);
 }
 
 // Implement the AccusationReceivedSlot function
