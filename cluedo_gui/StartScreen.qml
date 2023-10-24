@@ -202,10 +202,10 @@ Rectangle {
         }
         Timer {
                id: connectionTimer
-               interval:500  //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
+               interval:500
                running: false
+               repeat: true
                onTriggered: {
-
                        console.log("Reached: line 179")
                        if(p_accept){
                            switchToGameScreen()
@@ -220,7 +220,7 @@ Rectangle {
            }
         Timer {
             id:timeout
-            interval:100000
+            interval:10000
             running:false
             onTriggered:{
                 loading.visible = false
