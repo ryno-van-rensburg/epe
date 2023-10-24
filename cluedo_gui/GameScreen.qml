@@ -28,10 +28,14 @@ Rectangle
         height: 677
 
         MouseArea{
+            anchors.fill: parent
             onClicked: {
-                console.debug("x: " +MouseX + " y: " +MouseY)
+                console.debug("x: " +mouseX + " y: " +mouseY + " Room: " + client.getRoomNumber(mouseX, mouseY))
+
+
             }
         }
+
 
         Player {
             id: player1

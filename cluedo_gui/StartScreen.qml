@@ -166,12 +166,12 @@ Rectangle {
                 onClicked: {
                     console.log("Clicked on Confirm")
                     client.onNameEntered(textInput.text);
-                    //switchToGameScreen()
-                    if (validUsername) {
-                        closeTimer.running = true
-                        loading.visible =true
-                        namePrompt.visible = false
-                    }
+                    switchToGameScreen()
+                    //if (validUsername) {
+                    //    closeTimer.running = true
+                    //    loading.visible =true
+                    //    namePrompt.visible = false
+                   // }
                 }
             }
 
