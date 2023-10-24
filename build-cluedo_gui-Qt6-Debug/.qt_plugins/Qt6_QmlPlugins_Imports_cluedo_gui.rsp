@@ -1,0 +1,10 @@
+-rootPath
+/home/ryno/Documents/practicals/epe/group-6/cluedo_gui
+-cmake-output
+-output-file
+/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake
+-importPath
+/app/./qml
+/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug
+-qrcFiles
+/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/.rcc/qml.qrc

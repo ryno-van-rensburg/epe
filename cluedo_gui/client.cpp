@@ -3,12 +3,14 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <QMessageBox>
+#include <QVector>
+#include <QString>
 #include <QApplication>
 
 void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(accusationResultSignal(QList,bool)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList));
-    //QObject::connect(broker, SIGNAL(cardsDealt(QList)));
+    QObject::connect(broker, SIGNAL(cardsDealt(QVector<QString>)), this, SLOT(onCardsDealt(QVector<QString>)));
     //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
     QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
@@ -25,6 +27,29 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(playerResult(QString,QList,bool)));
     //QObject::connect(broker, SIGNAL(gameStateSignal(int,QJsonArray,int,int,QJsonArray));// somewhere
 }
+void Client::onCardsDealt(QVector<QString> cards) {
+    qDebug("Cards dealt gui update");
+    for (QString card:cards) {
+        qDebug() << card;
+    }
+    return;
+}
+
+
+void Client::setPlayerCards(QVector<QString> cards) {
+    this->playerCards = cards;
+    return;
+}
+
+bool Client::playerHasCard(QString card) {
+    for (QString t:this->playerCards)  {
+        if (card == t) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Client::playerTurnChanged(){
 
 };
@@ -49,6 +74,7 @@ void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int curr
     //this->setPlayerTurn(currentTurn,dice1,dice1);
 
 }
+
 int Client::getRoomNumber(int x, int y)
 {
     if ((x >= 0 && x < 221) && (y >= 0 && y < 100))// Room 7 Kitchen
@@ -97,7 +123,6 @@ Client::Client(QObject *parent)
     player4_id = "PLAYER 4";
     player5_id = "PLAYER 5";
     player6_id = "PLAYER 6";
-
 
 }
 /**
@@ -222,7 +247,7 @@ void Client::emitRequestConnectionSignal()
      bool ok;
      QString ipAddress = QInputDialog::getText(nullptr, "Server Details",
                                                 "Enter IP Address:", QLineEdit::Normal,
-                                                "", &ok);
+                                                "127.0.0.1", &ok);
         if (ok && !ipAddress.isEmpty()) {
         send_address =  QHostAddress(ipAddress).toIPv4Address();
         
@@ -288,7 +313,7 @@ void Client::onNameEntered(QString name){
     bool is_underscore = false; // if there's underscore followed after the group number
     bool is_lastnumber = false; // if there's a unique number at the end of the playerID
     bool funnysymbol = false; // if there is any symbol except underscore, i.e. .#$@
-
+    readtext = readtext.trimmed();
     if(readtext.isEmpty())
         is_emptytext = true;
 
@@ -389,7 +414,6 @@ void Client::onNameEntered(QString name){
     }
 
     // print examples of valid playerID
-
 
 
 }

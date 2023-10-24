@@ -242,6 +242,7 @@ void ClientMessageBroker::unpackPlayerTurn(Message &msg){
 }
 
 void ClientMessageBroker::unpackCardsDealt(Message &msg){
+    qDebug("Cards received");
     QJsonObject obj = msg.getObj();
     int numberOfCards = obj["Number_Of_Cards"].toInt();
     QVector<QString> cards;

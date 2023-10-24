@@ -302,11 +302,15 @@ void NetworkClient::handleMessage(){
             case (MESSAGE_TYPE::ACK):
             {
             // get message id and remove from ack list
+
+                qDebug("ack received");
             this->handleAck(msg);
             break;
             }
             case (MESSAGE_TYPE::ERROR):
             {
+
+                qDebug("error received");
             this->handleError(msg);
             break;
             }

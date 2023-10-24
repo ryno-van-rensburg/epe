@@ -10,6 +10,8 @@ class Client : public QObject
     //Q_PROPERTY(int playerTurn READ playerTurn WRITE setPlayerTurn NOTIFY playerTurnChanged)
 public slots:
     //Slots from GUI:
+    bool playerHasCard(QString card);
+    void setPlayerCards(QVector<QString> cards);
     void testReceiveMessage(QString& message);
     void onNameEntered(QString name);
     void onTurnEnded();
@@ -18,6 +20,7 @@ public slots:
     void onAccusationMade(QString room,QString person, QString item);
     void onSuggestionMade(QString room,QString person, QString item);
     void onSuggestionReceived(QString room,QString person, QString item);
+    void onCardsDealt(QVector<QString> cards);
     void onRequestAnswered(QString room,QString person, QString item);
     void emitConnectionAccepted();
     void emitConnectionRejected();
@@ -72,9 +75,11 @@ signals:
     void requestStateSlot();
     void sendConnectionRequest(QString username);
     void gameEndedSignal();
+
 private:
 
     void connectClientBroker();
+    QVector<QString> playerCards;
     ClientMessageBroker* broker = nullptr;
     int currentPlayerTurn;
     //int getRoomNumber(int x, int y); need to uncomment this later on. Once it works remove the Q_Invoke
