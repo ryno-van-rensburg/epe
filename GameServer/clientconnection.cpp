@@ -1,4 +1,5 @@
 #include "clientconnection.h"
+#include "serversession.h"
 #include <iostream>
 // This class should not delete any of the memory references passed to it!
 /**
@@ -53,8 +54,10 @@ ClientConnection::ClientConnection(QTcpSocket &connection, NetworkPlayer &player
     this->violationCounts.insert("OUT_OF_TURN", 0);
     this->violationCounts.insert("INVALID_MESSAGE_FORMAT", 0);
     this->violationCounts.insert("INVALID_MOVE", 0);
-
+    this->addr = connection.peerAddress();
+    this->ackValue = 0;
     this->playerObj = &playerObj;
+    QObject::connect(this->connection, SIGNAL(readyRead()), this, SLOT(handleIncomingData()));
     this->port = 0;
     this->isPlaying = false; // First need to check if the player is allowed into the lobby
 }
@@ -145,8 +148,10 @@ NetworkPlayer* ClientConnection::getPlayer(){
  */
 void ClientConnection::sendMessage(Message &msg)
 {
-    qDebug("Message sent");
+
     MESSAGE_TYPE type = msg.getType();
+    qDebug("Message sent");
+    qDebug() << msg.getType();
     QByteArray content = msg.getBytes();
     if (this->connection == nullptr){
         // TODO, tried sending message to nonexistent connection. This should never ever happen
@@ -170,6 +175,7 @@ void ClientConnection::sendMessage(Message &msg)
         if (shouldMessageBeAcked(msg.getType())) {
             // this signal is used to add the message to the ack queue.
             emit messageSent(msg);
+
         }
     }
     return;
@@ -180,17 +186,21 @@ void ClientConnection::sendMessage(Message &msg)
  * This function is called when a message is received from the client. It processes
  * the received data and constructs a `Message` object for further handling.
  */
-void ClientConnection::handleIncomingData()
-{
-    qDebug("Message received");
+void ClientConnection::handleIncomingData(){
+    qDebug("data received");
     QByteArray incomingData = this->connection->readAll();
 
     QByteArray buffer;
     QJsonParseError* errPtr = nullptr;
+    qDebug() << incomingData;
+    if (incomingData.isEmpty()) {
+        qDebug("empty");
+        return;
+    }
     for (int i = 0; i < incomingData.size(); i++) {
-    buffer.append(incomingData[i]);
-    QJsonDocument contents = QJsonDocument::fromJson(buffer, errPtr);
-
+        buffer.append(incomingData[i]);
+        QJsonDocument contents = QJsonDocument::fromJson(buffer, errPtr);
+        qDebug() << buffer;
     if (!contents.isNull() && contents.isObject()){
         buffer.clear();
         QJsonObject obj = contents.object();
@@ -204,11 +214,12 @@ void ClientConnection::handleIncomingData()
         }
         msg.setSource(this->connection);
         this->ackValue = obj["ID"].toInt();
-        emit messageReceived(msg);
+        //emit messageReceived(msg);
+        session->handleMessage(msg);
         }
+        return;
     }
-    }
-    return;
+}
 }
 
 

@@ -1,0 +1,83 @@
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 5
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Mustard, Green, White, Peacock, Plum
+Room cards: Study, Games Room, Bathroom, Court Yard, Living Room, Dining Room, Bedroom, Kitchen
+Weapon cards: Wrench, Lead Pipe, Dagger, Candlestick, Pistol
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 6
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Scarlet, Green, Peacock, Plum, Mustard
+Room cards: Bathroom, Living Room, Study, Garage, Kitchen, Games Room, Dining Room, Bedroom
+Weapon cards: Rope, Lead Pipe, Wrench, Dagger, Candlestick
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+Game started
+Player 1 has been dealt the following cards:
+Character cards: White, Green, Peacock, Mustard, Scarlet
+Room cards: Study, Kitchen, Bedroom, Garage, Bathroom, Court Yard, Living Room, Dining Room
+Weapon cards: Wrench, Lead Pipe, Candlestick, Pistol, Dagger
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 4
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 12
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 9
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 6
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 3
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 9
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 4
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 12
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 3
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 7
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 7
+Player 2 added
+Player 2 start dice is: 6

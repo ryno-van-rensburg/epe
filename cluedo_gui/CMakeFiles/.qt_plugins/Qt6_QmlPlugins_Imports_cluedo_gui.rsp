@@ -1,0 +1,11 @@
+-rootPath
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui
+-cmake-output
+-output-file
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake
+-importPath
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles
+-importPath
+C:/Qt/6.5.3/mingw_64/./qml
+-qrcFiles
+C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/.rcc/qml.qrc

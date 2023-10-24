@@ -175,6 +175,7 @@ Rectangle {
                         client.emitRequestConnectionSignal()
 
                     }
+
                 }
             }
 
@@ -206,14 +207,19 @@ Rectangle {
                running: false
                repeat: true
                onTriggered: {
-                       if(p_accept){
-                           switchToGameScreen()
-                       }
-                       if(p_reject){
-                           loading.visible = false
-                           namePrompt.visible = true
-                       }
-
+                   if (connectionRequested=== false){
+                     client.emitRequestConnectionSignal()
+                     connectionRequested = true
+                 } else {
+                    if(connectionAccepted === true){
+                        switchToGameScreen()
+                    }
+                    if(connectionRejected === true){
+                        loading.visible = false
+                        namePrompt.visible = true
+                    }
+                 }
+                    //switchToGameScreen()
                }
 
            }

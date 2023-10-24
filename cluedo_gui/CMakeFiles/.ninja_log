@@ -1,0 +1,19 @@
+# ninja log v5
+3	264	7198536349740435	.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake	3453df555e91d8df
+12	914	7198546137385001	C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/cluedo_gui_autogen/mocs_compilation.cpp	5ab01e97df7d2501
+3	264	7198536349740435	C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake	3453df555e91d8df
+12	914	7198546137385001	cluedo_gui_autogen/timestamp	5ab01e97df7d2501
+2736	3007	7198536377168501	.rcc/qrc_qml.cpp	ff9eb16d4df540ff
+12	914	7198546137385001	cluedo_gui_autogen/mocs_compilation.cpp	5ab01e97df7d2501
+2736	3007	7198536377168501	C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/.rcc/qrc_qml.cpp	ff9eb16d4df540ff
+12	914	7198546137385001	C:/Users/Justin/Desktop/I_Code/group-6/cluedo_gui/CMakeFiles/cluedo_gui_autogen/timestamp	5ab01e97df7d2501
+3068	7382	7198536404153044	CMakeFiles/cluedo_gui.dir/networkplayer.cpp.obj	b0de9dc8cd8d1bf
+3096	7441	7198536405082952	CMakeFiles/cluedo_gui.dir/CMakeFiles/.rcc/qrc_qml.cpp.obj	b6388598aca62ff
+3037	7783	7198536423177393	CMakeFiles/cluedo_gui.dir/message.cpp.obj	be018ae31a29c0fb
+3047	7784	7198536423649342	CMakeFiles/cluedo_gui.dir/networkclient.cpp.obj	1a948753d512f8b4
+3108	8106	7198536426911383	CMakeFiles/cluedo_gui.dir/clientmessagebroker.cpp.obj	ef73f0558235b136
+3026	8444	7198536431622819	CMakeFiles/cluedo_gui.dir/client.cpp.obj	adab035c64b7c013
+6777	7640	7198546204609260	cluedo_gui.exe	60d8664372721c0e
+972	6776	7198546196044905	CMakeFiles/cluedo_gui.dir/main.cpp.obj	8e3b3882983b484a
+3008	11936	7198536466463517	CMakeFiles/cluedo_gui.dir/cluedo_gui_autogen/mocs_compilation.cpp.obj	92f2f6ca409eabfb
+3082	11970	7198536466806533	CMakeFiles/cluedo_gui.dir/testrunner.cpp.obj	607331ecfdec9e36

@@ -154,15 +154,17 @@ NetworkPlayer* ServerSession::getPlayer(QString playerName){
 void ServerSession::handleNewConnection(){
      QTcpSocket* sock = this->serverConnection->nextPendingConnection();
      // check if this client is already connected
-     QHostAddress addr = sock->peerAddress();
-     for (int i =0; i < this->connections.size(); i++){
-         if (this->connections.at(i)->getAddr() == addr){
-            return;
-         }
-     }
+     //QHostAddress addr = sock->peerAddress();
+     //for (int i =0; i < this->connections.size(); i++){
+     //    if (this->connections.at(i)->getAddr() == addr){
+     //       return;
+     //    }
+    // }
      // create a new clientconnection without a player connection, and set not playing
      ClientConnection* connection = new ClientConnection(sock, this );
      this->connections.append(connection);
+     qDebug() << this->connections.size();
+     QObject::connect(sock, SIGNAL(readyRead()), connection, SLOT(handleIncomingData()));
      QObject::connect(connection, SIGNAL(messageReceived(Message&)), this, SLOT(handleMessage(Message&)));
      QObject::connect(connection, SIGNAL(violationsExceeded(QString,QString)), this, SLOT(kickPlayer(QString,QString)));
      return;
