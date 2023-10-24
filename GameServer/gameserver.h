@@ -32,7 +32,7 @@ private:
 
 
 public:
-    explicit GameServer(QObject *parent = nullptr);
+    explicit GameServer(int numPlayers,QObject *parent = nullptr);
     ~GameServer();
     QString GetGameID();
     QVector<Player*> GetPlayers();
@@ -65,6 +65,7 @@ signals:
     void DealCardsSignal(qint16 numPlayers, QVector<QVector<QString>> cards);
     void MovesAvailableSignal(QVector<int> optionsToMove);
     void portSignal(int port);
+    void acceptPlayer(QString username, QString person, int dice1, int dice2);
 
 public slots:
     void MoveRequestedSlot(NetworkPlayer &player, quint32 pos);

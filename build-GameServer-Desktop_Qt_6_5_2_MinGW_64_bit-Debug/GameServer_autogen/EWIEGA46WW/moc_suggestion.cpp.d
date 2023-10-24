@@ -1,9 +1,9 @@
 C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/GameServer_autogen/EWIEGA46WW/moc_suggestion.cpp: C:/Users/dunca/EPE/group-6/GameServer/suggestion.h \
   C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/GameServer_autogen/moc_predefs.h \
-  C:/Users/dunca/EPE/group-6/GameServer/CharacterCard.h \
-  C:/Users/dunca/EPE/group-6/GameServer/RoomCard.h \
-  C:/Users/dunca/EPE/group-6/GameServer/WeaponCard.h \
+  C:/Users/dunca/EPE/group-6/GameServer/charactercard.h \
   C:/Users/dunca/EPE/group-6/GameServer/player.h \
+  C:/Users/dunca/EPE/group-6/GameServer/roomcard.h \
+  C:/Users/dunca/EPE/group-6/GameServer/weaponcard.h \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QObject \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QString \
   D:/Qt/6.5.2/mingw_64/include/QtCore/QVector \

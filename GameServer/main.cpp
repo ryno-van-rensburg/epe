@@ -20,6 +20,10 @@
 
 int main(int argc, char *argv[])
 {
+    std::cout<<"Enter number of players:"<<std::endl;
+    int temp;
+    std::cin>>temp;
+    GameServer g = GameServer(temp);
     QCoreApplication app(argc,argv);
 
     return app.exec();

@@ -7,9 +7,10 @@
 
 
 // Constructor for GameServer class. Initializes log file for game events.
-GameServer::GameServer(QObject *parent)
+GameServer::GameServer(int numPlayers,QObject *parent)
     : QObject{parent}
 {
+    this->numPlayers = numPlayers;
     // Initialize log file for game events
     log = new QFile("game_log.txt");
     if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
@@ -767,7 +768,9 @@ void GameServer::AddPlayerSlot(QString username)
             logEvent("Player 6 added");
         }
         //Log the start dice roll for each player
-        startDice.append(newPlayer->RollDice()+newPlayer->RollDice());
+        int dice1 = newPlayer->RollDice();
+        int dice2 = newPlayer->RollDice();
+        startDice.append(dice1 + dice2);
         if (players.size() == 1)
         {
             QString d = QString::number(startDice[0]);
@@ -798,6 +801,9 @@ void GameServer::AddPlayerSlot(QString username)
             QString d = QString::number(startDice[5]);
             logEvent("Player 6 start dice is: "+d);
         }
+        ServerMessageBroker* s = new ServerMessageBroker;
+        QObject::connect(this,&GameServer::acceptPlayer,s,&ServerMessageBroker::acceptPlayer);
+        emit this->acceptPlayer(newPlayer->GetUsername(),newPlayer->GetPerson(),dice1,dice2);
         if (players.size() == numPlayers)
         {
             int currentTurn = 0;

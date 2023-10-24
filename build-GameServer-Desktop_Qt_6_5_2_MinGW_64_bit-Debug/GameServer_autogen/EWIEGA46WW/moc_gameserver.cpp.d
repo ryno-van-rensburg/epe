@@ -1,8 +1,5 @@
 C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/GameServer_autogen/EWIEGA46WW/moc_gameserver.cpp: C:/Users/dunca/EPE/group-6/GameServer/gameserver.h \
   C:/Users/dunca/EPE/group-6/build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/GameServer_autogen/moc_predefs.h \
-  C:/Users/dunca/EPE/group-6/GameServer/CharacterCard.h \
-  C:/Users/dunca/EPE/group-6/GameServer/RoomCard.h \
-  C:/Users/dunca/EPE/group-6/GameServer/WeaponCard.h \
   C:/Users/dunca/EPE/group-6/GameServer/accusation.h \
   C:/Users/dunca/EPE/group-6/GameServer/charactercard.h \
   C:/Users/dunca/EPE/group-6/GameServer/clientconnection.h \
