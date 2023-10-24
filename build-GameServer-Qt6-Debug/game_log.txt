@@ -1,0 +1,53 @@
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Green, Plum, Mustard, White, Scarlet
+Room cards: Living Room, Study, Bedroom, Court Yard, Dining Room, Games Room, Kitchen, Garage
+Weapon cards: Dagger, Lead Pipe, Candlestick, Wrench, Pistol
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 6
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Green, Peacock, Scarlet, Plum, White
+Room cards: Games Room, Kitchen, Garage, Living Room, Bedroom, Study, Bathroom, Court Yard
+Weapon cards: Wrench, Candlestick, Rope, Dagger, Lead Pipe
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 3
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Green, Peacock, Plum, Mustard, Scarlet
+Room cards: Games Room, Bathroom, Study, Kitchen, Garage, Bedroom, Living Room, Dining Room
+Weapon cards: Lead Pipe, Rope, Wrench, Dagger, Candlestick
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 6
+Game started
+Player 1 has been dealt the following cards:
+Character cards: White, Green, Plum, Peacock, Mustard
+Room cards: Games Room, Garage, Bedroom, Court Yard, Living Room, Study, Dining Room, Bathroom
+Weapon cards: Pistol, Wrench, Dagger, Candlestick, Lead Pipe
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 10
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Green, White, Scarlet, Mustard, Peacock
+Room cards: Dining Room, Study, Living Room, Games Room, Court Yard, Garage, Bedroom, Bathroom
+Weapon cards: Dagger, Rope, Pistol, Candlestick, Lead Pipe
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 8
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Green, Peacock, Mustard, White, Scarlet
+Room cards: Dining Room, Kitchen, Study, Bathroom, Living Room, Games Room, Bedroom, Garage
+Weapon cards: Lead Pipe, Rope, Candlestick, Pistol, Wrench
