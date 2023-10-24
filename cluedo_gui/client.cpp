@@ -15,7 +15,7 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
     QObject::connect(&broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
-    //QObject::connect(broker, SIGNAL(gameEndedSignal()));
+    QObject::connect(&broker, SIGNAL(gameEndedSignal()),this, SLOT(onGameEnded()));
     //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)), this, SLOT(onGameStarted(int, QJSonArray,int,int,QList)));
     //QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
@@ -461,6 +461,7 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
         player3_id = username;
         temp_number = 3;
     }
+    
     if (username == this->my_id)
     {
         // TODO assign user to player accepted.

@@ -86,3 +86,15 @@
 13	81	1698140078446477136	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/.rcc/qrc_qml.cpp	22ba0cecb7182b06
 82	1241	1698140079606551642	CMakeFiles/cluedo_gui.dir/.rcc/qrc_qml.cpp.o	f32d0386943b5c17
 1241	2247	1698140080602615489	cluedo_gui	7d3dcfdead6127a5
+15	55	1698140812133345053	cluedo_gui_autogen/timestamp	a96e258c1eeaf1cd
+15	55	1698140812133345053	cluedo_gui_autogen/mocs_compilation.cpp	a96e258c1eeaf1cd
+15	55	1698140812133345053	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/cluedo_gui_autogen/timestamp	a96e258c1eeaf1cd
+15	55	1698140812133345053	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/cluedo_gui_autogen/mocs_compilation.cpp	a96e258c1eeaf1cd
+60	5876	1698140817953457168	CMakeFiles/cluedo_gui.dir/networkclient.cpp.o	69d37b9a5b91cb7a
+59	10737	1698140822813550082	CMakeFiles/cluedo_gui.dir/main.cpp.o	2677419af5e5ce4e
+14	59	1698140850114060368	cluedo_gui_autogen/timestamp	a96e258c1eeaf1cd
+14	59	1698140850114060368	cluedo_gui_autogen/mocs_compilation.cpp	a96e258c1eeaf1cd
+14	59	1698140850114060368	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/cluedo_gui_autogen/timestamp	a96e258c1eeaf1cd
+14	59	1698140850114060368	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/cluedo_gui_autogen/mocs_compilation.cpp	a96e258c1eeaf1cd
+63	4605	1698140854654143356	CMakeFiles/cluedo_gui.dir/client.cpp.o	71ecaa4384dd25d6
+4605	5640	1698140855682162074	cluedo_gui	7d3dcfdead6127a5
