@@ -497,11 +497,11 @@ void Client::onCardShown(bool hasCard, QString asked, QString showed) // Multica
     }
     else
     {
-       QMessageBox msgBox;
-       msgBox.setText(showed + "hasn't shown a card" + asked);
-       msgBox.setInformativeText(showed + "has shown a card" + asked);
-       msgBox.setStandardButtons(QMessageBox::Ok);
-       msgBox.setDefaultButton(QMessageBox::Ok);
+      QMessageBox msgBox;
+      msgBox.setText(showed + "hasn't shown a card" + asked);
+      msgBox.setInformativeText(showed + "has shown a card" + asked);
+      msgBox.setStandardButtons(QMessageBox::Ok);
+      msgBox.setDefaultButton(QMessageBox::Ok);
       msgBox.exec();
     }
 
@@ -518,3 +518,13 @@ void Client::onCardShownToPlayer(QString username, QString card)      // Unicast
 
 }
 
+void Client::onGameEnded(){
+       QMessageBox msgBox;
+       msgBox.setText("Game has ended");
+       msgBox.setInformativeText("Game has ended");
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+       msgBox.exec();
+       
+       emit gameEndedSignal();
+}
