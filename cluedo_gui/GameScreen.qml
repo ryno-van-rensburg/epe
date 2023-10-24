@@ -296,17 +296,14 @@ Rectangle
             }
         }
 
-
-
-
-        Image {
+        Rectangle {
             id: panel
             x: -24
             y: 0
             width: 282
             height: 1080
-            source: "images/panel.png"
-            fillMode: Image.Stretch
+            color: "#3b4254"
+
 
             MouseArea {
                 id: btnSuggest
