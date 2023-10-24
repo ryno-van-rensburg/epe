@@ -67,6 +67,7 @@ static constexpr auto qt_meta_stringdata_CLASSClientENDCLASS = QtMocHelpers::str
     "makeSuggestion",
     "requestStateSlot",
     "sendConnectionRequest",
+    "gameEndedSignal",
     "testReceiveMessage",
     "onNameEntered",
     "name",
@@ -86,6 +87,7 @@ static constexpr auto qt_meta_stringdata_CLASSClientENDCLASS = QtMocHelpers::str
     "asked",
     "showed",
     "onCardShownToPlayer",
+    "onGameEnded",
     "playerTurn",
     "isMyTurn",
     "getCurrentDiceValue",
@@ -98,7 +100,7 @@ static constexpr auto qt_meta_stringdata_CLASSClientENDCLASS = QtMocHelpers::str
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSClientENDCLASS_t {
-    uint offsetsAndSizes[114];
+    uint offsetsAndSizes[118];
     char stringdata0[7];
     char stringdata1[19];
     char stringdata2[1];
@@ -128,34 +130,36 @@ struct qt_meta_stringdata_CLASSClientENDCLASS_t {
     char stringdata26[15];
     char stringdata27[17];
     char stringdata28[22];
-    char stringdata29[19];
-    char stringdata30[14];
-    char stringdata31[5];
-    char stringdata32[12];
-    char stringdata33[17];
-    char stringdata34[6];
+    char stringdata29[16];
+    char stringdata30[19];
+    char stringdata31[14];
+    char stringdata32[5];
+    char stringdata33[12];
+    char stringdata34[17];
     char stringdata35[6];
-    char stringdata36[17];
-    char stringdata37[5];
-    char stringdata38[17];
-    char stringdata39[21];
-    char stringdata40[18];
-    char stringdata41[23];
+    char stringdata36[6];
+    char stringdata37[17];
+    char stringdata38[5];
+    char stringdata39[17];
+    char stringdata40[21];
+    char stringdata41[18];
     char stringdata42[23];
-    char stringdata43[12];
-    char stringdata44[8];
-    char stringdata45[6];
-    char stringdata46[7];
-    char stringdata47[20];
-    char stringdata48[11];
-    char stringdata49[9];
-    char stringdata50[20];
-    char stringdata51[18];
-    char stringdata52[12];
-    char stringdata53[2];
-    char stringdata54[28];
-    char stringdata55[8];
-    char stringdata56[3];
+    char stringdata43[23];
+    char stringdata44[12];
+    char stringdata45[8];
+    char stringdata46[6];
+    char stringdata47[7];
+    char stringdata48[20];
+    char stringdata49[12];
+    char stringdata50[11];
+    char stringdata51[9];
+    char stringdata52[20];
+    char stringdata53[18];
+    char stringdata54[12];
+    char stringdata55[2];
+    char stringdata56[28];
+    char stringdata57[8];
+    char stringdata58[3];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSClientENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -190,34 +194,36 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSClientENDCLASS_t qt_meta_string
         QT_MOC_LITERAL(282, 14),  // "makeSuggestion"
         QT_MOC_LITERAL(297, 16),  // "requestStateSlot"
         QT_MOC_LITERAL(314, 21),  // "sendConnectionRequest"
-        QT_MOC_LITERAL(336, 18),  // "testReceiveMessage"
-        QT_MOC_LITERAL(355, 13),  // "onNameEntered"
-        QT_MOC_LITERAL(369, 4),  // "name"
-        QT_MOC_LITERAL(374, 11),  // "onTurnEnded"
-        QT_MOC_LITERAL(386, 16),  // "onPlayerAccepted"
-        QT_MOC_LITERAL(403, 5),  // "dice1"
-        QT_MOC_LITERAL(409, 5),  // "dice2"
-        QT_MOC_LITERAL(415, 16),  // "onAccusationMade"
-        QT_MOC_LITERAL(432, 4),  // "item"
-        QT_MOC_LITERAL(437, 16),  // "onSuggestionMade"
-        QT_MOC_LITERAL(454, 20),  // "onSuggestionReceived"
-        QT_MOC_LITERAL(475, 17),  // "onRequestAnswered"
-        QT_MOC_LITERAL(493, 22),  // "emitConnectionAccepted"
-        QT_MOC_LITERAL(516, 22),  // "emitConnectionRejected"
-        QT_MOC_LITERAL(539, 11),  // "onCardShown"
-        QT_MOC_LITERAL(551, 7),  // "hasCard"
-        QT_MOC_LITERAL(559, 5),  // "asked"
-        QT_MOC_LITERAL(565, 6),  // "showed"
-        QT_MOC_LITERAL(572, 19),  // "onCardShownToPlayer"
-        QT_MOC_LITERAL(592, 10),  // "playerTurn"
-        QT_MOC_LITERAL(603, 8),  // "isMyTurn"
-        QT_MOC_LITERAL(612, 19),  // "getCurrentDiceValue"
-        QT_MOC_LITERAL(632, 17),  // "playerPositionSet"
-        QT_MOC_LITERAL(650, 11),  // "getPlayerID"
-        QT_MOC_LITERAL(662, 1),  // "n"
-        QT_MOC_LITERAL(664, 27),  // "emitRequestConnectionSignal"
-        QT_MOC_LITERAL(692, 7),  // "testBox"
-        QT_MOC_LITERAL(700, 2)   // "in"
+        QT_MOC_LITERAL(336, 15),  // "gameEndedSignal"
+        QT_MOC_LITERAL(352, 18),  // "testReceiveMessage"
+        QT_MOC_LITERAL(371, 13),  // "onNameEntered"
+        QT_MOC_LITERAL(385, 4),  // "name"
+        QT_MOC_LITERAL(390, 11),  // "onTurnEnded"
+        QT_MOC_LITERAL(402, 16),  // "onPlayerAccepted"
+        QT_MOC_LITERAL(419, 5),  // "dice1"
+        QT_MOC_LITERAL(425, 5),  // "dice2"
+        QT_MOC_LITERAL(431, 16),  // "onAccusationMade"
+        QT_MOC_LITERAL(448, 4),  // "item"
+        QT_MOC_LITERAL(453, 16),  // "onSuggestionMade"
+        QT_MOC_LITERAL(470, 20),  // "onSuggestionReceived"
+        QT_MOC_LITERAL(491, 17),  // "onRequestAnswered"
+        QT_MOC_LITERAL(509, 22),  // "emitConnectionAccepted"
+        QT_MOC_LITERAL(532, 22),  // "emitConnectionRejected"
+        QT_MOC_LITERAL(555, 11),  // "onCardShown"
+        QT_MOC_LITERAL(567, 7),  // "hasCard"
+        QT_MOC_LITERAL(575, 5),  // "asked"
+        QT_MOC_LITERAL(581, 6),  // "showed"
+        QT_MOC_LITERAL(588, 19),  // "onCardShownToPlayer"
+        QT_MOC_LITERAL(608, 11),  // "onGameEnded"
+        QT_MOC_LITERAL(620, 10),  // "playerTurn"
+        QT_MOC_LITERAL(631, 8),  // "isMyTurn"
+        QT_MOC_LITERAL(640, 19),  // "getCurrentDiceValue"
+        QT_MOC_LITERAL(660, 17),  // "playerPositionSet"
+        QT_MOC_LITERAL(678, 11),  // "getPlayerID"
+        QT_MOC_LITERAL(690, 1),  // "n"
+        QT_MOC_LITERAL(692, 27),  // "emitRequestConnectionSignal"
+        QT_MOC_LITERAL(720, 7),  // "testBox"
+        QT_MOC_LITERAL(728, 2)   // "in"
     },
     "Client",
     "connectionAccepted",
@@ -248,6 +254,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSClientENDCLASS_t qt_meta_string
     "makeSuggestion",
     "requestStateSlot",
     "sendConnectionRequest",
+    "gameEndedSignal",
     "testReceiveMessage",
     "onNameEntered",
     "name",
@@ -267,6 +274,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSClientENDCLASS_t qt_meta_string
     "asked",
     "showed",
     "onCardShownToPlayer",
+    "onGameEnded",
     "playerTurn",
     "isMyTurn",
     "getCurrentDiceValue",
@@ -287,51 +295,53 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSClientENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      33,   14, // methods
-       1,  333, // properties
+      35,   14, // methods
+       1,  347, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      14,       // signalCount
+      15,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  212,    2, 0x06,    2 /* Public */,
-       3,    0,  213,    2, 0x06,    3 /* Public */,
-       4,    0,  214,    2, 0x06,    4 /* Public */,
-       5,    1,  215,    2, 0x06,    5 /* Public */,
-       8,    0,  218,    2, 0x06,    7 /* Public */,
-       9,    3,  219,    2, 0x06,    8 /* Public */,
-      13,    0,  226,    2, 0x06,   12 /* Public */,
-      14,    3,  227,    2, 0x06,   13 /* Public */,
-      18,    1,  234,    2, 0x06,   17 /* Public */,
-      20,    1,  237,    2, 0x06,   19 /* Public */,
-      22,    3,  240,    2, 0x06,   21 /* Public */,
-      26,    3,  247,    2, 0x06,   25 /* Public */,
-      27,    0,  254,    2, 0x06,   29 /* Public */,
-      28,    1,  255,    2, 0x06,   30 /* Public */,
+       1,    0,  224,    2, 0x06,    2 /* Public */,
+       3,    0,  225,    2, 0x06,    3 /* Public */,
+       4,    0,  226,    2, 0x06,    4 /* Public */,
+       5,    1,  227,    2, 0x06,    5 /* Public */,
+       8,    0,  230,    2, 0x06,    7 /* Public */,
+       9,    3,  231,    2, 0x06,    8 /* Public */,
+      13,    0,  238,    2, 0x06,   12 /* Public */,
+      14,    3,  239,    2, 0x06,   13 /* Public */,
+      18,    1,  246,    2, 0x06,   17 /* Public */,
+      20,    1,  249,    2, 0x06,   19 /* Public */,
+      22,    3,  252,    2, 0x06,   21 /* Public */,
+      26,    3,  259,    2, 0x06,   25 /* Public */,
+      27,    0,  266,    2, 0x06,   29 /* Public */,
+      28,    1,  267,    2, 0x06,   30 /* Public */,
+      29,    0,  270,    2, 0x06,   32 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      29,    1,  258,    2, 0x0a,   32 /* Public */,
-      30,    1,  261,    2, 0x0a,   34 /* Public */,
-      32,    0,  264,    2, 0x0a,   36 /* Public */,
-      33,    4,  265,    2, 0x0a,   37 /* Public */,
-      36,    3,  274,    2, 0x0a,   42 /* Public */,
-      38,    3,  281,    2, 0x0a,   46 /* Public */,
-      39,    3,  288,    2, 0x0a,   50 /* Public */,
-      40,    3,  295,    2, 0x0a,   54 /* Public */,
-      41,    0,  302,    2, 0x0a,   58 /* Public */,
-      42,    0,  303,    2, 0x0a,   59 /* Public */,
-      43,    3,  304,    2, 0x0a,   60 /* Public */,
-      47,    2,  311,    2, 0x0a,   64 /* Public */,
+      30,    1,  271,    2, 0x0a,   33 /* Public */,
+      31,    1,  274,    2, 0x0a,   35 /* Public */,
+      33,    0,  277,    2, 0x0a,   37 /* Public */,
+      34,    4,  278,    2, 0x0a,   38 /* Public */,
+      37,    3,  287,    2, 0x0a,   43 /* Public */,
+      39,    3,  294,    2, 0x0a,   47 /* Public */,
+      40,    3,  301,    2, 0x0a,   51 /* Public */,
+      41,    3,  308,    2, 0x0a,   55 /* Public */,
+      42,    0,  315,    2, 0x0a,   59 /* Public */,
+      43,    0,  316,    2, 0x0a,   60 /* Public */,
+      44,    3,  317,    2, 0x0a,   61 /* Public */,
+      48,    2,  324,    2, 0x0a,   65 /* Public */,
+      49,    0,  329,    2, 0x0a,   68 /* Public */,
 
  // methods: name, argc, parameters, tag, flags, initial metatype offsets
-      48,    0,  316,    2, 0x102,   67 /* Public | MethodIsConst  */,
-      49,    0,  317,    2, 0x102,   68 /* Public | MethodIsConst  */,
-      50,    0,  318,    2, 0x102,   69 /* Public | MethodIsConst  */,
-      51,    3,  319,    2, 0x02,   70 /* Public */,
-      52,    1,  326,    2, 0x02,   74 /* Public */,
-      54,    0,  329,    2, 0x02,   76 /* Public */,
-      55,    1,  330,    2, 0x02,   77 /* Public */,
+      50,    0,  330,    2, 0x102,   69 /* Public | MethodIsConst  */,
+      51,    0,  331,    2, 0x102,   70 /* Public | MethodIsConst  */,
+      52,    0,  332,    2, 0x102,   71 /* Public | MethodIsConst  */,
+      53,    3,  333,    2, 0x02,   72 /* Public */,
+      54,    1,  340,    2, 0x02,   76 /* Public */,
+      56,    0,  343,    2, 0x02,   78 /* Public */,
+      57,    1,  344,    2, 0x02,   79 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -348,32 +358,34 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSClientENDCLASS[] = {
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   23,   24,   25,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   17,
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 6,    7,
-    QMetaType::Void, QMetaType::QString,   31,
+    QMetaType::Void, QMetaType::QString,   32,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int,   17,   23,   34,   35,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   37,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   37,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   37,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   37,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int,   17,   23,   35,   36,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   38,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   38,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   38,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   25,   23,   38,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   44,   45,   46,
+    QMetaType::Void, QMetaType::Bool, QMetaType::QString, QMetaType::QString,   45,   46,   47,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,   17,   21,
+    QMetaType::Void,
 
  // methods: parameters
     QMetaType::Int,
     QMetaType::Bool,
     QMetaType::Int,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   10,   11,   12,
-    QMetaType::QString, QMetaType::Int,   53,
+    QMetaType::QString, QMetaType::Int,   55,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   56,
+    QMetaType::Void, QMetaType::QString,   58,
 
  // properties: name, type, flags
-      48, QMetaType::Int, 0x00015103, uint(6), 0,
+      50, QMetaType::Int, 0x00015103, uint(6), 0,
 
        0        // eod
 };
@@ -433,6 +445,8 @@ Q_CONSTINIT const QMetaObject Client::staticMetaObject = { {
         // method 'sendConnectionRequest'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        // method 'gameEndedSignal'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'testReceiveMessage'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString &, std::false_type>,
@@ -480,6 +494,8 @@ Q_CONSTINIT const QMetaObject Client::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        // method 'onGameEnded'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'playerTurn'
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'isMyTurn'
@@ -523,29 +539,31 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 11: _t->makeSuggestion((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
         case 12: _t->requestStateSlot(); break;
         case 13: _t->sendConnectionRequest((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 14: _t->testReceiveMessage((*reinterpret_cast< std::add_pointer_t<QString&>>(_a[1]))); break;
-        case 15: _t->onNameEntered((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 16: _t->onTurnEnded(); break;
-        case 17: _t->onPlayerAccepted((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4]))); break;
-        case 18: _t->onAccusationMade((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 19: _t->onSuggestionMade((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 20: _t->onSuggestionReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 21: _t->onRequestAnswered((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 22: _t->emitConnectionAccepted(); break;
-        case 23: _t->emitConnectionRejected(); break;
-        case 24: _t->onCardShown((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 25: _t->onCardShownToPlayer((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 26: { int _r = _t->playerTurn();
+        case 14: _t->gameEndedSignal(); break;
+        case 15: _t->testReceiveMessage((*reinterpret_cast< std::add_pointer_t<QString&>>(_a[1]))); break;
+        case 16: _t->onNameEntered((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 17: _t->onTurnEnded(); break;
+        case 18: _t->onPlayerAccepted((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4]))); break;
+        case 19: _t->onAccusationMade((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 20: _t->onSuggestionMade((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 21: _t->onSuggestionReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 22: _t->onRequestAnswered((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 23: _t->emitConnectionAccepted(); break;
+        case 24: _t->emitConnectionRejected(); break;
+        case 25: _t->onCardShown((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 26: _t->onCardShownToPlayer((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 27: _t->onGameEnded(); break;
+        case 28: { int _r = _t->playerTurn();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 27: { bool _r = _t->isMyTurn();
+        case 29: { bool _r = _t->isMyTurn();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 28: { int _r = _t->getCurrentDiceValue();
+        case 30: { int _r = _t->getCurrentDiceValue();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 29: _t->playerPositionSet((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
-        case 30: { QString _r = _t->getPlayerID((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])));
+        case 31: _t->playerPositionSet((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
+        case 32: { QString _r = _t->getPlayerID((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
-        case 31: _t->emitRequestConnectionSignal(); break;
-        case 32: _t->testBox((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 33: _t->emitRequestConnectionSignal(); break;
+        case 34: _t->testBox((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -648,6 +666,13 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
                 return;
             }
         }
+        {
+            using _t = void (Client::*)();
+            if (_t _q_method = &Client::gameEndedSignal; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 14;
+                return;
+            }
+        }
     }else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<Client *>(_o);
         (void)_t;
@@ -688,13 +713,13 @@ int Client::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 33)
+        if (_id < 35)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 33;
+        _id -= 35;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 33)
+        if (_id < 35)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 33;
+        _id -= 35;
     }else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
@@ -794,5 +819,11 @@ void Client::sendConnectionRequest(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 13, _a);
+}
+
+// SIGNAL 14
+void Client::gameEndedSignal()
+{
+    QMetaObject::activate(this, &staticMetaObject, 14, nullptr);
 }
 QT_WARNING_POP
