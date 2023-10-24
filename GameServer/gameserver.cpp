@@ -23,10 +23,11 @@ GameServer::GameServer(int numPlayers,QObject *parent)
     {
         printf("Failed to open log");
     }
-    QObject::connect(this,&GameServer::portSignal,this->s,&ServerMessageBroker::listen);
+    // QObject::connect(this,&GameServer::portSignal,this->s,&ServerMessageBroker::listen);
     QString d = QString::number(42069);
     logEvent("PORT NUMBER: "+d);
-    emit this->portSignal(42069);
+    // emit this->portSignal(42069);
+    s->listen(42069);
 }
 
 // Destructor for GameServer class. Frees memory allocated for players and log file.
@@ -741,7 +742,7 @@ void GameServer::CardShownSlot(NetworkPlayer &player, QString cardName)
             playerMakingSuggestion = temp;
         }
     }
-    NetworkPlayer recplayer(playerMakingSuggestion->GetUsername(),
+    NetworkPlayer* recplayer = new NetworkPlayer(playerMakingSuggestion->GetUsername(),
                          playerMakingSuggestion->GetPerson(),
                          playerMakingSuggestion->GetAI());
 
