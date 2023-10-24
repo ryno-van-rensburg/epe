@@ -1,0 +1,11 @@
+-rootPath
+C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui
+-cmake-output
+-output-file
+C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake
+-importPath
+C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug
+-importPath
+C:/Qt/6.5.3/mingw_64/./qml
+-qrcFiles
+C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.rcc/qml.qrc

@@ -31,7 +31,7 @@ signals:
     void cardShownToPlayer(QString username, QString card);      // Unicast
     void playerKicked(QString username, QString reason);
     void gameEndedSignal();
-    void gameStateSignal(int numPlayers, QJsonArray players, int dice, int currentTurn, QJsonArray faceupCards);
+    void gameStateSignal(int numPlayers, QJsonArray players, int dice, int currentTurn, QVector<QString> faceupCards);
     void playerResult(QString username, QVector<QString> accusation,bool win);
     // error signal can be sent in response to ANY message you send, so make sure you handle all of them 
     // in a single slot. 

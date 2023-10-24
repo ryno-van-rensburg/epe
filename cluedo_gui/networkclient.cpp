@@ -82,6 +82,7 @@ void NetworkClient::connect(quint32 ipAddr, quint16 port)
     }
     this->serverConnection->connectToHost(addr, port);
     serverConnection->waitForConnected(20000);
+    qDebug("connected correctly");
     return;
 }
 /**
@@ -270,6 +271,7 @@ QString NetworkClient::getUsername(){
 // TODO apply factory design pattern to messages.
 
 void NetworkClient::handleMessage(){
+    qDebug("Message handled");
     QByteArray incomingData = this->serverConnection->readAll();
     if (incomingData.isEmpty()){
     return;
@@ -293,6 +295,7 @@ void NetworkClient::handleMessage(){
             {
             case (MESSAGE_TYPE::GAME_STATE) : {
             // Extract game state from data and send it on to gui
+                qDebug("game started");
             emit this->gameStateReceived(msg);
             break;
             }
@@ -308,35 +311,40 @@ void NetworkClient::handleMessage(){
             break;
             }
             case (MESSAGE_TYPE::DICE_ROLL):{
-
+                qDebug("player turn");
                 emit this->playerTurn(msg);
         break;
             }
             case(SUGGESTION_STATE_UPDATE):
             {
+        qDebug("suggestion state");
             emit this->suggestionStateUpdate(msg);
             break;
             }
 
             case(GAME_STATE_REPLY):
             {
+            qDebug("game state replied");
             emit this->gameStateReceived(msg);
             break;
             }
 
             case(GAME_STATE_UPDATE):
             {
+            qDebug("move updated");
             emit this->moveUpdate(msg);
             break;
             }
 
             case(CONNECTION_DENIED):
             {
+            qDebug("connection rejected");
             emit this->connectionDenied(msg);
             break;
             }
 
             case(PLAYER_ACCEPTED):{
+                qDebug("player joined");
                 this->playerObj = new NetworkPlayer();
                 this->playerObj->setPerson(msg.getObj()["Person"].toString());
                 this->playerObj->setUsername(msg.getObj()["Username"].toString());
@@ -344,18 +352,22 @@ void NetworkClient::handleMessage(){
             break;
             }
             case(CARD_SHOWN): {
+            qDebug("card show");
             emit this->cardShown(msg);
             break;
             }
             case (GAME_TERMINATION):{
+            qDebug("game debug");
             emit gameTerminated(msg);
             break;
             }
             case (DEAL_CARDS) : {
+            qDebug("cards dealt");
             emit cardsDealt(msg);
             break;
             }
             case (PLAYER_KICKED):{
+            qDebug("player kicked");
             emit this->playerKicked(msg);
             break;
             }

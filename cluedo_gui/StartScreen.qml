@@ -166,12 +166,22 @@ Rectangle {
                 onClicked: {
                     console.log("Clicked on Confirm")
                     client.onNameEntered(textInput.text);
+<<<<<<< HEAD
                     switchToGameScreen()
                     //if (validUsername) {
                     //    closeTimer.running = true
                     //    loading.visible =true
                     //    namePrompt.visible = false
                    // }
+=======
+                    //switchToGameScreen()
+                    if (validUsername) {
+                        connectionTimer.running = true
+                        timeout.running = true
+                        loading.visible =true
+                        namePrompt.visible = false
+                    }
+>>>>>>> plz_integrate
                 }
             }
 
@@ -198,24 +208,36 @@ Rectangle {
             source: "images/loading.gif"
         }
         Timer {
-               id: closeTimer
+               id: connectionTimer
                interval:500  //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
                running: false
                onTriggered: {
                    if (connectionRequested=== false){
                      client.emitRequestConnectionSignal()
-                     console.debug("ConnectionRequested")
                      connectionRequested = true
                  } else {
-                    if(connectionAccpeted === true){
+                    if(connectionAccepted === true){
                         switchToGameScreen()
                     }
                     if(connectionRejected === true){
-                        Qt.quit()
+                        loading.visible = false
+                        namePrompt.visible = true
                     }
                  }
                }
            }
+        Timer {
+            id:timeout
+            interval:100000
+            running:false
+            onTriggered:{
+                loading.visible = false
+                connectionTimer.running = false
+                namePrompt.visible = true
+                validUsername = false
+                connectionRequested = false
+            }
+        }
         Connections {
             target: client
             ignoreUnknownSignals: true

@@ -1,0 +1,25 @@
+# ninja log v5
+1	421	7198381041649363	.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake	9a80e2a388e5982a
+1	421	7198381041649363	C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake	9a80e2a388e5982a
+421	2363	7198381059065429	cluedo_gui_autogen/timestamp	2d278e9e54e7217e
+421	2363	7198381059065429	cluedo_gui_autogen/mocs_compilation.cpp	2d278e9e54e7217e
+421	2363	7198381059065429	C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/cluedo_gui_autogen/timestamp	2d278e9e54e7217e
+421	2363	7198381059065429	C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/cluedo_gui_autogen/mocs_compilation.cpp	2d278e9e54e7217e
+2365	2516	7198381062744950	.rcc/qrc_qml.cpp	4bb89a471e7814c5
+2365	2516	7198381062744950	C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.rcc/qrc_qml.cpp	4bb89a471e7814c5
+2537	4865	7198381086145126	CMakeFiles/cluedo_gui.dir/networkplayer.cpp.obj	e66944672c03cc8b
+2544	5148	7198381088544879	CMakeFiles/cluedo_gui.dir/.rcc/qrc_qml.cpp.obj	d5b4ba0c5f41e22
+2525	6752	7198381105020060	CMakeFiles/cluedo_gui.dir/message.cpp.obj	741198f287467319
+2519	6755	7198381105093151	CMakeFiles/cluedo_gui.dir/client.cpp.obj	253601cd7f2fdce2
+2540	6758	7198381105093151	CMakeFiles/cluedo_gui.dir/clientmessagebroker.cpp.obj	ad2742a55d601675
+2533	6761	7198381105164812	CMakeFiles/cluedo_gui.dir/networkclient.cpp.obj	931171f308738a31
+2522	10744	7198381145014645	CMakeFiles/cluedo_gui.dir/main.cpp.obj	e03dce1097ff8b94
+2529	10934	7198381146894702	CMakeFiles/cluedo_gui.dir/testrunner.cpp.obj	28367c7bf1b99957
+2516	11017	7198381147719554	CMakeFiles/cluedo_gui.dir/cluedo_gui_autogen/mocs_compilation.cpp.obj	9caa2e16ab46face
+11017	11691	7198381154449358	cluedo_gui.exe	b54240bee2d82cf
+17	389	7198382455307091	cluedo_gui_autogen/timestamp	2d278e9e54e7217e
+17	389	7198382455307091	cluedo_gui_autogen/mocs_compilation.cpp	2d278e9e54e7217e
+17	389	7198382455307091	C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/cluedo_gui_autogen/timestamp	2d278e9e54e7217e
+17	389	7198382455307091	C:/Users/Justin/Desktop/Integrated/group-6/build-cluedo_gui-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/cluedo_gui_autogen/mocs_compilation.cpp	2d278e9e54e7217e
+407	4261	7198382494027050	CMakeFiles/cluedo_gui.dir/main.cpp.obj	e03dce1097ff8b94
+4261	4815	7198382499513778	cluedo_gui.exe	b54240bee2d82cf

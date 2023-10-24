@@ -32,7 +32,6 @@ ClientMessageBroker::ClientMessageBroker(QObject *parent)
     QObject::connect(this->client, SIGNAL(moveError()), this, SIGNAL(invalidMove()));
 }
 
-
 ClientMessageBroker::~ClientMessageBroker(){
     delete this->client;
 }
@@ -217,12 +216,17 @@ void ClientMessageBroker::unpackGameState(Message &msg) {
     int dice = obj["Current_Dice_Roll"].toInt();
     int currentTurn = obj["Current_Turn"].toInt();
     QJsonArray faceupCards = obj["Face_Up_Cards"].toArray();
+    QVector<QString> faceupCardStrings;
+    // convert the QJsonArray into QStrings
+    for (int i = 0; i < faceupCards.size(); i++) {
+        faceupCardStrings.append(faceupCards.at(i).toString());
+    }
     // TODO ack this message
     if (type == GAME_STATE_REPLY){
         client->ack(msg);
-        emit this->gameStateSignal(numPlayers,players,dice,currentTurn,faceupCards);
+        emit this->gameStateSignal(numPlayers,players,dice,currentTurn,faceupCardStrings);
     } else if (type == GAME_STATE){
-       // emit this->gameStartedSignal(numPlayers,players,dice,currentTurn,faceupCards);
+       emit this->gameStartedSignal(numPlayers,players,dice,currentTurn,faceupCardStrings);
     }
     return; 
 }
@@ -340,6 +344,7 @@ void ClientMessageBroker::unpackConnectionAccepted(Message &msg)
     person = obj["Person"].toString();
     dice1 = obj["Dice1"].toInt();
     dice2 = obj["Dice2"].toInt();
+    qDebug("Player joined");
     emit this->playerAcceptedSignal(username, person, dice1, dice2);
     return;
 }

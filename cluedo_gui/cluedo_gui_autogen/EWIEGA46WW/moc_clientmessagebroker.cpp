@@ -394,7 +394,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSClientMessageBrokerENDCLASS[] = 
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   28,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   14,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::QJsonArray, QMetaType::Int, QMetaType::Int, QMetaType::QJsonArray,    5,    6,   32,    8,   33,
+    QMetaType::Void, QMetaType::Int, QMetaType::QJsonArray, QMetaType::Int, QMetaType::Int, QMetaType::QStringList,    5,    6,   32,    8,   33,
     QMetaType::Void, QMetaType::QString, QMetaType::QStringList, QMetaType::Bool,    3,   35,   20,
     QMetaType::Void, 0x80000000 | 37, QMetaType::QString,   38,    3,
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,   40,
@@ -493,7 +493,7 @@ Q_CONSTINIT const QMetaObject ClientMessageBroker::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QJsonArray, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>,
         // method 'playerResult'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
@@ -600,7 +600,7 @@ void ClientMessageBroker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 9: _t->cardShownToPlayer((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 10: _t->playerKicked((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 11: _t->gameEndedSignal(); break;
-        case 12: _t->gameStateSignal((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QJsonArray>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QJsonArray>>(_a[5]))); break;
+        case 12: _t->gameStateSignal((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QJsonArray>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[5]))); break;
         case 13: _t->playerResult((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[3]))); break;
         case 14: _t->errorSignal((*reinterpret_cast< std::add_pointer_t<ERROR_TYPE>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 15: _t->moveUpdate((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
@@ -715,7 +715,7 @@ void ClientMessageBroker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
             }
         }
         {
-            using _t = void (ClientMessageBroker::*)(int , QJsonArray , int , int , QJsonArray );
+            using _t = void (ClientMessageBroker::*)(int , QJsonArray , int , int , QVector<QString> );
             if (_t _q_method = &ClientMessageBroker::gameStateSignal; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 12;
                 return;
@@ -873,7 +873,7 @@ void ClientMessageBroker::gameEndedSignal()
 }
 
 // SIGNAL 12
-void ClientMessageBroker::gameStateSignal(int _t1, QJsonArray _t2, int _t3, int _t4, QJsonArray _t5)
+void ClientMessageBroker::gameStateSignal(int _t1, QJsonArray _t2, int _t3, int _t4, QVector<QString> _t5)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))) };
     QMetaObject::activate(this, &staticMetaObject, 12, _a);

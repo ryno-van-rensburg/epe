@@ -291,7 +291,7 @@ build .qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake | ${cmake_ninja_workdi
 #############################################
 # Phony custom command for CMakeFiles/cluedo_gui_autogen_timestamp_deps
 
-build CMakeFiles/cluedo_gui_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/cluedo_gui_autogen_timestamp_deps: phony /home/zander/Qt/6.5.2/gcc_64/./libexec/moc /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Gui.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Quick.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Test.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Widgets.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Qml.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Network.so.6.5.2
+build CMakeFiles/cluedo_gui_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/cluedo_gui_autogen_timestamp_deps: phony /home/zander/Qt/6.5.2/gcc_64/./libexec/moc /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Gui.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Widgets.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Qml.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Network.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Test.so.6.5.2 /home/zander/Qt/6.5.2/gcc_64/lib/libQt6Quick.so.6.5.2
 
 
 #############################################

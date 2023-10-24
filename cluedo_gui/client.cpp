@@ -11,11 +11,11 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(cardsDealt(QList)));
     //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
-    QObject::connect(&broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
+    QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
-    QObject::connect(&broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
+    QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
-    //QObject::connect(broker, SIGNAL(gameEndedSignal()));
+    QObject::connect(broker, SIGNAL(gameEndedSignal()),this, SLOT(onGameEnded()));
     //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)), this, SLOT(onGameStarted(int, QJSonArray,int,int,QList)));
     //QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
@@ -25,9 +25,30 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(playerResult(QString,QList,bool)));
     //QObject::connect(broker, SIGNAL(gameStateSignal(int,QJsonArray,int,int,QJsonArray));// somewhere
 }
-//void Client::onGameStarted(int, QJsonArray,int,int,QList){
+void Client::playerTurnChanged(){
 
-//}
+};
+void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int currentTurn,QVector<QString> faceUpCards){
+    qDebug() << "Game started";
+    qDebug() << "Num players: " << numPlayers;
+    qDebug() << "Players: " << players;
+    qDebug() << "Dice: " << dice1;
+    qDebug() << "Current turn: " << currentTurn;
+    qDebug() << "Face up cards: " << faceUpCards;
+
+    QString face_up_cards;
+    for (const QString &str : faceUpCards) {
+        face_up_cards += str;
+    }
+    QMessageBox msgBox;
+    msgBox.setText("Game Started");
+    msgBox.setInformativeText("\nFace up cards: " + face_up_cards);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();
+
+    //this->setPlayerTurn(currentTurn,dice1,dice1);
+
+}
 int Client::getRoomNumber(int x, int y)
 {
     if ((x >= 0 && x < 221) && (y >= 0 && y < 100))// Room 7 Kitchen
@@ -67,7 +88,7 @@ int Client::getRoomNumber(int x, int y)
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
-
+    this->broker = new ClientMessageBroker();
     connectClientBroker();
     diceValue = 1;
     player1_id = "PLAYER 1";
@@ -114,7 +135,7 @@ std::tuple<int,int> Client::getPlayerPosition(int playerId){
  *
  * @return The player ID of the current turn.
  */
-int Client::playerTurn() const
+int Client::getPlayerTurn() const
 {
     return currentPlayerTurn;
 }
@@ -148,7 +169,7 @@ void Client::onSuggestionReceived(QString room, QString person, QString item)
 {
 
     qDebug() << "Suggestion" << person << room << item;
-    broker.makeSuggestion(person, item, room);
+    broker->makeSuggestion(person, item, room);
 }
 
 /**
@@ -179,6 +200,7 @@ void Client::updatePlayerPosition(int playerId, int newX, int newY)
 void Client::playerPositionSet(int playerId, int newX, int newY)
 {
     qDebug() << "Player position set: " << playerId << newX << newY;
+
     emit makeMove(newX);
     this->onTurnEnded();
 }
@@ -208,10 +230,10 @@ void Client::emitRequestConnectionSignal()
         //a_port = QInputDialog::getInt(nullptr, "Server Details",
         //                               "Enter Port:", 0, 0, 65535, 1, &ok);
         if (ok) {
-            broker.requestConnection(send_address, a_port, this->my_id);
+            qDebug() << "Requesting connection to server at " << send_address << ":" << a_port << " with username " << my_id;
+            broker->requestConnection(send_address, a_port, this->my_id);
         }
     }
-    qDebug() << "Requesting connection to server at " << send_address << ":" << a_port << " with username " << my_id;
     
     //    emit requestConnection(address, port, username);
 }
@@ -372,14 +394,11 @@ void Client::onNameEntered(QString name){
 
 }
 
-void Client::setPlayerTurn(int turn)
+void Client::setPlayerTurn(int turn, int dice1, int dice2)
 {
-    if(currentPlayerTurn != turn){
-        currentPlayerTurn = turn;
-        diceValue =  std::rand()%6 +1 ;//dice;
-        qDebug() << "Dice value:" << diceValue;
-        emit playerTurnChanged();
-    }
+    currentPlayerTurn = turn;
+    diceValue =  dice1 + dice2;
+    qDebug() << "Dice value:" << diceValue;
 }
 
 void Client :: emitShowCardSignal(QString card){
@@ -388,7 +407,7 @@ void Client :: emitShowCardSignal(QString card){
 void Client::onTurnEnded(){
     int nextTurn = currentPlayerTurn > 6 ? 1:(currentPlayerTurn % 7 + 1);
 
-    this->setPlayerTurn(nextTurn);
+    //this->setPlayerTurn(nextTurn);
     qDebug()<<"TEST: Moving Player";
     this->updatePlayerPosition(nextTurn, (std::rand() % 1000) , (std::rand() % 700));
 }
@@ -401,16 +420,16 @@ void Client::onAccusationMade(QString room,QString person, QString item)
 void Client::onSuggestionMade(QString room,QString person, QString item)
 {
     qDebug() << "Suggestion" << person << room << item;
-    broker.makeSuggestion(person, item, room);
+    broker->makeSuggestion(person, item, room);
 }
 void Client::testBox(QString in)
 {
-    QMessageBox msgBox;
-    msgBox.setText("Testing Dialog Boxes");
-    msgBox.setInformativeText(in);
-    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Save);
-    int ret = msgBox.exec();
+    // QMessageBox msgBox;
+    // msgBox.setText("Testing Dialog Boxes");
+    // msgBox.setInformativeText(in);
+    // msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    // msgBox.setDefaultButton(QMessageBox::Save);
+    // int ret = msgBox.exec();
 }
 
 void Client::onRequestAnswered(QString room, QString person, QString item)
@@ -465,9 +484,9 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
         player3_id = username;
         temp_number = 3;
     }
+    qDebug() << username << " " << this->my_id;     
     if (username == this->my_id)
     {
-        // TODO assign user to player accepted.
        my_player_number = temp_number; // this is the player as a number used in gui
        qDebug() << "Emited: Player " << temp_number;
        emit connectionAccepted();
@@ -501,11 +520,11 @@ void Client::onCardShown(bool hasCard, QString asked, QString showed) // Multica
     }
     else
     {
-       QMessageBox msgBox;
-       msgBox.setText(showed + "hasn't shown a card" + asked);
-       msgBox.setInformativeText(showed + "has shown a card" + asked);
-       msgBox.setStandardButtons(QMessageBox::Ok);
-       msgBox.setDefaultButton(QMessageBox::Ok);
+      QMessageBox msgBox;
+      msgBox.setText(showed + "hasn't shown a card" + asked);
+      msgBox.setInformativeText(showed + "has shown a card" + asked);
+      msgBox.setStandardButtons(QMessageBox::Ok);
+      msgBox.setDefaultButton(QMessageBox::Ok);
       msgBox.exec();
     }
 
@@ -522,3 +541,13 @@ void Client::onCardShownToPlayer(QString username, QString card)      // Unicast
 
 }
 
+void Client::onGameEnded(){
+       QMessageBox msgBox;
+       msgBox.setText("Game has ended");
+       msgBox.setInformativeText("Game has ended");
+       msgBox.setStandardButtons(QMessageBox::Ok);
+       msgBox.setDefaultButton(QMessageBox::Ok);
+       msgBox.exec();
+       
+       emit gameEndedSignal();
+}
