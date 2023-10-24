@@ -219,12 +219,14 @@ Rectangle {
            }
         Timer {
             id:timeout
-            interval:10000
+            interval:100000
             running:false
             onTriggered:{
                 loading.visible = false
                 connectionTimer.running = false
                 namePrompt.visible = true
+                validUsername = false
+                connectionRequested = false
             }
         }
         Connections {

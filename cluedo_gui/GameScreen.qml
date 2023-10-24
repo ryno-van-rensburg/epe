@@ -119,11 +119,11 @@ Rectangle
             target: client
             ignoreUnknownSignals: true
             function onPromptRequested(){
-                prompt_state = 2
+                prompt_state = 2;
                 suggestionPrompt.visible = true;
             }
 
-            funcion onGameEndedSignal(){
+            function onGameEndedSignal(){
                 console.debug("Game Ended");
                 switchToStartScreen();
             }
