@@ -432,6 +432,7 @@ QString Client::getPlayerID(int n){
 }
 void Client::onPlayerAccepted(QString username, QString person, int dice1, int dice2)
 {
+    qDebug()<<"Received From Server: " << username << " " << person << " " << dice1 << " " << dice2;
     int temp_number = 0;
     if (person == "Reverend Green") {
        player2_id = username;
@@ -456,6 +457,7 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
     {
         // TODO assign user to player accepted.
        my_player_number = temp_number; // this is the player as a number used in gui
+       qDebug() << "Emited: Player " << temp_number;
        emit connectionAccepted();
     }
     return;

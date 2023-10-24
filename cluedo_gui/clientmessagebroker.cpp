@@ -222,7 +222,7 @@ void ClientMessageBroker::unpackGameState(Message &msg) {
         client->ack(msg);
         emit this->gameStateSignal(numPlayers,players,dice,currentTurn,faceupCards);
     } else if (type == GAME_STATE){
-        emit this->gameStartedSignal(numPlayers,players,dice,currentTurn,faceupCards);
+       // emit this->gameStartedSignal(numPlayers,players,dice,currentTurn,faceupCards);
     }
     return; 
 }
