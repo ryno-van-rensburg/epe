@@ -207,7 +207,6 @@ Rectangle {
                running: false
                repeat: true
                onTriggered: {
-
                     if(connectionAccepted === true){
                         switchToGameScreen()
                     }
@@ -216,7 +215,6 @@ Rectangle {
                         namePrompt.visible = true
                     }
                  }
-
            }
         Timer {
             id:timeout
