@@ -9,8 +9,8 @@ Rectangle {
     signal switchToGameScreen // calling function directly instead of signalling
     property bool validUsername: false;
     property bool connectionRequested: false;
-    property bool connectionAccepted: false;
-    property bool connectionRejected: false;
+    property bool p_accept: false;
+    property bool p_reject: false;
 
     Image {
         id: bg
@@ -168,10 +168,12 @@ Rectangle {
                     client.onNameEntered(textInput.text);
 
                     if (validUsername) {
-                        timeout.runnig = true
+                        timeout.running = true
                         connectionTimer.running = true
                         loading.visible =true
                         namePrompt.visible = false
+                        client.emitRequestConnectionSignal()
+
                     }
                 }
             }
@@ -203,19 +205,18 @@ Rectangle {
                interval:500  //3000// 3 seconds in milliseconds //REMEMBER TO COMPONENT
                running: false
                onTriggered: {
-                   if (connectionRequested=== false){
-                     client.emitRequestConnectionSignal()
-                     connectionRequested = true
-                 } else {
-                    if(connectionAccepted === true){
-                        switchToGameScreen()
-                    }
-                    if(connectionRejected === true){
-                        loading.visible = false
-                        namePrompt.visible = true
-                    }
-                 }
+
+                       console.log("Reached: line 179")
+                       if(p_accept){
+                           switchToGameScreen()
+                       }
+                       if(p_reject){
+                           loading.visible = false
+                           namePrompt.visible = true
+                       }
+
                }
+
            }
         Timer {
             id:timeout
@@ -234,12 +235,15 @@ Rectangle {
             ignoreUnknownSignals: true
             function onValidUsername(){
                 validUsername = true
+                console.debug("Username accepted")
             }
             function onConnectionAccepted(){
-                connectionAccepted = true
+                console.debug("Connection Accepted")
+                p_accept = true
             }
             function onConnectionRejected(){
-                connectionRejected = true
+                console.debug("Connection Rejected")
+                p_reject = true
             }
         }
 
