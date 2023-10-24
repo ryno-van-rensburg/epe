@@ -1,4 +1,5 @@
 #include "gameserver.h"
+#include "networkplayer.h"
 #include <time.h>
 #include <vector>
 #include <unordered_set>
@@ -11,6 +12,7 @@ GameServer::GameServer(int numPlayers,QObject *parent)
     : QObject{parent}
 {
     this->numPlayers = numPlayers;
+    this ->s= new ServerMessageBroker();
     // Initialize log file for game events
     log = new QFile("game_log.txt");
     if (log->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
@@ -21,8 +23,7 @@ GameServer::GameServer(int numPlayers,QObject *parent)
     {
         printf("Failed to open log");
     }
-    ServerMessageBroker* s = new ServerMessageBroker();
-    QObject::connect(this,&GameServer::portSignal,s,&ServerMessageBroker::listen);
+    QObject::connect(this,&GameServer::portSignal,this->s,&ServerMessageBroker::listen);
     QString d = QString::number(42069);
     logEvent("PORT NUMBER: "+d);
     emit this->portSignal(42069);
@@ -68,9 +69,8 @@ void GameServer::SetPlayerTurn(Player* inPlayer){
             int dice2 = players[i]->RollDice();
             currentDice = dice1+dice2;
             getAvailableMoves(pos,currentDice);
-            ServerMessageBroker* s = new ServerMessageBroker();
             NetworkPlayer n = NetworkPlayer(players[i]->GetUsername(),players[i]->GetPerson(),players[i]->GetAI());
-            QObject::connect(this,&GameServer::NotifyPlayerMoveSignal,s,&ServerMessageBroker::notifyPlayerMove);
+            QObject::connect(this,&GameServer::NotifyPlayerMoveSignal,this->s,&ServerMessageBroker::notifyPlayerMove);
             emit this->NotifyPlayerMoveSignal(dice1,dice2,n);
         }
     }
@@ -530,8 +530,7 @@ void GameServer::DealCards()
         logEvent("Weapon cards: "+w);
         count++;
     }
-    ServerMessageBroker* s = new ServerMessageBroker();
-    QObject::connect(this,&GameServer::DealCardsSignal,s,&ServerMessageBroker::dealCardsSlot);
+    QObject::connect(this,&GameServer::DealCardsSignal,this->s,&ServerMessageBroker::dealCardsSlot);
     emit this->DealCardsSignal(num,vec);
 }
 
@@ -572,16 +571,15 @@ void GameServer::MoveRequestedSlot(NetworkPlayer &player, quint32 pos)
     if (valid == true)
     {
         playerToMove->SetPosition(destination);
-        ServerMessageBroker* s = new ServerMessageBroker();
-        QObject::connect(this,&GameServer::UpdateStateSignal,s,&ServerMessageBroker::updateStateSlot);
+        QObject::connect(this,&GameServer::UpdateStateSignal,this->s,&ServerMessageBroker::updateStateSlot);
         emit this->UpdateStateSignal(playerToMove->GetUsername(),destination);
         logEvent(playerToMove->GetUsername()+" moved from "+c+" to "+d);
         qDebug("Valid move");
     }
     else
     {
-        ServerMessageBroker* s = new ServerMessageBroker();
-        QObject::connect(this,&GameServer::invalidMove,s,&ServerMessageBroker::invalidMove);
+
+        QObject::connect(this,&GameServer::invalidMove,this->s,&ServerMessageBroker::invalidMove);
         emit this->invalidMove(playerToMove->GetUsername());
         logEvent("Invalid move from "+c+" to "+d);
         qDebug("Invalid move");
@@ -616,72 +614,79 @@ void GameServer::SuggestionReceivedSlot(NetworkPlayer &player, QString person, Q
     }
 
     inPlayer->MakeSuggestion(inPlayer, character, room, weapon);
+    //void suggestionUpdateSlot(QString username, QVector<QString> suggestion);
+    connect(this, &GameServer::suggestionUpdateSignal, this->s, &ServerMessageBroker::suggestionUpdateSlot);
 
-    bool cardShown = false;
+    QVector<QString> sugg;
+    sugg.append(character->GetCardName());
+    sugg.append(room->GetCardName());
+    sugg.append(weapon->GetCardName());
+    s->suggestionUpdateSlot(inPlayer->GetUsername(), sugg);
 
-    for (int i = 0; i < players.size(); i++){
-        Player* currPlayer = players[i];
+//    bool cardShown = false;
+
+//    for (int i = 0; i < players.size(); i++){
+//        Player* currPlayer = players[i];
 
 
-        QVector<CharacterCard*> charCards = currPlayer->GetCharacCards();
+//        QVector<CharacterCard*> charCards = currPlayer->GetCharacCards();
 
-        for (int j = 0; j < currPlayer->GetCharacCards().size(); j++){
-            if (charCards[j] -> GetCardName() == character->GetCardName()){
-                //connect up the show card signal and emit the signal to notify the GUI to show a card and the name of the card to show
-                ServerMessageBroker* broker = new ServerMessageBroker();
-                connect(this, &GameServer::ShowCardSignal, broker, &ServerMessageBroker::showCardSlot);
-                //convert from player to NetworkPlayer
-                //fix this shit
-                NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
+//        for (int j = 0; j < currPlayer->GetCharacCards().size(); j++){
+//            if (charCards[j] -> GetCardName() == character->GetCardName()){
+//                //connect up the show card signal and emit the signal to notify the GUI to show a card and the name of the card to show
 
-                emit this -> ShowCardSignal(nPlayer, character->GetCardName());
-                cardShown = true;
-                break;
-            }
-        }
+//                connect(this, &GameServer::ShowCardSignal, this->s, &ServerMessageBroker::showCardSlot);
+//                //convert from player to NetworkPlayer
+//                //fix this shit
+//                NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
 
-        if (cardShown == false){
-            QVector<RoomCard*> rooCards = currPlayer->GetRoomCards();
-            for (int j = 0; j < currPlayer->GetRoomCards().size(); j++){
-                RoomCard* temp = rooCards[j];
-                if (temp->GetCardName() == room->GetCardName()){
-                    //connect signal here
-                    ServerMessageBroker* broker = new ServerMessageBroker();
-                    connect(this, &GameServer::ShowCardSignal, broker, &ServerMessageBroker::showCardSlot);
-                    //convert from player to NetworkPlayer
-                    //fix this shit
-                    NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
+//                emit this -> ShowCardSignal(nPlayer, character->GetCardName());
+//                cardShown = true;
+//                break;
+//            }
+//        }
 
-                    emit this -> ShowCardSignal(nPlayer, character->GetCardName());
+//        if (cardShown == false){
+//            QVector<RoomCard*> rooCards = currPlayer->GetRoomCards();
+//            for (int j = 0; j < currPlayer->GetRoomCards().size(); j++){
+//                RoomCard* temp = rooCards[j];
+//                if (temp->GetCardName() == room->GetCardName()){
+//                    //connect signal here
+//                    connect(this, &GameServer::ShowCardSignal, this->s, &ServerMessageBroker::showCardSlot);
+//                    //convert from player to NetworkPlayer
+//                    //fix this shit
+//                    NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
 
-                    cardShown = true;
-                    break;
-                }
-            }
+//                    emit this -> ShowCardSignal(nPlayer, character->GetCardName());
 
-            if(cardShown == false){
-                QVector<WeaponCard*> weapCards = currPlayer->GetWeaponCards();
+//                    cardShown = true;
+//                    break;
+//                }
+//            }
 
-                for (int j = 0; j < currPlayer->GetWeaponCards().size(); j++){
-                    WeaponCard* tempWeap = weapCards[j];
+//            if(cardShown == false){
+//                QVector<WeaponCard*> weapCards = currPlayer->GetWeaponCards();
 
-                    if (tempWeap->GetCardName() == weapon->GetCardName()){
-                        //connect signal here
-                        ServerMessageBroker* broker = new ServerMessageBroker();
-                        connect(this, &GameServer::ShowCardSignal, broker, &ServerMessageBroker::showCardSlot);
-                        //convert from player to NetworkPlayer
-                        //fix this shit
-                        NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
+//                for (int j = 0; j < currPlayer->GetWeaponCards().size(); j++){
+//                    WeaponCard* tempWeap = weapCards[j];
 
-                        emit this -> ShowCardSignal(nPlayer, character->GetCardName());
+//                    if (tempWeap->GetCardName() == weapon->GetCardName()){
+//                        //connect signal here
 
-                        cardShown = true;
-                        break;
-                    }
-                }
-            }
-        }
-    }
+//                        connect(this, &GameServer::ShowCardSignal, this->s, &ServerMessageBroker::showCardSlot);
+//                        //convert from player to NetworkPlayer
+//                        //fix this shit
+//                        NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
+
+//                        emit this -> ShowCardSignal(nPlayer, character->GetCardName());
+
+//                        cardShown = true;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 // Implement the AccusationReceivedSlot function
@@ -702,26 +707,26 @@ void GameServer::AccusationReceivedSlot(NetworkPlayer &player, QString person, Q
     WeaponCard* weapon = new WeaponCard(w);
     RoomCard* room = new RoomCard(r);
 
-    ServerMessageBroker* broker = new ServerMessageBroker();
+
     //convert from player to NetworkPlayer
 
     NetworkPlayer* nPlayer = new NetworkPlayer(inPlayer->GetPerson(), inPlayer->GetUsername(), false);
 
 
     if (winEnvelope->CompareAccusation(character, room, weapon)){
-        connect(this, &GameServer::PlayerResultSignal, broker, &ServerMessageBroker::playerResultSlot);
+        connect(this, &GameServer::PlayerResultSignal, this->s, &ServerMessageBroker::playerResultSlot);
         //QString playerName, QString person, QString weapon, QString room, bool win
         emit this -> PlayerResultSignal(inPlayer->GetUsername(), inPlayer->GetPerson(), weapon->GetCardName(), room->GetCardName(), true);
     }
     else{
-        connect(this, &GameServer::PlayerResultSignal, broker, &ServerMessageBroker::playerResultSlot);
+        connect(this, &GameServer::PlayerResultSignal, this->s, &ServerMessageBroker::playerResultSlot);
         //QString playerName, QString person, QString weapon, QString room, bool win
         emit this -> PlayerResultSignal(inPlayer->GetUsername(), inPlayer->GetPerson(), weapon->GetCardName(), room->GetCardName(), false);
     }
 
     //you need to connect this
 
-    connect(this, &GameServer::TerminateGameSignal, broker, &ServerMessageBroker::terminateGameSlot);
+    connect(this, &GameServer::TerminateGameSignal, this->s, &ServerMessageBroker::terminateGameSlot);
     emit this->TerminateGameSignal();
 }
 
@@ -730,6 +735,24 @@ void GameServer::CardShownSlot(NetworkPlayer &player, QString cardName)
 {
     // Your implementation here, e.g., handle when a card is shown to a player
     // For example, update the game state based on the shown card.
+    Player* playerMakingSuggestion = nullptr;
+    for ( Player* temp: players) {
+        if (temp->GetMyTurn()) {
+            playerMakingSuggestion = temp;
+        }
+    }
+    NetworkPlayer recplayer(playerMakingSuggestion->GetUsername(),
+                         playerMakingSuggestion->GetPerson(),
+                         playerMakingSuggestion->GetAI());
+
+    this->s->showCardSlot(recplayer, cardName);
+    if (cardName == "None") {
+
+        this->s->shownCardSlot(player, recplayer, false);
+    } else {
+        this->s->shownCardSlot(player, recplayer, true);
+    }
+    return;
 }
 
 // Implement the AddPlayerSlot function
@@ -802,8 +825,8 @@ void GameServer::AddPlayerSlot(QString username)
             logEvent("Player 6 start dice is: "+d);
         }
         qDebug("Attempt emmission");
-        ServerMessageBroker* s = new ServerMessageBroker();
-        QObject::connect(this,&GameServer::acceptPlayer,s,&ServerMessageBroker::acceptPlayer);
+
+        QObject::connect(this,&GameServer::acceptPlayer,this->s,&ServerMessageBroker::acceptPlayer);
         emit this->acceptPlayer(newPlayer->GetUsername(),newPlayer->GetPerson(),dice1,dice2);
         qDebug("Emitted");
         if (players.size() == numPlayers)
@@ -830,8 +853,8 @@ void GameServer::AddPlayerSlot(QString username)
             {
                 names.append(w->GetCardName());
             }
-            ServerMessageBroker* s = new ServerMessageBroker();
-            QObject::connect(this,&GameServer::gameStateSlot,s,&ServerMessageBroker::gameStateSlot);
+
+            QObject::connect(this,&GameServer::gameStateSlot,this->s,&ServerMessageBroker::gameStateSlot);
             emit this->gameStateSlot(currentDice, names, currentTurn);
             logEvent("Game started");
             qDebug("Game started");
@@ -865,8 +888,8 @@ void GameServer::StateRequestSlot(QString requesting)
     {
         names.append(w->GetCardName());
     }
-    ServerMessageBroker* s = new ServerMessageBroker();
-    QObject::connect(this,&GameServer::GameStateReply,s,&ServerMessageBroker::gameStateReplySlot);
+
+    QObject::connect(this,&GameServer::GameStateReply,this->s,&ServerMessageBroker::gameStateReplySlot);
     emit this->GameStateReply(requesting,this->GetCurrentDice(),names,currentTurn);
     logEvent("Game state request received");
     qDebug("Players: ");

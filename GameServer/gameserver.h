@@ -29,7 +29,7 @@ private:
     QVector<WeaponCard*> weaponFaceUp;
     std::vector<std::vector<int>> data;
     QFile* log;
-
+    ServerMessageBroker* s;
 
 public:
     explicit GameServer(int numPlayers,QObject *parent = nullptr);
@@ -65,6 +65,7 @@ signals:
     void DealCardsSignal(qint16 numPlayers, QVector<QVector<QString>> cards);
     void MovesAvailableSignal(QVector<int> optionsToMove);
     void portSignal(int port);
+    void suggestionUpdateSignal(QString username, QVector<QString> suggestion);
     void acceptPlayer(QString username, QString person, int dice1, int dice2);
 
 public slots:
