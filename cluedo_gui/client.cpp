@@ -16,7 +16,7 @@ void Client::connectClientBroker(){
     QObject::connect(&broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
     //QObject::connect(broker, SIGNAL(gameEndedSignal()));
-    //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)));
+    //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)), this, SLOT(onGameStarted(int, QJSonArray,int,int,QList)));
     //QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
     //QObject::connect(broker, SIGNAL(invalidMove()));
@@ -25,7 +25,9 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(playerResult(QString,QList,bool)));
     //QObject::connect(broker, SIGNAL(gameStateSignal(int,QJsonArray,int,int,QJsonArray));// somewhere
 }
+//void Client::onGameStarted(int, QJsonArray,int,int,QList){
 
+//}
 int Client::getRoomNumber(int x, int y)
 {
     if ((x >= 0 && x < 2) && (y >= 0 && y < 2))  // Room 7 Kitchen
@@ -52,6 +54,8 @@ int Client::getRoomNumber(int x, int y)
 
     else if ((x >=4  && x < 5) && (y >= 0 && y < 2)) // Room 6 Bathroom
        return 6;
+
+    return 0;
 
 
 }
@@ -195,8 +199,9 @@ void Client::emitRequestConnectionSignal()
         if (ok && !ipAddress.isEmpty()) {
         send_address =  QHostAddress(ipAddress).toIPv4Address();
         
-        a_port = QInputDialog::getInt(nullptr, "Server Details",
-                                       "Enter Port:", 0, 0, 65535, 1, &ok);
+        a_port = 42069;
+        //a_port = QInputDialog::getInt(nullptr, "Server Details",
+        //                               "Enter Port:", 0, 0, 65535, 1, &ok);
         if (ok) {
             broker.requestConnection(send_address, a_port, this->my_id);
         }
@@ -427,27 +432,39 @@ QString Client::getPlayerID(int n){
 }
 void Client::onPlayerAccepted(QString username, QString person, int dice1, int dice2)
 {
+    int temp_number = 0;
     if (person == "Reverend Green") {
        player2_id = username;
+       temp_number = 2;
     } else if (person == "Miss Scarlett") {
         player6_id = username;
+        temp_number = 6;
     } else if (person == "Chef White") {
         player1_id = username;
+        temp_number = 1;
     } else if (person == "Mrs. Peacock") {
         player4_id = username;
+        temp_number = 4;
     } else if (person == "Professor Plum") {
         player5_id = username;
+        temp_number = 5;
     } else if (person == "Colonel Mustard") {
         player3_id = username;
+        temp_number = 3;
     }
     if (username == this->my_id)
     {
         // TODO assign user to player accepted.
+       my_player_number = temp_number; // this is the player as a number used in gui
        emit connectionAccepted();
     }
     return;
 }
 
+bool Client::isMyTurn() const
+{
+    return currentPlayerTurn == my_player_number;
+}
 void Client::emitConnectionAccepted(){
     emit connectionAccepted();    
 }
@@ -490,3 +507,4 @@ void Client::onCardShownToPlayer(QString username, QString card)      // Unicast
        msgBox.exec();
 
 }
+
