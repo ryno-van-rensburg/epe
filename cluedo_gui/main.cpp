@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     engine.addImportPath(":/imports");
-//    engine.load("main.qml"); // For the Linux machine
+    engine.load("main.qml"); // For the Linux machine
     //engine.load("C:/Users/SIGMA Pro/Documents/University of Pretoria/2023/EPE 321/Cluedo Group projectGitlab/group-6/cluedo_gui/main.qml"); // for the Windows machine
     //engine.load("C:/Users/SIGMA Pro/Documents/University of Pretoria/2023/EPE 321/Cluedo Group projectGitlab/group-6/cluedo_gui/main.qml"); // for the Windows machine
     //engine.load("C:/Users/dunca/EPE integrate/group-6/cluedo_gui/main.qml");
