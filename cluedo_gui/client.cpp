@@ -239,6 +239,22 @@ void Client::onNameEntered(QString name){
 
     //flags for validating the incoming text
     QMessageBox msgBox;
+    QMessageBox msgBox2;
+
+    msgBox2.setText("Rules for creating a username");
+    msgBox2.setIcon(QMessageBox::Information);
+    msgBox2.setInformativeText("A username starts with your group number, underscore and then a name. If it’s an AI, it will "
+                              "be group number1 followed by ”_” and ”AI” + a number (start at 1) eg. \"10_AI1\" For a "
+                              "human player the ”_” is followed by a name that will be displayed eg. ”3_TheLegend27.");
+
+    QString title_playerIDExamples ="Valid\n\n";
+    QString good_playerIDExamples = "1_TheLegend27 (for a user)\n2_AI1 (for an AI) \n4_TheLegend27_AI1 (Custom AI name)\n\n";
+    QString title_badPlayerIDExamples ="Invalid\n\n";
+    QString bad_playerIDExamples = "TheLegend27\n 3_AI\n\n";
+    QString sideNote = "Note that group numbers as part of usernames is a legacy requirement from when groups were required to be able to  play against other groups";
+    QString combine = title_playerIDExamples + good_playerIDExamples + title_badPlayerIDExamples + bad_playerIDExamples + sideNote;
+    msgBox2.setDetailedText(combine);
+
    
     bool is_emptytext = false; // assume there's text first.
     bool is_groupnumber = false; // if there's a group number at the beginning of the playerID
@@ -302,6 +318,8 @@ void Client::onNameEntered(QString name){
         msgBox.setInformativeText("Empty PlayerID. Please try again.");
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
+
+        msgBox2.exec();
     }
     else if(!is_groupnumber)
     {
@@ -310,6 +328,7 @@ void Client::onNameEntered(QString name){
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
         //QMessageBox::warning(this, "Error", " Invalid playerID. No group number in the beginning.  Please try again.");
+        msgBox2.exec();
     }
     else if(!is_underscore)
     {
@@ -319,6 +338,7 @@ void Client::onNameEntered(QString name){
         msgBox.exec();
 
         //QMessageBox::warning(this, "Error", "Invalid playerID. No undrscore followed after group number.  Please try again.");
+        msgBox2.exec();
     }
     else if(!is_lastnumber)
     {
@@ -327,7 +347,7 @@ void Client::onNameEntered(QString name){
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
 
-
+        msgBox2.exec();
         //QMessageBox::warning(this, "Error", "Invalid playerID. No last number after playerID.  Please try again.");
     }
     else if(funnysymbol)
@@ -336,27 +356,14 @@ void Client::onNameEntered(QString name){
         msgBox.setInformativeText("Funny symbol in playerID - only underscore '_' allowed. Please try again.");
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
-
+        msgBox2.exec();
 
         //QMessageBox::warning(this, "Error", "Invalid playerID. Funny symbol in playerID - only underscore '_' allowed. Please try again.");
     }
 
     // print examples of valid playerID
-    msgBox.setText("Rules for creating a username");
-    msgBox.setIcon(QMessageBox::Information);
-    msgBox.setInformativeText("A username starts with your group number, underscore and then a name. If it’s an AI, it will "
-                                 "be group number1 followed by ”_” and ”AI” + a number (start at 1) eg. \"10_AI1\" For a "
-                                 "human player the ”_” is followed by a name that will be displayed eg. ”3_TheLegend27.");
 
-    QString title_playerIDExamples ="Valid\n\n";
-    QString good_playerIDExamples = "1_TheLegend27 (for a user)\n2_AI1 (for an AI) \n4_TheLegend27_AI1 (Custom AI name)\n\n";
-    QString title_badPlayerIDExamples ="Invalid\n\n";
-    QString bad_playerIDExamples = "TheLegend27\n 3_AI\n\n";
-    QString sideNote = "Note that group numbers as part of usernames is a legacy requirement from when groups were required to be able to  play against other groups";
-    QString combine = title_playerIDExamples + good_playerIDExamples + title_badPlayerIDExamples + bad_playerIDExamples + sideNote;
-    msgBox.setDetailedText(combine);
 
-    msgBox.exec();
 
 }
 

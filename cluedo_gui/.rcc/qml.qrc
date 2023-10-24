@@ -1,0 +1,24 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/GameScreen.qml">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/GameScreen.qml</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/Player.qml">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/Player.qml</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/StartScreen.qml">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/StartScreen.qml</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/TestRunner.qml">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/TestRunner.qml</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/Constants.qml">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/Constants.qml</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/main.qml">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/main.qml</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/AI-active.png">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/AI-active.png</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/AI-inactive.png">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/AI-inactive.png</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Game-Background.jpg">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Game-Background.jpg</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/GameBoard.png">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/GameBoard.png</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Menu-Background.jpg">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Menu-Background.jpg</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Start-active.png">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Start-active.png</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Start-inactive.png">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Start-inactive.png</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Title.png">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/Title.png</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/loading.gif">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/images/loading.gif</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/Constants.qml">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/Constants.qml</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/pixel.ttf">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/pixel.ttf</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/qmldir">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/qmldir</file>
+    <file alias="/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/space.ttf">/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/imports/space.ttf</file>
+  </qresource>
+</RCC>
+

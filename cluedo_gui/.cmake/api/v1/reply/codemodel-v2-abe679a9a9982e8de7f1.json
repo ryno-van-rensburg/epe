@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-71979ce15a91fb0834df.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "cluedo_gui",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "cluedo_gui::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cluedo_gui-Debug-a0bb99877414be6071b3.json",
+					"name" : "cluedo_gui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cluedo_gui_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cluedo_gui_autogen-Debug-15c566d9d76a47137a9c.json",
+					"name" : "cluedo_gui_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cluedo_gui_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cluedo_gui_autogen_timestamp_deps-Debug-b6ce1f0d5e502287db43.json",
+					"name" : "cluedo_gui_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cluedo_gui_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cluedo_gui_qmlimportscan-Debug-be80d48ded8e435f7f61.json",
+					"name" : "cluedo_gui_qmlimportscan",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui",
+		"source" : "/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
