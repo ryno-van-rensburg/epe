@@ -548,6 +548,20 @@ void GameServer::DealCards()
     }
     // QObject::connect(this,&GameServer::DealCardsSignal,this->s,&ServerMessageBroker::dealCardsSlot);
     // emit this->DealCardsSignal(num,vec);
+    qDebug("Face up cards: ");
+    logEvent("Face up cards: ");
+    for (int i=0;i<characFaceUp.size();i++){
+        logEvent(characFaceUp[i]->GetCardName());
+        qDebug()<<characFaceUp[i]->GetCardName();
+    }
+    for (int i=0;i<roomFaceUp.size();i++){
+        logEvent(roomFaceUp[i]->GetCardName());
+        qDebug()<<roomFaceUp[i]->GetCardName();
+    }
+    for (int i=0;i<weaponFaceUp.size();i++){
+        logEvent(weaponFaceUp[i]->GetCardName());
+        qDebug()<<weaponFaceUp[i]->GetCardName();
+    }
     s->dealCardsSlot(num, vec);
     return;
 }
