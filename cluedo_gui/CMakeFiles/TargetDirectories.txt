@@ -1,0 +1,11 @@
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/cluedo_gui.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/cluedo_gui_qmlimportscan.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/test.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/edit_cache.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/rebuild_cache.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/list_install_components.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/install.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/install/local.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/install/strip.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/cluedo_gui_autogen_timestamp_deps.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/CMakeFiles/cluedo_gui_autogen.dir

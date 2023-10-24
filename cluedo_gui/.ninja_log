@@ -1,0 +1,19 @@
+# ninja log v5
+6	85	1698133091890719014	.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake	44b1b908a117a06a
+6	85	1698133091890719014	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake	44b1b908a117a06a
+85	2117	1698133093910808364	cluedo_gui_autogen/timestamp	a96e258c1eeaf1cd
+85	2117	1698133093910808364	cluedo_gui_autogen/mocs_compilation.cpp	a96e258c1eeaf1cd
+85	2117	1698133093910808364	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/cluedo_gui_autogen/timestamp	a96e258c1eeaf1cd
+85	2117	1698133093910808364	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/cluedo_gui_autogen/mocs_compilation.cpp	a96e258c1eeaf1cd
+2118	2185	1698133093990811897	.rcc/qrc_qml.cpp	22ba0cecb7182b06
+2118	2185	1698133093990811897	/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/.rcc/qrc_qml.cpp	22ba0cecb7182b06
+2191	5610	1698133097414962191	CMakeFiles/cluedo_gui.dir/.rcc/qrc_qml.cpp.o	f32d0386943b5c17
+2187	7791	1698133099595057171	CMakeFiles/cluedo_gui.dir/networkplayer.cpp.o	344278e2620c448c
+2187	9732	1698133101535141229	CMakeFiles/cluedo_gui.dir/message.cpp.o	d5b686cc0322e700
+2190	10352	1698133102155168007	CMakeFiles/cluedo_gui.dir/clientmessagebroker.cpp.o	be7e6284085b0bbd
+2187	10868	1698133102671190248	CMakeFiles/cluedo_gui.dir/networkclient.cpp.o	69d37b9a5b91cb7a
+2186	11307	1698133103111209202	CMakeFiles/cluedo_gui.dir/client.cpp.o	71ecaa4384dd25d6
+2186	16234	1698133108035419722	CMakeFiles/cluedo_gui.dir/cluedo_gui_autogen/mocs_compilation.cpp.o	bda1e4aee59d450f
+2186	16345	1698133108147424473	CMakeFiles/cluedo_gui.dir/main.cpp.o	2677419af5e5ce4e
+2188	16581	1698133108383434484	CMakeFiles/cluedo_gui.dir/testrunner.cpp.o	106390e0b8998b4f
+16581	17607	1698133109403477708	cluedo_gui	7d3dcfdead6127a5

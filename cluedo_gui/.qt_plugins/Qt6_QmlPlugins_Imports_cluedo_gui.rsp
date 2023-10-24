@@ -1,0 +1,11 @@
+-rootPath
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui
+-cmake-output
+-output-file
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/.qt_plugins/Qt6_QmlPlugins_Imports_cluedo_gui.cmake
+-importPath
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui
+-importPath
+/home/zander/Qt/6.5.2/gcc_64/./qml
+-qrcFiles
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/cluedo_gui/.rcc/qml.qrc
