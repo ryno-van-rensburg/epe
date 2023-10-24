@@ -317,7 +317,7 @@ void GameServer::DealCards()
     CharacterCard* peacock = new CharacterCard("Peacock");
 
     //Create all room cards
-    RoomCard* courtyard = new RoomCard("Court Yard");
+    RoomCard* courtyard = new RoomCard("Courtyard");
     RoomCard* garage = new RoomCard("Garage");
     RoomCard* bedroom = new RoomCard("Bedroom");
     RoomCard* bathroom = new RoomCard("Bathroom");
@@ -325,7 +325,7 @@ void GameServer::DealCards()
     RoomCard* kitchen = new RoomCard("Kitchen");
     RoomCard* diningRoom = new RoomCard("Dining Room");
     RoomCard* livingRoom = new RoomCard("Living Room");
-    RoomCard* games = new RoomCard("Games Room");
+    RoomCard* games = new RoomCard("Game Room");
 
     //Create all weapon cards
     WeaponCard* candle = new WeaponCard("Candlestick");

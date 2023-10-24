@@ -11,8 +11,8 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(accusationResultSignal(QList,bool)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList));
     QObject::connect(broker, SIGNAL(cardsDealt(QVector<QString>)), this, SLOT(onCardsDealt(QVector<QString>)));
-    //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
-    //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
+    //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString),this,SLOT(onCardShown(bool,QString,QString))));
+    //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)),this,SLOT(onCardShownToPlayer(QString,QString)));
     QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
     QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
@@ -52,8 +52,34 @@ bool Client::playerHasCard(QString card) {
 
 void Client::playerTurnChanged(){
 
-};
+}
 void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int currentTurn,QVector<QString> faceUpCards){
+    QVector<QString> playerNames;
+    for (int i = 0 ; i < players.size(); i++ ) {
+        QJsonObject obj = players.at(i).toObject();
+        playerNames.append(obj["Username"].toString());
+        switch (i) {
+        case 1:
+            player1_id = playerNames.at(i);
+            break;
+        case 2:
+            player2_id = playerNames.at(i);
+            break;
+        case 3:
+            player3_id = playerNames.at(i);
+            break;
+        case 4:
+            player4_id = playerNames.at(i);
+            break;
+        case 5:
+            player5_id = playerNames.at(i);
+            break;
+        case 6:
+            player6_id = playerNames.at(i);
+            break;
+        }
+    }
+
     qDebug() << "Game started";
     qDebug() << "Num players: " << numPlayers;
     qDebug() << "Players: " << players;
@@ -529,7 +555,7 @@ bool Client::isFaceupCard(QString card){
 }
 
 QString Client::getCardColor(QString itemName, bool clicked){
-    bool faceup = isFaceupCard(itemName);
+    bool faceup = this->isFaceupCard(itemName);
     bool inHand = playerHasCard(itemName);
     // check if the card is in the face up cards
     if (inHand) {
