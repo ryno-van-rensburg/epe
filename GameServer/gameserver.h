@@ -32,7 +32,7 @@ private:
     ServerMessageBroker* s;
 
 public:
-    explicit GameServer(int numPlayers,QObject *parent = nullptr);
+    explicit GameServer(QObject *parent = nullptr);
     ~GameServer();
     QString GetGameID();
     QVector<Player*> GetPlayers();

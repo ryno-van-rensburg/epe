@@ -181,6 +181,7 @@ void ClientConnection::sendMessage(Message &msg)
  */
 void ClientConnection::handleIncomingData()
 {
+    qDebug("Message received");
     QByteArray incomingData = this->connection->readAll();
 
     QByteArray buffer;
@@ -196,6 +197,7 @@ void ClientConnection::handleIncomingData()
         if (v.isString()){
         Message msg(v.toString(), contents);
         if (msg.getType() == REQUEST_CON){
+            qDebug("Connection requested");
             this->username = obj["Username"].toString();
             this->isPlaying = false;
         }

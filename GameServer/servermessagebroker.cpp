@@ -690,6 +690,7 @@ void ServerMessageBroker::acceptPlayer(QString username, QString person, int dic
  */
 void ServerMessageBroker::processJoiningRequest(Message &msg)
 {
+    qDebug("Connection requested, joining request processed (servermesssagebroker.cpp: 693)");
     QJsonObject obj = msg.getObj();
     QString username = obj["Username"].toString();
     emit this->connectionRequest(username);

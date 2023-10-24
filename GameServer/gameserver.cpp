@@ -8,7 +8,7 @@
 
 
 // Constructor for GameServer class. Initializes log file for game events.
-GameServer::GameServer(int numPlayers,QObject *parent)
+GameServer::GameServer(QObject *parent)
     : QObject{parent}
 {
     this->numPlayers = numPlayers;
@@ -26,6 +26,7 @@ GameServer::GameServer(int numPlayers,QObject *parent)
     // QObject::connect(this,&GameServer::portSignal,this->s,&ServerMessageBroker::listen);
     QString d = QString::number(42069);
     logEvent("PORT NUMBER: "+d);
+    connect(this->s, SIGNAL(connectionRequest(QString)), SLOT(AddPlayerSlot(QString)));
     // emit this->portSignal(42069);
     s->listen(42069);
 }

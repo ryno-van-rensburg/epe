@@ -82,6 +82,7 @@ void NetworkClient::connect(quint32 ipAddr, quint16 port)
     }
     this->serverConnection->connectToHost(addr, port);
     serverConnection->waitForConnected(20000);
+    qDebug("connected correctly");
     return;
 }
 /**
