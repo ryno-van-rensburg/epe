@@ -1,6 +1,0 @@
-C:/Users/Justin/Desktop/DuncanBranch/group-6/build-UnitTests-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/UnitTest.dir
-C:/Users/Justin/Desktop/DuncanBranch/group-6/build-UnitTests-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/test.dir
-C:/Users/Justin/Desktop/DuncanBranch/group-6/build-UnitTests-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/Justin/Desktop/DuncanBranch/group-6/build-UnitTests-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Justin/Desktop/DuncanBranch/group-6/build-UnitTests-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/UnitTest_autogen_timestamp_deps.dir
-C:/Users/Justin/Desktop/DuncanBranch/group-6/build-UnitTests-Clone_of_Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/UnitTest_autogen.dir
