@@ -578,6 +578,7 @@ Rectangle
                             anchors.fill: parent
                             onClicked: {
                                 model.clicked = !model.clicked
+
                             }
                         }
                     }

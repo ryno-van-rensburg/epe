@@ -379,14 +379,17 @@ void Client::onNameEntered(QString name){
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
         msgBox2.exec();
-
+        
         //QMessageBox::warning(this, "Error", "Invalid playerID. Funny symbol in playerID - only underscore '_' allowed. Please try again.");
     }
 
     // print examples of valid playerID
 
 
-
+}
+bool Client::playerHasCard(QString card){
+    //check if card is owned
+    return false;
 }
 
 void Client::setPlayerTurn(int turn, int dice1, int dice2)
