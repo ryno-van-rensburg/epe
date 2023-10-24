@@ -298,20 +298,23 @@ void Client::onNameEntered(QString name){
 
         //If there is no text, show an incomplete message
         //QMessageBox::warning(this, "Error", "Invalid playerID. Empty PlayerID. Please try again.");
-        msgBox.setInformativeText("Invalid playerID. Empty PlayerID. Please try again.");
+        msgBox.setText("Invalid playerID");
+        msgBox.setInformativeText("Empty PlayerID. Please try again.");
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
     }
     else if(!is_groupnumber)
     {
-        msgBox.setInformativeText(" Invalid playerID. No group number in the beginning.  Please try again.");
+        msgBox.setText("Invalid playerID");
+        msgBox.setInformativeText("No group number in the beginning found.  Please try again.");
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
         //QMessageBox::warning(this, "Error", " Invalid playerID. No group number in the beginning.  Please try again.");
     }
     else if(!is_underscore)
     {
-        msgBox.setInformativeText(" Invalid playerID. No undrscore followed after group number.  Please try again.");
+        msgBox.setText("Invalid playerID");
+        msgBox.setInformativeText("No undrscore followed after group number found.  Please try again.");
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
 
@@ -319,7 +322,8 @@ void Client::onNameEntered(QString name){
     }
     else if(!is_lastnumber)
     {
-        msgBox.setInformativeText("Invalid playerID. No last number after playerID.  Please try again.");
+        msgBox.setText("Invalid playerID");
+        msgBox.setInformativeText("No last number found after playerID. Please try again.");
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
 
@@ -328,13 +332,32 @@ void Client::onNameEntered(QString name){
     }
     else if(funnysymbol)
     {
-        msgBox.setInformativeText("Invalid playerID. No last number after playerID.  Please try again.");
+        msgBox.setText("Invalid playerID");
+        msgBox.setInformativeText("Funny symbol in playerID - only underscore '_' allowed. Please try again.");
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
 
 
         //QMessageBox::warning(this, "Error", "Invalid playerID. Funny symbol in playerID - only underscore '_' allowed. Please try again.");
     }
+
+    // print examples of valid playerID
+    msgBox.setText("Rules for creating a username");
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setInformativeText("A username starts with your group number, underscore and then a name. If it’s an AI, it will "
+                                 "be group number1 followed by ”_” and ”AI” + a number (start at 1) eg. \"10_AI1\" For a "
+                                 "human player the ”_” is followed by a name that will be displayed eg. ”3_TheLegend27.");
+
+    QString title_playerIDExamples ="Valid\n\n";
+    QString good_playerIDExamples = "1_TheLegend27 (for a user)\n2_AI1 (for an AI) \n4_TheLegend27_AI1 (Custom AI name)\n\n";
+    QString title_badPlayerIDExamples ="Invalid\n\n";
+    QString bad_playerIDExamples = "TheLegend27\n 3_AI\n\n";
+    QString sideNote = "Note that group numbers as part of usernames is a legacy requirement from when groups were required to be able to  play against other groups";
+    QString combine = title_playerIDExamples + good_playerIDExamples + title_badPlayerIDExamples + bad_playerIDExamples + sideNote;
+    msgBox.setDetailedText(combine);
+
+    msgBox.exec();
+
 }
 
 void Client::setPlayerTurn(int turn)
