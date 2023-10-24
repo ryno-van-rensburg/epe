@@ -1,0 +1,9 @@
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/GameServer.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/list_install_components.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/install.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/install/local.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/install/strip.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/GameServer_autogen_timestamp_deps.dir
+/home/zander/Documents/S2/Code/EPE321/1.REPO/group-6/build-GameServer-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/GameServer_autogen.dir
