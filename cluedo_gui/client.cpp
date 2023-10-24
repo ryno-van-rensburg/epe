@@ -32,6 +32,7 @@ void Client::onCardsDealt(QVector<QString> cards) {
     for (QString card:cards) {
         qDebug() << card;
     }
+    this->setPlayerCards(cards);
     return;
 }
 
