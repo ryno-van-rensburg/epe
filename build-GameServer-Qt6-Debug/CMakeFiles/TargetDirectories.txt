@@ -1,0 +1,9 @@
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/GameServer.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/edit_cache.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/rebuild_cache.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/list_install_components.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/install.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/install/local.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/install/strip.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/GameServer_autogen_timestamp_deps.dir
+/home/ryno/Documents/practicals/epe/group-6/build-GameServer-Qt6-Debug/CMakeFiles/GameServer_autogen.dir
