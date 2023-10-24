@@ -14,9 +14,15 @@
 			}
 		]
 	},
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/.cmake/api/v1/reply/target-cluedo_gui_autogen_timestamp_deps-Debug-a85b7c401b8787baa7e1.json
 	"id" : "cluedo_gui_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
 	"name" : "cluedo_gui_autogen_timestamp_deps",
+========
+	"id" : "GameServer_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "GameServer_autogen_timestamp_deps",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-GameServer_autogen_timestamp_deps-Debug-4c626efb5c57ffe57c12.json
 	"paths" : 
 	{
 		"build" : ".",
@@ -44,13 +50,21 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/.cmake/api/v1/reply/target-cluedo_gui_autogen_timestamp_deps-Debug-a85b7c401b8787baa7e1.json
 			"path" : "/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/CMakeFiles/cluedo_gui_autogen_timestamp_deps",
+========
+			"path" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/GameServer_autogen_timestamp_deps",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-GameServer_autogen_timestamp_deps-Debug-4c626efb5c57ffe57c12.json
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/.cmake/api/v1/reply/target-cluedo_gui_autogen_timestamp_deps-Debug-a85b7c401b8787baa7e1.json
 			"path" : "/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/CMakeFiles/cluedo_gui_autogen_timestamp_deps.rule",
+========
+			"path" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/GameServer_autogen_timestamp_deps.rule",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-GameServer_autogen_timestamp_deps-Debug-4c626efb5c57ffe57c12.json
 			"sourceGroupIndex" : 1
 		}
 	],

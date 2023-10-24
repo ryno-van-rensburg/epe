@@ -17,7 +17,11 @@
 			{
 				"command" : 0,
 				"file" : 0,
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/.cmake/api/v1/reply/directory-.-Debug-71979ce15a91fb0834df.json
 				"line" : 53,
+========
+				"line" : 33,
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/directory-.-Debug-5603d85c5b6ff30654bc.json
 				"parent" : 0
 			}
 		]
@@ -30,9 +34,15 @@
 			"destination" : "bin",
 			"paths" : 
 			[
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/.cmake/api/v1/reply/directory-.-Debug-71979ce15a91fb0834df.json
 				"cluedo_gui"
 			],
 			"targetId" : "cluedo_gui::@6890427a1f51a3e7e1df",
+========
+				"GameServer.exe"
+			],
+			"targetId" : "GameServer::@6890427a1f51a3e7e1df",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/directory-.-Debug-5603d85c5b6ff30654bc.json
 			"targetIndex" : 0,
 			"type" : "target"
 		}

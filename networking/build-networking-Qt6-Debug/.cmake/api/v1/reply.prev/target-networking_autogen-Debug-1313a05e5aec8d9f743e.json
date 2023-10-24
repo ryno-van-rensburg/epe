@@ -17,12 +17,21 @@
 	"dependencies" : 
 	[
 		{
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/target-networking_autogen-Debug-1313a05e5aec8d9f743e.json
 			"id" : "networking_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "networking_autogen::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
 	"name" : "networking_autogen",
+========
+			"id" : "GameServer_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "GameServer_autogen::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "GameServer_autogen",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-GameServer_autogen-Debug-b65ef074b2eff718be66.json
 	"paths" : 
 	{
 		"build" : ".",
@@ -51,19 +60,31 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/target-networking_autogen-Debug-1313a05e5aec8d9f743e.json
 			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/networking_autogen",
+========
+			"path" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/GameServer_autogen",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-GameServer_autogen-Debug-b65ef074b2eff718be66.json
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/target-networking_autogen-Debug-1313a05e5aec8d9f743e.json
 			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/CMakeFiles/networking_autogen.rule",
+========
+			"path" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/GameServer_autogen.rule",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-GameServer_autogen-Debug-b65ef074b2eff718be66.json
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
+<<<<<<<< HEAD:networking/build-networking-Qt6-Debug/.cmake/api/v1/reply.prev/target-networking_autogen-Debug-1313a05e5aec8d9f743e.json
 			"path" : "/home/ryno/Documents/practicals/epe/group-6/networking/build-networking-Qt6-Debug/networking_autogen/timestamp.rule",
+========
+			"path" : "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/GameServer_autogen/timestamp.rule",
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-GameServer_autogen-Debug-b65ef074b2eff718be66.json
 			"sourceGroupIndex" : 1
 		}
 	],

@@ -6,7 +6,11 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/CMakeFiles/rules.ninja
 # Project: cluedo_gui
+========
+# Project: GameServer
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/rules.ninja
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -14,7 +18,11 @@
 #############################################
 # Rule for compiling CXX files.
 
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/CMakeFiles/rules.ninja
 rule CXX_COMPILER__cluedo_gui_unscanned_Debug
+========
+rule CXX_COMPILER__GameServer_Debug
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/rules.ninja
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}/usr/bin/g++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,8 +32,13 @@ rule CXX_COMPILER__cluedo_gui_unscanned_Debug
 #############################################
 # Rule for linking CXX executable.
 
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/CMakeFiles/rules.ninja
 rule CXX_EXECUTABLE_LINKER__cluedo_gui_Debug
   command = $PRE_LINK && /usr/bin/g++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+========
+rule CXX_EXECUTABLE_LINKER__GameServer_Debug
+  command = cmd.exe /C "$PRE_LINK && C:\Qt\Tools\mingw1120_64\bin\g++.exe $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/rules.ninja
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 
@@ -42,7 +55,11 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/CMakeFiles/rules.ninja
   command = /usr/bin/cmake --regenerate-during-build -S/home/ryno/Documents/practicals/epe/group-6/cluedo_gui -B/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug
+========
+  command = C:\Qt\Tools\CMake_64\bin\cmake.exe --regenerate-during-build -SC:\Users\Justin\Desktop\EPECode\group-6\GameServer -BC:\Users\Justin\Desktop\EPECode\group-6\build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/rules.ninja
   description = Re-running CMake...
   generator = 1
 

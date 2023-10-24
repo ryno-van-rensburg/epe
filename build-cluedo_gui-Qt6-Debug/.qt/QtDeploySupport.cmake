@@ -24,8 +24,13 @@ endif()
 # These are internal implementation details. They may be removed at any time.
 set(__QT_DEPLOY_SYSTEM_NAME "Linux")
 set(__QT_DEPLOY_IS_SHARED_LIBS_BUILD "ON")
+<<<<<<<< HEAD:build-cluedo_gui-Qt6-Debug/.qt/QtDeploySupport.cmake
 set(__QT_DEPLOY_TOOL "")
 set(__QT_DEPLOY_IMPL_DIR "/home/ryno/Documents/practicals/epe/group-6/build-cluedo_gui-Qt6-Debug/.qt")
+========
+set(__QT_DEPLOY_TOOL "C:/Qt/6.7.0/mingw_64/bin/windeployqt.exe")
+set(__QT_DEPLOY_IMPL_DIR "C:/Users/Justin/Desktop/EPECode/group-6/build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qt")
+>>>>>>>> DuncanBranch:build-GameServer-Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qt/QtDeploySupport.cmake
 set(__QT_DEPLOY_VERBOSE "")
 set(__QT_CMAKE_EXPORT_NAMESPACE "Qt6")
 set(__QT_DEPLOY_GENERATOR_IS_MULTI_CONFIG "0")
