@@ -11,11 +11,11 @@ void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(cardsDealt(QList)));
     //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString));
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)));
-    QObject::connect(&broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
+    QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
     //QObject::connect(broker, SIGNAL(suggestionStateUpdate(QString,QString,QString,QString)));
-    QObject::connect(&broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
+    QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
-    QObject::connect(&broker, SIGNAL(gameEndedSignal()),this, SLOT(onGameEnded()));
+    QObject::connect(broker, SIGNAL(gameEndedSignal()),this, SLOT(onGameEnded()));
     //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)), this, SLOT(onGameStarted(int, QJSonArray,int,int,QList)));
     //QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
@@ -62,7 +62,7 @@ int Client::getRoomNumber(int x, int y)
 Client::Client(QObject *parent)
     : QObject{parent}, currentPlayerTurn(0)
 {
-
+    this->broker = new ClientMessageBroker();
     connectClientBroker();
     diceValue = 1;
     player1_id = "PLAYER 1";
@@ -143,7 +143,7 @@ void Client::onSuggestionReceived(QString room, QString person, QString item)
 {
 
     qDebug() << "Suggestion" << person << room << item;
-    broker.makeSuggestion(person, item, room);
+    broker->makeSuggestion(person, item, room);
 }
 
 /**
@@ -205,7 +205,7 @@ void Client::emitRequestConnectionSignal()
         //                               "Enter Port:", 0, 0, 65535, 1, &ok);
         if (ok) {
             qDebug() << "Requesting connection to server at " << send_address << ":" << a_port << " with username " << my_id;
-            broker.requestConnection(send_address, a_port, this->my_id);
+            broker->requestConnection(send_address, a_port, this->my_id);
         }
     }
     
@@ -397,7 +397,7 @@ void Client::onAccusationMade(QString room,QString person, QString item)
 void Client::onSuggestionMade(QString room,QString person, QString item)
 {
     qDebug() << "Suggestion" << person << room << item;
-    broker.makeSuggestion(person, item, room);
+    broker->makeSuggestion(person, item, room);
 }
 void Client::testBox(QString in)
 {
@@ -461,9 +461,10 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
         player3_id = username;
         temp_number = 3;
     }
-    
+    qDebug() << username << " " << this->my_id;     
     if (username == this->my_id)
     {
+
         // TODO assign user to player accepted.
        my_player_number = temp_number; // this is the player as a number used in gui
        qDebug() << "Emited: Player " << temp_number;

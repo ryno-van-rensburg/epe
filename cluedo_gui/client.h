@@ -67,7 +67,7 @@ signals:
 private:
 
     void connectClientBroker();
-    ClientMessageBroker broker;
+    ClientMessageBroker* broker = nullptr;
     int currentPlayerTurn;
     int getRoomNumber(int x, int y);
     int diceValue;
