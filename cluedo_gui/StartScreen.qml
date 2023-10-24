@@ -207,10 +207,10 @@ Rectangle {
                running: false
                repeat: true
                onTriggered: {
-                    if(connectionAccepted === true){
+                    if(p_accept === true){
                         switchToGameScreen()
                     }
-                    if(connectionRejected === true){
+                    if(p_reject === true){
                         loading.visible = false
                         namePrompt.visible = true
                     }
