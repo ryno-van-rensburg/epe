@@ -801,9 +801,11 @@ void GameServer::AddPlayerSlot(QString username)
             QString d = QString::number(startDice[5]);
             logEvent("Player 6 start dice is: "+d);
         }
-        ServerMessageBroker* s = new ServerMessageBroker;
+        qDebug("Attempt emmission");
+        ServerMessageBroker* s = new ServerMessageBroker();
         QObject::connect(this,&GameServer::acceptPlayer,s,&ServerMessageBroker::acceptPlayer);
         emit this->acceptPlayer(newPlayer->GetUsername(),newPlayer->GetPerson(),dice1,dice2);
+        qDebug("Emitted");
         if (players.size() == numPlayers)
         {
             int currentTurn = 0;
