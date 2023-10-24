@@ -173,6 +173,7 @@ Rectangle {
                         loading.visible =true
                         namePrompt.visible = false
                     }
+
                 }
             }
 
@@ -215,6 +216,7 @@ Rectangle {
                         namePrompt.visible = true
                     }
                  }
+                    switchToGameScreen()
                }
            }
         Timer {

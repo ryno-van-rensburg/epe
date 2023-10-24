@@ -34,6 +34,7 @@ public:
     Q_INVOKABLE void playerPositionSet(int playerId, int newX, int newY);
     Q_INVOKABLE QString getPlayerID(int n);
     Q_INVOKABLE int getRoomNumber(int x, int y);
+    Q_INVOKABLE void getXY(int roomNum);
     Q_INVOKABLE bool playerHasCard(QString card);
     void setPlayerTurn(int turn, int dice1, int dice2);
     void updatePlayerPosition(int playerId, int newX, int newY); //  will be network slot in future
