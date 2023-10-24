@@ -34,22 +34,22 @@ Suggestion::Suggestion(Player* player, CharacterCard* inCharac, RoomCard* inRoom
     }
 
     bool characFine = false;
-    if (inCharac->GetCardName() == "Miss Scarlett"){
+    if (inCharac->GetCardName() == "Scarlett"){
         characFine = true;
     }
-    else if (inCharac->GetCardName() == "Colonel Mustard") {
+    else if (inCharac->GetCardName() == "Mustard") {
         characFine = true;
     }
-    else if (inCharac->GetCardName() == "Chef White") {
+    else if (inCharac->GetCardName() == "White") {
         characFine = true;
     }
-    else if (inCharac->GetCardName() == "Reverend Green") {
+    else if (inCharac->GetCardName() == "Green") {
         characFine = true;
     }
-    else if (inCharac->GetCardName() == "Mrs. Peacock") {
+    else if (inCharac->GetCardName() == "Peacock") {
         characFine = true;
     }
-    else if (inCharac->GetCardName() == "Professor Plum") {
+    else if (inCharac->GetCardName() == "Plum") {
         characFine = true;
     }
 
