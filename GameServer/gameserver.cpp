@@ -531,8 +531,10 @@ void GameServer::DealCards()
         logEvent("Weapon cards: "+w);
         count++;
     }
-    QObject::connect(this,&GameServer::DealCardsSignal,this->s,&ServerMessageBroker::dealCardsSlot);
-    emit this->DealCardsSignal(num,vec);
+    // QObject::connect(this,&GameServer::DealCardsSignal,this->s,&ServerMessageBroker::dealCardsSlot);
+    // emit this->DealCardsSignal(num,vec);
+    s->dealCardsSlot(num, vec);
+    return;
 }
 
 
@@ -572,16 +574,18 @@ void GameServer::MoveRequestedSlot(NetworkPlayer &player, quint32 pos)
     if (valid == true)
     {
         playerToMove->SetPosition(destination);
-        QObject::connect(this,&GameServer::UpdateStateSignal,this->s,&ServerMessageBroker::updateStateSlot);
-        emit this->UpdateStateSignal(playerToMove->GetUsername(),destination);
+        // QObject::connect(this,&GameServer::UpdateStateSignal,this->s,&ServerMessageBroker::updateStateSlot);
+        // emit this->UpdateStateSignal(playerToMove->GetUsername(),destination);
+        s->updateStateSlot(playerToMove->GetUsername(), destination);
         logEvent(playerToMove->GetUsername()+" moved from "+c+" to "+d);
         qDebug("Valid move");
     }
     else
     {
 
-        QObject::connect(this,&GameServer::invalidMove,this->s,&ServerMessageBroker::invalidMove);
-        emit this->invalidMove(playerToMove->GetUsername());
+        // QObject::connect(this,&GameServer::invalidMove,this->s,&ServerMessageBroker::invalidMove);
+        // emit this->invalidMove(playerToMove->GetUsername());
+        s->invalidMove(playerToMove->GetUsername());
         logEvent("Invalid move from "+c+" to "+d);
         qDebug("Invalid move");
     }
@@ -827,8 +831,9 @@ void GameServer::AddPlayerSlot(QString username)
         }
         qDebug("Attempt emmission");
 
-        QObject::connect(this,&GameServer::acceptPlayer,this->s,&ServerMessageBroker::acceptPlayer);
-        emit this->acceptPlayer(newPlayer->GetUsername(),newPlayer->GetPerson(),dice1,dice2);
+        // QObject::connect(this,&GameServer::acceptPlayer,this->s,&ServerMessageBroker::acceptPlayer);
+        // emit this->acceptPlayer(newPlayer->GetUsername(),newPlayer->GetPerson(),dice1,dice2);
+        s->acceptPlayer(newPlayer->GetUsername(), newPlayer->GetPerson(), dice1,  dice2);
         qDebug("Emitted");
         if (players.size() == numPlayers)
         {
@@ -855,8 +860,9 @@ void GameServer::AddPlayerSlot(QString username)
                 names.append(w->GetCardName());
             }
 
-            QObject::connect(this,&GameServer::gameStateSlot,this->s,&ServerMessageBroker::gameStateSlot);
-            emit this->gameStateSlot(currentDice, names, currentTurn);
+            // QObject::connect(this,&GameServer::gameStateSlot,this->s,&ServerMessageBroker::gameStateSlot);
+            // emit this->gameStateSlot(currentDice, names, currentTurn);
+            s->gameStateSlot(currentDice, names, currentTurn);
             logEvent("Game started");
             qDebug("Game started");
             DealCards();

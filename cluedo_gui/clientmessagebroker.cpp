@@ -220,7 +220,7 @@ void ClientMessageBroker::unpackGameState(Message &msg) {
     QVector<QString> faceupCardStrings;
     // convert the QJsonArray into QStrings
     for (int i = 0; i < faceupCards.size(); i++) {
-        faceupCardStrings.append(faceupCards.at(i).toString())
+        faceupCardStrings.append(faceupCards.at(i).toString());
     }
     // TODO ack this message
     if (type == GAME_STATE_REPLY){
