@@ -1,0 +1,24 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/GameScreen.qml">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/GameScreen.qml</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/Player.qml">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/Player.qml</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/StartScreen.qml">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/StartScreen.qml</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/TestRunner.qml">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/TestRunner.qml</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/Constants.qml">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/Constants.qml</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/main.qml">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/main.qml</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/AI-active.png">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/AI-active.png</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/AI-inactive.png">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/AI-inactive.png</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Game-Background.jpg">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Game-Background.jpg</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/GameBoard.png">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/GameBoard.png</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Menu-Background.jpg">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Menu-Background.jpg</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Start-active.png">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Start-active.png</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Start-inactive.png">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Start-inactive.png</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Title.png">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/Title.png</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/loading.gif">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/images/loading.gif</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/Constants.qml">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/Constants.qml</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/pixel.ttf">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/pixel.ttf</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/qmldir">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/qmldir</file>
+    <file alias="C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/space.ttf">C:/Users/Justin/Desktop/Integrated/group-6/cluedo_gui/imports/space.ttf</file>
+  </qresource>
+</RCC>
+

@@ -749,9 +749,9 @@ void GameServer::CardShownSlot(NetworkPlayer &player, QString cardName)
     this->s->showCardSlot(recplayer, cardName);
     if (cardName == "None") {
 
-        this->s->shownCardSlot(player, recplayer, false);
+        this->s->shownCardSlot(player.getUsername(), recplayer->getUsername(), false);
     } else {
-        this->s->shownCardSlot(player, recplayer, true);
+        this->s->shownCardSlot(player.getUsername(), recplayer->getUsername(), true);
     }
     return;
 }
