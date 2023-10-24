@@ -518,6 +518,28 @@ void Client::testBox(QString in)
     // int ret = msgBox.exec();
 }
 
+QString Client::getCardColor(QString itemName, bool clicked){
+    bool faceup = isFaceupCard(itemName);
+    bool inHand = playerHasCard(itemName);
+    // check if the card is in the face up cards
+    if (inHand) {
+        return "#00ff00";
+    }
+    if (faceup) {
+        return "#ff0000";
+    }
+    if (clicked) {
+        return "#333333";
+    } else {
+        return "#ffffff";
+    }
+}
+
+void Client::setFaceupCards(QVector<QString> cards){
+    this->faceUpCards = cards;
+    return;
+}
+
 void Client::onRequestAnswered(QString room, QString person, QString item)
 {
     qDebug()<< "Answered Suggestion with: "  << person << room << item;
@@ -551,22 +573,22 @@ void Client::onPlayerAccepted(QString username, QString person, int dice1, int d
 {
     qDebug()<<"Received From Server: " << username << " " << person << " " << dice1 << " " << dice2;
     int temp_number = 0;
-    if (person == "Reverend Green") {
+    if (person == "Mr. Green") {
        player2_id = username;
        temp_number = 2;
     } else if (person == "Miss Scarlett") {
         player6_id = username;
         temp_number = 6;
-    } else if (person == "Chef White") {
+    } else if (person == "Mrs. White") {
         player1_id = username;
         temp_number = 1;
     } else if (person == "Mrs. Peacock") {
         player4_id = username;
         temp_number = 4;
-    } else if (person == "Professor Plum") {
+    } else if (person == "Proff Plum") {
         player5_id = username;
         temp_number = 5;
-    } else if (person == "Colonel Mustard") {
+    } else if (person == "Mustard") {
         player3_id = username;
         temp_number = 3;
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 11.0.0, 2023-10-24T18:27:05. -->
+<!-- Written by QtCreator 8.0.1, 2023-10-24T19:05:32. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -68,7 +68,18 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">false</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testOnMakeAccusation">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testOnMakeMove">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testOnMakeSuggestion">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testOnRequestStateSlot">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testOnSendConnectionRequest">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testOnShowCard">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testPlayerPositionSet">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testRequestConnection">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.cpp:testValidUsername">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/ryno/Documents/practicals/epe/group-6/cluedo_gui/testrunner.h:TestRunner">Checked</value>
+   </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuemap type="QVariantMap" key="ClangTools">

@@ -385,7 +385,7 @@ void ServerMessageBroker::gameStateSlot( int diceRoll, QVector<QString> faceup, 
         QJsonObject e;
         e["Username"] = username;
         e["Person"] = person;
-        e["Position"] = position;
+        e["Position"] = 0;
         e["AI"]= p->isAi();
         playerArr.append(e);
     }
