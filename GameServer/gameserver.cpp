@@ -891,10 +891,11 @@ void GameServer::AddPlayerSlot(QString username)
 
             // QObject::connect(this,&GameServer::gameStateSlot,this->s,&ServerMessageBroker::gameStateSlot);
             // emit this->gameStateSlot(currentDice, names, currentTurn);
+            DealCards();
+            qDebug()<< names[0] << names[1];
             s->gameStateSlot(currentDice, names, currentTurn);
             logEvent("Game started");
             qDebug("Game started");
-            DealCards();
         }
     }
 }

@@ -10,9 +10,7 @@
 void Client::connectClientBroker(){
     //QObject::connect(broker, SIGNAL(accusationResultSignal(QList,bool)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList));
-    QObject::connect(broker, SIGNAL(cardsDealt(QVector<QString>)), this, SLOT(onCardsDealt(QVector<QString>)));
-    this->setPlayerCards(cards);
-    
+    QObject::connect(broker, SIGNAL(cardsDealt(QVector<QString>)), this, SLOT(onCardsDealt(QVector<QString>)));   
     //QObject::connect(broker, SIGNAL(cardShown(bool,QString,QString),this,SLOT(onCardShown(bool,QString,QString))));
     //QObject::connect(broker, SIGNAL(cardShownToPlayer(QString,QString)),this,SLOT(onCardShownToPlayer(QString,QString)));
     QObject::connect(broker, SIGNAL(playerAcceptedSignal(QString,QString,int,int)), this, SLOT(onPlayerAccepted(QString,QString,int,int)));
@@ -20,7 +18,7 @@ void Client::connectClientBroker(){
     QObject::connect(broker, SIGNAL(connectionRejectedSignal(QString)), this, SLOT(emitConnectionRejected()));
     //QObject::connect(broker, SIGNAL(errorSignal(ERROR_TYPE,QString)));
     QObject::connect(broker, SIGNAL(gameEndedSignal()),this, SLOT(onGameEnded()));
-    //QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QList)), this, SLOT(onGameStarted(int, QJSonArray,int,int,QList)));
+    QObject::connect(broker, SIGNAL(gameStartedSignal(int,QJsonArray,int,int,QVector<QString>)), this, SLOT(onGameStarted(int,QJsonArray,int,int,QVector<QString>)));
     //QObject::connect(broker, SIGNAL(moveUpdate(QString,int)));
     //QObject::connect(broker, SIGNAL(cardRequestedSignal(QString,QList)));
     //QObject::connect(broker, SIGNAL(invalidMove()));
@@ -90,7 +88,7 @@ void Client::onGameStarted(int numPlayers, QJsonArray players,int dice1,int curr
     qDebug() << "Players: " << players;
     qDebug() << "Dice: " << dice1;
     qDebug() << "Current turn: " << currentTurn;
-    qDebug() << "Face up cards: " << faceUpCards;
+    qDebug() << "Face up cards: " << faceUpCards.size();
 
     this->setFaceupCards(faceUpCards);
     // QString face_up_cards;

@@ -197,3 +197,120 @@ Face up cards:
 Green
 Dining Room
 PORT NUMBER: 42069
+PORT NUMBER: 42069
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 6
+Player 2 added
+Player 2 start dice is: 8
+Player 3 added
+Player 3 start dice is: 8
+Player 4 added
+Player 4 start dice is: 2
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Green
+Room cards: Courtyard
+Weapon cards: Dagger, Candlestick
+Player 2 has been dealt the following cards:
+Character cards: Peacock, Scarlet
+Room cards: Bathroom
+Weapon cards: Pistol
+Player 3 has been dealt the following cards:
+Character cards: 
+Room cards: Study, Game Room, Garage
+Weapon cards: Rope
+Player 4 has been dealt the following cards:
+Character cards: Mustard, Plum
+Room cards: Kitchen, Living Room
+Weapon cards: 
+Face up cards: 
+Bedroom
+Lead Pipe
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 4
+Player 2 added
+Player 2 start dice is: 6
+Player 3 added
+Player 3 start dice is: 3
+Player 4 added
+Player 4 start dice is: 7
+Game started
+Player 1 has been dealt the following cards:
+Character cards: Plum, Peacock
+Room cards: Dining Room, Study
+Weapon cards: 
+Player 2 has been dealt the following cards:
+Character cards: White
+Room cards: 
+Weapon cards: Lead Pipe, Candlestick, Rope
+Player 3 has been dealt the following cards:
+Character cards: Scarlet, Mustard
+Room cards: Courtyard
+Weapon cards: Wrench
+Player 4 has been dealt the following cards:
+Character cards: 
+Room cards: Living Room, Game Room, Kitchen
+Weapon cards: Dagger
+Face up cards: 
+Bedroom
+Bathroom
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 3
+Player 2 added
+Player 2 start dice is: 8
+Player 3 added
+Player 3 start dice is: 7
+Player 4 added
+Player 4 start dice is: 8
+Player 1 has been dealt the following cards:
+Character cards: 
+Room cards: Kitchen
+Weapon cards: Pistol, Dagger, Rope
+Player 2 has been dealt the following cards:
+Character cards: Mustard
+Room cards: Courtyard, Garage
+Weapon cards: Lead Pipe
+Player 3 has been dealt the following cards:
+Character cards: Green, Plum
+Room cards: Study
+Weapon cards: Candlestick
+Player 4 has been dealt the following cards:
+Character cards: 
+Room cards: Bedroom, Living Room, Game Room, Dining Room
+Weapon cards: 
+Face up cards: 
+Peacock
+White
+PORT NUMBER: 42069
+Player 1 added
+Player 1 start dice is: 5
+Player 2 added
+Player 2 start dice is: 9
+Player 3 added
+Player 3 start dice is: 8
+Player 4 added
+Player 4 start dice is: 2
+Player 1 has been dealt the following cards:
+Character cards: 
+Room cards: Kitchen, Courtyard
+Weapon cards: Lead Pipe, Rope
+Player 2 has been dealt the following cards:
+Character cards: Plum, Scarlet
+Room cards: Game Room
+Weapon cards: Wrench
+Player 3 has been dealt the following cards:
+Character cards: Mustard
+Room cards: Garage, Dining Room
+Weapon cards: Candlestick
+Player 4 has been dealt the following cards:
+Character cards: Peacock
+Room cards: Study, Bedroom
+Weapon cards: Dagger
+Face up cards: 
+White
+Living Room
+Game started
+PORT NUMBER: 42069
