@@ -190,7 +190,6 @@ void ServerSession::handleMessage(Message &msg)
     case (REQUEST_CON):
     {
         emit joiningRequest(msg);
-
         break;
     }
     case (REQ_GAME_STATE):
